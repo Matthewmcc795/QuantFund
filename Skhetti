@@ -1,0 +1,32 @@
+Sec = "EUR_USD"
+TF = "Daily"
+cntr = 0
+n = 20
+last_i = 0
+spacer = 5
+Op = "Path"
+
+For i = 0 To 800
+    If Candle(Open_Price(Sec, TF, i), High_Price(Sec, TF, i), Low_Price(Sec, TF, i), Close_Price(Sec, TF, i)) = "Doji" _
+    And i - last_i > spacer Then ' Close_Price(Sec, TF, i) < SMA(Sec, TF, 100, i) And
+        For j = 0 To n - 1
+            Range("AA1").Offset(j, cntr) = Close_Price(Sec, TF, i + j) / Close_Price(Sec, TF, i) - 1
+        Next j
+        last_i = i
+        cntr = cntr + 1
+    End If
+Next
+
+For i = 0 To n - 1
+    Range("AA1").Offset(i, 0).Select
+    Select Case Op
+        Case "Path":
+            Range("AA1").Offset(i, 0).Select
+            Range("A2").Offset(i, 0) = Application.WorksheetFunction.Percentile(Range(Selection, Selection.End(xlToRight)), 0.05)
+            Range("B2").Offset(i, 0) = Application.WorksheetFunction.Percentile(Range(Selection, Selection.End(xlToRight)), 0.5)
+            Range("C2").Offset(i, 0) = Application.WorksheetFunction.Percentile(Range(Selection, Selection.End(xlToRight)), 0.95)
+        Case "Stats":
+            Range("A2").Offset(i, 0) = Application.WorksheetFunction.Average(Range(Selection, Selection.End(xlToRight)))
+            Range("B2").Offset(i, 0) = Application.WorksheetFunction.StDev_P(Range(Selection, Selection.End(xlToRight)))
+    End Select
+Next i
