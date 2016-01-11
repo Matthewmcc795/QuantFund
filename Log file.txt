@@ -1,0 +1,6 @@
+2016-01-11 18:10:14.365000 Running script
+2016-01-11 18:10:14.371000 Getting data for EUR_USD
+2016-01-11 18:17:07.066000 Running script
+2016-01-11 18:17:07.072000 Getting data for EUR_USD
+2016-01-11 18:17:08.506000 Checking open orders...
+2016-01-11 18:17:08.974000 0 Units of EUR_USD
