@@ -28,20 +28,14 @@ Sec_Status.append(False)
 print "Initializing..."
 Open_Order = 0.0
 Carry_Price = 0.0
-
 Lots = 50000
 n = 50
-last_entry = 0 
-spacer = 5
-last_trade = 0
-Open_Units =0
-Open_Trade = False
 Bars = 5000
 I_D = 1
 
 h = {'Authorization' : ACCESS_TOKEN}
 print "Retrieving Data..."
-r = requests.get( ACCOUNT_DOMAIN + "instrument=EUR_USD&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4&dailyAlignment=3", headers=h)     
+r = requests.get( ACCOUNT_DOMAIN + "instrument=EUR_USD&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4", headers=h)     
 data = json.loads(r.text)
 
 def Date(index):
@@ -56,7 +50,6 @@ def Close(index):
     return data["candles"][index][STRC]
 print "Data Received..."
 Account_Chart = []
-S_D=[]
 
 Account = 1000
 Starting_Balance = Account
@@ -67,7 +60,7 @@ TP = 0.004
 last_trade = 0
 Open_Units =0
 Open_Trade = False
-for i in range(100,4500):
+for i in range(201,4900):
     if Open_Order == 0:
         Carry_Price = Close(i-1)
     aavg = 0.0
@@ -104,7 +97,7 @@ for i in range(100,4500):
     wik = (wick2 + wick)/2
     tal = (tail2 + tail)/2
 
-    if Close(i) < Lower_Band and Close(i-1) < Lower_Band and tal > 0.0005 and Open_Order == 0 and i - last_entry > spacer:
+    if Close(i) < Lower_Band and Close(i-1) < Lower_Band and tal > 0.0001 and Open_Order == 0 and i - last_entry > spacer:
         Open_Order = 1
         Open_Price = Close(i-1)
         Stop_Loss = Open(i) + SL
@@ -112,7 +105,7 @@ for i in range(100,4500):
         Carry_Price = Close(i-1)
         last_entry = i
     
-    if Close(i) > Upper_Band and Close(i-1) > Upper_Band and wik > 0.0005 and Open_Order == 0 and i - last_entry > spacer:
+    if Close(i) > Upper_Band and Close(i-1) > Upper_Band and wik > 0.0001 and Open_Order == 0 and i - last_entry > spacer:
         Open_Order = -1
         Open_Price = Close(i-1)
         Stop_Loss = Open(i) - SL
