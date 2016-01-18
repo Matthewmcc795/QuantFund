@@ -21,10 +21,10 @@ S1 = [0,0,0,0,0]
 S2 = [0,0,0,0,0]
 
 Bars = 51
-SL = 0.0006
-TP = 0.0004
+SL = 0.001
+TP = 0.001
 n = 50
-dt = datetime.strptime('January 18 16  06:30', '%B %d %y %H:%M')
+dt = datetime.strptime('January 18 16  07:30', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -64,10 +64,10 @@ while True:
         R2[i] = PP[i] + High(1) - Low(1)
 
         file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting M15 data for " + Sec[i] + "\n")
+        file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=bidask&granularity=M15"
+        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=bidask&granularity=M5"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
 
@@ -100,8 +100,8 @@ while True:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Selling 200,000 of " + str(Sec[i]) + "\n")
             file.write(str(datetime.now()) + " Current Price is " + str(CloseB(0)) + "\n")
-            file.write(str(datetime.now()) + " TP is " + str(round(CloseB(0) - TP - 0.0001,5)) + "\n")
-            file.write(str(datetime.now()) + " SL is " + str(round(CloseB(0) + SL + 0.0001,5)) + "\n")
+            file.write(str(datetime.now()) + " TP is " + str(round(CloseB(0) - TP - 0.00001,5)) + "\n")
+            file.write(str(datetime.now()) + " SL is " + str(round(CloseB(0) + SL + 0.00001,5)) + "\n")
             file.close() 
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
@@ -110,8 +110,8 @@ while True:
                 "units" : 200000,
                 "type" : "market",
                 "side" : "sell",
-                "takeProfit": round(CloseB(0) - TP,4),
-                "stopLoss": round(CloseB(0) + SL,4)
+                "takeProfit": round(CloseB(0) - TP - 0.00001,5),
+                "stopLoss": round(CloseB(0) + SL + 0.00001,5)
             })
             conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
             response = conn.getresponse().read()
@@ -122,8 +122,8 @@ while True:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Buying 200,000 of " + str(Sec[i]) + "\n")
             file.write(str(datetime.now()) + " Current Price is " + str(CloseA(0)) + "\n")
-            file.write(str(datetime.now()) + " TP is " + str(round(CloseA(0) + TP - 0.0001,5)) + "\n")
-            file.write(str(datetime.now()) + " SL is " + str(round(CloseA(0) - SL + 0.0001,5)) + "\n")
+            file.write(str(datetime.now()) + " TP is " + str(round(CloseA(0) + TP + 0.00001,5)) + "\n")
+            file.write(str(datetime.now()) + " SL is " + str(round(CloseA(0) - SL - 0.00001,5)) + "\n")
             file.close() 
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
@@ -132,8 +132,8 @@ while True:
                 "units" : 200000,
                 "type" : "market",
                 "side" : "buy",
-                "takeProfit": round(CloseA(0) + TP,4),
-                "stopLoss": round(CloseA(0) - SL,4)
+                "takeProfit": round(CloseA(0) + TP + 0.00001,5),
+                "stopLoss": round(CloseA(0) - SL - 0.00001,5)
             })
             conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
             response = conn.getresponse().read()
