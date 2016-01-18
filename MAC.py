@@ -50,9 +50,6 @@ while True:
         def Close(index):
             return data["candles"][49 - index][STRC]
 
-        for j in range(0,n-1):
-            print Date(j)
-
         aavg = 0.0
         avg = 0.0
         sd = 0.0

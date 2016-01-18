@@ -24,7 +24,7 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 18 16  07:30', '%B %d %y %H:%M')
+dt = datetime.strptime('January 18 16  10:30', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -144,6 +144,8 @@ while True:
             file = open(name,'a')
             file.write(str(datetime.now()) + " no trades\n")
             file.close() 
+
+        time.sleep(2)
 
     dt = datetime.now() + timedelta(minutes=5)
     dt = dt.replace(second=0,microsecond=1)
