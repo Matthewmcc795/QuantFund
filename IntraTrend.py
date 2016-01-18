@@ -7,17 +7,28 @@ import urllib
 from datetime import datetime, timedelta
 import time
 import sys
+import Tkinter
+top = Tkinter.Tk()
+# Code to add widgets will go here...
+top.mainloop()
 Sec = []
 Sec.append("EUR_USD")
 Sec.append("GBP_USD")
+Sec.append("USD_CAD")
 Sec.append("AUD_USD")
+Sec.append("NZD_USD")
+PP = [0,0,0,0,0]
+R1 = [0,0,0,0,0]
+R2 = [0,0,0,0,0]
+S1 = [0,0,0,0,0]
+S2 = [0,0,0,0,0]
 
-Bars = 50
+Bars = 51
 SL = 0.0006
 TP = 0.0004
-dt = datetime.strptime('January 18 16  06:20', '%B %d %y %H:%M')
 n = 50
-name = "MAC_Log.txt"
+dt = datetime.strptime('January 18 16  06:00', '%B %d %y %H:%M')
+name = "IntraTend.txt"
 
 while True:
 
@@ -29,63 +40,43 @@ while True:
             break 
         time.sleep(1)
 
-    for i in range(0,3):
+    for i in range(0,5):
+
         file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting data for " + Sec[i] + "\n")
+        file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
+        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=M5"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
 
         def Date(index):
-            return data["candles"][49 - index][STRT]
+            return data["candles"][50 - index][STRT]
         def Open(index):
-            return data["candles"][49 - index][STRO]
+            return data["candles"][50 - index][STRO]
         def High(index):
-            return data["candles"][49 - index][STRH]
+            return data["candles"][50 - index][STRH]
         def Low(index):
-            return data["candles"][49 - index][STRL]
+            return data["candles"][50 - index][STRL]
         def Close(index):
-            return data["candles"][49 - index][STRC]
-
-        for j in range(0,n-1):
-            print Date(j)
+            return data["candles"][50 - index][STRC]
 
         aavg = 0.0
-        avg = 0.0
-        sd = 0.0
-        ssd = 0.0
-
-        for j in range(0,n-1):
+        for j in range(0,n):
             aavg = Close(j) + aavg
-        SMA = aavg/(n-1)
+        SMA50 = aavg/n
 
-        for j in range(0,n-1):
-            ssd = (Close(j) - SMA)**2 +ssd
-        sd = (ssd/(n-2))**(0.5)
+        aavg = 0.0
+        for j in range(0,21):
+            aavg = Close(j) + aavg
+        SMA21 = aavg/21
 
-        Upper_Band = SMA + 2*sd
-        Lower_Band = SMA - 2*sd
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " Checking open orders...\n")
-        file.close()
-        h = {'Authorization' : ACCESS_TOKEN}
-        url = "https://api-fxpractice.oanda.com/v1/accounts/5801231/positions"
-        r = requests.get(url, headers=h)     
-        data2 = json.loads(r.text)
-        chk = str(data2)
-        if chk.find("positions") == -1:
-            Open_Units = 0 
-        else:
-            Open_Units = 0
-            for positions in data2["positions"]:
-                if positions["instrument"] == Sec[i]:
-                    Open_Units = positions["units"]
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " " + str(Open_Units) + " Units of " + str(Sec[i]) + "\n")
-        file.close()
-        if Close(0) > Upper_Band and Close(1) > Upper_Band and Open_Units == 0:
+        aavg = 0.0
+        for j in range(0,10):
+            aavg = Close(j) + aavg
+        SMA10 = aavg/10
+
+        if Close(0) > SMA10 and Close(0) < SMA21 and Close(0) < SMA50:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Selling 200,000 of " + str(Sec[i]) + "\n")
             file.write(str(datetime.now()) + " Current Price is " + str(Close(0)) + "\n")
@@ -99,15 +90,15 @@ while True:
                 "units" : 200000,
                 "type" : "market",
                 "side" : "sell",
-                "takeProfit": round(Close(0) - TP,4),
-                "stopLoss": round(Close(0) + SL,4)
+                "takeProfit": round(2*Close(0)-SMA50,4),
+                "stopLoss": round(SMA50,4)
             })
             conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
             response = conn.getresponse().read()
             file = open(name,'a')
             file.write(response + "\n")
             file.close()
-        elif Close(0) < Lower_Band and Close(1) < Lower_Band and Open_Units == 0:
+        elif Close(0) < SMA10 and Close(0) > SMA21 and Close(0) > SMA50:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Buying 200,000 of " + str(Sec[i]) + "\n")
             file.write(str(datetime.now()) + " Current Price is " + str(Close(0)) + "\n")
@@ -121,25 +112,21 @@ while True:
                 "units" : 200000,
                 "type" : "market",
                 "side" : "buy",
-                "takeProfit": round(Close(0) + TP,4),
-                "stopLoss": round(Close(0) - SL,4)
+                "takeProfit": round(2*Close(0)-SMA50,4),
+                "stopLoss": round(SMA50,4)
             })
             conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
             response = conn.getresponse().read()
             file = open(name,'a')
-            file.write(str(datetime.now()) + " " + str(response) + "\n")
-            file.close()
-        elif Open_Units > 0:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Positions still open for " + str(Sec[i]) + "\n")
+            file.write(response + "\n")
             file.close()
         else:
             file = open(name,'a')
-            file.write(str(datetime.now()) + " No trades available for " + str(Sec[i]) + "\n")
-            file.close()
+            file.write(str(datetime.now()) + " no trades\n")
+            file.close() 
 
-    dt = datetime.now() + timedelta(hours=4)
-    dt = dt.replace(minute=0,second=0,microsecond=1)
+    dt = datetime.now() + timedelta(minutes=5)
+    dt = dt.replace(second=0,microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
     file.close()

@@ -325,3 +325,31 @@
 2016-01-12 15:22:44.344000 0 Units of AUD_USD
 2016-01-12 15:22:44.344000 No trades available for AUD_USD
 2016-01-12 15:22:44.362000 Waiting until 2016-01-12 19:00:01
+2016-01-18 06:01:56.024000 Running script
+2016-01-18 06:01:56.068000 Getting data for EUR_USD
+2016-01-18 06:02:06.071000 Checking open orders...
+2016-01-18 06:02:12.571000 0 Units of EUR_USD
+2016-01-18 06:02:12.580000 No trades available for EUR_USD
+2016-01-18 06:02:12.588000 Getting data for GBP_USD
+2016-01-18 06:02:22.422000 Checking open orders...
+2016-01-18 06:02:29.907000 0 Units of GBP_USD
+2016-01-18 06:02:29.916000 No trades available for GBP_USD
+2016-01-18 06:02:29.925000 Getting data for AUD_USD
+2016-01-18 06:02:38.503000 Checking open orders...
+2016-01-18 06:02:48.210000 0 Units of AUD_USD
+2016-01-18 06:02:48.219000 No trades available for AUD_USD
+2016-01-18 06:02:48.227000 Waiting until 2016-01-18 10:00:00.000001
+2016-01-18 06:07:50.601000 Running script
+2016-01-18 06:07:50.601000 Getting data for EUR_USD
+2016-01-18 06:08:01.398000 Checking open orders...
+2016-01-18 06:08:08.332000 0 Units of EUR_USD
+2016-01-18 06:08:08.340000 No trades available for EUR_USD
+2016-01-18 06:08:08.348000 Getting data for GBP_USD
+2016-01-18 06:08:15.820000 Checking open orders...
+2016-01-18 06:08:24.201000 0 Units of GBP_USD
+2016-01-18 06:08:24.218000 No trades available for GBP_USD
+2016-01-18 06:08:24.227000 Getting data for AUD_USD
+2016-01-18 06:08:33.637000 Checking open orders...
+2016-01-18 06:08:50.047000 0 Units of AUD_USD
+2016-01-18 06:08:50.055000 No trades available for AUD_USD
+2016-01-18 06:08:50.063000 Waiting until 2016-01-18 10:00:00.000001
