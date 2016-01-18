@@ -15,7 +15,7 @@ Sec.append("AUD_USD")
 Bars = 50
 SL = 0.0006
 TP = 0.0004
-dt = datetime.strptime('January 18 16  06:20', '%B %d %y %H:%M')
+dt = datetime.strptime('January 18 16  06:30', '%B %d %y %H:%M')
 n = 50
 name = "MAC_Log.txt"
 
