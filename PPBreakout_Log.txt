@@ -304,3 +304,441 @@
 2016-01-18 10:20:05.643000 Getting M5 data for NZD_USD
 2016-01-18 10:20:06.024000 no trades
 2016-01-18 10:20:06.036000 Waiting until 2016-01-18 10:25:00.000001
+2016-01-18 10:25:00.143000 Running script
+2016-01-18 10:25:00.155000 Getting Daily data for EUR_USD
+2016-01-18 10:25:00.551000 Getting M5 data for EUR_USD
+2016-01-18 10:25:01.121000 no trades
+2016-01-18 10:25:01.133000 Getting Daily data for GBP_USD
+2016-01-18 10:25:01.540000 Getting M5 data for GBP_USD
+2016-01-18 10:25:01.896000 no trades
+2016-01-18 10:25:01.909000 Getting Daily data for USD_CAD
+2016-01-18 10:25:02.298000 Getting M5 data for USD_CAD
+2016-01-18 10:25:02.693000 no trades
+2016-01-18 10:25:02.706000 Getting Daily data for AUD_USD
+2016-01-18 10:25:03.127000 Getting M5 data for AUD_USD
+2016-01-18 10:25:03.835000 no trades
+2016-01-18 10:25:03.847000 Getting Daily data for NZD_USD
+2016-01-18 10:25:04.222000 Getting M5 data for NZD_USD
+2016-01-18 10:25:04.582000 no trades
+2016-01-18 10:25:04.595000 Waiting until 2016-01-18 10:30:00.000001
+2016-01-18 10:30:00.671000 Running script
+2016-01-18 10:30:00.686000 Getting Daily data for EUR_USD
+2016-01-18 10:30:01.368000 Getting M5 data for EUR_USD
+2016-01-18 10:30:01.795000 no trades
+2016-01-18 10:30:01.810000 Getting Daily data for GBP_USD
+2016-01-18 10:30:02.230000 Getting M5 data for GBP_USD
+2016-01-18 10:30:02.642000 no trades
+2016-01-18 10:30:02.654000 Getting Daily data for USD_CAD
+2016-01-18 10:30:04.146000 Getting M5 data for USD_CAD
+2016-01-18 10:30:05.544000 no trades
+2016-01-18 10:30:05.556000 Getting Daily data for AUD_USD
+2016-01-18 10:30:05.953000 Getting M5 data for AUD_USD
+2016-01-18 10:30:06.353000 no trades
+2016-01-18 10:30:06.366000 Getting Daily data for NZD_USD
+2016-01-18 10:30:06.776000 Getting M5 data for NZD_USD
+2016-01-18 10:30:07.209000 no trades
+2016-01-18 10:30:07.229000 Waiting until 2016-01-18 10:35:00.000001
+2016-01-18 10:35:00.319000 Running script
+2016-01-18 10:35:00.341000 Getting Daily data for EUR_USD
+2016-01-18 10:35:00.768000 Getting M5 data for EUR_USD
+2016-01-18 10:35:01.197000 no trades
+2016-01-18 10:35:01.222000 Getting Daily data for GBP_USD
+2016-01-18 10:35:01.624000 Getting M5 data for GBP_USD
+2016-01-18 10:35:02.049000 no trades
+2016-01-18 10:35:02.071000 Getting Daily data for USD_CAD
+2016-01-18 10:35:02.475000 Getting M5 data for USD_CAD
+2016-01-18 10:35:02.904000 no trades
+2016-01-18 10:35:02.926000 Getting Daily data for AUD_USD
+2016-01-18 10:35:03.321000 Getting M5 data for AUD_USD
+2016-01-18 10:35:03.703000 no trades
+2016-01-18 10:35:03.744000 Getting Daily data for NZD_USD
+2016-01-18 10:35:04.136000 Getting M5 data for NZD_USD
+2016-01-18 10:35:04.543000 no trades
+2016-01-18 10:35:04.565000 Waiting until 2016-01-18 10:40:00.000001
+2016-01-18 10:40:00.710000 Running script
+2016-01-18 10:40:00.731000 Getting Daily data for EUR_USD
+2016-01-18 10:40:01.310000 Getting M5 data for EUR_USD
+2016-01-18 10:40:01.728000 no trades
+2016-01-18 10:40:01.749000 Getting Daily data for GBP_USD
+2016-01-18 10:40:02.163000 Getting M5 data for GBP_USD
+2016-01-18 10:40:02.551000 no trades
+2016-01-18 10:40:02.572000 Getting Daily data for USD_CAD
+2016-01-18 10:40:02.990000 Getting M5 data for USD_CAD
+2016-01-18 10:40:03.394000 no trades
+2016-01-18 10:40:03.414000 Getting Daily data for AUD_USD
+2016-01-18 10:40:03.824000 Getting M5 data for AUD_USD
+2016-01-18 10:40:04.230000 no trades
+2016-01-18 10:40:04.251000 Getting Daily data for NZD_USD
+2016-01-18 10:40:04.628000 Getting M5 data for NZD_USD
+2016-01-18 10:40:05.049000 no trades
+2016-01-18 10:40:05.069000 Waiting until 2016-01-18 10:45:00.000001
+2016-01-18 10:45:00.198000 Running script
+2016-01-18 10:45:00.219000 Getting Daily data for EUR_USD
+2016-01-18 10:45:00.641000 Getting M5 data for EUR_USD
+2016-01-18 10:45:01.070000 no trades
+2016-01-18 10:45:01.100000 Getting Daily data for GBP_USD
+2016-01-18 10:45:01.504000 Getting M5 data for GBP_USD
+2016-01-18 10:45:01.926000 no trades
+2016-01-18 10:45:01.946000 Getting Daily data for USD_CAD
+2016-01-18 10:45:02.359000 Getting M5 data for USD_CAD
+2016-01-18 10:45:02.757000 no trades
+2016-01-18 10:45:02.779000 Getting Daily data for AUD_USD
+2016-01-18 10:45:03.183000 Getting M5 data for AUD_USD
+2016-01-18 10:45:03.580000 no trades
+2016-01-18 10:45:03.604000 Getting Daily data for NZD_USD
+2016-01-18 10:45:04.038000 Getting M5 data for NZD_USD
+2016-01-18 10:45:04.442000 no trades
+2016-01-18 10:45:04.466000 Waiting until 2016-01-18 10:50:00.000001
+2016-01-18 10:50:00.576000 Running script
+2016-01-18 10:50:00.591000 Getting Daily data for EUR_USD
+2016-01-18 10:50:01.168000 Getting M5 data for EUR_USD
+2016-01-18 10:50:01.618000 no trades
+2016-01-18 10:50:01.633000 Getting Daily data for GBP_USD
+2016-01-18 10:50:02.031000 Getting M5 data for GBP_USD
+2016-01-18 10:50:02.432000 no trades
+2016-01-18 10:50:02.447000 Getting Daily data for USD_CAD
+2016-01-18 10:50:02.820000 Getting M5 data for USD_CAD
+2016-01-18 10:50:03.210000 no trades
+2016-01-18 10:50:03.228000 Getting Daily data for AUD_USD
+2016-01-18 10:50:03.631000 Getting M5 data for AUD_USD
+2016-01-18 10:50:04.046000 no trades
+2016-01-18 10:50:04.063000 Getting Daily data for NZD_USD
+2016-01-18 10:50:04.459000 Getting M5 data for NZD_USD
+2016-01-18 10:50:04.842000 no trades
+2016-01-18 10:50:04.856000 Waiting until 2016-01-18 10:55:00.000001
+2016-01-18 10:55:00.940000 Running script
+2016-01-18 10:55:00.954000 Getting Daily data for EUR_USD
+2016-01-18 10:55:01.394000 Getting M5 data for EUR_USD
+2016-01-18 10:55:01.853000 no trades
+2016-01-18 10:55:01.866000 Getting Daily data for GBP_USD
+2016-01-18 10:55:02.413000 Getting M5 data for GBP_USD
+2016-01-18 10:55:02.799000 no trades
+2016-01-18 10:55:02.812000 Getting Daily data for USD_CAD
+2016-01-18 10:55:03.181000 Getting M5 data for USD_CAD
+2016-01-18 10:55:03.574000 no trades
+2016-01-18 10:55:03.587000 Getting Daily data for AUD_USD
+2016-01-18 10:55:03.974000 Getting M5 data for AUD_USD
+2016-01-18 10:55:04.377000 no trades
+2016-01-18 10:55:04.389000 Getting Daily data for NZD_USD
+2016-01-18 10:55:04.779000 Getting M5 data for NZD_USD
+2016-01-18 10:55:05.139000 no trades
+2016-01-18 10:55:05.152000 Waiting until 2016-01-18 11:00:00.000001
+2016-01-18 11:00:00.236000 Running script
+2016-01-18 11:00:00.248000 Getting Daily data for EUR_USD
+2016-01-18 11:00:00.669000 Getting M5 data for EUR_USD
+2016-01-18 11:00:01.177000 no trades
+2016-01-18 11:00:01.189000 Getting Daily data for GBP_USD
+2016-01-18 11:00:01.644000 Getting M5 data for GBP_USD
+2016-01-18 11:00:02.109000 no trades
+2016-01-18 11:00:02.122000 Getting Daily data for USD_CAD
+2016-01-18 11:00:02.628000 Getting M5 data for USD_CAD
+2016-01-18 11:00:03.215000 no trades
+2016-01-18 11:00:03.228000 Getting Daily data for AUD_USD
+2016-01-18 11:00:03.621000 Getting M5 data for AUD_USD
+2016-01-18 11:00:04.009000 no trades
+2016-01-18 11:00:04.021000 Getting Daily data for NZD_USD
+2016-01-18 11:00:04.395000 Getting M5 data for NZD_USD
+2016-01-18 11:00:04.766000 no trades
+2016-01-18 11:00:04.778000 Waiting until 2016-01-18 11:05:00.000001
+2016-01-18 11:05:00.865000 Running script
+2016-01-18 11:05:00.878000 Getting Daily data for EUR_USD
+2016-01-18 11:05:01.262000 Getting M5 data for EUR_USD
+2016-01-18 11:05:01.689000 no trades
+2016-01-18 11:05:01.701000 Getting Daily data for GBP_USD
+2016-01-18 11:05:02.119000 Getting M5 data for GBP_USD
+2016-01-18 11:05:02.529000 no trades
+2016-01-18 11:05:02.542000 Getting Daily data for USD_CAD
+2016-01-18 11:05:03.086000 Getting M5 data for USD_CAD
+2016-01-18 11:05:03.569000 no trades
+2016-01-18 11:05:03.585000 Getting Daily data for AUD_USD
+2016-01-18 11:05:04.136000 Getting M5 data for AUD_USD
+2016-01-18 11:05:04.539000 no trades
+2016-01-18 11:05:04.555000 Getting Daily data for NZD_USD
+2016-01-18 11:05:04.929000 Getting M5 data for NZD_USD
+2016-01-18 11:05:05.328000 no trades
+2016-01-18 11:05:05.345000 Waiting until 2016-01-18 11:10:00.000001
+2016-01-18 11:10:00.441000 Running script
+2016-01-18 11:10:00.458000 Getting Daily data for EUR_USD
+2016-01-18 11:10:00.870000 Getting M5 data for EUR_USD
+2016-01-18 11:10:01.258000 no trades
+2016-01-18 11:10:01.275000 Getting Daily data for GBP_USD
+2016-01-18 11:10:01.686000 Getting M5 data for GBP_USD
+2016-01-18 11:10:02.070000 no trades
+2016-01-18 11:10:02.087000 Getting Daily data for USD_CAD
+2016-01-18 11:10:02.485000 Getting M5 data for USD_CAD
+2016-01-18 11:10:02.940000 no trades
+2016-01-18 11:10:02.956000 Getting Daily data for AUD_USD
+2016-01-18 11:10:03.341000 Getting M5 data for AUD_USD
+2016-01-18 11:10:03.733000 no trades
+2016-01-18 11:10:03.750000 Getting Daily data for NZD_USD
+2016-01-18 11:10:04.335000 Getting M5 data for NZD_USD
+2016-01-18 11:10:04.734000 no trades
+2016-01-18 11:10:04.751000 Waiting until 2016-01-18 11:15:00.000001
+2016-01-18 11:15:00.840000 Running script
+2016-01-18 11:15:00.858000 Getting Daily data for EUR_USD
+2016-01-18 11:15:01.280000 Getting M5 data for EUR_USD
+2016-01-18 11:15:01.679000 no trades
+2016-01-18 11:15:01.698000 Getting Daily data for GBP_USD
+2016-01-18 11:15:02.110000 Getting M5 data for GBP_USD
+2016-01-18 11:15:02.503000 no trades
+2016-01-18 11:15:02.521000 Getting Daily data for USD_CAD
+2016-01-18 11:15:02.949000 Getting M5 data for USD_CAD
+2016-01-18 11:15:03.468000 no trades
+2016-01-18 11:15:03.487000 Getting Daily data for AUD_USD
+2016-01-18 11:15:03.859000 Getting M5 data for AUD_USD
+2016-01-18 11:15:04.402000 no trades
+2016-01-18 11:15:04.419000 Getting Daily data for NZD_USD
+2016-01-18 11:15:04.930000 Getting M5 data for NZD_USD
+2016-01-18 11:15:05.341000 no trades
+2016-01-18 11:15:05.358000 Waiting until 2016-01-18 11:20:00.000001
+2016-01-18 11:20:00.450000 Running script
+2016-01-18 11:20:00.468000 Getting Daily data for EUR_USD
+2016-01-18 11:20:00.843000 Getting M5 data for EUR_USD
+2016-01-18 11:20:01.257000 no trades
+2016-01-18 11:20:01.275000 Getting Daily data for GBP_USD
+2016-01-18 11:20:01.668000 Getting M5 data for GBP_USD
+2016-01-18 11:20:02.043000 no trades
+2016-01-18 11:20:02.059000 Getting Daily data for USD_CAD
+2016-01-18 11:20:02.433000 Getting M5 data for USD_CAD
+2016-01-18 11:20:02.928000 no trades
+2016-01-18 11:20:02.944000 Getting Daily data for AUD_USD
+2016-01-18 11:20:03.335000 Getting M5 data for AUD_USD
+2016-01-18 11:20:03.719000 no trades
+2016-01-18 11:20:03.739000 Getting Daily data for NZD_USD
+2016-01-18 11:20:04.229000 Getting M5 data for NZD_USD
+2016-01-18 11:20:04.612000 Buying 200,000 of NZD_USD
+2016-01-18 11:20:04.612000 Current Price is 0.64484
+2016-01-18 11:20:04.612000 TP is 0.64585
+2016-01-18 11:20:04.612000 SL is 0.64383
+{
+	"instrument" : "NZD_USD",
+	"time" : "2016-01-18T16:20:06.000000Z",
+	"price" : 0.64484,
+	"tradeOpened" : {
+		"id" : 10077483996,
+		"units" : 200000,
+		"side" : "buy",
+		"takeProfit" : 0.64585,
+		"stopLoss" : 0.64383,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+2016-01-18 11:20:05.182000 Waiting until 2016-01-18 11:25:00.000001
+2016-01-18 11:25:00.279000 Running script
+2016-01-18 11:25:00.294000 Getting Daily data for EUR_USD
+2016-01-18 11:25:00.731000 Getting M5 data for EUR_USD
+2016-01-18 11:25:01.115000 no trades
+2016-01-18 11:25:01.132000 Getting Daily data for GBP_USD
+2016-01-18 11:25:01.542000 Getting M5 data for GBP_USD
+2016-01-18 11:25:01.965000 no trades
+2016-01-18 11:25:01.981000 Getting Daily data for USD_CAD
+2016-01-18 11:25:02.369000 Getting M5 data for USD_CAD
+2016-01-18 11:25:02.754000 no trades
+2016-01-18 11:25:02.769000 Getting Daily data for AUD_USD
+2016-01-18 11:25:03.378000 Getting M5 data for AUD_USD
+2016-01-18 11:25:03.814000 no trades
+2016-01-18 11:25:03.830000 Getting Daily data for NZD_USD
+2016-01-18 11:25:04.229000 Getting M5 data for NZD_USD
+2016-01-18 11:25:04.639000 Buying 200,000 of NZD_USD
+2016-01-18 11:25:04.639000 Current Price is 0.64483
+2016-01-18 11:25:04.639000 TP is 0.64584
+2016-01-18 11:25:04.639000 SL is 0.64382
+{
+	"instrument" : "NZD_USD",
+	"time" : "2016-01-18T16:25:06.000000Z",
+	"price" : 0.64483,
+	"tradeOpened" : {
+		"id" : 10077489669,
+		"units" : 200000,
+		"side" : "buy",
+		"takeProfit" : 0.64584,
+		"stopLoss" : 0.64382,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+2016-01-18 11:25:05.338000 Waiting until 2016-01-18 11:30:00.000001
+2016-01-18 11:30:00.463000 Running script
+2016-01-18 11:30:00.480000 Getting Daily data for EUR_USD
+2016-01-18 11:30:00.861000 Getting M5 data for EUR_USD
+2016-01-18 11:30:01.270000 no trades
+2016-01-18 11:30:01.287000 Getting Daily data for GBP_USD
+2016-01-18 11:30:01.726000 Getting M5 data for GBP_USD
+2016-01-18 11:30:02.108000 no trades
+2016-01-18 11:30:02.124000 Getting Daily data for USD_CAD
+2016-01-18 11:30:02.525000 Getting M5 data for USD_CAD
+2016-01-18 11:30:02.973000 no trades
+2016-01-18 11:30:02.990000 Getting Daily data for AUD_USD
+2016-01-18 11:30:03.440000 Getting M5 data for AUD_USD
+2016-01-18 11:30:03.840000 no trades
+2016-01-18 11:30:03.856000 Getting Daily data for NZD_USD
+2016-01-18 11:30:04.256000 Getting M5 data for NZD_USD
+2016-01-18 11:30:04.664000 no trades
+2016-01-18 11:30:04.680000 Waiting until 2016-01-18 11:35:00.000001
+2016-01-18 11:35:00.851000 Running script
+2016-01-18 11:35:00.868000 Getting Daily data for EUR_USD
+2016-01-18 11:35:01.481000 Getting M5 data for EUR_USD
+2016-01-18 11:35:01.900000 no trades
+2016-01-18 11:35:01.936000 Getting Daily data for GBP_USD
+2016-01-18 11:35:02.331000 Getting M5 data for GBP_USD
+2016-01-18 11:35:02.757000 no trades
+2016-01-18 11:35:02.792000 Getting Daily data for USD_CAD
+2016-01-18 11:35:03.185000 Getting M5 data for USD_CAD
+2016-01-18 11:35:03.630000 no trades
+2016-01-18 11:35:03.665000 Getting Daily data for AUD_USD
+2016-01-18 11:35:04.082000 Getting M5 data for AUD_USD
+2016-01-18 11:35:04.500000 no trades
+2016-01-18 11:35:04.536000 Getting Daily data for NZD_USD
+2016-01-18 11:35:04.933000 Getting M5 data for NZD_USD
+2016-01-18 11:35:06.324000 no trades
+2016-01-18 11:35:06.341000 Waiting until 2016-01-18 11:40:00.000001
+2016-01-19 12:27:24.010000 Running script
+2016-01-19 12:27:24.028000 Getting Daily data for EUR_USD
+2016-01-19 12:27:27.603000 Getting M5 data for EUR_USD
+2016-01-19 12:27:28.143000 no trades
+2016-01-19 12:27:30.162000 Getting Daily data for GBP_USD
+2016-01-19 12:27:30.894000 Getting M5 data for GBP_USD
+2016-01-19 12:27:31.622000 no trades
+2016-01-19 12:27:33.641000 Getting Daily data for USD_CAD
+2016-01-19 12:27:34.482000 Getting M5 data for USD_CAD
+2016-01-19 12:27:35.153000 no trades
+2016-01-19 12:27:37.173000 Getting Daily data for AUD_USD
+2016-01-19 12:27:37.928000 Getting M5 data for AUD_USD
+2016-01-19 12:27:38.735000 no trades
+2016-01-19 12:27:40.754000 Getting Daily data for NZD_USD
+2016-01-19 12:27:41.500000 Getting M5 data for NZD_USD
+2016-01-19 12:27:42.053000 Buying 200,000 of NZD_USD
+2016-01-19 12:27:42.053000 Current Price is 0.64872
+2016-01-19 12:27:42.053000 TP is 0.64973
+2016-01-19 12:27:42.053000 SL is 0.64771
+{
+	"instrument" : "NZD_USD",
+	"time" : "2016-01-19T17:27:45.000000Z",
+	"price" : 0.64857,
+	"tradeOpened" : {
+		"id" : 10078816329,
+		"units" : 200000,
+		"side" : "buy",
+		"takeProfit" : 0.64973,
+		"stopLoss" : 0.64771,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+2016-01-19 12:27:44.684000 Waiting until 2016-01-19 12:32:00.000001
+2016-01-19 12:32:00.779000 Running script
+2016-01-19 12:32:00.796000 Getting Daily data for EUR_USD
+2016-01-19 12:32:01.238000 Getting M5 data for EUR_USD
+2016-01-19 12:32:01.656000 no trades
+2016-01-19 12:32:03.674000 Getting Daily data for GBP_USD
+2016-01-19 12:32:04.185000 Getting M5 data for GBP_USD
+2016-01-19 12:32:04.794000 no trades
+2016-01-19 12:32:06.814000 Getting Daily data for USD_CAD
+2016-01-19 12:32:07.244000 Getting M5 data for USD_CAD
+2016-01-19 12:32:07.662000 no trades
+2016-01-19 12:32:09.715000 Getting Daily data for AUD_USD
+2016-01-19 12:32:10.172000 Getting M5 data for AUD_USD
+2016-01-19 12:32:10.608000 no trades
+2016-01-19 12:32:12.624000 Getting Daily data for NZD_USD
+2016-01-19 12:32:13.050000 Getting M5 data for NZD_USD
+2016-01-19 12:32:13.467000 no trades
+2016-01-19 12:32:15.484000 Waiting until 2016-01-19 12:37:00.000001
+2016-01-20 08:47:30.051000 Getting Daily data for EUR_USD
+2016-01-20 08:47:33.822000 Getting M5 data for EUR_USD
+2016-01-20 08:47:34.250000 Getting M5 data for EUR_USD
+2016-01-20 08:48:02.409000 Getting Daily data for EUR_USD
+2016-01-20 08:48:03.902000 Getting M5 data for EUR_USD
+2016-01-20 08:48:04.334000 Getting M5 data for EUR_USD
+2016-01-20 08:48:21.527000 Getting Daily data for EUR_USD
+2016-01-20 08:48:23.344000 Getting M5 data for EUR_USD
+2016-01-20 08:48:23.770000 Getting M5 data for EUR_USD
+2016-01-20 08:48:59.732000 Getting Daily data for EUR_USD
+2016-01-20 08:49:01.690000 Getting M5 data for EUR_USD
+2016-01-20 08:49:02.903000 Getting M5 data for EUR_USD
+2016-01-20 08:49:25.150000 Getting Daily data for EUR_USD
+2016-01-20 08:49:26.460000 Getting M5 data for EUR_USD
+2016-01-20 08:49:26.885000 Getting M5 data for EUR_USD
+2016-01-20 08:49:55.806000 Getting Daily data for EUR_USD
+2016-01-20 08:49:57.142000 Getting M5 data for EUR_USD
+2016-01-20 08:49:57.584000 Getting M5 data for EUR_USD
+2016-01-20 08:49:58.136000 no trades
+2016-01-20 08:49:58.149000 Getting Daily data for GBP_USD
+2016-01-20 08:49:58.616000 Getting M5 data for GBP_USD
+2016-01-20 08:49:59.065000 Getting M5 data for GBP_USD
+2016-01-20 08:49:59.488000 no trades
+2016-01-20 08:49:59.496000 Getting Daily data for USD_CAD
+2016-01-20 08:49:59.925000 Getting M5 data for USD_CAD
+2016-01-20 08:50:00.452000 Getting M5 data for USD_CAD
+2016-01-20 08:50:00.868000 no trades
+2016-01-20 08:50:00.881000 Getting Daily data for AUD_USD
+2016-01-20 08:50:01.306000 Getting M5 data for AUD_USD
+2016-01-20 08:50:02.720000 Getting M5 data for AUD_USD
+2016-01-20 08:50:03.142000 no trades
+2016-01-20 08:50:03.154000 Getting Daily data for NZD_USD
+2016-01-20 08:50:03.565000 Getting M5 data for NZD_USD
+2016-01-20 08:50:03.988000 Getting M5 data for NZD_USD
+2016-01-20 08:50:04.405000 no trades
+2016-01-20 08:52:22.778000 Getting Daily data for EUR_USD
+2016-01-20 08:52:24.232000 Getting M5 data for EUR_USD
+2016-01-20 08:52:24.652000 Getting M5 data for EUR_USD
+2016-01-20 08:52:25.071000 no trades
+2016-01-20 08:52:25.084000 Getting Daily data for GBP_USD
+2016-01-20 08:52:25.492000 Getting M5 data for GBP_USD
+2016-01-20 08:52:25.914000 Getting M5 data for GBP_USD
+2016-01-20 08:52:26.337000 no trades
+2016-01-20 08:52:26.350000 Getting Daily data for USD_CAD
+2016-01-20 08:52:26.780000 Getting M5 data for USD_CAD
+2016-01-20 08:52:27.207000 Getting M5 data for USD_CAD
+2016-01-20 08:52:27.622000 no trades
+2016-01-20 08:52:27.634000 Getting Daily data for AUD_USD
+2016-01-20 08:52:28.044000 Getting M5 data for AUD_USD
+2016-01-20 08:52:28.477000 Getting M5 data for AUD_USD
+2016-01-20 08:52:28.888000 no trades
+2016-01-20 08:52:28.903000 Getting Daily data for NZD_USD
+2016-01-20 08:52:29.316000 Getting M5 data for NZD_USD
+2016-01-20 08:52:29.767000 Getting M5 data for NZD_USD
+2016-01-20 08:52:30.187000 no trades
+2016-01-20 08:54:09.082000 Getting Daily data for EUR_USD
+2016-01-20 08:54:10.474000 Getting M5 data for EUR_USD
+2016-01-20 08:54:11.968000 Getting M5 data for EUR_USD
+2016-01-20 08:54:13.552000 no trades
+2016-01-20 08:54:13.564000 Getting Daily data for GBP_USD
+2016-01-20 08:54:13.970000 Getting M5 data for GBP_USD
+2016-01-20 08:54:14.386000 Getting M5 data for GBP_USD
+2016-01-20 08:54:14.801000 no trades
+2016-01-20 08:54:14.812000 Getting Daily data for USD_CAD
+2016-01-20 08:54:15.219000 Getting M5 data for USD_CAD
+2016-01-20 08:54:15.631000 Getting M5 data for USD_CAD
+2016-01-20 08:54:16.039000 no trades
+2016-01-20 08:54:16.051000 Getting Daily data for AUD_USD
+2016-01-20 08:54:16.459000 Getting M5 data for AUD_USD
+2016-01-20 08:54:16.867000 Getting M5 data for AUD_USD
+2016-01-20 08:54:17.280000 no trades
+2016-01-20 08:54:17.291000 Getting Daily data for NZD_USD
+2016-01-20 08:54:17.706000 Getting M5 data for NZD_USD
+2016-01-20 08:54:18.127000 Getting M5 data for NZD_USD
+2016-01-20 08:54:24.699000 no trades
+2016-01-20 08:55:32.249000 Getting Daily data for EUR_USD
+2016-01-20 08:55:33.744000 Getting M5 data for EUR_USD
+2016-01-20 08:55:34.153000 Getting M5 data for EUR_USD
+2016-01-20 08:55:34.580000 no trades
+2016-01-20 08:55:34.591000 Getting Daily data for GBP_USD
+2016-01-20 08:55:35.001000 Getting M5 data for GBP_USD
+2016-01-20 08:55:35.412000 Getting M5 data for GBP_USD
+2016-01-20 08:55:35.818000 no trades
+2016-01-20 08:55:35.829000 Getting Daily data for USD_CAD
+2016-01-20 08:55:36.238000 Getting M5 data for USD_CAD
+2016-01-20 08:55:36.650000 Getting M5 data for USD_CAD
+2016-01-20 08:55:37.063000 no trades
+2016-01-20 08:55:37.073000 Getting Daily data for AUD_USD
+2016-01-20 08:55:37.484000 Getting M5 data for AUD_USD
+2016-01-20 08:55:37.900000 Getting M5 data for AUD_USD
+2016-01-20 08:55:38.311000 no trades
+2016-01-20 08:55:38.323000 Getting Daily data for NZD_USD
+2016-01-20 08:55:38.749000 Getting M5 data for NZD_USD
+2016-01-20 08:55:39.163000 Getting M5 data for NZD_USD
+2016-01-20 08:55:39.571000 no trades
