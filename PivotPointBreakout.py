@@ -144,7 +144,7 @@ while True:
             return data2["candles"][2 - index]["closeAsk"]
         def CloseB(index):
             return data2["candles"][2 - index]["closeBid"]
-        if CloseA(0) < LowerPP and CloseA(1) > LowerPP:
+        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseB(0) < ATR()/2:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Selling 200,000 of " + str(Sec[i]) + "\n")
             file.write(str(datetime.now()) + " Current Price is " + str(CloseB(0)) + "\n")
@@ -166,7 +166,7 @@ while True:
             file = open(name,'a')
             file.write(response + "\n")
             file.close()
-        elif CloseB(0) > UpperPP and CloseB(1) < UpperPP:
+        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseA(0) - UpperPP < ATR()/2:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Buying 200,000 of " + str(Sec[i]) + "\n")
             file.write(str(datetime.now()) + " Current Price is " + str(CloseA(0)) + "\n")
