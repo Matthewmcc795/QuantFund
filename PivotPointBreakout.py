@@ -6,7 +6,9 @@ import httplib
 import urllib
 from datetime import datetime, timedelta
 import time
+import matplotlib.pyplot as plt
 import sys
+import numpy as np
 
 Sec = []
 Sec.append("EUR_USD")
@@ -69,48 +71,43 @@ while True:
         file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=15&candleFormat=midpoint&granularity=M5"
+        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
-        H_L = 0
-        H_CP = 0
-        L_CP = 0
-        F = True
-        def MOpen(index):
-            return data["candles"][14-index][STRO]
         def MHigh(index):
-            return data["candles"][14-index][STRH]
+            return data["candles"][99 - index][STRH]
         def MLow(index):
-            return data["candles"][14-index][STRL]
+            return data["candles"][99 - index][STRL]
         def MClose(index):
-            return data["candles"][14-index][STRC]
+            return data["candles"][99 - index][STRC]
 
-        def ATR():
-            F = True
-            ATR_TEMP = 0.0
-            ATR_val = 0.0
-            TR = 0.0
-            for j in range(0,13):
-                H_L = MHigh(j) - MLow(j)
-                H_CP = abs(MHigh(j) -  MClose(j+1))
-                L_CP = abs(MLow(j)-MClose(j+1))
-                
-                if H_L > H_CP and H_L > L_CP:
-                    TR = H_L
-                
-                if H_CP > H_L and H_CP > L_CP:
-                    TR = H_CP
-                    
-                if L_CP > H_CP and L_CP > H_L:
-                    TR = L_CP
-                
-                if F == True:
-                    ATR_TEMP = ATR_TEMP + TR
-                    ATR_val = ATR_TEMP / 14
-                    F = False
-                else:
-                    ATR_val = (ATR_val * (13) + TR) / 14
-            return round(ATR_val,5)
+        def TR(h,l,yc):
+            x = h-l
+            y = abs(h-yc)
+            z = abs(l-yc)
+            if y <= x >= z:
+                TR = x
+            elif x <= y >= z:
+                TR = y
+            elif x <= z >= y:
+                TR = z
+            return TR
+
+        def ATR(index):
+            p = 98
+            TrueRanges = []
+            ATR_val = 0
+            while p > 84:
+                TrueRange = TR(MHigh(p),MLow(p),MClose(p+1))
+                TrueRanges.append(TrueRange)
+                p -= 1
+
+            a = np.array(TrueRanges)
+            ATR_val = np.mean(a)
+            while p >= 0:
+                ATR_val = (ATR_val*13 + TR(MHigh(p),MLow(p),MClose(p+1)))/14
+                p -= 1
+            return ATR_val
 
         if MClose(1) > R2[i]:
             UpperPP = Close(i)*2
@@ -130,7 +127,7 @@ while True:
         elif MClose(1) < S2[i]:
             UpperPP = S2[i]
             LowerPP = Close(i)/2
-
+        
         time.sleep(2)
 
         file = open(name,'a')
@@ -144,13 +141,7 @@ while True:
             return data2["candles"][2 - index]["closeAsk"]
         def CloseB(index):
             return data2["candles"][2 - index]["closeBid"]
-        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseB(0) < ATR()/2:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Selling 200,000 of " + str(Sec[i]) + "\n")
-            file.write(str(datetime.now()) + " Current Price is " + str(CloseB(0)) + "\n")
-            file.write(str(datetime.now()) + " TP is " + str(round(CloseB(0) - ATR()/2 - 0.00001,5)) + "\n")
-            file.write(str(datetime.now()) + " SL is " + str(round(CloseB(0) + ATR() + 0.00001,5)) + "\n")
-            file.close() 
+        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseA(0) < ATR():
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
             params = urllib.urlencode({
@@ -158,21 +149,15 @@ while True:
                 "units" : 200000,
                 "type" : "market",
                 "side" : "sell",
-                "takeProfit": round(CloseB(0) - ATR()/2 - 0.00001,5),
-                "stopLoss": round(CloseB(0) + ATR() + 0.00001,5)
+                "takeProfit": round(CloseB(0) - ATR(0)/2 - 0.00001,5),
+                "stopLoss": round(CloseB(0) + ATR(0) + 0.00001,5)
             })
             conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
             response = conn.getresponse().read()
             file = open(name,'a')
             file.write(response + "\n")
             file.close()
-        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseA(0) - UpperPP < ATR()/2:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Buying 200,000 of " + str(Sec[i]) + "\n")
-            file.write(str(datetime.now()) + " Current Price is " + str(CloseA(0)) + "\n")
-            file.write(str(datetime.now()) + " TP is " + str(round(CloseA(0) + ATR()/2 + 0.00001,5)) + "\n")
-            file.write(str(datetime.now()) + " SL is " + str(round(CloseA(0) - ATR() - 0.00001,5)) + "\n")
-            file.close() 
+        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseB(0) - UpperPP < ATR():
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
             params = urllib.urlencode({
@@ -180,8 +165,8 @@ while True:
                 "units" : 200000,
                 "type" : "market",
                 "side" : "buy",
-                "takeProfit": round(CloseA(0) + ATR()/2 + 0.00001,5),
-                "stopLoss": round(CloseA(0) - ATR() - 0.00001,5)
+                "takeProfit": round(CloseA(0) + ATR(0)/2 + 0.00001,5),
+                "stopLoss": round(CloseA(0) - ATR(0) - 0.00001,5)
             })
             conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
             response = conn.getresponse().read()
@@ -192,8 +177,8 @@ while True:
             file = open(name,'a')
             file.write(str(datetime.now()) + " no trades\n")
             file.close() 
-
-            time.sleep(2)
+        
+        time.sleep(2)
 
     dt = datetime.now() + timedelta(minutes=5)
     dt = dt.replace(second=0,microsecond=1)
