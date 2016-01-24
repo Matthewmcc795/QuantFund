@@ -7,7 +7,6 @@ import urllib
 from datetime import datetime, timedelta
 import time
 import sys
-import numpy as np
 
 Sec = []
 Sec.append("EUR_USD")
@@ -97,15 +96,12 @@ while True:
 
         def ATR(index):
             p = 98
-            TrueRanges = []
+            TrueRanges = 0.0
             ATR_val = 0
             while p > 84:
-                TrueRange = TR(MHigh(p),MLow(p),MClose(p+1))
-                TrueRanges.append(TrueRange)
+                TrueRanges = TrueRanges + TR(MHigh(p),MLow(p),MClose(p+1))
                 p -= 1
-
-            a = np.array(TrueRanges)
-            ATR_val = np.mean(a)
+            ATR_val = TrueRanges/14
             while p >= 0:
                 ATR_val = (ATR_val*13 + TR(MHigh(p),MLow(p),MClose(p+1)))/14
                 p -= 1
