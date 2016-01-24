@@ -6,7 +6,6 @@ import httplib
 import urllib
 from datetime import datetime, timedelta
 import time
-import matplotlib.pyplot as plt
 import sys
 import numpy as np
 
@@ -26,10 +25,13 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 22 16  9:30', '%B %d %y %H:%M')
+dt = datetime.strptime('January 24 16  23:30', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
+print dt
+print datetime.now()
+
 while True:
 
     while True:

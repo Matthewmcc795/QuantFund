@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 import time
 import sys
 
-dt = datetime.strptime('January 23 16 22:30', '%B %d %y %H:%M')
+dt = datetime.strptime('January 25 16 :30', '%B %d %y %H:%M')
 print dt
 print str(datetime.now())
 dt = datetime.now() + timedelta(minutes=5)
