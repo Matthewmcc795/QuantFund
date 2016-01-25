@@ -24,7 +24,7 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 24 16  23:30', '%B %d %y %H:%M')
+dt = datetime.strptime('January 25 16  2:30', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -69,7 +69,7 @@ while True:
         time.sleep(2)
 
         file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
+        file.write(str(datetime.now()) + " Getting M15 data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : ACCESS_TOKEN}
         url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
@@ -139,7 +139,7 @@ while True:
             return data2["candles"][2 - index]["closeAsk"]
         def CloseB(index):
             return data2["candles"][2 - index]["closeBid"]
-        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseA(0) < ATR():
+        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseA(0) < ATR(0):
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
             params = urllib.urlencode({
@@ -155,7 +155,7 @@ while True:
             file = open(name,'a')
             file.write(response + "\n")
             file.close()
-        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseB(0) - UpperPP < ATR():
+        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseB(0) - UpperPP < ATR(0):
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
             params = urllib.urlencode({
