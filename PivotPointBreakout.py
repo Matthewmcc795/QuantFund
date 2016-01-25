@@ -24,7 +24,7 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 25 16  14:31', '%B %d %y %H:%M')
+dt = datetime.strptime('January 25 16  9:31', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -46,7 +46,7 @@ while True:
         file.write(str(datetime.now()) + " Getting Daily data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
+        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
         def Date(index):
@@ -72,7 +72,7 @@ while True:
         file.write(str(datetime.now()) + " Getting M15 data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
+        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
         def MHigh(index):
@@ -81,7 +81,7 @@ while True:
             return data["candles"][99 - index][STRL]
         def MClose(index):
             return data["candles"][99 - index][STRC]
-
+        print "works"
         def TR(h,l,yc):
             x = h-l
             y = abs(h-yc)
@@ -132,7 +132,7 @@ while True:
         file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
         file.close()
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=bidask&granularity=M5"
+        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=bidask&granularity=M5"
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         def CloseA(index):
@@ -140,8 +140,8 @@ while True:
         def CloseB(index):
             return data2["candles"][2 - index]["closeBid"]
         if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseA(0) < ATR(0):
-            conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
-            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
+            conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
                 "units" : 500,
@@ -156,8 +156,8 @@ while True:
             file.write(response + "\n")
             file.close()
         elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseB(0) - UpperPP < ATR(0):
-            conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
-            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
+            conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
                 "units" : 500,

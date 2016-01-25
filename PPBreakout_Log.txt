@@ -1045,3 +1045,12 @@
 2016-01-24 18:01:09.648000 no trades
 2016-01-24 18:01:11.688000 Getting Daily data for GBP_USD
 2016-01-24 18:01:14.258000 Getting M5 data for GBP_USD
+2016-01-25 09:39:36.739000 Running script
+2016-01-25 09:39:36.780000 Getting Daily data for EUR_USD
+2016-01-25 10:03:04.771000 Running script
+2016-01-25 10:03:04.813000 Getting Daily data for EUR_USD
+2016-01-25 10:03:25.038000 Running script
+2016-01-25 10:03:25.054000 Getting Daily data for EUR_USD
+2016-01-25 10:04:08.087000 Running script
+2016-01-25 10:04:08.123000 Getting Daily data for EUR_USD
+2016-01-25 10:04:17.732000 Getting M15 data for EUR_USD
