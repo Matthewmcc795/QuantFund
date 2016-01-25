@@ -1,7 +1,7 @@
 import requests
 import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, LIVE_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import httplib
 import urllib
 from datetime import datetime, timedelta
@@ -24,7 +24,7 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 25 16  12:06', '%B %d %y %H:%M')
+dt = datetime.strptime('January 25 16  14:31', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -45,7 +45,7 @@ while True:
         file = open(name,'a')
         file.write(str(datetime.now()) + " Getting Daily data for " + Sec[i] + "\n")
         file.close()
-        h = {'Authorization' : ACCESS_TOKEN}
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
@@ -71,7 +71,7 @@ while True:
         file = open(name,'a')
         file.write(str(datetime.now()) + " Getting M15 data for " + Sec[i] + "\n")
         file.close()
-        h = {'Authorization' : ACCESS_TOKEN}
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
@@ -131,7 +131,7 @@ while True:
         file = open(name,'a')
         file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
         file.close()
-        h = {'Authorization' : ACCESS_TOKEN}
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=bidask&granularity=M5"
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
@@ -144,13 +144,13 @@ while True:
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
-                "units" : 200000,
+                "units" : 500,
                 "type" : "market",
                 "side" : "sell",
                 "takeProfit": round(CloseB(0) - ATR(0)/2 - 0.00001,5),
                 "stopLoss": round(CloseB(0) + ATR(0) + 0.00001,5)
             })
-            conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
+            conn.request("POST", "/v1/accounts/229783/orders", params, headers)
             response = conn.getresponse().read()
             file = open(name,'a')
             file.write(response + "\n")
@@ -160,13 +160,13 @@ while True:
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
-                "units" : 200000,
+                "units" : 500,
                 "type" : "market",
                 "side" : "buy",
                 "takeProfit": round(CloseA(0) + ATR(0)/2 + 0.00001,5),
                 "stopLoss": round(CloseA(0) - ATR(0) - 0.00001,5)
             })
-            conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
+            conn.request("POST", "/v1/accounts/229783/orders", params, headers)
             response = conn.getresponse().read()
             file = open(name,'a')
             file.write(response + "\n")
