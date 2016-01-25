@@ -24,7 +24,7 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 25 16  9:31', '%B %d %y %H:%M')
+dt = datetime.strptime('January 25 16  3:21', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -81,7 +81,7 @@ while True:
             return data["candles"][99 - index][STRL]
         def MClose(index):
             return data["candles"][99 - index][STRC]
-        print "works"
+
         def TR(h,l,yc):
             x = h-l
             y = abs(h-yc)
