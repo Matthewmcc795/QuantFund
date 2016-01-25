@@ -14,7 +14,7 @@ print data["candles"][0][STRT]
 print str(datetime.now())
 dt = datetime.strptime('January 25 16 11:30', '%B %d %y %H:%M')
 print dt
-dt = datetime.now() + timedelta(minutes=5)
+dt = datetime.now() + timedelta(minutes=4)
 print dt
-dt = dt.replace(second=0,microsecond=1)
+dt = dt.replace(second=30,microsecond=1)
 print dt
