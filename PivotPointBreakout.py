@@ -24,7 +24,7 @@ Bars = 51
 SL = 0.001
 TP = 0.001
 n = 50
-dt = datetime.strptime('January 25 16  11:41', '%B %d %y %H:%M')
+dt = datetime.strptime('January 25 16  12:06', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
@@ -178,8 +178,8 @@ while True:
         
         time.sleep(2)
 
-    dt = datetime.now() + timedelta(minutes=4)
-    dt = dt.replace(second=30,microsecond=1)
+    dt = datetime.now() + timedelta(minutes=5)
+    dt = dt.replace(second=10,microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
     file.close()
