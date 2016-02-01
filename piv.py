@@ -1,7 +1,7 @@
 import requests
 import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, DEMO_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import httplib
 import urllib
 from datetime import datetime, timedelta
@@ -19,7 +19,7 @@ Sec.append("NZD_USD")
 
 i = 0
 bars = 95
-h = {'Authorization' : ACCESS_TOKEN}
+h = {'Authorization' : DEMO_ACCESS_TOKEN}
 url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=96&candleFormat=midpoint&granularity=D"
 
 r = requests.get(url, headers=h)     

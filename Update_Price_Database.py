@@ -3,7 +3,7 @@ import requests
 import time
 import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, LIVE_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 
 start_time = time.time()
 
@@ -59,7 +59,7 @@ for i in range(0,70):
 
 for j in range(0,70):
     print Sec[j]
-    h = {'Authorization' : ACCESS_TOKEN}
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
     r = requests.get(URL[j], headers=h)     
     data = json.loads(r.text)
     def Date(index):
@@ -132,7 +132,7 @@ for i in range(0,70):
 
 for j in range(0,70):
     print Sec[j]
-    h = {'Authorization' : ACCESS_TOKEN}
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
     r = requests.get(URL[j], headers=h)     
     data = json.loads(r.text)
     def Date(index):
@@ -205,7 +205,7 @@ for i in range(0,70):
 
 for j in range(0,70):
     print Sec[j]
-    h = {'Authorization' : ACCESS_TOKEN}
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
     r = requests.get(URL[j], headers=h)     
     data = json.loads(r.text)
     def Date(index):
@@ -278,7 +278,7 @@ for i in range(0,70):
 
 for j in range(0,70):
     print Sec[j]
-    h = {'Authorization' : ACCESS_TOKEN}
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
     r = requests.get(URL[j], headers=h)     
     data = json.loads(r.text)
     def Date(index):

@@ -21,15 +21,11 @@ S1 = [0,0,0,0,0]
 S2 = [0,0,0,0,0]
 
 Bars = 51
-SL = 0.001
-TP = 0.001
 n = 50
-dt = datetime.strptime('January 25 16  15:31', '%B %d %y %H:%M')
+dt = datetime.strptime('February 1 16  12:15', '%B %d %y %H:%M')
 name = "PPBreakout_Log.txt"
 LowerPP = 0
 UpperPP = 0
-print dt
-print datetime.now()
 
 while True:
 
@@ -38,13 +34,11 @@ while True:
             file = open(name,'a')
             file.write(str(datetime.now()) + " Running script\n")
             file.close()
+            lst_dt = dt
             break 
         time.sleep(1)
 
     for i in range(0,5):
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting Daily data for " + Sec[i] + "\n")
-        file.close()
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
         r = requests.get(url, headers=h)     
@@ -68,9 +62,6 @@ while True:
 
         time.sleep(2)
 
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting M15 data for " + Sec[i] + "\n")
-        file.close()
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
@@ -126,11 +117,19 @@ while True:
             UpperPP = S2[i]
             LowerPP = Close(i)/2
         
-        time.sleep(2)
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        url = "https://api-fxpractice.oanda.com/v1/accounts/229783/positions"
+        r = requests.get(url, headers=h)     
+        data2 = json.loads(r.text)
+        chk = str(data2)
+        if chk.find("positions") == -1:
+            Open_Units = 0 
+        else:
+            Open_Units = 0
+            for positions in data2["positions"]:
+                if positions["instrument"] == Sec[i]:
+                    Open_Units = positions["units"]
 
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting M5 data for " + Sec[i] + "\n")
-        file.close()
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=bidask&granularity=M5"
         r = requests.get(url, headers=h)     
@@ -139,12 +138,12 @@ while True:
             return data2["candles"][2 - index]["closeAsk"]
         def CloseB(index):
             return data2["candles"][2 - index]["closeBid"]
-        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP - CloseA(0) < ATR(0):
+        if CloseA(1) < LowerPP and CloseA(2) > LowerPP and LowerPP > CloseA(0) and Open_Units == 0:
             conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
-                "units" : 500,
+                "units" : 100,
                 "type" : "market",
                 "side" : "sell",
                 "takeProfit": round(CloseB(0) - ATR(0)/2 - 0.00001,5),
@@ -155,12 +154,12 @@ while True:
             file = open(name,'a')
             file.write(response + "\n")
             file.close()
-        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseB(0) - UpperPP < ATR(0):
+        elif CloseB(1) > UpperPP and CloseB(2) < UpperPP and CloseB(0) > UpperPP and Open_Units == 0:
             conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
             headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
-                "units" : 500,
+                "units" : 100,
                 "type" : "market",
                 "side" : "buy",
                 "takeProfit": round(CloseA(0) + ATR(0)/2 + 0.00001,5),
@@ -173,13 +172,13 @@ while True:
             file.close()
         else:
             file = open(name,'a')
-            file.write(str(datetime.now()) + " no trades\n")
+            file.write(str(datetime.now()) + " no trades for " + Sec[i] + "\n")
             file.close() 
         
         time.sleep(2)
 
-    dt = datetime.now() + timedelta(minutes=5)
-    dt = dt.replace(second=10,microsecond=1)
+    dt = lst_dt + timedelta(minutes=5)
+    dt = dt.replace(second=0,microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
     file.close()

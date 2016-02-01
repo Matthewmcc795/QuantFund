@@ -47,8 +47,8 @@ for i in range(0,n):
     Dates.append(float(z1))
 laststr = Dates(0, 0)
 
-for i in range(0,n-1) n - 1:
-    if Date(i) = laststr:
+for i in range(0,n-1):
+    if Date(i) == laststr:
         q = i
 
 for j in range(0,n - q - 1):

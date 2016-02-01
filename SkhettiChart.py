@@ -13,15 +13,6 @@ Sec.append("USD_CAD")
 Sec.append("AUD_USD")
 Sec.append("NZD_USD")
 
-
-file_Name = "C:\Users\macky\OneDrive\Documents\Price_Database.mdb"
-
-conn = pypyodbc.win_connect_mdb(file_Name)  
-cur = conn.cursor()
-#cur.execute(u"""CREATE TABLE Skhetti_Stats (ID INTEGER PRIMARY KEY, Day String, Test String, Ret Double)""")
-cur.execute("SELECT DISTINCT [Day] FROM Backtest_Ret WHERE [Test] = 'BUY MAC H4 EUR_USD and 50 SMA' ;")
-
-
 Bars = 5000
 I_D = 0   
 # for k in range(0,5):
