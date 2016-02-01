@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import time
 
 h = {'Authorization' : LIVE_ACCESS_TOKEN}
-url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=EUR_USD&count=1&candleFormat=midpoint&granularity=S5"
+url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=EUR_USD&count=1&candleFormat=midpoint&granularity=S5"
 r = requests.get(url, headers=h)     
 data = json.loads(r.text)
 print data["candles"][0][STRT]
