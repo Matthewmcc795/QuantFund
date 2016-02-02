@@ -22,7 +22,7 @@ S2 = [0,0,0,0,0]
 
 Bars = 51
 n = 50
-dt = datetime.strptime('February 1 16  23:32', '%B %d %y %H:%M')
+dt = datetime.strptime('February 2 16  1:02', '%B %d %y %H:%M')
 name = "PPBreakout_Log2.txt"
 LowerPP = 0
 UpperPP = 0
