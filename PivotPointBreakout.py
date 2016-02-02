@@ -38,7 +38,7 @@ while True:
             break 
         time.sleep(1)
 
-    if dt.hour <= 23 and dt.hour >= 19 then:
+    if dt.hour <= 23 and dt.hour >= 19:
         file = open(name,'a')
         file.write(str(datetime.now()) + " Outside of time range\n")
         file.close()
