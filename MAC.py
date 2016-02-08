@@ -11,12 +11,14 @@ import sys
 Sec = []
 Sec.append("EUR_USD")
 Sec.append("GBP_USD")
+Sec.append("USD_CAD")
 Sec.append("AUD_USD")
+Sec.append("NZD_USD")
 
 Bars = 50
 SL = 0.0006
 TP = 0.0004
-dt = datetime.strptime('January 18 16  08:00', '%B %d %y %H:%M')
+dt = datetime.strptime('February 8  21:00', '%B %d %y %H:%M')
 n = 50
 name = "MAC_Log.txt"
 while True:
@@ -29,7 +31,7 @@ while True:
             break 
         time.sleep(1)
 
-    for i in range(0,3):
+    for i in range(0,5):
         file = open(name,'a')
         file.write(str(datetime.now()) + " Getting data for " + Sec[i] + "\n")
         file.close()

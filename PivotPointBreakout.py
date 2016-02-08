@@ -34,7 +34,7 @@ sum_avg = 0.0
 sum_sd = 0.0
 BB_MA = 0.0
 BB_wdth = 0.0
-
+first_run = True
 while True:
 
     while True:
@@ -46,7 +46,7 @@ while True:
             break 
         time.sleep(1)
 
-    if dt.hour == 22:
+    if first_run or dt.hour == 22:
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
         r = requests.get(url, headers=h)     
@@ -67,7 +67,7 @@ while True:
         S2[i] = PP[i] - High(1) + Low(1)
         R1[i] = 2*PP[i] - Low(1)
         R2[i] = PP[i] + High(1) - Low(1)
-
+        first_run = False
         time.sleep(2)
 
     for i in range(0,5):
