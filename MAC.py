@@ -18,7 +18,7 @@ Sec.append("NZD_USD")
 Bars = 50
 SL = 0.0006
 TP = 0.0004
-dt = datetime.strptime('February 8  21:00', '%B %d %y %H:%M')
+dt = datetime.strptime('February 8 16 21:00', '%B %d %y %H:%M')
 n = 50
 name = "MAC_Log.txt"
 while True:
