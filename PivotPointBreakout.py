@@ -157,7 +157,7 @@ while True:
             UpperPP = S2[i]
             LowerPP = M5Close(1)/2
 
-        if Open_Units == 0 or (dt.hour =< 18 and dt.hour >= 11):
+        if Open_Units == 0 or (dt.hour <= 18 and dt.hour >= 11):
             if M5Close(0) < LowerPP and M5Close(1) < LowerPP and M5Close(2) > LowerPP and M5Close(0) < BB_MA - BB_wdth:
                 conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
                 headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
