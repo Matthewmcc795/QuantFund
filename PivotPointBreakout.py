@@ -120,13 +120,13 @@ while True:
                 p -= 1
             return ATR_val
 
-        for j in range(0,19):
+        for j in range(0,20):
             sum_avg = sum_avg + MClose(j)
         BB_MA = sum_avg/20
 
-        for j in range(0,19):
+        for j in range(0,20):
             sum_sd = sum_sd + (MClose(j)-BB_MA)**2
-        BB_wdth = (sum_avg/(19))**(0.5)
+        BB_wdth = (sum_sd/(19))**(0.5)
 
         time.sleep(2)
         h = {'Authorization' : LIVE_ACCESS_TOKEN}

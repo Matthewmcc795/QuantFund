@@ -1,7 +1,7 @@
 import requests
 import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, LIVE_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, DEMO_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import httplib
 import urllib
 from datetime import datetime, timedelta
@@ -19,7 +19,6 @@ TP = 0.0004
 dt = datetime.strptime('January 18 16  08:00', '%B %d %y %H:%M')
 n = 50
 name = "MAC_Log.txt"
-
 while True:
 
     while True:
@@ -34,7 +33,7 @@ while True:
         file = open(name,'a')
         file.write(str(datetime.now()) + " Getting data for " + Sec[i] + "\n")
         file.close()
-        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        h = {'Authorization' : DEMO_ACCESS_TOKEN}
         url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
@@ -55,20 +54,20 @@ while True:
         sd = 0.0
         ssd = 0.0
 
-        for j in range(0,n-1):
+        for j in range(0,20):
             aavg = Close(j) + aavg
-        SMA = aavg/(n-1)
+        SMA = aavg/(20)
 
-        for j in range(0,n-1):
+        for j in range(0,20):
             ssd = (Close(j) - SMA)**2 +ssd
-        sd = (ssd/(n-2))**(0.5)
+        sd = (ssd/(19))**(0.5)
 
         Upper_Band = SMA + 2*sd
         Lower_Band = SMA - 2*sd
         file = open(name,'a')
         file.write(str(datetime.now()) + " Checking open orders...\n")
         file.close()
-        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        h = {'Authorization' : DEMO_ACCESS_TOKEN}
         url = "https://api-fxpractice.oanda.com/v1/accounts/5801231/positions"
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
@@ -91,7 +90,7 @@ while True:
             file.write(str(datetime.now()) + " SL is " + str(round(Close(0) + SL + 0.0001,5)) + "\n")
             file.close() 
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
-            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": DEMO_ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
                 "units" : 200000,
@@ -113,7 +112,7 @@ while True:
             file.write(str(datetime.now()) + " SL is " + str(round(Close(0) - SL + 0.0001,5)) + "\n")
             file.close() 
             conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
-            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": DEMO_ACCESS_TOKEN}
             params = urllib.urlencode({
                 "instrument" : str(Sec[i]),
                 "units" : 200000,

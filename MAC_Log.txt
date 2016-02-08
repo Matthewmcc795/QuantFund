@@ -1,0 +1,47 @@
+2016-02-08 08:30:39.971000 Running script
+2016-02-08 08:30:39.975000 Getting data for EUR_USD
+2016-02-08 08:31:05.576000 Running script
+2016-02-08 08:31:05.582000 Getting data for EUR_USD
+2016-02-08 08:31:06.826000 Checking open orders...
+2016-02-08 08:31:31.326000 Running script
+2016-02-08 08:31:31.332000 Getting data for EUR_USD
+2016-02-08 08:31:32.624000 Checking open orders...
+2016-02-08 08:31:33.032000 0 Units of EUR_USD
+2016-02-08 08:31:33.038000 No trades available for EUR_USD
+2016-02-08 08:31:33.044000 Getting data for GBP_USD
+2016-02-08 08:31:33.433000 Checking open orders...
+2016-02-08 08:31:33.821000 100000 Units of GBP_USD
+2016-02-08 08:31:33.829000 Positions still open for GBP_USD
+2016-02-08 08:31:33.867000 Getting data for AUD_USD
+2016-02-08 08:31:34.248000 Checking open orders...
+2016-02-08 08:31:34.635000 0 Units of AUD_USD
+2016-02-08 08:31:34.642000 No trades available for AUD_USD
+2016-02-08 08:31:34.648000 Waiting until 2016-02-08 12:00:00.000001
+2016-02-08 08:32:05.471000 Running script
+2016-02-08 08:32:05.477000 Getting data for EUR_USD
+2016-02-08 08:32:06.727000 Checking open orders...
+2016-02-08 08:32:07.158000 0 Units of EUR_USD
+2016-02-08 08:32:07.164000 No trades available for EUR_USD
+2016-02-08 08:32:07.170000 Getting data for GBP_USD
+2016-02-08 08:32:07.565000 Checking open orders...
+2016-02-08 08:32:09.014000 100000 Units of GBP_USD
+2016-02-08 08:32:09.021000 Positions still open for GBP_USD
+2016-02-08 08:32:09.028000 Getting data for AUD_USD
+2016-02-08 08:32:09.413000 Checking open orders...
+2016-02-08 08:32:09.822000 0 Units of AUD_USD
+2016-02-08 08:32:09.828000 No trades available for AUD_USD
+2016-02-08 08:32:09.835000 Waiting until 2016-02-08 12:00:00.000001
+2016-02-08 08:32:34.137000 Running script
+2016-02-08 08:32:34.144000 Getting data for EUR_USD
+2016-02-08 08:32:35.414000 Checking open orders...
+2016-02-08 08:32:35.809000 0 Units of EUR_USD
+2016-02-08 08:32:35.816000 No trades available for EUR_USD
+2016-02-08 08:32:35.825000 Getting data for GBP_USD
+2016-02-08 08:32:36.229000 Checking open orders...
+2016-02-08 08:32:36.598000 100000 Units of GBP_USD
+2016-02-08 08:32:36.604000 Positions still open for GBP_USD
+2016-02-08 08:32:36.611000 Getting data for AUD_USD
+2016-02-08 08:32:36.999000 Checking open orders...
+2016-02-08 08:32:37.365000 0 Units of AUD_USD
+2016-02-08 08:32:37.372000 No trades available for AUD_USD
+2016-02-08 08:32:37.390000 Waiting until 2016-02-08 12:00:00.000001
