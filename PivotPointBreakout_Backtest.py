@@ -27,29 +27,29 @@ R2 = [0,0,0,0,0]
 S1 = [0,0,0,0,0]
 S2 = [0,0,0,0,0]
 
-for i in range(0,5):
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
-    r = requests.get(url, headers=h)     
-    data = json.loads(r.text)
-    def Date(index):
-        return data["candles"][1-index][STRT]
-    def Open(index):
-        return data["candles"][1-index][STRO]
-    def High(index):
-        return data["candles"][1-index][STRH]
-    def Low(index):
-        return data["candles"][1-index][STRL]
-    def Close(index):
-        return data["candles"][1-index][STRC]
+# for i in range(0,5):
+#     h = {'Authorization' : LIVE_ACCESS_TOKEN}
+#     url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
+#     r = requests.get(url, headers=h)     
+#     data = json.loads(r.text)
+#     def Date(index):
+#         return data["candles"][1-index][STRT]
+#     def Open(index):
+#         return data["candles"][1-index][STRO]
+#     def High(index):
+#         return data["candles"][1-index][STRH]
+#     def Low(index):
+#         return data["candles"][1-index][STRL]
+#     def Close(index):
+#         return data["candles"][1-index][STRC]
 
-    PP = (High(1) + Low(1) + Close(1))/3
-    print Sec[i]
-    print PP
-    print 2*PP - High(1)
-    print PP - High(1) + Low(1)
-    print 2*PP - Low(1)
-    print PP + High(1) - Low(1)
+#     PP = (High(1) + Low(1) + Close(1))/3
+#     print Sec[i]
+#     print PP
+#     print 2*PP - High(1)
+#     print PP - High(1) + Low(1)
+#     print 2*PP - Low(1)
+#     print PP + High(1) - Low(1)
 
 
 
@@ -64,26 +64,61 @@ for i in range(0,5):
 # DLow = []
 # DClose = []
 
-# st = "2016-01-25"
-# en = "2016-01-30"
-# Ticker = "EUR_USD"
-# tf1 = "D"
-# tf2 = "M5"
-# tf3 = "M15"
+st = "2016-01-25"
+en = "2016-01-30"
+Ticker = "EUR_USD"
+tf1 = "D"
+tf2 = "M5"
+tf3 = "M15"
 
-# o = pOpen(Ticker, tf1, st, en)
-# h = pHigh(Ticker, tf1, st, en)
-# l = pLow(Ticker, tf1, st, en)
-# c = pClose(Ticker, tf2, st,  en)
-# d = pDate(Ticker, tf1, st, en)
-# m15h = pHigh(Ticker, tf3, st,  en)
-# m15l = pLow(Ticker, tf3, st,  en)
-# m15c = pClose(Ticker, tf3, st,  en)
-# m15d = pDate(Ticker, tf3,st,en)
-# mh = pHigh(Ticker, tf2, st,  en)
-# ml = pLow(Ticker, tf2, st,  en)
-# mc = pClose(Ticker, tf2, st,  en)
-# md = pDate(Ticker, tf2,st,en)
+o = pOpen(Ticker, tf1, st, en)
+h = pHigh(Ticker, tf1, st, en)
+l = pLow(Ticker, tf1, st, en)
+c = pClose(Ticker, tf2, st,  en)
+d = pDate(Ticker, tf1, st, en)
+m15h = pHigh(Ticker, tf3, st,  en)
+m15l = pLow(Ticker, tf3, st,  en)
+m15c = pClose(Ticker, tf3, st,  en)
+m15d = pDate(Ticker, tf3,st,en)
+mh = pHigh(Ticker, tf2, st,  en)
+ml = pLow(Ticker, tf2, st,  en)
+mc = pClose(Ticker, tf2, st,  en)
+md = pDate(Ticker, tf2,st,en)
+
+m5R2 = []
+m5R1 = []
+m5PP = []
+m5S1 = []
+m5S2 = []
+m5ATR = []
+j = 0
+k = 0
+for i in range(0,len(mc)):
+    if j +1 <= len(d) -1:
+        if md[i] == d[j + 1]:
+            j = j + 1
+    PP = (h[j] + l[j] + c[j])/3
+    m5R2.append(float(PP + h[j] - l[j]))
+    m5R1.append(float(2*PP - l[j]))
+    m5PP.append(float(PP))
+    m5S1.append(float(2*PP - h[j]))
+    m5S2.append(float(PP - h[j] + l[j]))
+
+    if k +1 <= len(m15d) -1:
+        if md[i] == m15d[k + 1]:
+            k = k + 1
+            AvgTR = pATR(m15c,m15h,m15l,14,k)
+
+plt.plot(m5R2)
+plt.plot(m5R1)
+plt.plot(m5PP)
+plt.plot(m5S1)
+plt.plot(m5S2)
+
+plt.ylim(1.04,1.120)
+# plt.ylim(-0.5,0.5)
+plt.show()
+
 # # print d[0]
 # # print d[1]
 # # print md

@@ -26,7 +26,7 @@ lst_wdth = [0,0,0,0,0]
 
 Bars = 51
 n = 50
-dt = datetime.strptime('February 8 16  13:52', '%B %d %y %H:%M')
+dt = datetime.strptime('February 9 16  16:02', '%B %d %y %H:%M')
 name = "PPBreakout_Log2.txt"
 LowerPP = 0
 UpperPP = 0
@@ -47,28 +47,29 @@ while True:
         time.sleep(1)
 
     if first_run or dt.hour == 22:
-        h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
-        r = requests.get(url, headers=h)     
-        data = json.loads(r.text)
-        def Date(index):
-            return data["candles"][1-index][STRT]
-        def Open(index):
-            return data["candles"][1-index][STRO]
-        def High(index):
-            return data["candles"][1-index][STRH]
-        def Low(index):
-            return data["candles"][1-index][STRL]
-        def Close(index):
-            return data["candles"][1-index][STRC]
+        for i in range(0,5):
+            h = {'Authorization' : LIVE_ACCESS_TOKEN}
+            url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
+            r = requests.get(url, headers=h)     
+            data = json.loads(r.text)
+            def Date(index):
+                return data["candles"][1-index][STRT]
+            def Open(index):
+                return data["candles"][1-index][STRO]
+            def High(index):
+                return data["candles"][1-index][STRH]
+            def Low(index):
+                return data["candles"][1-index][STRL]
+            def Close(index):
+                return data["candles"][1-index][STRC]
 
-        PP[i] = (High(1) + Low(1) + Close(1))/3
-        S1[i] = 2*PP[i] - High(1)
-        S2[i] = PP[i] - High(1) + Low(1)
-        R1[i] = 2*PP[i] - Low(1)
-        R2[i] = PP[i] + High(1) - Low(1)
-        first_run = False
-        time.sleep(2)
+            PP[i] = (High(1) + Low(1) + Close(1))/3
+            S1[i] = 2*PP[i] - High(1)
+            S2[i] = PP[i] - High(1) + Low(1)
+            R1[i] = 2*PP[i] - Low(1)
+            R2[i] = PP[i] + High(1) - Low(1)
+            first_run = False
+            time.sleep(2)
 
     for i in range(0,5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
