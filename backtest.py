@@ -1,177 +1,95 @@
-import requests
-import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, DEMO_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
-import httplib
-import urllib
-from datetime import datetime, timedelta
-import time
-import matplotlib.pyplot as plt
+from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, LIVE_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import numpy as np
-import pypyodbc
-# Cycle through Daily, H4, M5 etc. 
+import matplotlib.pyplot as plt
+from Backtest_Objects import *
+import pandas as pd
+import time
 
-file_Name = "C:\Users\macky\OneDrive\Documents\Price_Database.mdb"
-
-conn = pypyodbc.win_connect_mdb(file_Name)  
-cur = conn.cursor()
-#cur.execute(u"""CREATE TABLE Backtestata (ID INTEGER PRIMARY KEY, Day String, Test String, SD Double, Wick Double, Tail Double, Order Integer, Account Double)""")
-cur.execute("DELETE * From Backtestata")
+start_time = time.time()
 Sec = []
-Sec.append("EUR_USD")
-Sec.append("GBP_USD")
+# Sec.append("EUR_USD")
+# Sec.append("GBP_USD")
 Sec.append("USD_CAD")
 Sec.append("AUD_USD")
 Sec.append("NZD_USD")
-Sec_Status = []
-Sec_Status.append(False)
-Sec_Status.append(False)
-Sec_Status.append(False)
-Sec_Status.append(False)
-Sec_Status.append(False)
+# Sec.append("EUR_GBP")
+# Sec.append("EUR_CAD")
+# Sec.append("EUR_AUD")
+# Sec.append("EUR_NZD")
+# Sec.append("GBP_AUD")
+# Sec.append("GBP_NZD")
+# Sec.append("GBP_CAD")
+# Sec.append("AUD_CAD")
+# Sec.append("AUD_NZD")
+# Sec.append("NZD_CAD")
+
+st = "2015-01-01"
+en = "2016-02-24"
+end_dt = FindDateRange(st, 24*12)
+print end_dt
+while np.busday_count(end_dt, en) > 10:
+
+    end_dt = FindDateRange(end_dt, 24*12)
+    print end_dt
 
 
-print "Initializing..."
-Open_Order = 0.0
-Carry_Price = 0.0
+# tf1 = "H4"
+# p = 0
+# md = pDate(Sec[p], tf1, st, en)
+# mc = pClose(Sec[p], tf1, st, en)
+# mc1 = pClose(Sec[p+1], tf1, st, en)
+# ZScoreSpreads(mc, mc1, 20)
+# Events = Calendar(Sec[0], "1 month")
+# Act = Calendar_Actual(Sec[0], "1 month")
+# Curr = Calendar_Currency(Sec[0], "1 month")
 
-Lots = 10000
-n = 20
-last_entry = 0 
-spacer = 5
-SL = -0.0100
-TP = 0.0050
-last_trade = 0
-Open_Units =0
-Open_Trade = False
-Bars = 5000
-I_D = 1
-
-for k in range(0,5):
-
-    h = {'Authorization' : ACCESS_TOKEN}
-    print "Retrieving Data..."
-    r = requests.get( ACCOUNT_DOMAIN + "instrument=" + Sec[k] +"&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4&dailyAlignment=3", headers=h)     
-    data = json.loads(r.text)
-
-    def Date(index):
-        return data["candles"][index][STRT]
-    def Open(index):
-        return data["candles"][index][STRO]
-    def High(index):
-        return data["candles"][index][STRH]
-    def Low(index):
-        return data["candles"][index][STRL]
-    def Close(index):
-        return data["candles"][index][STRC]
-    print "Data Received..."
-    Account_Chart = []
-    S_D=[]
-
-    for m in range(0,10):
-        Account = 1000
-        Starting_Balance = Account
-        last_entry = 0 
-        spacer = 5
-        SL = -0.006
-        TP = 0.0050
-        last_trade = 0
-        Open_Units =0
-        Open_Trade = False
-        for i in range(100,4500):
-            if Open_Order == 0:
-                Carry_Price = Close(i-1)
-            aavg = 0.0
-            SMA = 0.0
-            ssd = 0.0
-            sd = 0.0
-            tail = 0.0
-            wick = 0.0
-            
-            for j in range(0,n+5*m):
-                aavg = Close(i-j) + aavg
-            SMA = aavg/(n+5*m)
-            
-            for j in range(0,n+5*m):
-                ssd = (Close(i-j) - SMA)**2 +ssd
-            sd = (ssd/(n+5*m-1))**(0.5)
-            S_D.append(sd)
-            Upper_Band = SMA + 3*sd
-            Lower_Band = SMA - 3*sd
-            
-            if Close(i-1) > Open(i-1):
-                wick = High(i-1) - Close(i-1)
-                tail = Open(i-1) - Low(i-1)
-            else:
-                wick = High(i-1) - Open(i-1)
-                tail = Close(i-1) - Low(i-1)
-
-            if Close(i-2) > Open(i-2):
-                wick2 = High(i-2) - Close(i-2)
-                tail2 = Open(i-2) - Low(i-2)
-            else:
-                wick2 = High(i-2) - Open(i-2)
-                tail2 = Close(i-2) - Low(i-2)
-
-            wik = (wick2 + wick)/2
-            tal = (tail2 + tail)/2
-
-            if Close(i-1) < Lower_Band and Close(i-2) < Lower_Band and sd > 0.005 and tal > 0.0005 and Open_Order == 0 and i - last_entry > spacer:
-                Open_Order = 1
-                Open_Price = Close(i-1)
-                Stop_Loss = Open(i) + SL
-                Take_Profit = Open(i) + TP
-                Carry_Price = Close(i-1)
-                last_entry = i
-            
-            if Close(i-1) > Upper_Band and Close(i-2) > Upper_Band and sd >0.005 and wik > 0.0005 and Open_Order == 0 and i - last_entry > spacer:
-                Open_Order = -1
-                Open_Price = Close(i-1)
-                Stop_Loss = Open(i) - SL
-                Take_Profit = Open(i) - TP
-                Carry_Price = Close(i-1)
-                last_entry = i
-
-            if Open_Order == 1:
-                if High(i-1) > Take_Profit:
-                    Account = Starting_Balance + TP * Lots
-                    Open_Order = 0
-                    Starting_Balance = Account
-                if Low(i-1) < Stop_Loss:
-                    Account = Starting_Balance + SL * Lots
-                    Open_Order = 0 
-                    Starting_Balance = Account
-                if High(i-1) < Take_Profit and Low(i-1) > Stop_Loss:
-                    Account = Starting_Balance + (Carry_Price - Open_Price) * Lots
-
-            if Open_Order == -1:
-                if High(i-1) > Stop_Loss:
-                    Account = Starting_Balance + SL * Lots
-                    Open_Order = 0 
-                    Starting_Balance = Account
-                if Low(i-1) < Take_Profit:
-                    Account = Starting_Balance + TP * Lots
-                    Open_Order = 0 
-                    Starting_Balance = Account
-                if Low(i-1) > Take_Profit and High(i-1) < Stop_Loss:
-                    Account = Starting_Balance + (Open_Price - Carry_Price) * Lots
-            # Account_Chart.append(Account)
-     
-            cur.execute('''INSERT INTO Backtestata(ID,Day,Test,Account) 
-            VALUES(?,?,?,?)''', (I_D,str(Date(i)),"MAC H4 " + Sec[k] + " and " + str(n+5*m) + " SMA",Account))
-
-            # cur.execute('''INSERT INTO Backtests_Data(ID,Day,Test,SD,Wick,Tail,Order,Account) 
-            # VALUES(?,?,?,?,?,?,?,?)''', (I_D,str(Date(i)),"MAC H4 " + Sec[k],sd,wik,tal,Open_Order,Account))
-            I_D = I_D + 1
-
-cur.commit()
-
-# plt.plot(Account_Chart)
-# plt.ylim(500,2500)
+# for i in range(0, len(Events)):
+#     if Curr[i] == "CAD":
+#         print Events[i]
+#         print Act[i]
+# lots = 5000
+# portfolio_plot = np.zeros((len(Sec), len(mc)))
+# hr = pHour(md)
+# lvl = LevelizedPrice(mc, hr, 2, 5)
+# plt.plot(lvl)
+# plt.ylim(0.9,1.1)
 # plt.show()
-# plt.plot(S_D)
-# plt.ylim(0,0.025)
+# for p in range(0,len(Sec)):
+#     mo = pOpen(Sec[p], tf1, st, en)
+#     mh = pHigh(Sec[p], tf1, st, en)
+#     ml = pLow(Sec[p], tf1, st, en)
+#     mc = pClose(Sec[p], tf1, st, en)
+#     Bearish = BearishReversal(mo,mh,ml,mc,2)
+#     Bullish = BullishReversal(mo,mh,ml,mc,2)
+#     ATR = pATR(mc, mh, ml, 14)
+#     MA = pMa(mc,20)
+#     SD = pStd(mc,20)
+#     UpperBand = UpperMovingAverageBand(mc, MA, SD, 2, "U")
+#     CloseUpperBand = UpperMovingAverageBand(mc, MA, SD, 2, "D")
+#     LowerBand = LowerMovingAverageBand(mc, MA, SD, 2, "D")
+#     CloseLowerBand = LowerMovingAverageBand(mc, MA, SD, 2,"U")
+#     Buy_Signals = np.where(LowerBand + Bullish > 1, 1, 0)
+#     Buy_SL = mc - 3*ATR
+#     Buy_TP = mc + 3*ATR
+#     BuyWin = np.where(mh > Buy_TP, 1, 0)
+#     BuyLoss = np.where(ml < Buy_SL, 1, 0)
+#     CloseBuy = BuyWin + BuyLoss
+#     Sell_Signals = np.where(UpperBand + Bearish > 1, 1, 0)
+#     SellWin = np.where(ml < Buy_SL, 1, 0)
+#     SellLoss = np.where(mh > Buy_TP, 1, 0)
+#     CloseSell = SellWin + SellLoss
+
+#     portfolio = MarketOnClosePortfolio(Sec[p], mc, lots, Buy_Signals, CloseBuy, initial_capital = 1000)
+#     buy_returns = portfolio.backtest_portfolio()
+#     portfolio = MarketOnClosePortfolio(Sec[p], mc, -1*lots, Sell_Signals, CloseSell, initial_capital = 1000)
+#     sell_returns = portfolio.backtest_portfolio()
+#     returns = buy_returns*0.5 + sell_returns*0.5
+#     portfolio_plot = SaveToPlot(portfolio_plot, returns, p)
+
+# # a = backtest_stats(portfolio_plot)
+# plot_Data = np.mean(portfolio_plot, axis = 0)
+# plt.plot(plot_Data)
+# plt.ylim(min(plot_Data)*0.9,max(plot_Data)*1.1)
+# print("--- %s seconds ---" % (time.time() - start_time))
 # plt.show()
-cur.close()
-conn.commit()
-conn.close()

@@ -21,294 +21,274 @@ Sec.append("USD_CAD")
 Sec.append("AUD_USD")
 Sec.append("NZD_USD")
 
-PP = 0.0
-R1 = [0,0,0,0,0]
-R2 = [0,0,0,0,0]
-S1 = [0,0,0,0,0]
-S2 = [0,0,0,0,0]
+Sec.append("EUR_GBP")
+Sec.append("EUR_CAD")
+Sec.append("EUR_AUD")
+Sec.append("EUR_NZD")
 
-# for i in range(0,5):
-#     h = {'Authorization' : LIVE_ACCESS_TOKEN}
-#     url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
-#     r = requests.get(url, headers=h)     
-#     data = json.loads(r.text)
-#     def Date(index):
-#         return data["candles"][1-index][STRT]
-#     def Open(index):
-#         return data["candles"][1-index][STRO]
-#     def High(index):
-#         return data["candles"][1-index][STRH]
-#     def Low(index):
-#         return data["candles"][1-index][STRL]
-#     def Close(index):
-#         return data["candles"][1-index][STRC]
+Sec.append("GBP_AUD")
+Sec.append("GBP_NZD")
+Sec.append("GBP_CAD")
 
-#     PP = (High(1) + Low(1) + Close(1))/3
-#     print Sec[i]
-#     print PP
-#     print 2*PP - High(1)
-#     print PP - High(1) + Low(1)
-#     print 2*PP - Low(1)
-#     print PP + High(1) - Low(1)
+Sec.append("AUD_CAD")
+Sec.append("AUD_NZD")
 
+Sec.append("NZD_CAD")
 
+Portfolio_Cash = 0.0
+Portfolio_Holdings = 0.0
+Buy_Signals = []
+Sell_Signals = []
+CloseBuy_Signals = []
+CloseSell_Signals = []
 
-# Bars = 51
-# SL = -0.0016
-# TP = 0.0008
-# n = 50
-# name = "Log file.txt"
-
-# DDay = []
-# DHigh = []
-# DLow = []
-# DClose = []
-
-st = "2016-01-25"
-en = "2016-01-30"
+st = "2015-01-01"
+end_dt = "2016-02-01"
 Ticker = "EUR_USD"
 tf1 = "D"
 tf2 = "M5"
 tf3 = "M15"
+# mc = pClose(Ticker, tf2, st,  en)
+Portfolio = np.zeros((1,5000))
+en = FindDateRange(st, 24*12)
+Account = 100
+while np.busday_count(en, end_dt) > 20:
 
-o = pOpen(Ticker, tf1, st, en)
-h = pHigh(Ticker, tf1, st, en)
-l = pLow(Ticker, tf1, st, en)
-c = pClose(Ticker, tf2, st,  en)
-d = pDate(Ticker, tf1, st, en)
-m15h = pHigh(Ticker, tf3, st,  en)
-m15l = pLow(Ticker, tf3, st,  en)
-m15c = pClose(Ticker, tf3, st,  en)
-m15d = pDate(Ticker, tf3,st,en)
-mh = pHigh(Ticker, tf2, st,  en)
-ml = pLow(Ticker, tf2, st,  en)
-mc = pClose(Ticker, tf2, st,  en)
-md = pDate(Ticker, tf2,st,en)
+    # for p in range(0,15):
+    PP = 0.0
+    R1 = [0,0,0,0,0]
+    R2 = [0,0,0,0,0]
+    S1 = [0,0,0,0,0]
+    S2 = [0,0,0,0,0]
 
-m5R2 = []
-m5R1 = []
-m5PP = []
-m5S1 = []
-m5S2 = []
-m5ATR = []
-j = 0
-k = 0
-for i in range(0,len(mc)):
-    if j +1 <= len(d) -1:
-        if md[i] == d[j + 1]:
-            j = j + 1
-    PP = (h[j] + l[j] + c[j])/3
-    m5R2.append(float(PP + h[j] - l[j]))
-    m5R1.append(float(2*PP - l[j]))
-    m5PP.append(float(PP))
-    m5S1.append(float(2*PP - h[j]))
-    m5S2.append(float(PP - h[j] + l[j]))
+    Ticker = Sec[5]
+    o = pOpen(Ticker, tf1, st, en)
+    h = pHigh(Ticker, tf1, st, en)
+    l = pLow(Ticker, tf1, st, en)
+    c = pClose(Ticker, tf1, st,  en)
+    d = pDate(Ticker, tf1, st, en)
 
-    if k +1 <= len(m15d) -1:
-        if md[i] == m15d[k + 1]:
-            k = k + 1
-            AvgTR = pATR(m15c,m15h,m15l,14,k)
+    m15h = pHigh(Ticker, tf3, st,  en)
+    m15l = pLow(Ticker, tf3, st,  en)
+    m15c = pClose(Ticker, tf3, st,  en)
+    m15d = pDate(Ticker, tf3,st,en)
 
-plt.plot(m5R2)
-plt.plot(m5R1)
-plt.plot(m5PP)
-plt.plot(m5S1)
-plt.plot(m5S2)
+    mh = pHigh(Ticker, tf2, st,  en)
+    ml = pLow(Ticker, tf2, st,  en)
+    mc = pClose(Ticker, tf2, st,  en)
+    md = pDate(Ticker, tf2,st,en)
 
-plt.ylim(1.04,1.120)
-# plt.ylim(-0.5,0.5)
-plt.show()
+    # m5MA = pMa(mc,150)
+    # m15MA = pMa(m15c,150)
+    # m15SD = pStd(m15c,20)
 
-# # print d[0]
-# # print d[1]
-# # print md
-# fast_ma = pMa(mc,20)
-# slow_ma = pMa(mc,50)
-# plt.plot(c)
-# plt.plot(fast_ma)
-# plt.plot(slow_ma)
-# fig, ax1 = plt.subplots(1, 1, sharex=True)
-# ax1.set_ylabel("EUR_USD", size=20)
-# Plot candles
-# candlestick2_ochl(ax1, o, h, l, c, width=1, colorup='k', colordown='r', alpha=1)
-# plt.ylim(min(c)*0.99,max(c)*1.01)
+    # m5UB = []
+    # m5LB = []
+
+    m5R2 = []
+    m5R1 = []
+    m5PP = []
+    m5S1 = []
+    m5S2 = []
+    m5ATR = []
+    ub = 0.0
+    lb = 0.0
+    j = 0
+    k = 0
+    atr = 0.0
+    atr = pATR(m15c,m15h,m15l,14)
+    for i in range(0,len(mc)):
+        if j +1 <= len(d) -1:
+            if md[i] == d[j + 1]:
+                j = j + 1
+        PP = (h[j] + l[j] + c[j])/3
+        m5R1.append(float(2*PP - l[j]))
+        m5PP.append(float(PP))
+        m5S1.append(float(2*PP - h[j]))
+
+        if k +1 <= len(m15d) -1:
+            if md[i] == m15d[k + 1]:
+                k = k + 1
+        
+        # ub = m15MA[k] + 1*m15SD[k]
+        # lb = m15MA[k] - 1*m15SD[k]
+        m5ATR.append(atr[k])
+        # m5MA.append(ub)
+        # m5LB.append(lb)
+
+    # plt.plot(mc)
+    # plt.plot(m5UB)
+    # plt.plot(m5LB)
+
+    # plt.plot(m5R2)
+    # plt.plot(m5R1)
+    # plt.plot(m5PP)
+    # plt.plot(m5S1)
+    # plt.plot(m5S2)
+
+    # plt.ylim(min(mc)/1.001,max(mc)*1.001)
+    # plt.show()
+
+    # plt.plot(m5ATR)
+    # plt.ylim(0,0.0025)
+    # plt.show()
+
+    # Account = 119.56
+    # 100 --> 100.55 --> 102.53 --> 103.91 --> 103.08 --> 104.06 --> 105.63 --> 106.07 --> 107.24 --> 108.62 --> 110.26
+    # 110.15 --> 110.49 --> 113.39 --> 115.18 --> 116.06 --> 116.30 --> 117.06 --> 117.86 --> 119.56 --> 119.67 
+    Starting_Balance = Account
+    last_entry = 0 
+    spacer = 5
+    last_trade = 0
+    Open_Units =0
+    Open_Trade = False
+    Open_Order = 0
+    Lots = 500
+    Account_Chart = []
+    UpperPP = 0
+    LowerPP = 0
+    i = 0
+    j = 0
+    k = 0
+    cnt_buy_trades = 0 
+    cnt_sell_trades = 0
+    cnt_wbuy_trades = 0
+    cnt_wsell_trades = 0
+    cnt_lbuy_trades = 0
+    cnt_lsell_trades = 0
+
+    # js_close = 0
+    # pr = []
+    # St = [] 
+    # uppbnd = []
+    # lwrbnd = []
+    # mid = []
+
+    for i in range(0,len(mc)):
+
+        x = md[i]
+        x1 = str(x)
+        y2 = x1[11:]
+        z2 = y2[:len(y2)-14]
+        if float(z2) >= 11 and float(z2) <= 18 :
+            # if mc[i-1] > m5R1[i-1]:
+            #     UpperPP = mc[i-1]*2
+            #     LowerPP = m5PP[i-1]
+            # elif mc[i-1] > m5PP[i-1] and mc[i-1] < m5R1[i-1]:
+            #     UpperPP = m5R1[i-1]
+            #     LowerPP = m5PP[i-1]
+            # elif mc[i-1] > m5S1[i-1] and mc[i-1] < m5PP[i-1]:
+            #     UpperPP = m5PP[i-1]
+            #     LowerPP = m5S1[i-1]
+            # elif mc[i-1] < m5S1[i-1]:  
+            #     UpperPP = m5S1[i-1]
+            #     LowerPP = mc[i-1]/2
+
+            if mc[i] > m5S1[i] and mc[i-1] < m5S1[i] and i - last_entry > spacer:
+                Buy_Signals.append(1)
+                cnt_buy_trades += 1
+                Open_Order = 1
+                Open_Price = mc[i]
+                Stop_Loss = mc[i] - m5ATR[i]
+                Take_Profit = mc[i] + 2*m5ATR[i]
+                Carry_Price = mc[i]
+                last_entry = i
+            elif mc[i] < m5R1[i] and mc[i-1] > m5R1[i] and i - last_entry > spacer:
+                Sell_Signals.append(1)
+                cnt_sell_trades += 1
+                Open_Order = -1
+                Open_Price = mc[i]
+                Stop_Loss = mc[i] + m5ATR[i]
+                Take_Profit = mc[i] - 2*m5ATR[i]
+                Carry_Price = mc[i]
+                last_entry = i
+            else:
+                Buy_Signals.append(0)
+                Sell_Signals.append(0)
+        
+        if Open_Order == 1:
+            if mc[i] > m5ATR[i]/2 + Open_Price:
+                Stop_Loss = Open_Price +0.0002
+            elif mc[i] > m5ATR[i] + Open_Price:
+                Stop_Loss = max(Stop_Loss, Open_Price +0.0002, m5UB[i]-0.0002)
+
+            if mh[i] > Take_Profit:
+                cnt_wbuy_trades += 1
+                Account = Starting_Balance + (Take_Profit-Open_Price) * Lots
+                # print "Buy Win"
+                # print Take_Profit-Open_Price
+                Open_Order = 0
+                # if Starting_Balance > Account:
+                #     cnt_lbuy_trades += 1
+                # else:
+                #     cnt_wbuy_trades += 1
+                Starting_Balance = Account
+            if ml[i] < Stop_Loss:
+                cnt_lbuy_trades += 1
+                Account = Starting_Balance + (Stop_Loss-Open_Price) * Lots
+                # print "Buy Loss"
+                # print Stop_Loss-Open_Price
+                Open_Order = 0 
+                # if Starting_Balance > Account:
+                #     cnt_lbuy_trades += 1
+                # else:
+                #     cnt_wbuy_trades += 1
+                # Starting_Balance = Account
+                js_close = 1
+            if ml[i] > Stop_Loss and mh[i] < Take_Profit:
+                Account = Starting_Balance + (Carry_Price - Open_Price) * Lots
+        elif Open_Order == -1:
+            if mc[i] < Open_Price - m5ATR[i]/2:
+                Stop_Loss = Open_Price +0.0002
+            elif mc[i] < Open_Price - m5ATR[i]:
+                Stop_Loss = min(Stop_Loss, Open_Price +0.0002, m5LB[i]+0.0002)
+
+            if mh[i] > Stop_Loss:
+                Account = Starting_Balance - (Stop_Loss-Open_Price) * Lots
+                # print "Sell Loss"
+                # print Stop_Loss-Open_Price
+                Open_Order = 0 
+                # if Starting_Balance > Account:
+                #     cnt_lsell_trades += 1
+                # else:
+                #     cnt_wsell_trades += 1
+                Starting_Balance = Account
+                js_close = 1
+            if ml[i] < Take_Profit:
+                Account = Starting_Balance - (Take_Profit-Open_Price) * Lots
+                # print "Sell Win"
+                # print Open_Price-Take_Profit
+                Open_Order = 0
+                # if Starting_Balance > Account:
+                #     cnt_lsell_trades += 1
+                # else:
+                #     cnt_wsell_trades += 1
+                Starting_Balance = Account
+            if mh[i] < Stop_Loss and ml[i] > Take_Profit:
+                Account = Starting_Balance + (Open_Price - Carry_Price) * Lots
+        
+        Portfolio[0,i] = Account
+        # # i -= 1
+        # # plt.plot(Buy_Signals)
+        # # plt.plot(Sell_Signals)
+
+        # # Positions adjuststed for lotsize
+    #     plt.plot(Account_Chart)
+    #     Ending_Account_Chart = Ending_Account_Chart + Account_Chart
+    # plt.plot(Ending_Account_Chart)
+    # Avg_Portfolio = Portfolio.mean(axis=0)[-1]
+
+    Account =  Portfolio[0,len(mc)-10]
+    st = en
+    en = FindDateRange(en, 24*12)
+    print Account
+
+# plt.ylim(115,125)
 # plt.show()
 
-# SkhettiStats(c,fast_ma,c,True,12,True)
-# SkhettiStats(c,slow_ma,c,True,12,True)
-
-# Account = 1000
-# Starting_Balance = Account
-# last_entry = 0 
-# spacer = 3
-# last_trade = 0
-# Open_Units =0
-# Open_Trade = False
-# Open_Order = 0
-# Lots = 10000
-# Account_Chart = []
-# UpperPP = 0
-# LowerPP = 0
-# i = 0
-# j = 0
-# k = 0
-# # while i >= 0:
-# cnt_buy_trades = 0 
-# cnt_sell_trades = 0
-# cnt_wbuy_trades = 0
-# cnt_wsell_trades = 0
-# cnt_lbuy_trades = 0
-# cnt_lsell_trades = 0
-# PivP = pPivotPoints(h[j],l[j],c[j],mc[i-2])
-# AvgTR = pATR(m15c,m15h,m15l,14,k)
-# # js_close = 0
-# # pr = []
-# # St = [] 
-# # Portfolio_Cash = 0.0
-# # Portfolio_Holdings = 0.0
-
-# # Buy_Signals = []
-# # Sell_Signals = []
-# # CloseBuy_Signals = []
-# # CloseSell_Signals = []
-# # uppbnd = []
-# # lwrbnd = []
-# # mid = []
-
-# lwr = 0.0
-# upr = 0.0
-# m30_Ret = 0.0
-# for i in range(14,len(mc)-2):
-#     sumret = 0.0
-#     avgret = 0.0
-#     sumdevret = 0.0
-#     sdret = 0.0
-#     # js_close = 0
-#     if Open_Order == 0:
-#         Carry_Price = mc[i]
-#     if j +1 <= len(d) -1:
-#         if md[i] == d[j + 1]:
-#             j = j + 1
-#             PivP = pPivotPoints(h[j],l[j],c[j],mc[i-2]) 
-#     else:
-#         break
-#     if k +1 <= len(m15d) -1:
-#         if md[i] == m15d[k + 1]:
-#             k = k + 1
-#             AvgTR = pATR(m15c,m15h,m15l,14,k)
-#     else:
-#         break
-
-#     for p in range(0,11):
-#         sumret = sumret + mc[i-p]/mc[i-11] - 1
-#     avgret = sumret/12
-#     # print avgret*100
-
-#     for p in range(0,11):
-#         sumdevret = (avgret - (mc[i-p]/mc[i-11] - 1))**2 
-#     sdret = (sumdevret/9)**0.5
-#     # print sdret*100
-#     # print "new candle"
-#     # uppbnd.append((avgret + 4*sdret)*100)
-#     # mid.append((mc[i]/mc[i-6] - 1)*100)
-#     # lwrbnd.append((avgret - 4*sdret)*100)
-    
-#     m30_Ret = (mc[i]/mc[i-2] - 1)*100
-#     lwr = (avgret - 2*sdret)*100
-#     upr = (avgret + 2*sdret)*100
-
-#     if mc[i-1] > PivP[0] and mc[i-2] < PivP[0] and i - last_entry > spacer:
-#         # print i
-#         # Buy_Signals.append(1)
-#         cnt_buy_trades += 1
-#         Open_Order = 1
-#         Open_Price = mc[i]
-#         Stop_Loss = mc[i] - AvgTR/2
-#         Take_Profit = mc[i] + AvgTR
-#         Carry_Price = mc[i]
-#         last_entry = i
-#     elif mc[i-1] < PivP[1] and mc[i-2] > PivP[1] and i - last_entry > spacer:
-#         # print i
-#         # Sell_Signals.append(1)
-#         cnt_sell_trades += 1
-#         Open_Order = -1
-#         Open_Price = mc[i]
-#         Stop_Loss = mc[i] + AvgTR/2
-#         Take_Profit = mc[i] - AvgTR
-#         Carry_Price = mc[i]
-#         last_entry = i
-#     # else:
-#     #     Buy_Signals.append(0)
-#     #     Sell_Signals.append(0)
-#     elif Open_Order == 1:
-#         # Stop_Loss = max(Stop_Loss,mc[i]-AvgTR)
-#         if mh[i] > Take_Profit:
-#             cnt_wbuy_trades += 1
-#             Account = Starting_Balance + (Open_Price-Take_Profit) * Lots
-#             Open_Order = 0
-#             # if Starting_Balance > Account:
-#             #     cnt_lbuy_trades += 1
-#             # else:
-#             #     cnt_wbuy_trades += 1
-#             Starting_Balance = Account
-#         if ml[i] < Stop_Loss:
-#             cnt_lbuy_trades += 1
-#             Account = Starting_Balance + (Open_Price-Stop_Loss) * Lots
-#             Open_Order = 0 
-#             # if Starting_Balance > Account:
-#             #     cnt_lbuy_trades += 1
-#             # else:
-#             #     cnt_wbuy_trades += 1
-#             # Starting_Balance = Account
-#             js_close = 1
-#         if ml[i] > Stop_Loss and mh[i] < Take_Profit:
-#             Account = Starting_Balance + (Carry_Price - Open_Price) * Lots
-#     elif Open_Order == -1:
-#         # Stop_Loss = min(Stop_Loss,mc[i]+AvgTR)
-#         if mh[i] > Stop_Loss:
-#             Account = Starting_Balance + (Open_Price-Stop_Loss) * Lots
-#             Open_Order = 0 
-#             # if Starting_Balance > Account:
-#             #     cnt_lsell_trades += 1
-#             # else:
-#             #     cnt_wsell_trades += 1
-#             Starting_Balance = Account
-#             js_close = 1
-#         if ml[i] < Take_Profit:
-#             Account = Starting_Balance + (Open_Price-Take_Profit) * Lots
-#             Open_Order = 0
-#             # if Starting_Balance > Account:
-#             #     cnt_lsell_trades += 1
-#             # else:
-#             #     cnt_wsell_trades += 1
-#             Starting_Balance = Account
-#         if mh[i] < Stop_Loss and ml[i] > Take_Profit:
-#             Account = Starting_Balance + (Open_Price - Carry_Price) * Lots
-#     # if Open_Order != 0:
-#     #     pr.append(mc[i])
-#     #     St.append(Stop_Loss)
-#     # elif js_close == 1:
-#     #     pr.append(mc[i])
-#     #     St.append(Stop_Loss)
-#     #     plt.plot(pr)
-#     #     plt.plot(St)
-#     #     plt.ylim(min(pr)*0.995,max(pr)*1.005)
-#     #     plt.show()
-#     #     js_close = 0
-#     #     pr = []
-#     #     St = []
-
-#     Account_Chart.append(Account)
-# # i -= 1
-# # plt.plot(Buy_Signals)
-# # plt.plot(Sell_Signals)
-
-# # Positions adjuststed for lotsize
-# plt.plot(Account_Chart)
-# # plt.plot(uppbnd)
-# # plt.plot(lwrbnd)
-# # plt.plot(mid)
-
+# for i in range(0,15):
+#     plt.plot(Portfolio[i,:], label=str(Sec[i]))
+#     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
 # # print cnt_wbuy_trades
 # # print cnt_wsell_trades
 # # print cnt_lsell_trades
@@ -328,6 +308,5 @@ plt.show()
 # # print "Buy Accuracy: " + str((cnt_wbuy_trades)/(cnt_buy_trades))
 # # print "Total Sell Trades: " + str(cnt_sell_trades)
 # # print "Sell Accuracy: " + str((cnt_wsell_trades)/(cnt_sell_trades))
-# plt.ylim(500,1500)
-# # plt.ylim(-0.5,0.5)
+# plt.ylim(100,110)
 # plt.show()
