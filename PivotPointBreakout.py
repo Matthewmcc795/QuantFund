@@ -11,14 +11,40 @@ import sys
 Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
 PP = [0,0,0,0,0]
 R1 = [0,0,0,0,0]
-R2 = [0,0,0,0,0]
 S1 = [0,0,0,0,0]
-S2 = [0,0,0,0,0]
 lst_ATR = [0,0,0,0,0]
 lst_price = [0,0,0,0,0]
-dt = datetime.strptime('February 29 16  6:02', '%B %d %y %H:%M')
+lst_SL = [0,0,0,0,0]
+dt = datetime.strptime('March 1 16  6:02', '%B %d %y %H:%M')
 name = "PPBreakout_Log2.txt"
 first_run = True
+
+def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
+    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+    params = urllib.urlencode({
+        "instrument" : str(instrument),
+        "units" : units,
+        "type" : order_type,
+        "side" : order_side,
+        "takeProfit": Take_Profit,
+        "stopLoss": Stop_Loss
+    })
+    conn.request("POST", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
+    response = conn.getresponse().read()
+    file = open(name,'a')
+    file.write(response + "\n")
+    file.close()
+
+def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
+    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+    params = urllib.urlencode({"stopLoss": Stop_Loss})
+    conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
+    response = conn.getresponse().read()
+    file = open(name,'a')
+    file.write(response + "\n")
+    file.close()
 
 while True:
     while True:
@@ -97,8 +123,8 @@ while True:
                 ATR_val = (ATR_val*13 + TR(MHigh(p),MLow(p),MClose(p+1)))/14
                 p -= 1
             return ATR_val
-
         time.sleep(2)
+        
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=midpoint&granularity=M5"
         r = requests.get(url, headers=h)     
@@ -137,49 +163,23 @@ while True:
                     if lst_price[i] > float(trd_entry) + lst_ATR[i]/2:
                         SL = trd_entry + 0.0001
                         UpdateStopLoss(229783, trd_ID, SL)
-                        lst_SL = SL                   
+                        lst_SL[i] = SL                   
                     elif lst_price[i] > float(trd_entry) + lst_ATR[i]:
                         SL = max(lst_SL, lst_price[i] - lst_ATR[i])
                         UpdateStopLoss(229783, trd_ID, SL)
-                        lst_SL = SL
+                        lst_SL[i] = SL
                 elif trd_side == "sell":
                     if lst_price[i] < float(trd_entry) - lst_ATR[i]/2:
                         SL = trd_entry - 0.0001
                         UpdateStopLoss(229783, trd_ID, SL)
-                        lst_SL = SL
+                        lst_SL[i] = SL
                     elif lst_price[i] < float(trd_entry) - lst_ATR[i]:
                         SL = min(lst_SL, lst_price[i] + lst_ATR[i])
                         UpdateStopLoss(229783, trd_ID, SL)
-                        lst_SL = SL
+                        lst_SL[i] = SL
+    
     dt = lst_dt + timedelta(minutes=5)
     dt = dt.replace(second=0,microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
-    file.close()
-
-def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
-    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
-    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-    params = urllib.urlencode({
-        "instrument" : str(instrument),
-        "units" : units,
-        "type" : order_type,
-        "side" : order_side,
-        "takeProfit": Take_Profit,
-        "stopLoss": Stop_Loss
-    })
-    conn.request("POST", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
-    response = conn.getresponse().read()
-    file = open(name,'a')
-    file.write(response + "\n")
-    file.close()
-
-def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
-    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
-    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-    params = urllib.urlencode({"stopLoss": Stop_Loss})
-    conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
-    response = conn.getresponse().read()
-    file = open(name,'a')
-    file.write(response + "\n")
     file.close()
