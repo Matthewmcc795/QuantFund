@@ -15,7 +15,7 @@ S1 = [0,0,0,0,0]
 lst_ATR = [0,0,0,0,0]
 lst_price = [0,0,0,0,0]
 lst_SL = [0,0,0,0,0]
-dt = datetime.strptime('March 7 16  6:02', '%B %d %y %H:%M')
+dt = datetime.strptime('March 8 16  7:02', '%B %d %y %H:%M')
 name = "PPBreakout_Log2.txt"
 first_run = True
 
