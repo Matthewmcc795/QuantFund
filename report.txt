@@ -1,0 +1,274 @@
+|| ---------- EUR ---------- || 
+
+Industrial Production m/m 
+03-14-2016 - 10:00am 
+Previous: -1.0%
+Forecast: 1.7%
+
+French Final CPI m/m 
+03-15-2016 - 7:45am 
+Previous: 0.2%
+Forecast: 0.2%
+
+Employment Change q/q 
+03-15-2016 - 10:00am 
+Previous: 0.3%
+Forecast: 0.2%
+
+German 10-y Bond Auction 
+03-16-2016 - 11:03am 
+Previous: 0.26|1.2
+Forecast: None
+
+Italian Trade Balance 
+03-17-2016 - 9:00am 
+Previous: 6.02B
+Forecast: 4.33B
+
+Trade Balance 
+03-17-2016 - 10:00am 
+Previous: 21.0B
+Forecast: 20.2B
+
+Final Core CPI y/y 
+03-17-2016 - 10:00am 
+Previous: 0.7%
+Forecast: 0.7%
+
+Final CPI y/y 
+03-17-2016 - 10:00am 
+Previous: -0.2%
+Forecast: -0.2%
+
+Spanish 10-y Bond Auction 
+03-17-2016 - 10:03am 
+Previous: 1.69|1.9
+Forecast: None
+
+German PPI m/m 
+03-18-2016 - 7:00am 
+Previous: -0.7%
+Forecast: -0.2%
+
+
+|| ---------- GBP ---------- || 
+
+Claimant Count Change 
+03-16-2016 - 9:30am 
+Previous: -14.8K
+Forecast: -8.8K
+
+Unemployment Rate 
+03-16-2016 - 9:30am 
+Previous: 5.1%
+Forecast: 5.1%
+
+Average Earnings Index 3m/y 
+03-16-2016 - 9:30am 
+Previous: 1.9%
+Forecast: 2.0%
+
+Annual Budget Release 
+03-16-2016 - 12:30pm 
+Previous: None
+Forecast: None
+
+CB Leading Index m/m 
+03-16-2016 - 1:30pm 
+Previous: 0.4%
+Forecast: None
+
+Asset Purchase Facility 
+03-17-2016 - 12:00pm 
+Previous: 375B
+Forecast: 375B
+
+Official Bank Rate 
+03-17-2016 - 12:00pm 
+Previous: 0.50%
+Forecast: 0.50%
+
+Monetary Policy Summary 
+03-17-2016 - 12:00pm 
+Previous: None
+Forecast: None
+
+MPC Asset Purchase Facility Votes 
+03-17-2016 - 12:00pm 
+Previous: 0-0-9
+Forecast: 0-0-9
+
+MPC Official Bank Rate Votes 
+03-17-2016 - 12:00pm 
+Previous: 0-0-9
+Forecast: 0-0-9
+
+BOE Quarterly Bulletin 
+03-18-2016 - 12:00pm 
+Previous: None
+Forecast: None
+
+
+|| ---------- CAD ---------- || 
+
+Daylight Saving Time Shift 
+03-13-2016 - 7:00am 
+Previous: None
+Forecast: None
+
+Foreign Securities Purchases 
+03-16-2016 - 12:30pm 
+Previous: -1.41B
+Forecast: None
+
+Manufacturing Sales m/m 
+03-16-2016 - 12:30pm 
+Previous: 1.2%
+Forecast: 0.4%
+
+Wholesale Sales m/m 
+03-17-2016 - 12:30pm 
+Previous: 2.0%
+Forecast: 0.3%
+
+Core Retail Sales m/m 
+03-18-2016 - 12:30pm 
+Previous: -1.6%
+Forecast: 0.6%
+
+Retail Sales m/m 
+03-18-2016 - 12:30pm 
+Previous: -2.2%
+Forecast: 0.7%
+
+Core CPI m/m 
+03-18-2016 - 12:30pm 
+Previous: 0.3%
+Forecast: 0.5%
+
+CPI m/m 
+03-18-2016 - 12:30pm 
+Previous: 0.2%
+Forecast: 0.3%
+
+
+|| ---------- JPY ---------- || 
+
+Core Machinery Orders m/m 
+03-13-2016 - 11:50pm 
+Previous: 4.2%
+Forecast: 2.0%
+
+Monetary Policy Statement 
+03-15-2016 - 3:50am 
+Previous: None
+Forecast: None
+
+Revised Industrial Production m/m 
+03-15-2016 - 4:30am 
+Previous: 3.7%
+Forecast: 3.7%
+
+Tertiary Industry Activity m/m 
+03-15-2016 - 4:30am 
+Previous: -0.6%
+Forecast: 0.4%
+
+BOJ Press Conference 
+03-15-2016 - 6:30am 
+Previous: None
+Forecast: None
+
+Trade Balance 
+03-16-2016 - 11:50pm 
+Previous: 0.12T
+Forecast: 0.24T
+
+BOJ Gov Kuroda Speaks 
+03-17-2016 - 6:30am 
+Previous: None
+Forecast: None
+
+Monetary Policy Meeting Minutes 
+03-17-2016 - 11:50pm 
+Previous: None
+Forecast: None
+
+
+|| ---------- AUD ---------- || 
+
+New Motor Vehicle Sales m/m 
+03-15-2016 - 12:30am 
+Previous: 0.5%
+Forecast: None
+
+Monetary Policy Meeting Minutes 
+03-15-2016 - 12:30am 
+Previous: None
+Forecast: None
+
+MI Leading Index m/m 
+03-15-2016 - 11:30pm 
+Previous: 0.0%
+Forecast: None
+
+RBA Assist Gov Debelle Speaks 
+03-16-2016 - 10:05pm 
+Previous: None
+Forecast: None
+
+Employment Change 
+03-17-2016 - 12:30am 
+Previous: -7.9K
+Forecast: 11.6K
+
+Unemployment Rate 
+03-17-2016 - 12:30am 
+Previous: 6.0%
+Forecast: 6.0%
+
+RBA Bulletin 
+03-17-2016 - 12:30am 
+Previous: None
+Forecast: None
+
+
+|| ---------- NZD ---------- || 
+
+RBNZ Gov Wheeler Speaks 
+03-14-2016 - 7:00pm 
+Previous: None
+Forecast: None
+
+GDT Price Index 
+03-15-2016 - 2:33pm 
+Previous: 1.4%
+Forecast: None
+
+Current Account 
+03-15-2016 - 9:45pm 
+Previous: -4.75B
+Forecast: -2.97B
+
+GDP q/q 
+03-16-2016 - 9:45pm 
+Previous: 0.9%
+Forecast: 0.7%
+
+|| ---------- EUR ---------- || 
+
+
+|| ---------- GBP ---------- || 
+
+
+|| ---------- CAD ---------- || 
+
+
+|| ---------- JPY ---------- || 
+
+
+|| ---------- AUD ---------- || 
+
+
+|| ---------- NZD ---------- || 
+

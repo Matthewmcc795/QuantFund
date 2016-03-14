@@ -15,7 +15,10 @@ S1 = [0,0,0,0,0]
 lst_ATR = [0,0,0,0,0]
 lst_price = [0,0,0,0,0]
 lst_SL = [0,0,0,0,0]
-dt = datetime.strptime('March 9 16  6:02', '%B %d %y %H:%M')
+
+dt =  datetime.now()
+dt = dt.replace(minute=2, second=0,microsecond=1)
+dt = dt + timedelta(hours=1)
 name = "PPBreakout_Log2.txt"
 first_run = True
 
@@ -46,6 +49,18 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
     file.write(response + "\n")
     file.close()
 
+def TR(h,l,yc):
+    x = h-l
+    y = abs(h-yc)
+    z = abs(l-yc)
+    if y <= x >= z:
+        TR = x
+    elif x <= y >= z:
+        TR = y
+    elif x <= z >= y:
+        TR = z
+    return TR
+
 while True:
     while True:
         if datetime.now() > dt:
@@ -72,8 +87,32 @@ while True:
             PP[i] = (High(1) + Low(1) + Close(1))/3
             S1[i] = 2*PP[i] - High(1)
             R1[i] = 2*PP[i] - Low(1)
-            first_run = False
-            time.sleep(2)
+            url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
+            r = requests.get(url, headers=h)     
+            data = json.loads(r.text)
+            def MHigh(index):
+                return data["candles"][99 - index][STRH]
+            def MLow(index):
+                return data["candles"][99 - index][STRL]
+            def MClose(index):
+                return data["candles"][99 - index][STRC]
+
+            def ATR(index):
+                p = 98
+                TrueRanges = 0.0
+                ATR_val = 0
+                while p > 84:
+                    TrueRanges = TrueRanges + TR(MHigh(p),MLow(p),MClose(p+1))
+                    p -= 1
+                ATR_val = TrueRanges/14
+                while p >= 0:
+                    ATR_val = (ATR_val*13 + TR(MHigh(p),MLow(p),MClose(p+1)))/14
+                    p -= 1
+                return ATR_val
+
+            lst_ATR[i] = ATR(0)
+            time.sleep(1)
+        first_run = False
 
     for i in range(0,5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
@@ -89,42 +128,18 @@ while True:
                 if positions["instrument"] == Sec[i]:
                     Open_Units = positions["units"]
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
+        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=5&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
         def MHigh(index):
-            return data["candles"][99 - index][STRH]
+            return data["candles"][4 - index][STRH]
         def MLow(index):
-            return data["candles"][99 - index][STRL]
+            return data["candles"][4 - index][STRL]
         def MClose(index):
-            return data["candles"][99 - index][STRC]
-
-        def TR(h,l,yc):
-            x = h-l
-            y = abs(h-yc)
-            z = abs(l-yc)
-            if y <= x >= z:
-                TR = x
-            elif x <= y >= z:
-                TR = y
-            elif x <= z >= y:
-                TR = z
-            return TR
-
-        def ATR(index):
-            p = 98
-            TrueRanges = 0.0
-            ATR_val = 0
-            while p > 84:
-                TrueRanges = TrueRanges + TR(MHigh(p),MLow(p),MClose(p+1))
-                p -= 1
-            ATR_val = TrueRanges/14
-            while p >= 0:
-                ATR_val = (ATR_val*13 + TR(MHigh(p),MLow(p),MClose(p+1)))/14
-                p -= 1
-            return ATR_val
-        time.sleep(2)
+            return data["candles"][4 - index][STRC]
         
+        lst_ATR[i] = (lst_ATR[i]*13 + TR(MHigh(0), MLow(0), MClose(1)))/14
+
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=midpoint&granularity=M5"
         r = requests.get(url, headers=h)     
@@ -136,18 +151,17 @@ while True:
 
         if Open_Units == 0 or (dt.hour <= 18 and dt.hour >= 8):
             if M5Close(0) < R1[i] and M5Close(1) < R1[i] and M5Close(2) > R1[i]:
-                SL = round(M5Close(0) + ATR(0) + 0.00001,5)
-                TP = round(M5Close(0) - ATR(0)*3 - 0.00001,5)
+                SL = round(M5Close(0) + lst_ATR[i] + 0.00001,5)
+                TP = round(M5Close(0) - lst_ATR[i]*3 - 0.00001,5)
                 OpenOrder(229783, Sec[i], 100, "market", "sell", TP, SL)
-                lst_SL[i] = M5Close(0) + ATR(0) + 0.00001
+                lst_SL[i] = M5Close(0) + lst_ATR[i] + 0.00001
             elif M5Close(0) > S1[i] and M5Close(1) > S1[i] and M5Close(2) < S1[i]:
-                SL = round(M5Close(0) - ATR(0) - 0.00001,5)
-                TP = round(M5Close(0) + ATR(0)*3 + 0.00001,5)
+                SL = round(M5Close(0) - lst_ATR[i] - 0.00001,5)
+                TP = round(M5Close(0) + lst_ATR[i]*3 + 0.00001,5)
                 OpenOrder(229783, Sec[i], 100, "market", "buy", TP, SL)
-                lst_SL[i] = M5Close(0) - ATR(0) - 0.00001
-        lst_ATR[i] = ATR(0)
+                lst_SL[i] = M5Close(0) - lst_ATR[i] - 0.00001
         lst_price[i] = M5Close(0)
-        time.sleep(2)
+        time.sleep(1)
 
     for i in range(0,5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
