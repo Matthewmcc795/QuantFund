@@ -251,6 +251,7 @@ def pDate(sym, tf, start, end):
         url = "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(sym) + "&start=" + str(start) + "&end=" + str(end) + "&candleFormat=midpoint&granularity=" + str(tf)
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
+        # print data
         iterable = (x[STRT] for x in data["candles"])
         a = np.fromiter(iterable, np.dtype('a27'), count=-1)
         return np.array(a)
@@ -663,10 +664,10 @@ def InsideBar(h,l):
     InsideBar_data = np.zeros((1,max(len(h),len(l))))
     for i in range(3, max(len(h),len(l))):
         if h[i-1] > h[i] and l[i-1] < l[i]:
-            InsideBar_data[i] = 1
+            InsideBar_data[0, i] = 1
         else:
-            InsideBar_data[i] = 0
-    return InsideBar_data
+            InsideBar_data[0, i] = 0
+    return InsideBar_data[0,:]
 
 def BullishKeyReversal(o,h,l,c):
     BuKR_data = np.zeros((1,len(c)))

@@ -168,6 +168,7 @@ while True:
         url = "https://api-fxtrade.oanda.com/v1/accounts/229783/trades?instrument=" + str(Sec[i])
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
+        chk = str(data2)
         if chk.find("id") != -1:
             for positions in data2["trades"]:
                 trd_ID = positions["id"]
