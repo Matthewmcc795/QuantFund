@@ -19,12 +19,15 @@ lst_SL = [0,0,0,0,0]
 dt =  datetime.now()
 dt = dt.replace(minute=2, second=0,microsecond=1)
 dt = dt + timedelta(hours=1)
-name = "PPBreakout_Log2.txt"
+name = "PPBreakout_Log2.txt" 
 first_run = True
 
 def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+    file = open(name,'a')
+    file.write("Sending order... " + "\n")
+    file.close()
     params = urllib.urlencode({
         "instrument" : str(instrument),
         "units" : units,
@@ -43,6 +46,9 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
     params = urllib.urlencode({"stopLoss": Stop_Loss})
+    file = open(name,'a')
+    file.write("Updating Stop Loss ... " + "\n")
+    file.close()
     conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
     response = conn.getresponse().read()
     file = open(name,'a')
@@ -127,6 +133,8 @@ while True:
             for positions in data2["positions"]:
                 if positions["instrument"] == Sec[i]:
                     Open_Units = positions["units"]
+
+
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=5&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
@@ -154,12 +162,12 @@ while True:
                 SL = round(M5Close(0) + lst_ATR[i] + 0.00001,5)
                 TP = round(M5Close(0) - lst_ATR[i]*3 - 0.00001,5)
                 OpenOrder(229783, Sec[i], 100, "market", "sell", TP, SL)
-                lst_SL[i] = M5Close(0) + lst_ATR[i] + 0.00001
+                lst_SL[i] = SL
             elif M5Close(0) > S1[i] and M5Close(1) > S1[i] and M5Close(2) < S1[i]:
                 SL = round(M5Close(0) - lst_ATR[i] - 0.00001,5)
                 TP = round(M5Close(0) + lst_ATR[i]*3 + 0.00001,5)
                 OpenOrder(229783, Sec[i], 100, "market", "buy", TP, SL)
-                lst_SL[i] = M5Close(0) - lst_ATR[i] - 0.00001
+                lst_SL[i] = SL
         lst_price[i] = M5Close(0)
         time.sleep(1)
 
@@ -169,27 +177,32 @@ while True:
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
+        file = open(name,'a')
+        file.write("Positions... " + "\n")
+        file.write(chk)
+        file.close()
+
         if chk.find("id") != -1:
             for positions in data2["trades"]:
                 trd_ID = positions["id"]
-                trd_entry = positions["price"]
+                trd_entry = float(positions["price"])
                 trd_side = positions["side"]
                 if trd_side == "buy":
-                    if lst_price[i] > float(trd_entry) + lst_ATR[i]/2:
-                        SL = trd_entry + 0.0001
+                    if lst_price[i] > trd_entry + lst_ATR[i]/2:
+                        SL = round(trd_entry + 0.00001,5)
                         UpdateStopLoss(229783, trd_ID, SL)
                         lst_SL[i] = SL                   
-                    elif lst_price[i] > float(trd_entry) + lst_ATR[i]:
-                        SL = max(lst_SL, lst_price[i] - lst_ATR[i])
+                    elif lst_price[i] > trd_entry + lst_ATR[i]:
+                        SL = round(max(lst_SL, lst_price[i] - lst_ATR[i]) + 0.00001,5)
                         UpdateStopLoss(229783, trd_ID, SL)
                         lst_SL[i] = SL
                 elif trd_side == "sell":
-                    if lst_price[i] < float(trd_entry) - lst_ATR[i]/2:
-                        SL = trd_entry - 0.0001
+                    if lst_price[i] < trd_entry - lst_ATR[i]/2:
+                        SL = round(trd_entry - 0.00001,5)
                         UpdateStopLoss(229783, trd_ID, SL)
                         lst_SL[i] = SL
-                    elif lst_price[i] < float(trd_entry) - lst_ATR[i]:
-                        SL = min(lst_SL, lst_price[i] + lst_ATR[i])
+                    elif lst_price[i] < trd_entry - lst_ATR[i]:
+                        SL = round(min(lst_SL, lst_price[i] + lst_ATR[i]) - 0.00001,5)
                         UpdateStopLoss(229783, trd_ID, SL)
                         lst_SL[i] = SL
     

@@ -1060,7 +1060,7 @@ def Stochastic(high, low, close, kperiod, dperiod, t):
     highh = HighestHigh(high,kperiod)
     Stoch_K = np.zeros((1,len(close)))
     for i in range(0, len(close)):
-        Stoch_K[0, i] = float((close[i]-loww[0,i])/(highh[0,i]-loww[0,i]))
+        Stoch_K[0, i] = float((close[i]-loww[0,i])/(highh[0,i]-loww[0,i] +0.0000000000001))
     Stoch_D = pMa(Stoch_K[0,:],dperiod)
     if t == "K":
         return Stoch_K[0, :]

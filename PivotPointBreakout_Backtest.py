@@ -50,16 +50,16 @@ tf2 = "M5"
 tf3 = "M15"
 # mc = pClose(Ticker, tf2, st,  en)
 Portfolio = np.zeros((1,5000))
-en = FindDateRange(st, 24*12)
+en = FindDateRange(st, 2)
 Account = 100
 while np.busday_count(en, end_dt) > 20:
 
     # for p in range(0,15):
     PP = 0.0
     R1 = [0,0,0,0,0]
-    R2 = [0,0,0,0,0]
+    # R2 = [0,0,0,0,0]
     S1 = [0,0,0,0,0]
-    S2 = [0,0,0,0,0]
+    # S2 = [0,0,0,0,0]
 
     Ticker = Sec[5]
     o = pOpen(Ticker, tf1, st, en)
@@ -68,15 +68,15 @@ while np.busday_count(en, end_dt) > 20:
     c = pClose(Ticker, tf1, st,  en)
     d = pDate(Ticker, tf1, st, en)
 
-    m15h = pHigh(Ticker, tf3, st,  en)
-    m15l = pLow(Ticker, tf3, st,  en)
-    m15c = pClose(Ticker, tf3, st,  en)
-    m15d = pDate(Ticker, tf3,st,en)
+    # m15h = pHigh(Ticker, tf3, st,  en)
+    # m15l = pLow(Ticker, tf3, st,  en)
+    # m15c = pClose(Ticker, tf3, st,  en)
+    # m15d = pDate(Ticker, tf3,st,en)
 
-    mh = pHigh(Ticker, tf2, st,  en)
-    ml = pLow(Ticker, tf2, st,  en)
-    mc = pClose(Ticker, tf2, st,  en)
-    md = pDate(Ticker, tf2,st,en)
+    # mh = pHigh(Ticker, tf2, st,  en)
+    # ml = pLow(Ticker, tf2, st,  en)
+    # mc = pClose(Ticker, tf2, st,  en)
+    # md = pDate(Ticker, tf2,st,en)
 
     # m5MA = pMa(mc,150)
     # m15MA = pMa(m15c,150)
@@ -85,35 +85,35 @@ while np.busday_count(en, end_dt) > 20:
     # m5UB = []
     # m5LB = []
 
-    m5R2 = []
-    m5R1 = []
-    m5PP = []
-    m5S1 = []
-    m5S2 = []
-    m5ATR = []
-    ub = 0.0
-    lb = 0.0
-    j = 0
-    k = 0
-    atr = 0.0
-    atr = pATR(m15c,m15h,m15l,14)
-    for i in range(0,len(mc)):
-        if j +1 <= len(d) -1:
-            if md[i] == d[j + 1]:
-                j = j + 1
-        PP = (h[j] + l[j] + c[j])/3
-        m5R1.append(float(2*PP - l[j]))
-        m5PP.append(float(PP))
-        m5S1.append(float(2*PP - h[j]))
+    # m5R2 = []
+    # m5R1 = []
+    # m5PP = []
+    # m5S1 = []
+    # m5S2 = []
+    # m5ATR = []
+    # ub = 0.0
+    # lb = 0.0
+    # j = 0
+    # k = 0
+    # atr = 0.0
+    # atr = pATR(m15c,m15h,m15l,14)
+    # for i in range(0,len(mc)):
+    #     if j +1 <= len(d) -1:
+    #         if md[i] == d[j + 1]:
+    #             j = j + 1
+    #     PP = (h[j] + l[j] + c[j])/3
+    #     m5R1.append(float(2*PP - l[j]))
+    #     m5PP.append(float(PP))
+    #     m5S1.append(float(2*PP - h[j]))
 
-        if k +1 <= len(m15d) -1:
-            if md[i] == m15d[k + 1]:
-                k = k + 1
+    #     if k +1 <= len(m15d) -1:
+    #         if md[i] == m15d[k + 1]:
+    #             k = k + 1
         
-        # ub = m15MA[k] + 1*m15SD[k]
-        # lb = m15MA[k] - 1*m15SD[k]
-        m5ATR.append(atr[k])
-        # m5MA.append(ub)
+    #     # ub = m15MA[k] + 1*m15SD[k]
+    #     # lb = m15MA[k] - 1*m15SD[k]
+    #     m5ATR.append(atr[k])
+    #     # m5MA.append(ub)
         # m5LB.append(lb)
 
     # plt.plot(mc)
@@ -166,11 +166,11 @@ while np.busday_count(en, end_dt) > 20:
 
     for i in range(0,len(mc)):
 
-        x = md[i]
-        x1 = str(x)
-        y2 = x1[11:]
-        z2 = y2[:len(y2)-14]
-        if float(z2) >= 11 and float(z2) <= 18 :
+        # x = md[i]
+        # x1 = str(x)
+        # y2 = x1[11:]
+        # z2 = y2[:len(y2)-14]
+        # if float(z2) >= 11 and float(z2) <= 18 :
             # if mc[i-1] > m5R1[i-1]:
             #     UpperPP = mc[i-1]*2
             #     LowerPP = m5PP[i-1]

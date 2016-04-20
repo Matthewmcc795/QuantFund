@@ -9,6 +9,29 @@ import time
 import sys
 import xml.etree.ElementTree as ET
 
+import numpy as np
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+
+
+mu, sigma = 100, 15
+x = mu + sigma*np.random.randn(10000)
+
+# the histogram of the data
+n, bins, patches = plt.hist(x, 5, normed=1, facecolor='green', alpha=0.75)
+
+# add a 'best fit' line
+y = mlab.normpdf( bins, mu, sigma)
+l = plt.plot(bins, y, 'r--', linewidth=1)
+
+plt.xlabel('Smarts')
+plt.ylabel('Probability')
+plt.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=100,\ \sigma=15$')
+plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+
+plt.show()
+
 # r = requests.get("http://www.forexfactory.com/ffcal_week_this.xml")
 # root = ET.fromstring(r.text)
 # dat_Fila = []
@@ -73,35 +96,40 @@ import xml.etree.ElementTree as ET
 # 		file.write("Forecast: " + str(dat_Fila[i][5]) + "\n" + "\n")
 
 # file.close()
+Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
+for i in range(0,5):
+#     h = {'Authorization' : LIVE_ACCESS_TOKEN}
+#     url = "https://api-fxtrade.oanda.com/v1/accounts/229783/positions"
+#     r = requests.get(url, headers=h)     
+#     data2 = json.loads(r.text)
+#     chk = str(data2)
+#     if chk.find("instrument") == -1:
+#         Open_Units = 0 
+#     else:
+#         Open_Units = 0
+#         for positions in data2["positions"]:
+#             print positions
+#             if positions["instrument"] == Sec[i]:
+#                 print positions["instrument"]
+#                 Open_Units = positions["units"]
+#                 print positions["units"]
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/229783/trades?instrument=" + str(Sec[i])
+    r = requests.get(url, headers=h)     
+    data2 = json.loads(r.text)
+    chk = str(data2)
+    print chk
+    print chk.find("id")
+    if chk.find("id") != -1:
+        for positions in data2["trades"]:
+            print positions
+            trd_ID = positions["id"]
+            trd_entry = positions["price"]
+            trd_side = positions["side"]
+            print trd_ID
+            print trd_entry
+            print trd_side
 
-h = {'Authorization' : LIVE_ACCESS_TOKEN}
-url = "https://api-fxtrade.oanda.com/v1/accounts/229783/trades?instrument=EUR_USD"
-r = requests.get(url, headers=h)     
-data2 = json.loads(r.text)
-chk = str(data2)
-if chk.find("id") != -1:
-    for positions in data2["trades"]:
-        trd_ID = positions["id"]
-        trd_entry = positions["price"]
-        trd_side = positions["side"]
-        if trd_side == "buy":
-            if lst_price[i] > float(trd_entry) + lst_ATR[i]/2:
-                SL = trd_entry + 0.0001
-                UpdateStopLoss(229783, trd_ID, SL)
-                lst_SL[i] = SL                   
-            elif lst_price[i] > float(trd_entry) + lst_ATR[i]:
-                SL = max(lst_SL, lst_price[i] - lst_ATR[i])
-                UpdateStopLoss(229783, trd_ID, SL)
-                lst_SL[i] = SL
-        elif trd_side == "sell":
-            if lst_price[i] < float(trd_entry) - lst_ATR[i]/2:
-                SL = trd_entry - 0.0001
-                UpdateStopLoss(229783, trd_ID, SL)
-                lst_SL[i] = SL
-            elif lst_price[i] < float(trd_entry) - lst_ATR[i]:
-                SL = min(lst_SL, lst_price[i] + lst_ATR[i])
-                UpdateStopLoss(229783, trd_ID, SL)
-                lst_SL[i] = SL
 
 # from datetime import datetime, timedelta
 # dt =  datetime.now()
