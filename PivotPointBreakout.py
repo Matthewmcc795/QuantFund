@@ -121,6 +121,7 @@ while True:
         first_run = False
 
     for i in range(0,5):
+        time.sleep(1)
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url = "https://api-fxtrade.oanda.com/v1/accounts/229783/positions"
         r = requests.get(url, headers=h)     
@@ -134,7 +135,7 @@ while True:
                 if positions["instrument"] == Sec[i]:
                     Open_Units = positions["units"]
 
-
+        time.sleep(1)
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=5&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
@@ -147,7 +148,7 @@ while True:
             return data["candles"][4 - index][STRC]
         
         lst_ATR[i] = (lst_ATR[i]*13 + TR(MHigh(0), MLow(0), MClose(1)))/14
-
+        time.sleep(1)
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=3&candleFormat=midpoint&granularity=M5"
         r = requests.get(url, headers=h)     
@@ -169,7 +170,6 @@ while True:
                 OpenOrder(229783, Sec[i], 100, "market", "buy", TP, SL)
                 lst_SL[i] = SL
         lst_price[i] = M5Close(0)
-        time.sleep(1)
 
     for i in range(0,5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
@@ -179,8 +179,9 @@ while True:
         chk = str(data2)
         file = open(name,'a')
         file.write("Positions... " + "\n")
-        file.write(chk)
+        file.write(chk + "\n")
         file.close()
+        time.sleep(1)
 
         if chk.find("id") != -1:
             for positions in data2["trades"]:
