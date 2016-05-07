@@ -1037,7 +1037,10 @@ def HighestHigh(h,period):
         hh = h[i]
         for j in range(0,period):
             hh = max(hh,h[i - period + j])
-        HHData[0, i] = hh
+            if i < period +1:
+                HHData[0, i] = h[i]
+            else:
+                HHData[0, i] = hh
     return HHData
 
 def LowestLow(l,period):
@@ -1046,7 +1049,12 @@ def LowestLow(l,period):
         ll = l[i]
         for j in range(0,period):
             ll = min(ll,l[i - period + j])
-        LLData[0, i] = ll
+            if i < period +1:
+                LLData[0, i] = l[i]
+                # print l[i]
+            else:
+                LLData[0, i] = ll
+                # print ll
     return LLData
 
 def ROC(close,period):
@@ -1059,8 +1067,9 @@ def Stochastic(high, low, close, kperiod, dperiod, t):
     loww = LowestLow(low,kperiod)
     highh = HighestHigh(high,kperiod)
     Stoch_K = np.zeros((1,len(close)))
+    # print highh[0,:], loww[0,:]
     for i in range(0, len(close)):
-        Stoch_K[0, i] = float((close[i]-loww[0,i])/(highh[0,i]-loww[0,i] +0.0000000000001))
+        Stoch_K[0, i] = float((close[i]-max(loww[0,i],low[i])))/((max(highh[0,i],high[i])-max(loww[0,i],low[i]) + 0.000000001))
     Stoch_D = pMa(Stoch_K[0,:],dperiod)
     if t == "K":
         return Stoch_K[0, :]
@@ -1074,6 +1083,7 @@ def TypicalPrice(high, low, close):
 def CCI(high, low, close, period, constant):
     Typ = TypicalPrice(high, low, close)
     TypMA = pMa(Typ,period)
+
     TypSD = pStd(Typ,period)
     CCI_Data = np.zeros((1,len(close)))
     for i in range(0, len(close)):
@@ -1082,7 +1092,7 @@ def CCI(high, low, close, period, constant):
 
 def SimpleRegression(x_array, y_array):
     SR_Data = []
-    n = len(x_array)
+    n = x_array.size
     XY = x_array*y_array
     XX = x_array*x_array
     EX = sum(x_array)

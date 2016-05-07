@@ -67,6 +67,12 @@ def TR(h,l,yc):
         TR = z
     return TR
 
+def order_is_valid(pr, SL, TP):
+    if abs(TP- pr)/abs(SL- pr)) < 2.835 and abs(TP- pr)/abs(SL- pr) >0.485 and abs(TP- pr) < 78 and abs(TP- pr) > 25 and abs(SL- pr) < 30 and abs(SL- pr) > 5:
+        return True
+    else:
+        return False
+
 while True:
     while True:
         if datetime.now() > dt:
@@ -80,10 +86,6 @@ while True:
             url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=D"
             r = requests.get(url, headers=h)     
             data = json.loads(r.text)
-            def Date(index):
-                return data["candles"][1-index][STRT]
-            def Open(index):
-                return data["candles"][1-index][STRO]
             def High(index):
                 return data["candles"][1-index][STRH]
             def Low(index):
@@ -162,12 +164,14 @@ while True:
             if M5Close(0) < R1[i] and M5Close(1) < R1[i] and M5Close(2) > R1[i]:
                 SL = round(M5Close(0) + lst_ATR[i] + 0.00001,5)
                 TP = round(M5Close(0) - lst_ATR[i]*3 - 0.00001,5)
-                OpenOrder(229783, Sec[i], 100, "market", "sell", TP, SL)
+                if order_is_valid(M5Close(0), SL, TP):
+                    OpenOrder(229783, Sec[i], 200, "market", "sell", TP, SL)
                 lst_SL[i] = SL
             elif M5Close(0) > S1[i] and M5Close(1) > S1[i] and M5Close(2) < S1[i]:
                 SL = round(M5Close(0) - lst_ATR[i] - 0.00001,5)
                 TP = round(M5Close(0) + lst_ATR[i]*3 + 0.00001,5)
-                OpenOrder(229783, Sec[i], 100, "market", "buy", TP, SL)
+                if order_is_valid(M5Close(0), SL, TP):
+                    OpenOrder(229783, Sec[i], 200, "market", "sell", TP, SL)
                 lst_SL[i] = SL
         lst_price[i] = M5Close(0)
 

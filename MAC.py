@@ -8,46 +8,104 @@ from datetime import datetime, timedelta
 import time
 import sys
 
-Sec = []
-Sec.append("EUR_USD")
-Sec.append("GBP_USD")
-Sec.append("USD_CAD")
-Sec.append("AUD_USD")
-Sec.append("NZD_USD")
-
+Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
+hr = [2,6,10,14,18,22]
 Bars = 50
-SL = 0.0100
-TP = 0.0050
-dt = datetime.strptime('February 8 16 21:00', '%B %d %y %H:%M')
+SL = 0.0050
 n = 50
 name = "MAC_Log.txt"
+account_id = 406207
+first_run = True
+
+dt =  datetime.now()
+dt = dt.replace(minute=3, second=0,microsecond=1)
+while not dt.hour in hr:
+    print dt.hour
+    dt = dt + timedelta(hours=1)
+print dt.hour
+file = open(name,'a')
+file.write("Starting at " + dt + "\n")
+file.close()
+
+def OpenOrder(Account_Num, instrument, units, order_type, price, order_side, Take_Profit, Stop_Loss):
+    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+    file = open(name,'a')
+    file.write("Sending order... " + "\n")
+    file.close()
+    params = urllib.urlencode({
+        "instrument" : str(instrument),
+        "units" : units,
+        "type" : order_type,
+        "price" : price
+        "side" : order_side,
+        "takeProfit": Take_Profit,
+        "stopLoss": Stop_Loss
+    })
+    conn.request("POST", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
+    response = conn.getresponse().read()
+    file = open(name,'a')
+    file.write(response + "\n")
+    file.close()
+
+def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
+    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+    params = urllib.urlencode({"stopLoss": Stop_Loss})
+    file = open(name,'a')
+    file.write("Updating Stop Loss ... " + "\n")
+    file.close()
+    conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
+    response = conn.getresponse().read()
+    file = open(name,'a')
+    file.write(response + "\n")
+    file.close()
+
+def CloseOrders(Account_Num, order_id):
+    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+    file = open(name,'a')
+    file.write("Sending order... " + "\n")
+    file.close()
+    params = urllib.urlencode({
+        "order_id" : str(order_id)
+    })
+    conn.request("DELETE", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
+    response = conn.getresponse().read()
+    file = open(name,'a')
+    file.write(response + "\n")
+    file.close()
+
 while True:
 
     while True:
         if datetime.now() > dt:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Running script\n")
-            file.close()
+            lst_dt = dt
             break 
         time.sleep(1)
 
-    for i in range(0,5):
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " Getting data for " + Sec[i] + "\n")
-        file.close()
-        h = {'Authorization' : DEMO_ACCESS_TOKEN}
-        url =   "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
+    # Clear all unfilled limit orders
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/orders?instrument=" + str(Sec[i])
+    r = requests.get(url, headers=h)     
+    dat2 = json.loads(r.text)
+    chk = str(data2)
+    file = open(name,'a')
+    file.write(chk + "\n")
+    file.close()
+    if chk.find("id") != -1:
+        for positions in data2["orders"]:
+            file = open(name,'a')
+            file.write("Closing all unfilled orders \n")
+            file.close()
+            CloseOrders(account_id, data2["id"])
+
+    for i in range(0,5): # Generate signals and execute trades
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
 
-        def Date(index):
-            return data["candles"][49 - index][STRT]
-        def Open(index):
-            return data["candles"][49 - index][STRO]
-        def High(index):
-            return data["candles"][49 - index][STRH]
-        def Low(index):
-            return data["candles"][49 - index][STRL]
         def Close(index):
             return data["candles"][49 - index][STRC]
 
@@ -66,11 +124,8 @@ while True:
 
         Upper_Band = SMA + 2*sd
         Lower_Band = SMA - 2*sd
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " Checking open orders...\n")
-        file.close()
-        h = {'Authorization' : DEMO_ACCESS_TOKEN}
-        url = "https://api-fxpractice.oanda.com/v1/accounts/5801231/positions"
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/positions"
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
@@ -81,64 +136,45 @@ while True:
             for positions in data2["positions"]:
                 if positions["instrument"] == Sec[i]:
                     Open_Units = positions["units"]
-        file = open(name,'a')
-        file.write(str(datetime.now()) + " " + str(Open_Units) + " Units of " + str(Sec[i]) + "\n")
-        file.close()
-        if Close(0) > Upper_Band and Close(1) > Upper_Band and Open_Units == 0:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Selling 200,000 of " + str(Sec[i]) + "\n")
-            file.write(str(datetime.now()) + " Current Price is " + str(Close(0)) + "\n")
-            file.write(str(datetime.now()) + " TP is " + str(round(Close(0) - TP - 0.0001,5)) + "\n")
-            file.write(str(datetime.now()) + " SL is " + str(round(Close(0) + SL + 0.0001,5)) + "\n")
-            file.close() 
-            conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
-            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": DEMO_ACCESS_TOKEN}
-            params = urllib.urlencode({
-                "instrument" : str(Sec[i]),
-                "units" : 200000,
-                "type" : "market",
-                "side" : "sell",
-                "takeProfit": round(Close(0) - TP,4),
-                "stopLoss": round(Close(0) + SL,4)
-            })
-            conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
-            response = conn.getresponse().read()
-            file = open(name,'a')
-            file.write(response + "\n")
-            file.close()
-        elif Close(0) < Lower_Band and Close(1) < Lower_Band and Open_Units == 0:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Buying 200,000 of " + str(Sec[i]) + "\n")
-            file.write(str(datetime.now()) + " Current Price is " + str(Close(0)) + "\n")
-            file.write(str(datetime.now()) + " TP is " + str(round(Close(0) + TP - 0.0001,5)) + "\n")
-            file.write(str(datetime.now()) + " SL is " + str(round(Close(0) - SL + 0.0001,5)) + "\n")
-            file.close() 
-            conn = httplib.HTTPSConnection("api-fxpractice.oanda.com")
-            headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": DEMO_ACCESS_TOKEN}
-            params = urllib.urlencode({
-                "instrument" : str(Sec[i]),
-                "units" : 200000,
-                "type" : "market",
-                "side" : "buy",
-                "takeProfit": round(Close(0) + TP,4),
-                "stopLoss": round(Close(0) - SL,4)
-            })
-            conn.request("POST", "/v1/accounts/5801231/orders", params, headers)
-            response = conn.getresponse().read()
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " " + str(response) + "\n")
-            file.close()
-        elif Open_Units > 0:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " Positions still open for " + str(Sec[i]) + "\n")
-            file.close()
-        else:
-            file = open(name,'a')
-            file.write(str(datetime.now()) + " No trades available for " + str(Sec[i]) + "\n")
-            file.close()
 
-    dt = datetime.now() + timedelta(hours=4)
-    dt = dt.replace(minute=0,second=0,microsecond=1)
+        if Close(0) > Upper_Band and Close(1) > Upper_Band and Open_Units == 0:
+            pr_entry = Close(0) + SL/2
+            OpenOrder(account_id, Sec[i], 100, "limit", price ,"sell", Close(0) - 1.5*SL, Close(0) + SL)
+        elif Close(0) < Lower_Band and Close(1) < Lower_Band and Open_Units == 0:
+            pr_entry = Close(0) - SL/2
+            OpenOrder(account_id, Sec[i], 100, "limit", price,"buy", Close(0) + 1.5*SL , Close(0) - SL)
+        lst_price[i] = Close(0)
+    
+    for i in range(0,5): # Update stop losses
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/trades?instrument=" + str(Sec[i])
+        r = requests.get(url, headers=h)     
+        data2 = json.loads(r.text)
+        chk = str(data2)
+        file = open(name,'a')
+        file.write("Positions... " + "\n")
+        file.write(chk + "\n")
+        file.close()
+        time.sleep(1)
+
+        if chk.find("id") != -1:
+            for positions in data2["trades"]:
+                trd_ID = positions["id"]
+                trd_entry = float(positions["price"])
+                trd_side = positions["side"]
+                if trd_side == "buy":
+                    if lst_price[i] > trd_entry + 0.0050:
+                        SL = round(trd_entry + 0.0025,5)
+                        UpdateStopLoss(account_id, trd_ID, SL)
+                        lst_SL[i] = SL                   
+                elif trd_side == "sell":
+                    if lst_price[i] < trd_entry - 0.050:
+                        SL = round(trd_entry - 0.0025,5)
+                        UpdateStopLoss(account_id, trd_ID, SL)
+                        lst_SL[i] = SL
+
+    dt = lst_dt + timedelta(hours=4)
+    dt = dt.replace(minute=3, second=0, microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
     file.close()
