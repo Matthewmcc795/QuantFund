@@ -18,13 +18,14 @@ account_id = 406207
 first_run = True
 
 dt =  datetime.now()
+dt = dt + timedelta(hours=1)
 dt = dt.replace(minute=3, second=0,microsecond=1)
 while not dt.hour in hr:
     print dt.hour
     dt = dt + timedelta(hours=1)
 print dt.hour
 file = open(name,'a')
-file.write("Starting at " + dt + "\n")
+file.write("Starting at " + str(dt) + "\n")
 file.close()
 
 def OpenOrder(Account_Num, instrument, units, order_type, price, order_side, Take_Profit, Stop_Loss):
@@ -37,7 +38,7 @@ def OpenOrder(Account_Num, instrument, units, order_type, price, order_side, Tak
         "instrument" : str(instrument),
         "units" : units,
         "type" : order_type,
-        "price" : price
+        "price" : price,
         "side" : order_side,
         "takeProfit": Take_Profit,
         "stopLoss": Stop_Loss
@@ -80,7 +81,6 @@ while True:
 
     while True:
         if datetime.now() > dt:
-            lst_dt = dt
             break 
         time.sleep(1)
 
@@ -173,7 +173,7 @@ while True:
                         UpdateStopLoss(account_id, trd_ID, SL)
                         lst_SL[i] = SL
 
-    dt = lst_dt + timedelta(hours=4)
+    dt = dt + timedelta(hours=4)
     dt = dt.replace(minute=3, second=0, microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
