@@ -85,22 +85,23 @@ while True:
         time.sleep(1)
 
     # Clear all unfilled limit orders
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/orders?instrument=" + str(Sec[i])
-    r = requests.get(url, headers=h)     
-    dat2 = json.loads(r.text)
-    chk = str(data2)
-    file = open(name,'a')
-    file.write(chk + "\n")
-    file.close()
-    if chk.find("id") != -1:
-        for positions in data2["orders"]:
-            file = open(name,'a')
-            file.write("Closing all unfilled orders \n")
-            file.close()
-            CloseOrders(account_id, data2["id"])
+    for i in range(0,5):
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/orders?instrument=" + str(Sec[i])
+        r = requests.get(url, headers=h)     
+        dat2 = json.loads(r.text)
+        chk = str(data2)
+        file = open(name,'a')
+        file.write(chk + "\n")
+        file.close()
+        if chk.find("id") != -1:
+            for positions in data2["orders"]:
+                file = open(name,'a')
+                file.write("Closing all unfilled orders \n")
+                file.close()
+                CloseOrders(account_id, data2["id"])
 
-    for i in range(0,5): # Generate signals and execute trades
+# Generate signals and execute trades
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
         r = requests.get(url, headers=h)     
