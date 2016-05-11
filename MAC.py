@@ -87,7 +87,7 @@ while True:
     # Clear all unfilled limit orders
     for i in range(5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/orders?instrument=" + str(Sec[i])
+        url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/orders?instrument=" + str(Sec[i])
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
@@ -125,7 +125,7 @@ while True:
         Upper_Band = SMA + 2*sd
         Lower_Band = SMA - 2*sd
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/positions"
+        url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/positions"
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
@@ -147,7 +147,7 @@ while True:
     
     for i in range(5): # Update stop losses
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/trades?instrument=" + str(Sec[i])
+        url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/trades?instrument=" + str(Sec[i])
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
