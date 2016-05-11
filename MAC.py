@@ -85,11 +85,11 @@ while True:
         time.sleep(1)
 
     # Clear all unfilled limit orders
-    for i in range(0,5):
+    for i in range(5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/orders?instrument=" + str(Sec[i])
         r = requests.get(url, headers=h)     
-        dat2 = json.loads(r.text)
+        data2 = json.loads(r.text)
         chk = str(data2)
         file = open(name,'a')
         file.write(chk + "\n")
@@ -101,7 +101,6 @@ while True:
                 file.close()
                 CloseOrders(account_id, data2["id"])
 
-# Generate signals and execute trades
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
         r = requests.get(url, headers=h)     
@@ -115,12 +114,12 @@ while True:
         sd = 0.0
         ssd = 0.0
 
-        for j in range(0,20):
-            aavg = Close(j) + aavg
+        for j in range(20):
+            aavg += Close(j)
         SMA = aavg/(20)
 
-        for j in range(0,20):
-            ssd = (Close(j) - SMA)**2 +ssd
+        for j in range(20):
+            ssd += (Close(j) - SMA)**2
         sd = (ssd/(19))**(0.5)
 
         Upper_Band = SMA + 2*sd
@@ -146,7 +145,7 @@ while True:
             OpenOrder(account_id, Sec[i], 100, "limit", price,"buy", Close(0) + 1.5*SL , Close(0) - SL)
         lst_price[i] = Close(0)
     
-    for i in range(0,5): # Update stop losses
+    for i in range(5): # Update stop losses
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url = "https://api-fxtrade.oanda.com/v1/accounts/" & account_id & "/trades?instrument=" + str(Sec[i])
         r = requests.get(url, headers=h)     

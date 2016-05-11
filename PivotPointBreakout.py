@@ -183,10 +183,6 @@ while True:
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
-        file = open(name,'a')
-        file.write("Positions... " + "\n")
-        file.write(chk + "\n")
-        file.close()
         time.sleep(1)
 
         if chk.find("id") != -1:
