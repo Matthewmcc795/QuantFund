@@ -1,7 +1,7 @@
 import requests
 import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, DEMO_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, LIVe_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import httplib
 import urllib
 from datetime import datetime, timedelta
@@ -9,7 +9,8 @@ import time
 import sys
 
 Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
-hr = [2,6,10,14,18,22]
+# hr = [2,6,10,14,18,22]
+hr = [0,4,8,12,16,20]
 Bars = 50
 SL = 0.0050
 n = 50
