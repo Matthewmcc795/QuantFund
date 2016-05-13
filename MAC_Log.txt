@@ -47,3 +47,49 @@
 2016-02-08 08:32:37.390000 Waiting until 2016-02-08 12:00:00.000001
 Starting at 2016-05-09 02:03:00.000001
 Starting at 2016-05-12 00:03:00.000001
+{u'orders': []}
+{u'orders': []}
+{u'orders': []}
+{u'orders': []}
+Sending order... 
+{
+	"code" : 2,
+	"message" : "Missing required argument: expiry",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+{u'orders': []}
+Sending order... 
+{
+	"code" : 2,
+	"message" : "Missing required argument: expiry",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+{u'orders': []}
+{u'orders': []}
+{u'orders': []}
+Sending order... 
+{
+	"code" : 2,
+	"message" : "Missing required argument: expiry",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+{u'orders': []}
+Sending order... 
+{
+	"code" : 2,
+	"message" : "Missing required argument: expiry",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+{u'orders': []}
+{u'orders': []}
+{u'orders': []}
+Positions... 
+{u'trades': []}
+Positions... 
+{u'trades': []}
+Positions... 
+{u'trades': []}
+Positions... 
+{u'trades': []}
+Positions... 
+{u'trades': []}
