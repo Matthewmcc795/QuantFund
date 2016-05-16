@@ -72,6 +72,10 @@ def order_is_valid(pr, SL, TP):
         if abs(TP- pr) < 78 and abs(TP- pr) > 25:
             if abs(SL- pr) < 30 and abs(SL- pr) > 5:
                 return True
+            else:
+                return False
+        else:
+            return False
     else:
         return False
 
@@ -173,7 +177,7 @@ while True:
                 SL = round(M5Close(0) - lst_ATR[i] - 0.00001,5)
                 TP = round(M5Close(0) + lst_ATR[i]*3 + 0.00001,5)
                 if order_is_valid(M5Close(0), SL, TP):
-                    OpenOrder(229783, Sec[i], 200, "market", "sell", TP, SL)
+                    OpenOrder(229783, Sec[i], 200, "market", "buy", TP, SL)
                 lst_SL[i] = SL
         lst_price[i] = M5Close(0)
 
