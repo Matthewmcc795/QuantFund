@@ -32,9 +32,6 @@ file.close()
 def OpenOrder(Account_Num, instrument, units, order_type, price, order_side, Take_Profit, Stop_Loss):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-    file = open(name,'a')
-    file.write("Sending order... " + "\n")
-    file.close()
     params = urllib.urlencode({
         "instrument" : str(instrument),
         "units" : units,
@@ -54,9 +51,6 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
     params = urllib.urlencode({"stopLoss": Stop_Loss})
-    file = open(name,'a')
-    file.write("Updating Stop Loss ... " + "\n")
-    file.close()
     conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
     response = conn.getresponse().read()
     file = open(name,'a')
@@ -66,9 +60,6 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
 def CloseOrders(Account_Num, order_id):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-    file = open(name,'a')
-    file.write("Sending order... " + "\n")
-    file.close()
     params = urllib.urlencode({
         "order_id" : str(order_id)
     })
@@ -154,10 +145,6 @@ while True:
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
-        file = open(name,'a')
-        file.write("Positions... " + "\n")
-        file.write(chk + "\n")
-        file.close()
         time.sleep(1)
 
         if chk.find("id") != -1:

@@ -15,12 +15,13 @@ import pandas as pd
 from matplotlib.finance import candlestick2_ochl
 import matplotlib.mlab as mlab
 
-Sec = []
-Sec.append("EUR_USD")
-Sec.append("GBP_USD")
-Sec.append("USD_CAD")
-Sec.append("AUD_USD")
-Sec.append("NZD_USD")
+sec = input("Select Currency:")
+# Sec = []
+# Sec.append("EUR_USD")
+# Sec.append("GBP_USD")
+# Sec.append("USD_CAD")
+# Sec.append("AUD_USD")
+# Sec.append("NZD_USD")
 
 Portfolio = np.zeros((len(Sec)-1,1900))
 buy_win_stoch = np.zeros((len(Sec)-1,1900))

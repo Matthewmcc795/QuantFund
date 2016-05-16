@@ -52,10 +52,12 @@ while True:
         if datetime.now() > dt_PPB:
             lst_dt_PPB = dt_PPB
             PivotPointBreakout()
+            # Some other functions here to run the script
             dt = lst_dt + timedelta(minutes=5)
-            dt = dt.replace(second=0,microsecond=1)
+            dt = dt.replace(second=0,microsecosnd=1)
         time.sleep(1)
-    if
+    # if
+        #Repeat if structurure owith array of different start time. In the down time run price handler. 
 
 
 

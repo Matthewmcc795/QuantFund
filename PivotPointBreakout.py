@@ -69,8 +69,8 @@ def TR(h,l,yc):
 
 def order_is_valid(pr, SL, TP):
     if abs(TP- pr)/abs(SL- pr) < 2.835 and abs(TP- pr)/abs(SL- pr) > 0.485:
-        if abs(TP- pr) < 78 and abs(TP- pr) > 25:
-            if abs(SL- pr) < 30 and abs(SL- pr) > 5:
+        if abs(TP- pr) < 0.0078 and abs(TP- pr) > 0.0025:
+            if abs(SL- pr) < 0.0030 and abs(SL- pr) > 0.0005:
                 return True
             else:
                 return False
