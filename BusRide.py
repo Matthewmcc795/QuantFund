@@ -9,11 +9,11 @@ import time
 import sys
 
 Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
-Account_Num = 836663
+Account_id = 836663
 
 dt =  datetime.now()
-dt = dt.replace(minute=2, second=0,microsecond=1)
-while dt.hour != 21
+dt = dt.replace(minute=2, second=0, microsecond=1)
+while dt.hour != 21:
     dt += timedelta(hours=1)
 name = "BusRide_Log.txt" 
 
@@ -87,7 +87,7 @@ while True:
                 OpenOrder(Account_Num, Sec[i], 100, "market", "buy", buy_tp, SL)
     
         time.sleep(1)
-        
+
     dt += timedelta(hours=24)
     dt = dt.replace(second=0,microsecond=1)
     file = open(name,'a')

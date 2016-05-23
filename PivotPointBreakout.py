@@ -19,7 +19,6 @@ lst_SL = [0,0,0,0,0]
 dt =  datetime.now()
 dt = dt.replace(minute=2, second=0,microsecond=1)
 dt = dt + timedelta(hours=1)
-dt = datetime.strptime('February 18 16  13:52', '%B %d %y %H:%M')
 name = "PPBreakout_Log2.txt" 
 first_run = True
 
