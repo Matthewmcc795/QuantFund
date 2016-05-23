@@ -145,7 +145,16 @@ def Manage_Trades(account_num, sec,mrkt_pr,Strategy):
 	    data2 = json.loads(r.text)
 	    chk = str(data2)
 	    time.sleep(1)
-	    
+
+        if chk.find("instrument") == -1:
+            Open_Units = 0 
+        else:
+            Open_Units = 0
+            for positions in data2["positions"]:
+                if positions["instrument"] == Sec[i]:
+                    Open_Units = positions["units"]	    
+
+
 	    if chk.find("id") != -1:
 	        for positions in data2["trades"]:
 	            trd_ID = positions["id"]

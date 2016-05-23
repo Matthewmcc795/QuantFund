@@ -19,6 +19,7 @@ lst_SL = [0,0,0,0,0]
 dt =  datetime.now()
 dt = dt.replace(minute=2, second=0,microsecond=1)
 dt = dt + timedelta(hours=1)
+dt = datetime.strptime('February 18 16  13:52', '%B %d %y %H:%M')
 name = "PPBreakout_Log2.txt" 
 first_run = True
 
@@ -67,17 +68,17 @@ def TR(h,l,yc):
         TR = z
     return TR
 
-def order_is_valid(pr, SL, TP):
-    if abs(TP- pr)/abs(SL- pr) < 2.835 and abs(TP- pr)/abs(SL- pr) > 0.485:
-        if abs(TP- pr) < 0.0078 and abs(TP- pr) > 0.0025:
-            if abs(SL- pr) < 0.0030 and abs(SL- pr) > 0.0005:
-                return True
-            else:
-                return False
-        else:
-            return False
-    else:
-        return False
+# def order_is_valid(pr, SL, TP):
+#     if abs(TP - pr)/abs(SL - pr) < 2.835 and abs(TP - pr)/abs(SL - pr) > 0.485:
+#         if abs(TP - pr) < 0.0078 and abs(TP - pr) > 0.0005:
+#             if abs(SL - pr) < 0.0030 and abs(SL - pr) > 0.0005:
+#                 return True
+#             else:
+#                 return False
+#         else:
+#             return False
+#     else:
+#         return False
 
 while True:
     while True:
@@ -98,6 +99,7 @@ while True:
                 return data["candles"][1-index][STRL]
             def Close(index):
                 return data["candles"][1-index][STRC]
+            time.sleep(1)
             PP[i] = (High(1) + Low(1) + Close(1))/3
             S1[i] = 2*PP[i] - High(1)
             R1[i] = 2*PP[i] - Low(1)
@@ -145,15 +147,15 @@ while True:
 
         time.sleep(1)
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=5&candleFormat=midpoint&granularity=M15"
+        url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=2&candleFormat=midpoint&granularity=M15"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
         def MHigh(index):
-            return data["candles"][4 - index][STRH]
+            return data["candles"][1 - index][STRH]
         def MLow(index):
-            return data["candles"][4 - index][STRL]
+            return data["candles"][1 - index][STRL]
         def MClose(index):
-            return data["candles"][4 - index][STRC]
+            return data["candles"][1 - index][STRC]
         
         lst_ATR[i] = (lst_ATR[i]*13 + TR(MHigh(0), MLow(0), MClose(1)))/14
         time.sleep(1)
@@ -166,18 +168,24 @@ while True:
         def M5Close(index):
             return data2["candles"][2 - index][STRC]
 
-        if Open_Units == 0 or (dt.hour <= 18 and dt.hour >= 8):
+        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
             if M5Close(0) < R1[i] and M5Close(1) < R1[i] and M5Close(2) > R1[i]:
+                file = open(name,'a')
+                file.write(str("Creating sell order for " + str(sec[i]) + "\n"))
+                file.close()
                 SL = round(M5Close(0) + lst_ATR[i] + 0.00001,5)
                 TP = round(M5Close(0) - lst_ATR[i]*3 - 0.00001,5)
-                if order_is_valid(M5Close(0), SL, TP):
-                    OpenOrder(229783, Sec[i], 200, "market", "sell", TP, SL)
+                # if order_is_valid(M5Close(0), SL, TP):
+                OpenOrder(229783, Sec[i], 200, "market", "sell", TP, SL)
                 lst_SL[i] = SL
             elif M5Close(0) > S1[i] and M5Close(1) > S1[i] and M5Close(2) < S1[i]:
+                file = open(name,'a')
+                file.write(str("Creating sell order for " + str(sec[i]) + "\n"))
+                file.close()
                 SL = round(M5Close(0) - lst_ATR[i] - 0.00001,5)
                 TP = round(M5Close(0) + lst_ATR[i]*3 + 0.00001,5)
-                if order_is_valid(M5Close(0), SL, TP):
-                    OpenOrder(229783, Sec[i], 200, "market", "buy", TP, SL)
+                # if order_is_valid(M5Close(0), SL, TP):
+                OpenOrder(229783, Sec[i], 200, "market", "buy", TP, SL)
                 lst_SL[i] = SL
         lst_price[i] = M5Close(0)
 

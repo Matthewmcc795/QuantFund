@@ -9,11 +9,12 @@ import time
 import sys
 
 Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
-Account_Num = 229783
+Account_Num = 836663
 
 dt =  datetime.now()
 dt = dt.replace(minute=2, second=0,microsecond=1)
-dt = dt + timedelta(hours=1)
+while dt.hour != 21
+    dt += timedelta(hours=1)
 name = "BusRide_Log.txt" 
 
 def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
@@ -39,12 +40,10 @@ def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profi
 while True:
     while True:
         if datetime.now() > dt:
-            lst_dt = dt
             break 
         time.sleep(1)
 
     for i in range(5):
-        time.sleep(1)
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(Account_Num) + "/positions"
         r = requests.get(url, headers=h)     
@@ -73,11 +72,11 @@ while True:
         def Close(index):
             return data["candles"][1-index][STRC]
 
-        lvl_min = round(Open[1],2)
-        lvl_max = round(Open[1],2) + 0.01
+        lvl_min = round(Open(1),2)
+        lvl_max = round(Open(1),2) + 0.01
         pp = (High(1) + Low(1) + Close(1))/3
-        sell_tp = 2*PP[i] - High(1)
-        buy_tp = 2*PP[i] - Low(1)
+        sell_tp = 2*pp - High(1)
+        buy_tp = 2*pp - Low(1)
 
         if Open_Units == 0:
             if Open(1) > lvl_min and Close(1) < lvl_min:
@@ -87,7 +86,9 @@ while True:
                 SL = round(Open(1) + 0.00001,5)
                 OpenOrder(Account_Num, Sec[i], 100, "market", "buy", buy_tp, SL)
     
-    dt = lst_dt + timedelta(minutes=5)
+        time.sleep(1)
+        
+    dt += timedelta(hours=24)
     dt = dt.replace(second=0,microsecond=1)
     file = open(name,'a')
     file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
