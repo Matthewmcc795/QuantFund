@@ -93,3 +93,117 @@ Positions...
 {u'trades': []}
 Positions... 
 {u'trades': []}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.13651&takeProfit=1.13181&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.29214&takeProfit=1.29735&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=buy'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.73712&takeProfit=0.73322&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.69709&takeProfit=0.69099&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.13617&takeProfit=1.1315&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.29252&takeProfit=1.29772&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=buy'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.73672&takeProfit=0.73285&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.69668&takeProfit=0.69061&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.13619&takeProfit=1.13152&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.73667&takeProfit=0.7328&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.69664&takeProfit=0.69057&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.13614&takeProfit=1.13146&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.29095&takeProfit=1.29621&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=buy'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.73754&takeProfit=0.73361&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.69733&takeProfit=0.69122&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.13913&takeProfit=1.13422&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=1.2911&takeProfit=1.29636&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=buy'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.73867&takeProfit=0.73466&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"code" : 41,
+	"message" : "Received request with malformed body: 'stopLoss=0.69864&takeProfit=0.69246&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}

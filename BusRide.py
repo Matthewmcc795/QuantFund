@@ -56,7 +56,6 @@ while True:
             for positions in data2["positions"]:
                 if positions["instrument"] == Sec[i]:
                     Open_Units = positions["units"]
-
         time.sleep(1)
 
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
@@ -85,7 +84,6 @@ while True:
             elif Open(1) < lvl_max and Close(1) > lvl_max:
                 SL = round(Open(1) + 0.00001,5)
                 OpenOrder(Account_Num, Sec[i], 100, "market", "buy", buy_tp, SL)
-    
         time.sleep(1)
 
     dt += timedelta(hours=24)

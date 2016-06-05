@@ -10,9 +10,9 @@ import sys
 
 Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
 hr = [2,6,10,14,18,22]
-# hr = [0,4,8,12,16,20]
 Bars = 50
 n = 50
+Open_Units = 0
 name = "MAC_Log.txt"
 account_id = "406207"
 lst_price = [0,0,0,0,0]
@@ -28,7 +28,7 @@ file = open(name,'a')
 file.write("Starting at " + str(dt) + "\n")
 file.close()
 
-def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
+def OpenOrder(account_id, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
     params = urllib.urlencode({
@@ -39,25 +39,39 @@ def OpenOrder(Account_Num, instrument, units, order_type, order_side, Take_Profi
         "takeProfit": Take_Profit,
         "stopLoss": Stop_Loss
     })
-    conn.request("POST", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
+    conn.request("POST", "/v1/accounts/" + str(account_id) + "/orders", params, headers)
     response = conn.getresponse().read()
     file = open(name,'a')
     file.write(response + "\n")
     file.close()
 
-
-def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
+def UpdateStopLoss(account_id, trade_ID, Stop_Loss):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
     params = urllib.urlencode({"stopLoss": Stop_Loss})
-    conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
+    conn.request("PATCH", "/v1/accounts/" + str(account_id) + "/trades/" + str(trade_ID), params, headers)
     response = conn.getresponse().read()
     file = open(name,'a')
     file.write(response + "\n")
     file.close()
 
-while True:
+def GetOpenUnits(account_id, sec):
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/positions"
+    r = requests.get(url, headers=h)     
+    data2 = json.loads(r.text)
+    chk = str(data2)
+    if chk.find("positions") == -1:
+        Units = 0 
+    else:
+        Units = 0
+        for positions in data2["positions"]:
+            if positions["instrument"] == sec:
+                Units = positions["units"]
+    time.sleep(1)
+    return Units
 
+while True:
     while True:
         if datetime.now() > dt:
             break 
@@ -68,7 +82,7 @@ while True:
         url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(Sec[i]) + "&count=" + str(Bars) + "&candleFormat=midpoint&granularity=H4"
         r = requests.get(url, headers=h)     
         data = json.loads(r.text)
-        
+        time.sleep(1)
         def Close(index):
             return data["candles"][49 - index][STRC]
 
@@ -87,18 +101,8 @@ while True:
 
         Upper_Band = SMA + 2*sd
         Lower_Band = SMA - 2*sd
-        h = {'Authorization' : LIVE_ACCESS_TOKEN}
-        url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/positions"
-        r = requests.get(url, headers=h)     
-        data2 = json.loads(r.text)
-        chk = str(data2)
-        if chk.find("positions") == -1:
-            Open_Units = 0 
-        else:
-            Open_Units = 0
-            for positions in data2["positions"]:
-                if positions["instrument"] == Sec[i]:
-                    Open_Units = positions["units"]
+
+        Open_Units = GetOpenUnits(account_id, Sec[i])
 
         if Close(0) > Upper_Band and Close(1) > Upper_Band and Open_Units == 0:
             TP = round(Close(0) - 0.0100 + 0.00001,5)
@@ -110,14 +114,13 @@ while True:
             OpenOrder(account_id, Sec[i], 100, "market", "buy", TP, SL)
         lst_price[i] = Close(0)
     
-    for i in range(5): # Update stop losses
+    for i in range(5):
         h = {'Authorization' : LIVE_ACCESS_TOKEN}
         url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/trades?instrument=" + str(Sec[i])
         r = requests.get(url, headers=h)     
         data2 = json.loads(r.text)
         chk = str(data2)
         time.sleep(1)
-
         if chk.find("id") != -1:
             for positions in data2["trades"]:
                 trd_ID = positions["id"]
@@ -127,12 +130,10 @@ while True:
                     if lst_price[i] > trd_entry + 0.0050:
                         SL = round(trd_entry + 0.0025,5)
                         UpdateStopLoss(account_id, trd_ID, SL)
-                        lst_SL[i] = SL                   
                 elif trd_side == "sell":
                     if lst_price[i] < trd_entry - 0.050:
                         SL = round(trd_entry - 0.0025,5)
                         UpdateStopLoss(account_id, trd_ID, SL)
-                        lst_SL[i] = SL
 
     dt = dt + timedelta(hours=4)
     dt = dt.replace(minute=3, second=0, microsecond=1)

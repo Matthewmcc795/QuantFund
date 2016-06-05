@@ -8,19 +8,21 @@ from datetime import datetime, timedelta
 import time
 import sys
 
-PivotPointBreakout = {
+PPB_Data = {
     "ATR": {
         "EUR_USD": 0,
         "GBP_USD": 0,
         "USD_CAD": 0,
         "AUD_USD": 0,
-        "NZD_USD": 0,
+        "NZD_USD": 0
+    }, 
     "S1": {
         "EUR_USD": 0,
         "GBP_USD": 0,
         "USD_CAD": 0,
         "AUD_USD": 0,
         "NZD_USD": 0,
+    }, 
     "R1": {
         "EUR_USD": 0,
         "GBP_USD": 0,
@@ -36,7 +38,7 @@ PivotPointBreakout = {
 #                                                                                                        #
 ##########################################################################################################
 
-def Get_Price(curr_pair, tf, bars, ohlc):
+def Get_Price(curr_pair, tf, bars, ohlc): # Tested
     O = []
     H = []
     L = []
@@ -46,10 +48,10 @@ def Get_Price(curr_pair, tf, bars, ohlc):
     r = requests.get(url, headers=h)     
     data = json.loads(r.text)
     for i in range(len(data["candles"])):
-        O.append(data["candles"][i][STRO])
-        H.append(data["candles"][i][STRH])
-        L.append(data["candles"][i][STRL])
-        C.append(data["candles"][i][STRC])
+        O.append(data["candles"][bars - i - 1][STRO])
+        H.append(data["candles"][bars - i - 1][STRH])
+        L.append(data["candles"][bars - i - 1][STRL])
+        C.append(data["candles"][bars - i - 1][STRC])
     if ohlc == "ohlc":
         return O, H, L, C
     elif ohlc == "hlc":
@@ -63,111 +65,83 @@ def Get_Price(curr_pair, tf, bars, ohlc):
 #                                                                                                        #
 ##########################################################################################################
 
-def PivotPointBreakout(account_id, sec, vol):
-    dh, dl, dc = Get_Price(sec, "D", 2)
-    s1, r1 = Get_Pivot_Points(dh, dl, dc)
-    m15h, m15l, m15c = Get_Price(sec[i], "M15", 100)
-    atr = Get_ATR(m15h, m15l, m15c)
-    m5c = Get_Price(sec[i], "M5", 3)
-    head = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/trades?instrument=" + str(sec[i])
-    r = requests.get(url, headers=head)     
-    data2 = json.loads(r.text)
-    chk = str(data2)
-    if chk.find("id") == -1:
-        Open_Units = 0
-        for positions in data2["positions"]:
-            if positions["instrument"] == sec[i]:
-                Open_Units = positions["units"]
+def PivotPointBreakout(account_id, sec, vol, file_nm):
+    for i in range(len(sec)):
+        dh, dl, dc = Get_Price(sec[i], "D", 2, "hlc")
+        s1, r1 = Get_Pivot_Points(dh, dl, dc)
+        m15h, m15l, m15c = Get_Price(sec[i], "M15", 100, "hlc")
+        atr = Get_ATR(m15h, m15l, m15c, sec[i])
+        m5c = Get_Price(sec[i], "M5", 3, "c")
+        Open_Units = GetOpenUnits(account_id, sec[i])
+        dt = datetime.now()
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
             if m5c[0] < r1 and m5c[1] < r1 and m5c[2] > r1:
                 SL = round(m5c[0] + atr + 0.00001,5)
                 TP = round(m5c[0] - 3*atr - 0.00001,5)
-                OpenOrder(account_id, sec[i], vol, "market", "sell", TP, SL)
+                OpenOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
                 lst_SL[i] = SL
             elif m5c[0] > s1 and m5c[1] > s1 and m5c[2] < s1:
                 SL = round(m5c[0] - atr - 0.00001,5)
                 TP = round(m5c[0] + 3*atr + 0.00001,5)
-                OpenOrder(account_id, sec[i], vol, "market", "buy", TP, SL)
+                OpenOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
                 lst_SL[i] = SL
-        lst_price[i] = m5c[0]
-    elif chk.find("id") != -1:
-        for positions in data2["trades"]:
-            trd_ID = positions["id"]
-            trd_entry = float(positions["price"])
-            trd_side = positions["side"]
-            if trd_side == "buy":
-                if lst_price[i] > trd_entry + atr/2:
-                    SL = round(trd_entry + 0.00001,5)
-                    UpdateStopLoss(229783, trd_ID, SL)
-                    lst_SL[i] = SL                   
-                elif lst_price[i] > trd_entry + atr:
-                    SL = round(max(lst_SL, lst_price[i] - atr) + 0.00001,5)
-                    UpdateStopLoss(229783, trd_ID, SL)
-                    lst_SL[i] = SL
-            elif trd_side == "sell":
-                if lst_price[i] < trd_entry - atr]/2:
-                    SL = round(trd_entry - 0.00001,5)
-                    UpdateStopLoss(229783, trd_ID, SL)
-                    lst_SL[i] = SL
-                elif lst_price[i] < trd_entry - atr:
-                    SL = round(min(lst_SL, lst_price[i] + atr) - 0.00001,5)
-                    UpdateStopLoss(229783, trd_ID, SL)
-                    lst_SL[i] = SL
+        elif Open_Units != 0:
+            for positions in data2["trades"]:
+                trd_ID = positions["id"]
+                trd_entry = float(positions["price"])
+                trd_side = positions["side"]
+                if trd_side == "buy":
+                    if lst_price[i] > trd_entry + atr/2:
+                        SL = round(trd_entry + 0.00001,5)
+                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        lst_SL[i] = SL                   
+                    elif lst_price[i] > trd_entry + atr:
+                        SL = round(max(lst_SL, m5c[0] - atr) + 0.00001,5)
+                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        lst_SL[i] = SL
+                elif trd_side == "sell":
+                    if lst_price[i] < trd_entry - atr/2:
+                        SL = round(trd_entry - 0.00001,5)
+                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        lst_SL[i] = SL
+                    elif lst_price[i] < trd_entry - atr:
+                        SL = round(min(lst_SL, m5c[0] + atr) - 0.00001,5)
+                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        lst_SL[i] = SL
 
-def MovingAverageContrarian(account_id, sec, vol):
-    c = Get_Price(sec,"H4",51)
-    ma = SMA(c,50)
-    sd = STDEV(c,50)
-    Z = (c[0] - ma)/sd
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/trades?instrument=" + str(sec)
-    r = requests.get(url, headers=h)     
-    data2 = json.loads(r.text)
-    chk = str(data2)
-    if chk.find("id") == -1:
-        Open_Units = 0
-        for positions in data2["positions"]:
-            if positions["instrument"] == sec:
-                Open_Units = positions["units"]
+def MovingAverageContrarian(account_id, sec, vol, file_nm):
+    for i in range(len(sec)):
+        c = Get_Price(sec[i], "H4", 50, "c")
+        ma = SMA(c,50)
+        sd = STDEV(c,50)
+        Z = (c[0] - ma)/sd
+        Open_Units = GetOpenUnits(account_id, sec[i])
+        dt = datetime.now()
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
             if Z > 2:
                 SL = round(c[0] + sd/2 + 0.00001,5)
                 TP = round(c[0] - sd/2 - 0.00001,5)
-                OpenMarketOrder(account_id, sec, vol, "market", "sell", TP, SL)
+                OpenMarketOrder(account_id, sec, vol, "market", "sell", TP, SL, file_nm)
             elif Z < -2:
                 SL = round(c[0] - sd/2 - 0.00001,5)
                 TP = round(c[0] + sd/2 + 0.00001,5)
-                OpenMarketOrder(account_id, sec, vol, "market", "buy", TP, SL)
+                OpenMarketOrder(account_id, sec, vol, "market", "buy", TP, SL, file_nm)
 
-def BusRide(account_id, sec, vol):
-    o, h, l, c = Get_Price(sec, "D", 2)
-    time.sleep(1)
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/trades?instrument=" + str(sec)
-    r = requests.get(url, headers=h)     
-    data2 = json.loads(r.text)
-    chk = str(data2)
-    if chk.find("instrument") == -1:
-        Open_Units = 0 
-    else:
-        Open_Units = 0
-        for positions in data2["positions"]:
-            if positions["instrument"] == sec:
-                Open_Units = positions["units"]
-    lvl_min = round(o[1],2)
-    lvl_max = round(o[1],2) + 0.01
-    pp = (h[1] + l[1] + c[1])/3
-    sell_tp = 2*pp - h[1]
-    buy_tp = 2*pp - l[1]
-
-    if Open_Units == 0:
-        if o[0] > lvl_min and c[0] < lvl_min:
-            SL = round(Open(1) + 0.00001,5)
-            OpenOrder(account_id, sec, vol, "market", "sell", sell_tp, SL)
-        elif o[0] < lvl_max and c[0] > lvl_max:
-            SL = round(o[0] + 0.00001,5)
-            OpenOrder(account_id, sec, v0l, "market", "buy", buy_tp, SL)
+def BusRide(account_id, sec, vol, file_nm):
+    for i in range(len(sec)):
+        o, h, l, c = Get_Price(sec[i], "H4", 50, "ohlc")
+        Open_Units = GetOpenUnits(account_id, sec[i])
+        dt = datetime.now()
+        lvl_min = round(o[1],2)
+        lvl_max = round(o[1],2) + 0.01
+        buy_tp, sell_tp = Get_Pivot_Points(h, l, c)
+        if Open_Units == 0:
+            if o[0] > lvl_min and c[0] < lvl_min:
+                SL = round(o[0] + 0.00001,5)
+                OpenOrder(account_id, sec, vol, "market", "sell", sell_tp, o[0], file_nm)
+            elif o[0] < lvl_max and c[0] > lvl_max:
+                SL = round(o[0] + 0.00001,5)
+                OpenOrder(account_id, sec, v0l, "market", "buy", buy_tp, o[0], file_nm)
 
 ##########################################################################################################
 #                                                                                                        #
@@ -196,38 +170,38 @@ def BusRide(account_id, sec, vol):
 #     file.write(response + "\n")
 #     file.close()
 
-def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss):
+def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss, file_str):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
     params = urllib.urlencode({"stopLoss": Stop_Loss})
-    file = open(name,'a')
+    file = open(file_str,'a')
     file.write("Updating Stop Loss ... " + "\n")
     file.close()
     conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
     response = conn.getresponse().read()
-    file = open(name,'a')
+    file = open(file_str,'a')
     file.write(response + "\n")
     file.close()
 
-def CloseOrders(Account_Num, order_id):
-    conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
-    headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-    file = open(name,'a')
-    file.write("Sending order... " + "\n")
-    file.close()
-    params = urllib.urlencode({
-        "order_id" : str(order_id)
-    })
-    conn.request("DELETE", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
-    response = conn.getresponse().read()
-    file = open(name,'a')
-    file.write(response + "\n")
-    file.close()
+# def CloseOrders(Account_Num, order_id):
+#     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+#     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
+#     file = open(name,'a')
+#     file.write("Sending order... " + "\n")
+#     file.close()
+#     params = urllib.urlencode({
+#         "order_id" : str(order_id)
+#     })
+#     conn.request("DELETE", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
+#     response = conn.getresponse().read()
+#     file = open(name,'a')
+#     file.write(response + "\n")
+#     file.close()
 
-def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss):
+def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss, file_str):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-    file = open(name,'a')
+    file = open(file_str,'a')
     file.write("Sending order... " + "\n")
     file.close()
     params = urllib.urlencode({
@@ -240,9 +214,25 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
     })
     conn.request("POST", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
     response = conn.getresponse().read()
-    file = open(name,'a')
+    file = open(file_str,'a')
     file.write(response + "\n")
     file.close()
+
+def GetOpenUnits(account_id, sec): # Tested
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/positions"
+    r = requests.get(url, headers=h)     
+    data2 = json.loads(r.text)
+    chk = str(data2)
+    if chk.find("positions") == -1:
+        Units = 0 
+    else:
+        Units = 0
+        for positions in data2["positions"]:
+            if positions["instrument"] == sec:
+                Units = positions["units"]
+    time.sleep(1)
+    return Units
 
 ##########################################################################################################
 #                                                                                                        #
@@ -250,13 +240,13 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
 #                                                                                                        #
 ##########################################################################################################
 
-def Get_Pivot_Points(h,l,c):
+def Get_Pivot_Points(h,l,c): # Tested
     PP_val = (h[1] + l[1] + c[1])/3
     S1_val = 2*PP_val - h[1]
     R1_val = 2*PP_val - l[1]
     return S1_val, R1_val
     
-def TR(h,l,yc):
+def TR(h,l,yc): # Tested
     x = h-l
     y = abs(h-yc)
     z = abs(l-yc)
@@ -269,13 +259,14 @@ def TR(h,l,yc):
     return TR
 
 
-def Get_ATR(h, l, c, first):
-    if first:
+def Get_ATR(h, l, c, sec):
+    if PPB_Data["ATR"][sec] == 0:
         return ATR(h,l,c)
-    # else:
-        # lst_ATR[i] = (lst_ATR[i]*13 + TR(h[0], l[0], c[1]))/14
+    else:
+        PPB_Data["ATR"][sec] = (PPB_Data["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
+        return PPB_Data["ATR"][sec]
 
-def ATR(h, l, c):
+def ATR(h, l, c): # Tested
     p = 98
     TrueRanges = 0.0
     ATR_val = 0
@@ -288,17 +279,15 @@ def ATR(h, l, c):
         p -= 1
     return ATR_val
 
-def SMA(c, n):
+def SMA(c, n): # Tested
     sma_val = 0.0
-    for i in range(len(c)-1):
+    for i in range(n):
         sma_val += c[i]
-    sma_val /= len(sma_val)
-    return sma_val
+    return sma_val/n
 
-def STDEV(c,n):
+def STDEV(c, n): # Tested
     ma = SMA(c,n)
     sd_val = 0.0
-    for i in range(len(c)-1):
-        sd_val += (ma - c[i])**2
-    sd_val = (sd_val/(len(c)-1))**(0.5)
-    return sd_val
+    for i in range(n):
+        sd_val += (ma - c[i])**2 
+    return (sd_val/(n-1))**(0.5)

@@ -16,9 +16,9 @@ lst_ATR = [0,0,0,0,0]
 lst_price = [0,0,0,0,0]
 lst_SL = [0,0,0,0,0]
 
-dt =  datetime.now()
-dt = dt.replace(minute=2, second=0,microsecond=1)
-dt = dt + timedelta(hours=1)
+# dt =  datetime.now()
+# dt = dt.replace(minute=2, second=0,microsecond=1)
+# dt = dt + timedelta(hours=1)
 name = "PPBreakout_Log2.txt" 
 first_run = True
 
@@ -80,11 +80,10 @@ def TR(h,l,yc):
 #         return False
 
 while True:
-    while True:
-        if datetime.now() > dt:
-            lst_dt = dt
-            break 
-        time.sleep(1)
+    # while True:
+    #     if datetime.now() > dt:
+    #         break 
+    #     time.sleep(1)
 
     if first_run or dt.hour == 22:
         for i in range(0,5):
@@ -104,13 +103,13 @@ while True:
             R1[i] = 2*PP[i] - Low(1)
             url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + Sec[i] + "&count=100&candleFormat=midpoint&granularity=M15"
             r = requests.get(url, headers=h)     
-            data = json.loads(r.text)
+            data2 = json.loads(r.text)
             def MHigh(index):
-                return data["candles"][99 - index][STRH]
+                return data2["candles"][99 - index][STRH]
             def MLow(index):
-                return data["candles"][99 - index][STRL]
+                return data2["candles"][99 - index][STRL]
             def MClose(index):
-                return data["candles"][99 - index][STRC]
+                return data2["candles"][99 - index][STRC]
 
             def ATR(index):
                 p = 98
@@ -175,7 +174,8 @@ while True:
                 SL = round(M5Close(0) + lst_ATR[i] + 0.00001,5)
                 TP = round(M5Close(0) - lst_ATR[i]*3 - 0.00001,5)
                 # if order_is_valid(M5Close(0), SL, TP):
-                OpenOrder(229783, Sec[i], 200, "market", "sell", TP, SL)
+                print "sell"
+                # OpenOrder(229783, Sec[i], 1, "market", "sell", TP, SL)
                 lst_SL[i] = SL
             elif M5Close(0) > S1[i] and M5Close(1) > S1[i] and M5Close(2) < S1[i]:
                 file = open(name,'a')
@@ -184,7 +184,8 @@ while True:
                 SL = round(M5Close(0) - lst_ATR[i] - 0.00001,5)
                 TP = round(M5Close(0) + lst_ATR[i]*3 + 0.00001,5)
                 # if order_is_valid(M5Close(0), SL, TP):
-                OpenOrder(229783, Sec[i], 200, "market", "buy", TP, SL)
+                print "buy"
+                # OpenOrder(229783, Sec[i], 200, "market", "buy", TP, SL)
                 lst_SL[i] = SL
         lst_price[i] = M5Close(0)
 
@@ -220,8 +221,8 @@ while True:
                         UpdateStopLoss(229783, trd_ID, SL)
                         lst_SL[i] = SL
     
-    dt = lst_dt + timedelta(minutes=5)
-    dt = dt.replace(second=0,microsecond=1)
-    file = open(name,'a')
-    file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
-    file.close()
+    # dt = dt + timedelta(minutes=5)
+    # dt = dt.replace(second=0,microsecond=1)
+    # file = open(name,'a')
+    # file.write(str(datetime.now()) + " Waiting until " + str(dt) + "\n")
+    # file.close()
