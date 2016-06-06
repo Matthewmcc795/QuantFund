@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import time
 import sys
 
-PPB_Data = {
+PPB = {
     "ATR": {
         "EUR_USD": 0,
         "GBP_USD": 0,
@@ -22,8 +22,25 @@ PPB_Data = {
         "USD_CAD": 0,
         "AUD_USD": 0,
         "NZD_USD": 0,
+    }
+}
+
+MAC = {
+    "Z": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0
+    },
+    "Correl": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0,
     }, 
-    "R1": {
+    "Expected_Z": {
         "EUR_USD": 0,
         "GBP_USD": 0,
         "USD_CAD": 0,
@@ -38,7 +55,7 @@ PPB_Data = {
 #                                                                                                        #
 ##########################################################################################################
 
-def Get_Price(curr_pair, tf, bars, ohlc): # Tested
+def Get_Price(curr_pair, tf, bars, ohlc):
     O = []
     H = []
     L = []
@@ -52,6 +69,7 @@ def Get_Price(curr_pair, tf, bars, ohlc): # Tested
         H.append(data["candles"][bars - i - 1][STRH])
         L.append(data["candles"][bars - i - 1][STRL])
         C.append(data["candles"][bars - i - 1][STRC])
+    time.sleep(1)
     if ohlc == "ohlc":
         return O, H, L, C
     elif ohlc == "hlc":
@@ -93,20 +111,20 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 if trd_side == "buy":
                     if lst_price[i] > trd_entry + atr/2:
                         SL = round(trd_entry + 0.00001,5)
-                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         lst_SL[i] = SL                   
                     elif lst_price[i] > trd_entry + atr:
                         SL = round(max(lst_SL, m5c[0] - atr) + 0.00001,5)
-                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         lst_SL[i] = SL
                 elif trd_side == "sell":
                     if lst_price[i] < trd_entry - atr/2:
                         SL = round(trd_entry - 0.00001,5)
-                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         lst_SL[i] = SL
                     elif lst_price[i] < trd_entry - atr:
                         SL = round(min(lst_SL, m5c[0] + atr) - 0.00001,5)
-                        UpdateStopLoss(229783, trd_ID, SL, file_nm)
+                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         lst_SL[i] = SL
 
 def MovingAverageContrarian(account_id, sec, vol, file_nm):
@@ -115,33 +133,32 @@ def MovingAverageContrarian(account_id, sec, vol, file_nm):
         ma = SMA(c,50)
         sd = STDEV(c,50)
         Z = (c[0] - ma)/sd
+        MAC["Z"][sec[i]] = Z
         Open_Units = GetOpenUnits(account_id, sec[i])
-        dt = datetime.now()
-        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
+        if Open_Units == 0:
             if Z > 2:
                 SL = round(c[0] + sd/2 + 0.00001,5)
                 TP = round(c[0] - sd/2 - 0.00001,5)
-                OpenMarketOrder(account_id, sec, vol, "market", "sell", TP, SL, file_nm)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
             elif Z < -2:
                 SL = round(c[0] - sd/2 - 0.00001,5)
                 TP = round(c[0] + sd/2 + 0.00001,5)
-                OpenMarketOrder(account_id, sec, vol, "market", "buy", TP, SL, file_nm)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
 
 def BusRide(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
-        o, h, l, c = Get_Price(sec[i], "H4", 50, "ohlc")
+        o, h, l, c = Get_Price(sec[i], "H4", 5, "ohlc")
         Open_Units = GetOpenUnits(account_id, sec[i])
-        dt = datetime.now()
         lvl_min = round(o[1],2)
         lvl_max = round(o[1],2) + 0.01
-        buy_tp, sell_tp = Get_Pivot_Points(h, l, c)
+        sell_tp, buy_tp = Get_Pivot_Points(h, l, c)
         if Open_Units == 0:
             if o[0] > lvl_min and c[0] < lvl_min:
                 SL = round(o[0] + 0.00001,5)
-                OpenOrder(account_id, sec, vol, "market", "sell", sell_tp, o[0], file_nm)
+                OpenOrder(account_id, sec[i], vol, "market", "sell", sell_tp, o[0], file_nm)
             elif o[0] < lvl_max and c[0] > lvl_max:
                 SL = round(o[0] + 0.00001,5)
-                OpenOrder(account_id, sec, v0l, "market", "buy", buy_tp, o[0], file_nm)
+                OpenOrder(account_id, sec[i], vol, "market", "buy", buy_tp, o[0], file_nm)
 
 ##########################################################################################################
 #                                                                                                        #
@@ -182,6 +199,7 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss, file_str):
     file = open(file_str,'a')
     file.write(response + "\n")
     file.close()
+    time.sleep(1)
 
 # def CloseOrders(Account_Num, order_id):
 #     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
@@ -217,8 +235,9 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
     file = open(file_str,'a')
     file.write(response + "\n")
     file.close()
+    time.sleep(1)
 
-def GetOpenUnits(account_id, sec): # Tested
+def GetOpenUnits(account_id, sec):
     h = {'Authorization' : LIVE_ACCESS_TOKEN}
     url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/positions"
     r = requests.get(url, headers=h)     
@@ -240,13 +259,13 @@ def GetOpenUnits(account_id, sec): # Tested
 #                                                                                                        #
 ##########################################################################################################
 
-def Get_Pivot_Points(h,l,c): # Tested
+def Get_Pivot_Points(h,l,c):
     PP_val = (h[1] + l[1] + c[1])/3
     S1_val = 2*PP_val - h[1]
     R1_val = 2*PP_val - l[1]
     return S1_val, R1_val
     
-def TR(h,l,yc): # Tested
+def TR(h,l,yc):
     x = h-l
     y = abs(h-yc)
     z = abs(l-yc)
@@ -266,7 +285,7 @@ def Get_ATR(h, l, c, sec):
         PPB_Data["ATR"][sec] = (PPB_Data["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
         return PPB_Data["ATR"][sec]
 
-def ATR(h, l, c): # Tested
+def ATR(h, l, c):
     p = 98
     TrueRanges = 0.0
     ATR_val = 0
@@ -279,15 +298,47 @@ def ATR(h, l, c): # Tested
         p -= 1
     return ATR_val
 
-def SMA(c, n): # Tested
+def SMA(c, n):
     sma_val = 0.0
     for i in range(n):
         sma_val += c[i]
     return sma_val/n
 
-def STDEV(c, n): # Tested
+def STDEV(c, n):
     ma = SMA(c,n)
     sd_val = 0.0
     for i in range(n):
         sd_val += (ma - c[i])**2 
     return (sd_val/(n-1))**(0.5)
+
+def CORREL(c1, c2):
+    ma1 = SMA(c1,len(c1))
+    ma2 = SMA(c2,len(c2))
+    for i in range(len(c1)):
+        exy += (c1[i] - ma1)*(c2[i]-ma2)
+    exy = exy/len(c1)
+
+
+##########################################################################################################
+#                                                                                                        #
+#                                             Optimizer                                                  #
+#                                                                                                        #
+##########################################################################################################
+
+# class PMAC:
+#     def __init__(self,name):
+#         self.data = json.loads(R)
+#     def eat(self,food):
+#         if food == "Apple": 
+#             self.Health -= 100
+#         elif food == "Ham":
+#             self.Health += 20
+
+# class PriceAction:
+#     def __init__(self,name):
+#         self.data = json.loads(R)
+#     def eat(self,food):
+#         if food == "Apple": 
+#             self.Health -= 100
+#         elif food == "Ham":
+#             self.Health += 20
