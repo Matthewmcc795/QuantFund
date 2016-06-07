@@ -207,3 +207,35 @@ Sending order...
 	"message" : "Received request with malformed body: 'stopLoss=0.69864&takeProfit=0.69246&instrument=%5B%27EUR_USD%27%2C+%27GBP_USD%27%2C+%27USD_CAD%27%2C+%27AUD_USD%27%2C+%27NZD_USD%27%5D&units=100&type=market&side=sell'",
 	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
 }
+Sending order... 
+{
+	"instrument" : "USD_CAD",
+	"time" : "2016-06-06T22:06:18.000000Z",
+	"price" : 1.28275,
+	"tradeOpened" : {
+		"id" : 10276466461,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.28608,
+		"stopLoss" : 1.27875,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "AUD_USD",
+	"time" : "2016-06-06T22:06:22.000000Z",
+	"price" : 0.73654,
+	"tradeOpened" : {
+		"id" : 10276466475,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.73375,
+		"stopLoss" : 0.73962,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

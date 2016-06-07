@@ -13,7 +13,8 @@ Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
 hr = [2,6,10,14,18,22]
 dt_PPB =  datetime.now()
 dt_PPB = dt_PPB.replace(minute=2, second=0,microsecond=1)
-dt_PPB += timedelta(hours=1)
+while dt_PPB < datetime.now():
+    dt_PPB += timedelta(minutes=5)
 
 dt_MAC =  datetime.now()
 dt_MAC = dt_MAC.replace(minute=3, second=0,microsecond=1)
@@ -35,14 +36,17 @@ first_run = True
 
 while True:
     if datetime.now() > dt_PPB:
+        print "Runnnig PPB " + str(datetime.now())
         PivotPointBreakout(account_id, Sec, 200, fl_strat1)
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_MAC:
+        print "Runnnig MAC " + str(datetime.now())
         MovingAverageContrarian(account_id2, Sec, 100, fl_strat2)
         dt_MAC += timedelta(hours=4)
         dt_MAC = dt_MAC.replace(minute=1, second=1, microsecond=1)
     elif datetime.now() > dt_BusRide:
+        print "Runnnig BusRide " + str(datetime.now())
         BusRide(account_id3, Sec, 100, fl_strat3)
         dt_BusRide += timedelta(hours=24)
         dt_BusRide = dt_BusRide.replace(minute=2, second=0, microsecond=1)

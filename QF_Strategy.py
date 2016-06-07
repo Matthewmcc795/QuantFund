@@ -279,11 +279,11 @@ def TR(h,l,yc):
 
 
 def Get_ATR(h, l, c, sec):
-    if PPB_Data["ATR"][sec] == 0:
+    if PPB["ATR"][sec] == 0:
         return ATR(h,l,c)
     else:
-        PPB_Data["ATR"][sec] = (PPB_Data["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
-        return PPB_Data["ATR"][sec]
+        PPB_Data["ATR"][sec] = (PPB["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
+        return PPB["ATR"][sec]
 
 def ATR(h, l, c):
     p = 98
