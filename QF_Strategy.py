@@ -7,7 +7,7 @@ import urllib
 from datetime import datetime, timedelta
 import time
 import sys
-
+main_log = "QF.txt"
 PPB = {
     "ATR": {
         "EUR_USD": 0,
