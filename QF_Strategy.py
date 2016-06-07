@@ -116,9 +116,9 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 OpenOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
                 PPB["SL"][sec[i]] = SL
         elif Open_Units != 0:
-                file = open(main_log,'a')
-                file.write("PPB: updating stops for " + sec[i] + " " + str(datetime.now()) +"\n")
-                file.close()
+            file = open(main_log,'a')
+            file.write("PPB: updating stops for " + sec[i] + " " + str(datetime.now()) +"\n")
+            file.close()
             for positions in data2["trades"]:
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
