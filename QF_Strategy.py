@@ -16,7 +16,7 @@ PPB = {
         "AUD_USD": 0,
         "NZD_USD": 0
     }, 
-    "S1": {
+    "SL": {
         "EUR_USD": 0,
         "GBP_USD": 0,
         "USD_CAD": 0,
@@ -85,6 +85,9 @@ def Get_Price(curr_pair, tf, bars, ohlc):
 
 def PivotPointBreakout(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
+        file = open(main_log,'a')
+        file.write("Collecting PPB data for " + sec[i] + " " + str(datetime.now()) +"\n")
+        file.close()
         dh, dl, dc = Get_Price(sec[i], "D", 2, "hlc")
         s1, r1 = Get_Pivot_Points(dh, dl, dc)
         m15h, m15l, m15c = Get_Price(sec[i], "M15", 100, "hlc")
@@ -93,17 +96,29 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
         Open_Units = GetOpenUnits(account_id, sec[i])
         dt = datetime.now()
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
+            file = open(main_log,'a')
+            file.write("Checking PPB signals for " + sec[i] + " " + str(datetime.now()) +"\n")
+            file.close()
             if m5c[0] < r1 and m5c[1] < r1 and m5c[2] > r1:
+                file = open(main_log,'a')
+                file.write("PPB: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
                 SL = round(m5c[0] + atr + 0.00001,5)
                 TP = round(m5c[0] - 3*atr - 0.00001,5)
                 OpenOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
                 lst_SL[i] = SL
             elif m5c[0] > s1 and m5c[1] > s1 and m5c[2] < s1:
+                file = open(main_log,'a')
+                file.write("PPB: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
                 SL = round(m5c[0] - atr - 0.00001,5)
                 TP = round(m5c[0] + 3*atr + 0.00001,5)
                 OpenOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
-                lst_SL[i] = SL
+                PPB["SL"][sec[i]] = SL
         elif Open_Units != 0:
+                file = open(main_log,'a')
+                file.write("PPB: updating stops for " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
             for positions in data2["trades"]:
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
@@ -112,20 +127,20 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                     if lst_price[i] > trd_entry + atr/2:
                         SL = round(trd_entry + 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        lst_SL[i] = SL                   
+                        PPB["SL"][sec[i]] = SL                   
                     elif lst_price[i] > trd_entry + atr:
-                        SL = round(max(lst_SL, m5c[0] - atr) + 0.00001,5)
+                        SL = round(max(PPB["SL"][sec[i]], m5c[0] - atr) + 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        lst_SL[i] = SL
+                        PPB["SL"][sec[i]] = SL
                 elif trd_side == "sell":
                     if lst_price[i] < trd_entry - atr/2:
                         SL = round(trd_entry - 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        lst_SL[i] = SL
+                        PPB["SL"][sec[i]] = SL
                     elif lst_price[i] < trd_entry - atr:
-                        SL = round(min(lst_SL, m5c[0] + atr) - 0.00001,5)
+                        SL = round(min(PPB["SL"][sec[i]], m5c[0] + atr) - 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        lst_SL[i] = SL
+                        PPB["SL"][sec[i]] = SL
 
 def MovingAverageContrarian(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
@@ -282,7 +297,7 @@ def Get_ATR(h, l, c, sec):
     if PPB["ATR"][sec] == 0:
         return ATR(h,l,c)
     else:
-        PPB_Data["ATR"][sec] = (PPB["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
+        PPB["ATR"][sec] = (PPB["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
         return PPB["ATR"][sec]
 
 def ATR(h, l, c):

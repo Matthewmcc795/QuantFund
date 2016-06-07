@@ -29,6 +29,7 @@ while dt_BusRide.hour != 21:
 account_id = 229783
 account_id2 = 406207
 account_id3 = 836663
+main_log = "QF.txt"
 fl_strat1 = "PPBreakout_Log2.txt" 
 fl_strat2 = "MAC_Log.txt"
 fl_strat3 = "BusRide_Log.txt"
@@ -36,18 +37,33 @@ first_run = True
 
 while True:
     if datetime.now() > dt_PPB:
-        print "Runnnig PPB " + str(datetime.now())
+        file = open(main_log,'a')
+        file.write("Running PPB " + str(datetime.now()) +"\n")
+        file.close()
         PivotPointBreakout(account_id, Sec, 200, fl_strat1)
+        file = open(main_log,'a')
+        file.write("PPB complete " + str(datetime.now()) +"\n")
+        file.close()
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_MAC:
-        print "Runnnig MAC " + str(datetime.now())
+        file = open(main_log,'a')
+        file.write("Running MAC " + str(datetime.now()) +"\n")
+        file.close()
         MovingAverageContrarian(account_id2, Sec, 100, fl_strat2)
+        file = open(main_log,'a')
+        file.write("MAC complete " + str(datetime.now()) +"\n")
+        file.close()
         dt_MAC += timedelta(hours=4)
         dt_MAC = dt_MAC.replace(minute=1, second=1, microsecond=1)
     elif datetime.now() > dt_BusRide:
-        print "Runnnig BusRide " + str(datetime.now())
+        file = open(main_log,'a')
+        file.write("Running BusRide " + str(datetime.now()) +"\n")
+        file.close()
         BusRide(account_id3, Sec, 100, fl_strat3)
+        file = open(main_log,'a')
+        file.write("BusRide complete " + str(datetime.now()) +"\n")
+        file.close()
         dt_BusRide += timedelta(hours=24)
         dt_BusRide = dt_BusRide.replace(minute=2, second=0, microsecond=1)
     time.sleep(1)
