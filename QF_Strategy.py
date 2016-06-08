@@ -105,7 +105,7 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 file.close()
                 SL = round(m5c[0] + atr + 0.00001,5)
                 TP = round(m5c[0] - 3*atr - 0.00001,5)
-                OpenOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
                 lst_SL[i] = SL
             elif m5c[0] > s1 and m5c[1] > s1 and m5c[2] < s1:
                 file = open(main_log,'a')
@@ -113,7 +113,7 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 file.close()
                 SL = round(m5c[0] - atr - 0.00001,5)
                 TP = round(m5c[0] + 3*atr + 0.00001,5)
-                OpenOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
                 PPB["SL"][sec[i]] = SL
         elif Open_Units != 0:
             file = open(main_log,'a')
@@ -170,10 +170,10 @@ def BusRide(account_id, sec, vol, file_nm):
         if Open_Units == 0:
             if o[0] > lvl_min and c[0] < lvl_min:
                 SL = round(o[0] + 0.00001,5)
-                OpenOrder(account_id, sec[i], vol, "market", "sell", sell_tp, o[0], file_nm)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", sell_tp, o[0], file_nm)
             elif o[0] < lvl_max and c[0] > lvl_max:
                 SL = round(o[0] + 0.00001,5)
-                OpenOrder(account_id, sec[i], vol, "market", "buy", buy_tp, o[0], file_nm)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, o[0], file_nm)
 
 ##########################################################################################################
 #                                                                                                        #
