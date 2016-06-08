@@ -124,20 +124,20 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
                 if trd_side == "buy":
-                    if lst_price[i] > trd_entry + atr/2:
+                    if m5c[0] > trd_entry + atr/2:
                         SL = round(trd_entry + 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL                   
-                    elif lst_price[i] > trd_entry + atr:
+                    elif m5c[0] > trd_entry + atr:
                         SL = round(max(PPB["SL"][sec[i]], m5c[0] - atr) + 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL
                 elif trd_side == "sell":
-                    if lst_price[i] < trd_entry - atr/2:
+                    if m5c[0] < trd_entry - atr/2:
                         SL = round(trd_entry - 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL
-                    elif lst_price[i] < trd_entry - atr:
+                    elif m5c[0] < trd_entry - atr:
                         SL = round(min(PPB["SL"][sec[i]], m5c[0] + atr) - 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL
