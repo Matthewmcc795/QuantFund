@@ -1,3 +1,4 @@
+# This script handles what should run, when it should run and with what starting parameters
 import requests
 import json
 from array import *

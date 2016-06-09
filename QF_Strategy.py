@@ -1,3 +1,4 @@
+# This script handles executing specific trading plans and all related calculaitons
 import requests
 import json
 from array import *
@@ -119,7 +120,8 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
             file = open(main_log,'a')
             file.write("PPB: updating stops for " + sec[i] + " " + str(datetime.now()) +"\n")
             file.close()
-            for positions in data2["trades"]:
+            Open_Trades = GetOpenTrades(account_id, sec[i])
+            for positions in Open_Trades["trades"]:
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
@@ -129,7 +131,7 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL                   
                     elif m5c[0] > trd_entry + atr:
-                        SL = round(max(PPB["SL"][sec[i]], m5c[0] - atr) + 0.00001,5)
+                        SL = round(max(PPB["SL"][sec[i]], m5c[0] + atr/2) + 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL
                 elif trd_side == "sell":
@@ -138,7 +140,7 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL
                     elif m5c[0] < trd_entry - atr:
-                        SL = round(min(PPB["SL"][sec[i]], m5c[0] + atr) - 0.00001,5)
+                        SL = round(min(PPB["SL"][sec[i]], m5c[0] - atr/2) - 0.00001,5)
                         UpdateStopLoss(account_id, trd_ID, SL, file_nm)
                         PPB["SL"][sec[i]] = SL
 
@@ -230,6 +232,14 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss, file_str):
 #     file = open(name,'a')
 #     file.write(response + "\n")
 #     file.close()
+
+def GetOpenTrades(Account_Num, sec):
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(Account_Num) + "/trades?instrument=" + str(sec)
+    r = requests.get(url, headers=h) 
+    time.sleep(1)    
+    return json.loads(r.text)
+
 
 def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss, file_str):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
@@ -332,28 +342,3 @@ def CORREL(c1, c2):
     for i in range(len(c1)):
         exy += (c1[i] - ma1)*(c2[i]-ma2)
     exy = exy/len(c1)
-
-
-##########################################################################################################
-#                                                                                                        #
-#                                             Optimizer                                                  #
-#                                                                                                        #
-##########################################################################################################
-
-# class PMAC:
-#     def __init__(self,name):
-#         self.data = json.loads(R)
-#     def eat(self,food):
-#         if food == "Apple": 
-#             self.Health -= 100
-#         elif food == "Ham":
-#             self.Health += 20
-
-# class PriceAction:
-#     def __init__(self,name):
-#         self.data = json.loads(R)
-#     def eat(self,food):
-#         if food == "Apple": 
-#             self.Health -= 100
-#         elif food == "Ham":
-#             self.Health += 20
