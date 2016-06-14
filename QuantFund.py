@@ -41,7 +41,7 @@ while True:
         file = open(main_log,'a')
         file.write("Running PPB " + str(datetime.now()) +"\n")
         file.close()
-        PivotPointBreakout(account_id, Sec, 200, fl_strat1)
+        PivotPointBreakout(account_id, Sec, 100, fl_strat1)
         file = open(main_log,'a')
         file.write("PPB complete " + str(datetime.now()) +"\n")
         file.close()
