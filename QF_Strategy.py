@@ -107,7 +107,7 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 SL = round(m5c[0] + atr + 0.00001,5)
                 TP = round(m5c[0] - 3*atr - 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
-                lst_SL[i] = SL
+                PPB["SL"][sec[i]] = SL
             elif m5c[0] > s1 and m5c[1] > s1 and m5c[2] < s1:
                 file = open(main_log,'a')
                 file.write("PPB: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
@@ -146,6 +146,9 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
 
 def MovingAverageContrarian(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
+        file = open(main_log,'a')
+        file.write("Collecting MAC data for " + sec[i] + " " + str(datetime.now()) +"\n")
+        file.close()
         c = Get_Price(sec[i], "H4", 50, "c")
         ma = SMA(c,50)
         sd = STDEV(c,50)
@@ -153,27 +156,48 @@ def MovingAverageContrarian(account_id, sec, vol, file_nm):
         MAC["Z"][sec[i]] = Z
         Open_Units = GetOpenUnits(account_id, sec[i])
         if Open_Units == 0:
+            file = open(main_log,'a')
+            file.write("Checking MAC signals for " + sec[i] + " " + str(datetime.now()) +"\n")
+            file.close()
             if Z > 2:
+                file = open(main_log,'a')
+                file.write("MAC: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
                 SL = round(c[0] + sd/2 + 0.00001,5)
                 TP = round(c[0] - sd/2 - 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
             elif Z < -2:
+                file = open(main_log,'a')
+                file.write("MAC: Buy " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
                 SL = round(c[0] - sd/2 - 0.00001,5)
                 TP = round(c[0] + sd/2 + 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
 
 def BusRide(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
+        file = open(main_log,'a')
+        file.write("Collecting Bus Ride data for " + sec[i] + " " + str(datetime.now()) +"\n")
+        file.close()
         o, h, l, c = Get_Price(sec[i], "H4", 5, "ohlc")
         Open_Units = GetOpenUnits(account_id, sec[i])
         lvl_min = round(o[1],2)
         lvl_max = round(o[1],2) + 0.01
         sell_tp, buy_tp = Get_Pivot_Points(h, l, c)
         if Open_Units == 0:
+            file = open(main_log,'a')
+            file.write("Checking Bus Ride signals for " + sec[i] + " " + str(datetime.now()) +"\n")
+            file.close()
             if o[0] > lvl_min and c[0] < lvl_min:
+                file = open(main_log,'a')
+                file.write("Bus Ride: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
                 SL = round(o[0] + 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", sell_tp, o[0], file_nm)
             elif o[0] < lvl_max and c[0] > lvl_max:
+                file = open(main_log,'a')
+                file.write("Bus Ride: Buy " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
                 SL = round(o[0] + 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, o[0], file_nm)
 
