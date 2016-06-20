@@ -22,7 +22,7 @@ PPB = {
         "GBP_USD": 0,
         "USD_CAD": 0,
         "AUD_USD": 0,
-        "NZD_USD": 0,
+        "NZD_USD": 0
     }
 }
 
@@ -33,20 +33,6 @@ MAC = {
         "USD_CAD": 0,
         "AUD_USD": 0,
         "NZD_USD": 0
-    },
-    "Correl": {
-        "EUR_USD": 0,
-        "GBP_USD": 0,
-        "USD_CAD": 0,
-        "AUD_USD": 0,
-        "NZD_USD": 0,
-    }, 
-    "Expected_Z": {
-        "EUR_USD": 0,
-        "GBP_USD": 0,
-        "USD_CAD": 0,
-        "AUD_USD": 0,
-        "NZD_USD": 0,
     }
 }
 
@@ -83,6 +69,11 @@ def Get_Price(curr_pair, tf, bars, ohlc):
 #                                              Strategies                                                #
 #                                                                                                        #
 ##########################################################################################################
+
+# Strategies to add:
+# IntraTrend 
+# CableSnap
+
 
 def PivotPointBreakout(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
@@ -181,25 +172,51 @@ def BusRide(account_id, sec, vol, file_nm):
         file.close()
         o, h, l, c = Get_Price(sec[i], "H4", 5, "ohlc")
         Open_Units = GetOpenUnits(account_id, sec[i])
-        lvl_min = round(o[1],2)
-        lvl_max = round(o[1],2) + 0.01
+        lvl_min = round(o[2],2)
+        lvl_max = round(o[2],2) + 0.01
         sell_tp, buy_tp = Get_Pivot_Points(h, l, c)
         if Open_Units == 0:
             file = open(main_log,'a')
             file.write("Checking Bus Ride signals for " + sec[i] + " " + str(datetime.now()) +"\n")
             file.close()
-            if o[0] > lvl_min and c[0] < lvl_min:
+            if o[1] > lvl_min and c[0] < lvl_min:
                 file = open(main_log,'a')
                 file.write("Bus Ride: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
                 file.close()
-                SL = round(o[0] + 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", sell_tp, o[0], file_nm)
-            elif o[0] < lvl_max and c[0] > lvl_max:
+                SL = round(o[1] + 0.00001,5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", sell_tp, SL, file_nm)
+            elif o[1] < lvl_max and c[0] > lvl_max:
                 file = open(main_log,'a')
                 file.write("Bus Ride: Buy " + sec[i] + " " + str(datetime.now()) +"\n")
                 file.close()
-                SL = round(o[0] + 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, o[0], file_nm)
+                SL = round(o[1] + 0.00001,5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, SL, file_nm)
+
+def IntraTrend(account_id, sec, vol, file_nm):
+    for i in range(len(sec)):
+        file = open(main_log,'a')
+        file.write("Collecting IT data for " + sec[i] + " " + str(datetime.now()) +"\n")
+        file.close()
+        c = Get_Price(sec[i], "M15", 51, "c")
+        SMA10 = SMA(c,10)
+        SMA21 = SMA(c,21)
+        SMA50 = SMA(c,50)
+        Open_Units = GetOpenUnits(account_id, sec[i])
+        if Open_Units == 0:
+            if c[0] > SMA10 and c[0] < SMA21 and c[0] < SMA50:
+                file = open(main_log,'a')
+                file.write("IT: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
+                SL = round(SMA50, 5)
+                TP = round(2*c[0]-SMA50, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
+            elif c[0] < SMA10 and c[0] > SMA21 and c[0] > SMA50:
+                file = open(main_log,'a')
+                file.write("IT: Buy " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
+                SL = round(SMA50, 5)
+                TP = round(2*c[0]-SMA50, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
 
 ##########################################################################################################
 #                                                                                                        #

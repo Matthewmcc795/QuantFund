@@ -1,3 +1,10 @@
+# Fundamental equation to optimize is Z = p(Re) + (1-p)(Ri)
+# What factors can we correlate to the probability of success, reward or risk
+# At the point of decision, calculate Z and compare to your target Z
+# Or, compare the factors, p, Re and Ri to your target p*, Re* and Ri*
+
+# For version 2.0, allow your targets to be dynamic to the market. 
+
 # This file will operate as a "researcher" going over historical trades and price data
 # Goal is to find adjustments within reasonable limits to improve profitability or reduce risk
 # Output will be some sort of array of data points or an designated text file that is wiped and rebuilt on every run
@@ -20,7 +27,6 @@
 # #### Ex. Historically we lose at most 3 times in a day. We just lost 4 times, what should we do?
 # #### Ex2. Money management
 # #### Ex3. Trade management
-
 
 # To figure out:
 # What is the best way to extract past trades and trade results from Oanda?

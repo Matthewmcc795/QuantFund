@@ -7,10 +7,7 @@ import urllib
 from datetime import datetime, timedelta
 import time
 import sys
-import Tkinter
-top = Tkinter.Tk()
-# Code to add widgets will go here...
-top.mainloop()
+
 Sec = []
 Sec.append("EUR_USD")
 Sec.append("GBP_USD")
