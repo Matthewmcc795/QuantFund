@@ -36,6 +36,51 @@ MAC = {
     }
 }
 
+IT = {
+    "SMA50": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0
+    }, 
+    "TP": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0
+    },
+    "SL": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0
+    },
+    "BEP": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0
+    },
+    "BEV": {
+        "EUR_USD": 0,
+        "GBP_USD": 0,
+        "USD_CAD": 0,
+        "AUD_USD": 0,
+        "NZD_USD": 0
+    },
+    "counter": {
+        "EUR_USD": -1,
+        "GBP_USD": -1,
+        "USD_CAD": -1,
+        "AUD_USD": -1,
+        "NZD_USD": -1
+    }
+}
+
 ##########################################################################################################
 #                                                                                                        #
 #                                                Prices                                                  #
@@ -74,7 +119,6 @@ def Get_Price(curr_pair, tf, bars, ohlc):
 # IntraTrend 
 # CableSnap
 
-
 def PivotPointBreakout(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
         file = open(main_log,'a')
@@ -95,18 +139,16 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 file = open(main_log,'a')
                 file.write("PPB: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
                 file.close()
-                SL = round(m5c[0] + atr + 0.00001,5)
+                PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
                 TP = round(m5c[0] - 3*atr - 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
-                PPB["SL"][sec[i]] = SL
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, PPB["SL"][sec[i]], file_nm)
             elif m5c[0] > s1 and m5c[1] > s1 and m5c[2] < s1:
                 file = open(main_log,'a')
                 file.write("PPB: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
                 file.close()
-                SL = round(m5c[0] - atr - 0.00001,5)
+                PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
                 TP = round(m5c[0] + 3*atr + 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
-                PPB["SL"][sec[i]] = SL
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, PPB["SL"][sec[i]], file_nm)
         elif Open_Units != 0:
             file = open(main_log,'a')
             file.write("PPB: updating stops for " + sec[i] + " " + str(datetime.now()) +"\n")
@@ -118,22 +160,18 @@ def PivotPointBreakout(account_id, sec, vol, file_nm):
                 trd_side = positions["side"]
                 if trd_side == "buy":
                     if m5c[0] > trd_entry + atr/2:
-                        SL = round(trd_entry + 0.00001,5)
-                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        PPB["SL"][sec[i]] = SL                   
+                        PPB["SL"][sec[i]] = round(trd_entry + 0.00001,5)
+                        UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm)                  
                     elif m5c[0] > trd_entry + atr:
-                        SL = round(max(PPB["SL"][sec[i]], m5c[0] + atr/2) + 0.00001,5)
-                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        PPB["SL"][sec[i]] = SL
+                        PPB["SL"][sec[i]] = round(max(PPB["SL"][sec[i]], m5c[0] + atr/2) + 0.00001,5)
+                        UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm)
                 elif trd_side == "sell":
                     if m5c[0] < trd_entry - atr/2:
-                        SL = round(trd_entry - 0.00001,5)
-                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        PPB["SL"][sec[i]] = SL
+                        PPB["SL"][sec[i]] = round(trd_entry - 0.00001,5)
+                        UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm)
                     elif m5c[0] < trd_entry - atr:
-                        SL = round(min(PPB["SL"][sec[i]], m5c[0] - atr/2) - 0.00001,5)
-                        UpdateStopLoss(account_id, trd_ID, SL, file_nm)
-                        PPB["SL"][sec[i]] = SL
+                        PPB["SL"][sec[i]] = round(min(PPB["SL"][sec[i]], m5c[0] - atr/2) - 0.00001,5)
+                        UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm)
 
 def MovingAverageContrarian(account_id, sec, vol, file_nm):
     for i in range(len(sec)):
@@ -207,16 +245,55 @@ def IntraTrend(account_id, sec, vol, file_nm):
                 file = open(main_log,'a')
                 file.write("IT: Sell " + sec[i] + " " + str(datetime.now()) +"\n")
                 file.close()
-                SL = round(SMA50, 5)
-                TP = round(2*c[0]-SMA50, 5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
+                IT["TP"][sec[i]] = round(c[0] - 0.9*abs(c[0] - SMA50), 5)
+                IT["SL"][sec[i]] = round(SMA50, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm)
+                IT["counter"][sec[i]] = -1
+                IT["BEV"][sec[i]] = 0
             elif c[0] < SMA10 and c[0] > SMA21 and c[0] > SMA50:
                 file = open(main_log,'a')
                 file.write("IT: Buy " + sec[i] + " " + str(datetime.now()) +"\n")
                 file.close()
-                SL = round(SMA50, 5)
-                TP = round(2*c[0]-SMA50, 5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm)
+                IT["TP"][sec[i]] = round(c[0] + 0.9*abs(c[0] - SMA50), 5)
+                IT["SL"][sec[i]] = round(SMA50, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm)
+                IT["counter"][sec[i]] = -1
+                IT["BEV"][sec[i]] = 0
+        elif Open_Units != 0:
+            file = open(main_log,'a')
+            file.write("IT: updating stops for " + sec[i] + " " + str(datetime.now()) +"\n")
+            file.close()
+            Open_Trades = GetOpenTrades(account_id, sec[i])
+            for positions in Open_Trades["trades"]:
+                trd_ID = positions["id"]
+                trd_entry = float(positions["price"])
+                trd_side = positions["side"]
+                trd_size = positions["units"]
+                if trd_side == "buy" and Open_Units == vol:
+                    if c[0] > SMA10 and c[0] > trd_entry and IT["counter"][sec[i]] == -1:
+                        IT["SL"][sec[i]] = round(trd_entry + 0.00001,5)
+                        UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm)
+                        IT["counter"][sec[i]] = 0
+                elif trd_side == "sell" and Open_Units == vol:
+                    if c[0] < SMA10 and c[0] < trd_entry and IT["counter"][sec[i]] == -1:
+                        IT["SL"][sec[i]] = round(trd_entry - 0.00001,5)
+                        UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm)
+                        IT["counter"][sec[i]] = 0
+                elif (trd_side == "buy" and c[0] < SMA50) or (trd_side == "sell" and c[0] > SMA50):
+                    ClosePositions(account_id, sec[i], file_nm)
+            if IT["counter"][sec[i]] >= 3 and abs(c[2] - c[0]) >= 0.00075:
+                file = open(main_log,'a')
+                file.write("IT: Scaling into " + sec[i] + " " + str(datetime.now()) +"\n")
+                file.close()
+                vol_adj = abs((IT["SL"][sec[i]] - trd_entry)*vol)/abs(IT["SL"][sec[i]] - c[0])
+                if Open_Units < 5*vol and c[0] > c[1] and c[1] > c[2]:
+                    OpenMarketOrder(account_id, sec[i], vol_adj, "market", "buy", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm)
+                elif Open_Units < 5*vol and c[0] < c[1] and c[1] < c[2]:
+                    OpenMarketOrder(account_id, sec[i], vol_adj, "market", "sell", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm)
+                IT_BreakEven(account_id, sec[i], trd_entry, c[0], vol, vol_adj, file_nm)
+                IT["counter"][sec[i]] = 0
+            elif IT["counter"][sec[i]] != -1:
+                IT["counter"][sec[i]] += 1 
 
 ##########################################################################################################
 #                                                                                                        #
@@ -259,20 +336,14 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss, file_str):
     file.close()
     time.sleep(1)
 
-# def CloseOrders(Account_Num, order_id):
-#     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
-#     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": LIVE_ACCESS_TOKEN}
-#     file = open(name,'a')
-#     file.write("Sending order... " + "\n")
-#     file.close()
-#     params = urllib.urlencode({
-#         "order_id" : str(order_id)
-#     })
-#     conn.request("DELETE", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
-#     response = conn.getresponse().read()
-#     file = open(name,'a')
-#     file.write(response + "\n")
-#     file.close()
+def ClosePositions(Account_Num, sec, file_str):
+    file = open(file_str,'a')
+    file.write("Closing positions... " + "\n")
+    file.close()
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url =   "https://api-fxtrade.oanda.com/v1/accounts/" + str(Account_Num) + "/positions/" + sec
+    r = requests.delete(url, headers=h)     
+    time.sleep(1)
 
 def GetOpenTrades(Account_Num, sec):
     h = {'Authorization' : LIVE_ACCESS_TOKEN}
@@ -280,7 +351,6 @@ def GetOpenTrades(Account_Num, sec):
     r = requests.get(url, headers=h) 
     time.sleep(1)    
     return json.loads(r.text)
-
 
 def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take_Profit, Stop_Loss, file_str):
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
@@ -319,6 +389,16 @@ def GetOpenUnits(account_id, sec):
     time.sleep(1)
     return Units
 
+def GetOpenTradeIDs(Account_Num, sec):
+    trd_ids = []
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(Account_Num) + "/trades?instrument=" + str(sec)
+    r = requests.get(url, headers=h)
+    for positions in Open_Trades["trades"]:
+        trd_ids.append(positions["id"])
+    time.sleep(1)    
+    return trd_ids
+
 ##########################################################################################################
 #                                                                                                        #
 #                                              Indicators                                                #
@@ -342,7 +422,6 @@ def TR(h,l,yc):
     elif x <= z >= y:
         TR = z
     return TR
-
 
 def Get_ATR(h, l, c, sec):
     if PPB["ATR"][sec] == 0:
@@ -383,3 +462,24 @@ def CORREL(c1, c2):
     for i in range(len(c1)):
         exy += (c1[i] - ma1)*(c2[i]-ma2)
     exy = exy/len(c1)
+
+##########################################################################################################
+#                                                                                                        #
+#                                              Optimizer                                                 #
+#                                                                                                        #
+##########################################################################################################
+
+# Good example of a script that solves on optimizer type problem
+# Similar to how indicator routines are ran seperate from the strategy
+
+def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm):
+    if IT["BEV"][sec] == 0:
+        IT["BEV"][sec] += vol + vol_adj
+        IT["SL"][sec] = trd_entry*(vol/IT["BEV"][sec]) + curr_price*(vol_adj/IT["BEV"][sec])
+    else:
+        prev_BEV = IT["BEV"][sec[i]]
+        IT["BEV"][sec] += vol_adj
+        IT["SL"][sec] = IT["SL"][sec]*(prev_BEV/IT["BEV"][sec]) + curr_price*(vol_adj/IT["BEV"][sec])
+    Open_IDs = GetOpenTradeIDs(account_num, sec)
+    for j in range(len(Open_IDs)):
+        UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm)

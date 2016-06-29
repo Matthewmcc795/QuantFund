@@ -74,7 +74,7 @@ while True:
         file.close()
         dt_BusRide += timedelta(hours=24)
         dt_BusRide = dt_BusRide.replace(minute=2, second=0, microsecond=1)
-    elif datetime.now() > dt_IntraTrend:
+    if datetime.now() > dt_IntraTrend:
         file = open(main_log,'a')
         file.write("Running IntraTrend " + str(datetime.now()) +"\n")
         file.close()

@@ -1,0 +1,568 @@
+Running IntraTrend 2016-06-29 00:59:45.200000
+Collecting IT data for EUR_USD 2016-06-29 00:59:45.209000
+Collecting IT data for GBP_USD 2016-06-29 00:59:51.532000
+Collecting IT data for USD_CAD 2016-06-29 00:59:54.275000
+IT: updating stops for USD_CAD 2016-06-29 00:59:57.160000
+Running IntraTrend 2016-06-29 01:02:05.217000
+Collecting IT data for EUR_USD 2016-06-29 01:02:05.224000
+Running IntraTrend 2016-06-29 01:04:49.973000
+Collecting IT data for EUR_USD 2016-06-29 01:04:49.992000
+Collecting IT data for GBP_USD 2016-06-29 01:04:53.749000
+Collecting IT data for USD_CAD 2016-06-29 01:04:56.400000
+IT: updating stops for USD_CAD 2016-06-29 01:04:59.164000
+Collecting IT data for AUD_USD 2016-06-29 01:05:01.985000
+IT: updating stops for AUD_USD 2016-06-29 01:05:04.735000
+Collecting IT data for NZD_USD 2016-06-29 01:05:06.106000
+IT: updating stops for NZD_USD 2016-06-29 01:05:08.934000
+IntraTrend complete 2016-06-29 01:05:10.298000
+Running IntraTrend 2016-06-29 01:12:23.576000
+Collecting IT data for EUR_USD 2016-06-29 01:12:23.590000
+Collecting IT data for GBP_USD 2016-06-29 01:12:27.477000
+Collecting IT data for USD_CAD 2016-06-29 01:12:30.145000
+IT: updating stops for USD_CAD 2016-06-29 01:12:32.808000
+Collecting IT data for AUD_USD 2016-06-29 01:12:34.164000
+IT: updating stops for AUD_USD 2016-06-29 01:12:36.906000
+Collecting IT data for NZD_USD 2016-06-29 01:12:38.238000
+IT: updating stops for NZD_USD 2016-06-29 01:12:40.959000
+IntraTrend complete 2016-06-29 01:12:42.380000
+Running IntraTrend 2016-06-29 01:15:27.886000
+Collecting IT data for EUR_USD 2016-06-29 01:15:27.893000
+Collecting IT data for GBP_USD 2016-06-29 01:15:31.971000
+Collecting IT data for USD_CAD 2016-06-29 01:15:34.673000
+IT: updating stops for USD_CAD 2016-06-29 01:15:37.361000
+Collecting IT data for AUD_USD 2016-06-29 01:15:38.736000
+IT: updating stops for AUD_USD 2016-06-29 01:15:41.480000
+Collecting IT data for NZD_USD 2016-06-29 01:15:42.827000
+IT: updating stops for NZD_USD 2016-06-29 01:15:46.497000
+IntraTrend complete 2016-06-29 01:15:47.853000
+Running IntraTrend 2016-06-29 01:15:57.860000
+Collecting IT data for EUR_USD 2016-06-29 01:15:57.866000
+Collecting IT data for GBP_USD 2016-06-29 01:16:00.598000
+Collecting IT data for USD_CAD 2016-06-29 01:16:03.351000
+IT: updating stops for USD_CAD 2016-06-29 01:16:06.075000
+Collecting IT data for AUD_USD 2016-06-29 01:16:07.443000
+IT: updating stops for AUD_USD 2016-06-29 01:16:10.194000
+Collecting IT data for NZD_USD 2016-06-29 01:16:11.554000
+IT: updating stops for NZD_USD 2016-06-29 01:16:14.269000
+IntraTrend complete 2016-06-29 01:16:15.628000
+Running IntraTrend 2016-06-29 01:16:25.639000
+Collecting IT data for EUR_USD 2016-06-29 01:16:25.648000
+Collecting IT data for GBP_USD 2016-06-29 01:16:28.342000
+Collecting IT data for USD_CAD 2016-06-29 01:16:31.065000
+Collecting IT data for AUD_USD 2016-06-29 01:16:33.815000
+IT: updating stops for AUD_USD 2016-06-29 01:16:36.563000
+Collecting IT data for NZD_USD 2016-06-29 01:16:37.897000
+IT: updating stops for NZD_USD 2016-06-29 01:16:40.622000
+IntraTrend complete 2016-06-29 01:16:41.985000
+Running IntraTrend 2016-06-29 01:16:51.994000
+Collecting IT data for EUR_USD 2016-06-29 01:16:52.009000
+Collecting IT data for GBP_USD 2016-06-29 01:16:54.691000
+Collecting IT data for USD_CAD 2016-06-29 01:16:57.374000
+Collecting IT data for AUD_USD 2016-06-29 01:17:00.149000
+IT: updating stops for AUD_USD 2016-06-29 01:17:02.870000
+Collecting IT data for NZD_USD 2016-06-29 01:17:04.247000
+IT: updating stops for NZD_USD 2016-06-29 01:17:06.976000
+IntraTrend complete 2016-06-29 01:17:08.340000
+Running IntraTrend 2016-06-29 01:17:18.354000
+Collecting IT data for EUR_USD 2016-06-29 01:17:18.369000
+Collecting IT data for GBP_USD 2016-06-29 01:17:21.099000
+Collecting IT data for USD_CAD 2016-06-29 01:17:23.781000
+Collecting IT data for AUD_USD 2016-06-29 01:17:26.493000
+IT: updating stops for AUD_USD 2016-06-29 01:17:29.169000
+Collecting IT data for NZD_USD 2016-06-29 01:17:30.514000
+IT: updating stops for NZD_USD 2016-06-29 01:17:33.208000
+IntraTrend complete 2016-06-29 01:17:34.553000
+Running IntraTrend 2016-06-29 01:17:44.563000
+Collecting IT data for EUR_USD 2016-06-29 01:17:44.570000
+Collecting IT data for GBP_USD 2016-06-29 01:17:47.231000
+Collecting IT data for USD_CAD 2016-06-29 01:17:49.889000
+Collecting IT data for AUD_USD 2016-06-29 01:17:52.545000
+IT: updating stops for AUD_USD 2016-06-29 01:17:56.191000
+Collecting IT data for NZD_USD 2016-06-29 01:17:57.553000
+IT: updating stops for NZD_USD 2016-06-29 01:18:00.348000
+IntraTrend complete 2016-06-29 01:18:01.696000
+Running IntraTrend 2016-06-29 01:18:11.705000
+Collecting IT data for EUR_USD 2016-06-29 01:18:11.713000
+IT: Buy EUR_USD 2016-06-29 01:18:14.425000
+Running IntraTrend 2016-06-29 01:22:43.601000
+Collecting IT data for EUR_USD 2016-06-29 01:22:43.608000
+Collecting IT data for GBP_USD 2016-06-29 01:22:47.415000
+Collecting IT data for USD_CAD 2016-06-29 01:22:50.115000
+Collecting IT data for AUD_USD 2016-06-29 01:22:52.904000
+IT: updating stops for AUD_USD 2016-06-29 01:22:55.635000
+Collecting IT data for NZD_USD 2016-06-29 01:22:56.974000
+IT: updating stops for NZD_USD 2016-06-29 01:22:59.650000
+IntraTrend complete 2016-06-29 01:23:00.979000
+Running IntraTrend 2016-06-29 01:23:10.987000
+Collecting IT data for EUR_USD 2016-06-29 01:23:10.994000
+Collecting IT data for GBP_USD 2016-06-29 01:23:13.816000
+Collecting IT data for USD_CAD 2016-06-29 01:23:16.566000
+Collecting IT data for AUD_USD 2016-06-29 01:23:19.286000
+IT: updating stops for AUD_USD 2016-06-29 01:23:21.998000
+Collecting IT data for NZD_USD 2016-06-29 01:23:23.269000
+IT: updating stops for NZD_USD 2016-06-29 01:23:25.985000
+IntraTrend complete 2016-06-29 01:23:27.329000
+Running IntraTrend 2016-06-29 01:23:37.339000
+Collecting IT data for EUR_USD 2016-06-29 01:23:37.354000
+Collecting IT data for GBP_USD 2016-06-29 01:23:40.084000
+Collecting IT data for USD_CAD 2016-06-29 01:23:42.755000
+Collecting IT data for AUD_USD 2016-06-29 01:23:45.435000
+IT: updating stops for AUD_USD 2016-06-29 01:23:48.146000
+Collecting IT data for NZD_USD 2016-06-29 01:23:49.497000
+IT: updating stops for NZD_USD 2016-06-29 01:23:52.256000
+IntraTrend complete 2016-06-29 01:23:53.609000
+Running IntraTrend 2016-06-29 01:24:03.620000
+Collecting IT data for EUR_USD 2016-06-29 01:24:03.628000
+Collecting IT data for GBP_USD 2016-06-29 01:24:06.414000
+Collecting IT data for USD_CAD 2016-06-29 01:24:09.083000
+Collecting IT data for AUD_USD 2016-06-29 01:24:11.773000
+IT: updating stops for AUD_USD 2016-06-29 01:24:14.443000
+Collecting IT data for NZD_USD 2016-06-29 01:24:15.788000
+IT: updating stops for NZD_USD 2016-06-29 01:24:18.447000
+IntraTrend complete 2016-06-29 01:24:19.809000
+Running IntraTrend 2016-06-29 01:24:29.820000
+Collecting IT data for EUR_USD 2016-06-29 01:24:29.827000
+Collecting IT data for GBP_USD 2016-06-29 01:24:32.494000
+Collecting IT data for USD_CAD 2016-06-29 01:24:35.183000
+Collecting IT data for AUD_USD 2016-06-29 01:24:37.870000
+IT: updating stops for AUD_USD 2016-06-29 01:24:40.590000
+Collecting IT data for NZD_USD 2016-06-29 01:24:41.936000
+IT: updating stops for NZD_USD 2016-06-29 01:24:44.597000
+IntraTrend complete 2016-06-29 01:24:45.939000
+Running IntraTrend 2016-06-29 01:24:55.947000
+Collecting IT data for EUR_USD 2016-06-29 01:24:55.958000
+Collecting IT data for GBP_USD 2016-06-29 01:24:58.632000
+Collecting IT data for USD_CAD 2016-06-29 01:25:01.385000
+Collecting IT data for AUD_USD 2016-06-29 01:25:04.091000
+IT: updating stops for AUD_USD 2016-06-29 01:25:07.818000
+Collecting IT data for NZD_USD 2016-06-29 01:25:09.177000
+IT: updating stops for NZD_USD 2016-06-29 01:25:11.848000
+IntraTrend complete 2016-06-29 01:25:13.190000
+Running IntraTrend 2016-06-29 01:25:23.204000
+Collecting IT data for EUR_USD 2016-06-29 01:25:23.212000
+Collecting IT data for GBP_USD 2016-06-29 01:25:25.903000
+Collecting IT data for USD_CAD 2016-06-29 01:25:28.596000
+Collecting IT data for AUD_USD 2016-06-29 01:25:31.253000
+IT: updating stops for AUD_USD 2016-06-29 01:25:34.057000
+Collecting IT data for NZD_USD 2016-06-29 01:25:35.404000
+IT: updating stops for NZD_USD 2016-06-29 01:25:38.183000
+IntraTrend complete 2016-06-29 01:25:40.546000
+Running IntraTrend 2016-06-29 01:25:50.557000
+Collecting IT data for EUR_USD 2016-06-29 01:25:50.569000
+Collecting IT data for GBP_USD 2016-06-29 01:25:53.580000
+Collecting IT data for USD_CAD 2016-06-29 01:25:56.301000
+Collecting IT data for AUD_USD 2016-06-29 01:25:59.106000
+IT: updating stops for AUD_USD 2016-06-29 01:26:01.794000
+Collecting IT data for NZD_USD 2016-06-29 01:26:04.135000
+IT: updating stops for NZD_USD 2016-06-29 01:26:07.852000
+IntraTrend complete 2016-06-29 01:26:09.254000
+Running IntraTrend 2016-06-29 01:26:19.266000
+Collecting IT data for EUR_USD 2016-06-29 01:26:19.277000
+Collecting IT data for GBP_USD 2016-06-29 01:26:21.985000
+Collecting IT data for USD_CAD 2016-06-29 01:26:24.702000
+Collecting IT data for AUD_USD 2016-06-29 01:26:27.382000
+IT: updating stops for AUD_USD 2016-06-29 01:26:30.053000
+Collecting IT data for NZD_USD 2016-06-29 01:26:31.380000
+IT: updating stops for NZD_USD 2016-06-29 01:26:34.024000
+IntraTrend complete 2016-06-29 01:26:35.364000
+Running IntraTrend 2016-06-29 01:26:45.373000
+Collecting IT data for EUR_USD 2016-06-29 01:26:45.381000
+Collecting IT data for GBP_USD 2016-06-29 01:26:48.110000
+Collecting IT data for USD_CAD 2016-06-29 01:26:50.852000
+Collecting IT data for AUD_USD 2016-06-29 01:26:53.525000
+IT: updating stops for AUD_USD 2016-06-29 01:26:56.201000
+Collecting IT data for NZD_USD 2016-06-29 01:26:57.515000
+IT: updating stops for NZD_USD 2016-06-29 01:27:00.221000
+IntraTrend complete 2016-06-29 01:27:01.546000
+Running IntraTrend 2016-06-29 01:27:11.555000
+Collecting IT data for EUR_USD 2016-06-29 01:27:11.563000
+Collecting IT data for GBP_USD 2016-06-29 01:27:14.261000
+Collecting IT data for USD_CAD 2016-06-29 01:27:16.934000
+Collecting IT data for AUD_USD 2016-06-29 01:27:19.594000
+IT: updating stops for AUD_USD 2016-06-29 01:27:22.454000
+Collecting IT data for NZD_USD 2016-06-29 01:27:23.804000
+IT: updating stops for NZD_USD 2016-06-29 01:27:26.454000
+IntraTrend complete 2016-06-29 01:27:27.793000
+Running IntraTrend 2016-06-29 01:27:37.804000
+Collecting IT data for EUR_USD 2016-06-29 01:27:37.815000
+Collecting IT data for GBP_USD 2016-06-29 01:27:40.781000
+Collecting IT data for USD_CAD 2016-06-29 01:27:43.521000
+Collecting IT data for AUD_USD 2016-06-29 01:27:46.226000
+IT: updating stops for AUD_USD 2016-06-29 01:27:48.943000
+Collecting IT data for NZD_USD 2016-06-29 01:27:50.298000
+IT: updating stops for NZD_USD 2016-06-29 01:27:52.959000
+IntraTrend complete 2016-06-29 01:27:54.345000
+Running IntraTrend 2016-06-29 01:28:04.358000
+Collecting IT data for EUR_USD 2016-06-29 01:28:04.366000
+Collecting IT data for GBP_USD 2016-06-29 01:28:07.020000
+Collecting IT data for USD_CAD 2016-06-29 01:28:09.701000
+Collecting IT data for AUD_USD 2016-06-29 01:28:12.363000
+IT: updating stops for AUD_USD 2016-06-29 01:28:15.099000
+Collecting IT data for NZD_USD 2016-06-29 01:28:16.463000
+IT: updating stops for NZD_USD 2016-06-29 01:28:19.193000
+IntraTrend complete 2016-06-29 01:28:20.555000
+Running IntraTrend 2016-06-29 01:28:30.565000
+Collecting IT data for EUR_USD 2016-06-29 01:28:30.574000
+Collecting IT data for GBP_USD 2016-06-29 01:28:33.245000
+Collecting IT data for USD_CAD 2016-06-29 01:28:35.900000
+Collecting IT data for AUD_USD 2016-06-29 01:28:38.581000
+IT: updating stops for AUD_USD 2016-06-29 01:28:41.250000
+Collecting IT data for NZD_USD 2016-06-29 01:28:42.581000
+IT: updating stops for NZD_USD 2016-06-29 01:28:45.242000
+IntraTrend complete 2016-06-29 01:28:46.591000
+Running IntraTrend 2016-06-29 01:28:56.600000
+Collecting IT data for EUR_USD 2016-06-29 01:28:56.609000
+Collecting IT data for GBP_USD 2016-06-29 01:28:59.280000
+Collecting IT data for USD_CAD 2016-06-29 01:29:01.966000
+Collecting IT data for AUD_USD 2016-06-29 01:29:04.651000
+IT: updating stops for AUD_USD 2016-06-29 01:29:07.341000
+Collecting IT data for NZD_USD 2016-06-29 01:29:08.685000
+IT: updating stops for NZD_USD 2016-06-29 01:29:11.401000
+IntraTrend complete 2016-06-29 01:29:12.752000
+Running IntraTrend 2016-06-29 01:29:22.760000
+Collecting IT data for EUR_USD 2016-06-29 01:29:22.773000
+Collecting IT data for GBP_USD 2016-06-29 01:29:25.522000
+Collecting IT data for USD_CAD 2016-06-29 01:29:28.470000
+Collecting IT data for AUD_USD 2016-06-29 01:29:31.302000
+IT: updating stops for AUD_USD 2016-06-29 01:29:35.040000
+Collecting IT data for NZD_USD 2016-06-29 01:29:36.363000
+IT: updating stops for NZD_USD 2016-06-29 01:29:39.331000
+IntraTrend complete 2016-06-29 01:29:40.683000
+Running IntraTrend 2016-06-29 01:29:50.693000
+Collecting IT data for EUR_USD 2016-06-29 01:29:50.704000
+Collecting IT data for GBP_USD 2016-06-29 01:29:53.380000
+Collecting IT data for USD_CAD 2016-06-29 01:29:56.169000
+Collecting IT data for AUD_USD 2016-06-29 01:29:58.849000
+IT: updating stops for AUD_USD 2016-06-29 01:30:01.524000
+Collecting IT data for NZD_USD 2016-06-29 01:30:02.875000
+IT: updating stops for NZD_USD 2016-06-29 01:30:05.563000
+IntraTrend complete 2016-06-29 01:30:06.901000
+Running IntraTrend 2016-06-29 01:30:16.910000
+Collecting IT data for EUR_USD 2016-06-29 01:30:16.919000
+Collecting IT data for GBP_USD 2016-06-29 01:30:19.592000
+Collecting IT data for USD_CAD 2016-06-29 01:30:22.287000
+Collecting IT data for AUD_USD 2016-06-29 01:30:24.988000
+IT: updating stops for AUD_USD 2016-06-29 01:30:27.708000
+Collecting IT data for NZD_USD 2016-06-29 01:30:29.050000
+IT: updating stops for NZD_USD 2016-06-29 01:30:31.719000
+IntraTrend complete 2016-06-29 01:30:33.097000
+Running IntraTrend 2016-06-29 01:30:43.112000
+Collecting IT data for EUR_USD 2016-06-29 01:30:43.126000
+Collecting IT data for GBP_USD 2016-06-29 01:30:45.903000
+Collecting IT data for USD_CAD 2016-06-29 01:30:48.558000
+Collecting IT data for AUD_USD 2016-06-29 01:30:51.251000
+IT: updating stops for AUD_USD 2016-06-29 01:30:53.932000
+Collecting IT data for NZD_USD 2016-06-29 01:30:55.306000
+IT: updating stops for NZD_USD 2016-06-29 01:30:58.029000
+IntraTrend complete 2016-06-29 01:30:59.441000
+Running IntraTrend 2016-06-29 01:31:09.452000
+Collecting IT data for EUR_USD 2016-06-29 01:31:09.466000
+Collecting IT data for GBP_USD 2016-06-29 01:31:12.167000
+Collecting IT data for USD_CAD 2016-06-29 01:31:14.898000
+Collecting IT data for AUD_USD 2016-06-29 01:31:17.562000
+IT: updating stops for AUD_USD 2016-06-29 01:31:20.187000
+Collecting IT data for NZD_USD 2016-06-29 01:31:21.519000
+IT: updating stops for NZD_USD 2016-06-29 01:31:25.199000
+IntraTrend complete 2016-06-29 01:31:26.534000
+Running IntraTrend 2016-06-29 01:31:36.542000
+Collecting IT data for EUR_USD 2016-06-29 01:31:36.555000
+Collecting IT data for GBP_USD 2016-06-29 01:31:39.278000
+Collecting IT data for USD_CAD 2016-06-29 01:31:42.009000
+Collecting IT data for AUD_USD 2016-06-29 01:31:44.720000
+IT: updating stops for AUD_USD 2016-06-29 01:31:47.367000
+Collecting IT data for NZD_USD 2016-06-29 01:31:48.726000
+IT: updating stops for NZD_USD 2016-06-29 01:31:51.357000
+IntraTrend complete 2016-06-29 01:31:52.700000
+Running IntraTrend 2016-06-29 01:32:02.709000
+Collecting IT data for EUR_USD 2016-06-29 01:32:02.718000
+Collecting IT data for GBP_USD 2016-06-29 01:32:05.376000
+Collecting IT data for USD_CAD 2016-06-29 01:32:08.077000
+Collecting IT data for AUD_USD 2016-06-29 01:32:10.782000
+IT: updating stops for AUD_USD 2016-06-29 01:32:13.449000
+Collecting IT data for NZD_USD 2016-06-29 01:32:14.791000
+IT: updating stops for NZD_USD 2016-06-29 01:32:17.567000
+IntraTrend complete 2016-06-29 01:32:18.909000
+Running IntraTrend 2016-06-29 01:32:28.919000
+Collecting IT data for EUR_USD 2016-06-29 01:32:28.930000
+Collecting IT data for GBP_USD 2016-06-29 01:32:31.607000
+Collecting IT data for USD_CAD 2016-06-29 01:32:34.389000
+Collecting IT data for AUD_USD 2016-06-29 01:32:37.148000
+IT: updating stops for AUD_USD 2016-06-29 01:32:39.960000
+Collecting IT data for NZD_USD 2016-06-29 01:32:41.291000
+IT: updating stops for NZD_USD 2016-06-29 01:32:43.975000
+IntraTrend complete 2016-06-29 01:32:45.298000
+Running IntraTrend 2016-06-29 01:32:55.309000
+Collecting IT data for EUR_USD 2016-06-29 01:32:55.317000
+Collecting IT data for GBP_USD 2016-06-29 01:32:57.958000
+Collecting IT data for USD_CAD 2016-06-29 01:33:00.668000
+Collecting IT data for AUD_USD 2016-06-29 01:33:03.461000
+IT: updating stops for AUD_USD 2016-06-29 01:33:06.180000
+Collecting IT data for NZD_USD 2016-06-29 01:33:07.535000
+IT: updating stops for NZD_USD 2016-06-29 01:33:10.258000
+IntraTrend complete 2016-06-29 01:33:11.602000
+Running IntraTrend 2016-06-29 01:33:21.613000
+Collecting IT data for EUR_USD 2016-06-29 01:33:21.621000
+Collecting IT data for GBP_USD 2016-06-29 01:33:24.398000
+Collecting IT data for USD_CAD 2016-06-29 01:33:27.151000
+IT: Sell USD_CAD 2016-06-29 01:33:29.818000
+Collecting IT data for AUD_USD 2016-06-29 01:33:29.826000
+IT: updating stops for AUD_USD 2016-06-29 01:33:32.488000
+Collecting IT data for NZD_USD 2016-06-29 01:33:33.833000
+IT: updating stops for NZD_USD 2016-06-29 01:33:36.488000
+IntraTrend complete 2016-06-29 01:33:37.867000
+Running IntraTrend 2016-06-29 01:33:47.875000
+Collecting IT data for EUR_USD 2016-06-29 01:33:47.884000
+Collecting IT data for GBP_USD 2016-06-29 01:33:50.658000
+Collecting IT data for USD_CAD 2016-06-29 01:33:54.345000
+IT: Sell USD_CAD 2016-06-29 01:33:57.009000
+Collecting IT data for AUD_USD 2016-06-29 01:33:57.020000
+IT: updating stops for AUD_USD 2016-06-29 01:33:59.639000
+Collecting IT data for NZD_USD 2016-06-29 01:34:00.957000
+IT: updating stops for NZD_USD 2016-06-29 01:34:03.786000
+IntraTrend complete 2016-06-29 01:34:05.122000
+Running IntraTrend 2016-06-29 01:34:15.130000
+Collecting IT data for EUR_USD 2016-06-29 01:34:15.138000
+Collecting IT data for GBP_USD 2016-06-29 01:34:17.827000
+Collecting IT data for USD_CAD 2016-06-29 01:34:20.512000
+IT: Sell USD_CAD 2016-06-29 01:34:23.206000
+Collecting IT data for AUD_USD 2016-06-29 01:34:23.215000
+IT: updating stops for AUD_USD 2016-06-29 01:34:25.910000
+Collecting IT data for NZD_USD 2016-06-29 01:34:27.245000
+IT: updating stops for NZD_USD 2016-06-29 01:34:29.928000
+IntraTrend complete 2016-06-29 01:34:31.325000
+Running IntraTrend 2016-06-29 01:34:41.333000
+Collecting IT data for EUR_USD 2016-06-29 01:34:41.343000
+Collecting IT data for GBP_USD 2016-06-29 01:34:44.069000
+Collecting IT data for USD_CAD 2016-06-29 01:34:46.792000
+IT: Sell USD_CAD 2016-06-29 01:34:49.455000
+Collecting IT data for AUD_USD 2016-06-29 01:34:49.463000
+IT: updating stops for AUD_USD 2016-06-29 01:34:52.107000
+Collecting IT data for NZD_USD 2016-06-29 01:34:53.447000
+IT: updating stops for NZD_USD 2016-06-29 01:34:56.104000
+IntraTrend complete 2016-06-29 01:34:57.457000
+Running IntraTrend 2016-06-29 01:35:07.465000
+Collecting IT data for EUR_USD 2016-06-29 01:35:07.473000
+Collecting IT data for GBP_USD 2016-06-29 01:35:10.285000
+Collecting IT data for USD_CAD 2016-06-29 01:35:13.967000
+IT: Sell USD_CAD 2016-06-29 01:35:16.633000
+Collecting IT data for AUD_USD 2016-06-29 01:35:16.642000
+IT: updating stops for AUD_USD 2016-06-29 01:35:19.435000
+Collecting IT data for NZD_USD 2016-06-29 01:35:20.795000
+IT: updating stops for NZD_USD 2016-06-29 01:35:24.466000
+IntraTrend complete 2016-06-29 01:35:25.801000
+Running IntraTrend 2016-06-29 01:35:35.811000
+Collecting IT data for EUR_USD 2016-06-29 01:35:35.822000
+Collecting IT data for GBP_USD 2016-06-29 01:35:38.506000
+Collecting IT data for USD_CAD 2016-06-29 01:35:41.177000
+Collecting IT data for AUD_USD 2016-06-29 01:35:43.876000
+IT: updating stops for AUD_USD 2016-06-29 01:35:46.515000
+Collecting IT data for NZD_USD 2016-06-29 01:35:47.846000
+IT: updating stops for NZD_USD 2016-06-29 01:35:50.568000
+IntraTrend complete 2016-06-29 01:35:52.880000
+Running IntraTrend 2016-06-29 01:36:02.888000
+Collecting IT data for EUR_USD 2016-06-29 01:36:02.898000
+Collecting IT data for GBP_USD 2016-06-29 01:36:05.589000
+Collecting IT data for USD_CAD 2016-06-29 01:36:08.284000
+Collecting IT data for AUD_USD 2016-06-29 01:36:11.015000
+IT: updating stops for AUD_USD 2016-06-29 01:36:13.757000
+Collecting IT data for NZD_USD 2016-06-29 01:36:16.136000
+IT: updating stops for NZD_USD 2016-06-29 01:36:18.780000
+IntraTrend complete 2016-06-29 01:36:20.116000
+Running IntraTrend 2016-06-29 01:36:30.125000
+Collecting IT data for EUR_USD 2016-06-29 01:36:30.135000
+IT: Buy EUR_USD 2016-06-29 01:36:32.785000
+Collecting IT data for GBP_USD 2016-06-29 01:36:32.800000
+Collecting IT data for USD_CAD 2016-06-29 01:36:35.455000
+Collecting IT data for AUD_USD 2016-06-29 01:36:38.133000
+IT: updating stops for AUD_USD 2016-06-29 01:36:40.776000
+Collecting IT data for NZD_USD 2016-06-29 01:36:42.239000
+IT: updating stops for NZD_USD 2016-06-29 01:36:44.883000
+IntraTrend complete 2016-06-29 01:36:46.266000
+Running IntraTrend 2016-06-29 01:36:56.277000
+Collecting IT data for EUR_USD 2016-06-29 01:36:56.287000
+Collecting IT data for GBP_USD 2016-06-29 01:36:58.996000
+Collecting IT data for USD_CAD 2016-06-29 01:37:01.714000
+Collecting IT data for AUD_USD 2016-06-29 01:37:04.417000
+IT: updating stops for AUD_USD 2016-06-29 01:37:07.072000
+Collecting IT data for NZD_USD 2016-06-29 01:37:08.421000
+IT: updating stops for NZD_USD 2016-06-29 01:37:11.074000
+IntraTrend complete 2016-06-29 01:37:12.386000
+Running IntraTrend 2016-06-29 01:37:22.396000
+Collecting IT data for EUR_USD 2016-06-29 01:37:22.408000
+Collecting IT data for GBP_USD 2016-06-29 01:37:25.183000
+Collecting IT data for USD_CAD 2016-06-29 01:37:27.905000
+Collecting IT data for AUD_USD 2016-06-29 01:37:30.643000
+IT: updating stops for AUD_USD 2016-06-29 01:37:33.304000
+Collecting IT data for NZD_USD 2016-06-29 01:37:34.638000
+IT: updating stops for NZD_USD 2016-06-29 01:37:37.298000
+IntraTrend complete 2016-06-29 01:37:38.640000
+Running IntraTrend 2016-06-29 01:37:48.653000
+Collecting IT data for EUR_USD 2016-06-29 01:37:48.663000
+Collecting IT data for GBP_USD 2016-06-29 01:37:52.344000
+Collecting IT data for USD_CAD 2016-06-29 01:37:55.022000
+Collecting IT data for AUD_USD 2016-06-29 01:37:57.668000
+IT: updating stops for AUD_USD 2016-06-29 01:38:00.333000
+Collecting IT data for NZD_USD 2016-06-29 01:38:01.975000
+IT: updating stops for NZD_USD 2016-06-29 01:38:04.644000
+IntraTrend complete 2016-06-29 01:38:05.994000
+Running IntraTrend 2016-06-29 01:38:16.008000
+Collecting IT data for EUR_USD 2016-06-29 01:38:16.020000
+Collecting IT data for GBP_USD 2016-06-29 01:38:18.742000
+Collecting IT data for USD_CAD 2016-06-29 01:38:21.446000
+Collecting IT data for AUD_USD 2016-06-29 01:38:24.269000
+IT: updating stops for AUD_USD 2016-06-29 01:38:26.912000
+Collecting IT data for NZD_USD 2016-06-29 01:38:28.244000
+IT: updating stops for NZD_USD 2016-06-29 01:38:30.882000
+IntraTrend complete 2016-06-29 01:38:32.213000
+Running IntraTrend 2016-06-29 01:38:42.226000
+Collecting IT data for EUR_USD 2016-06-29 01:38:42.238000
+Collecting IT data for GBP_USD 2016-06-29 01:38:44.901000
+Collecting IT data for USD_CAD 2016-06-29 01:38:47.558000
+Collecting IT data for AUD_USD 2016-06-29 01:38:50.257000
+IT: updating stops for AUD_USD 2016-06-29 01:38:53.003000
+Collecting IT data for NZD_USD 2016-06-29 01:38:54.475000
+IT: updating stops for NZD_USD 2016-06-29 01:38:57.263000
+IntraTrend complete 2016-06-29 01:38:58.623000
+Running IntraTrend 2016-06-29 01:39:08.635000
+Collecting IT data for EUR_USD 2016-06-29 01:39:08.650000
+Collecting IT data for GBP_USD 2016-06-29 01:39:11.454000
+Collecting IT data for USD_CAD 2016-06-29 01:39:14.111000
+Collecting IT data for AUD_USD 2016-06-29 01:39:16.779000
+IT: updating stops for AUD_USD 2016-06-29 01:39:19.445000
+Collecting IT data for NZD_USD 2016-06-29 01:39:20.804000
+IT: updating stops for NZD_USD 2016-06-29 01:39:23.447000
+IntraTrend complete 2016-06-29 01:39:24.807000
+Running IntraTrend 2016-06-29 01:39:34.819000
+Collecting IT data for EUR_USD 2016-06-29 01:39:34.830000
+Collecting IT data for GBP_USD 2016-06-29 01:39:37.546000
+Collecting IT data for USD_CAD 2016-06-29 01:39:40.272000
+Collecting IT data for AUD_USD 2016-06-29 01:39:42.921000
+IT: updating stops for AUD_USD 2016-06-29 01:39:45.646000
+Collecting IT data for NZD_USD 2016-06-29 01:39:46.964000
+IT: updating stops for NZD_USD 2016-06-29 01:39:49.608000
+IntraTrend complete 2016-06-29 01:39:51.011000
+Running IntraTrend 2016-06-29 01:40:01.021000
+Collecting IT data for EUR_USD 2016-06-29 01:40:01.028000
+Collecting IT data for GBP_USD 2016-06-29 01:40:03.687000
+Collecting IT data for USD_CAD 2016-06-29 01:40:06.309000
+Collecting IT data for AUD_USD 2016-06-29 01:40:08.942000
+IT: updating stops for AUD_USD 2016-06-29 01:40:11.633000
+Collecting IT data for NZD_USD 2016-06-29 01:40:12.978000
+IT: updating stops for NZD_USD 2016-06-29 01:40:15.980000
+IntraTrend complete 2016-06-29 01:40:17.302000
+Running IntraTrend 2016-06-29 01:40:27.309000
+Collecting IT data for EUR_USD 2016-06-29 01:40:27.318000
+Collecting IT data for GBP_USD 2016-06-29 01:40:30.331000
+Collecting IT data for USD_CAD 2016-06-29 01:40:32.991000
+Collecting IT data for AUD_USD 2016-06-29 01:40:35.687000
+IT: updating stops for AUD_USD 2016-06-29 01:40:38.361000
+Collecting IT data for NZD_USD 2016-06-29 01:40:39.713000
+IT: updating stops for NZD_USD 2016-06-29 01:40:42.385000
+IntraTrend complete 2016-06-29 01:40:43.748000
+Running IntraTrend 2016-06-29 01:40:53.758000
+Collecting IT data for EUR_USD 2016-06-29 01:40:53.767000
+Collecting IT data for GBP_USD 2016-06-29 01:40:56.474000
+Collecting IT data for USD_CAD 2016-06-29 01:40:59.233000
+Collecting IT data for AUD_USD 2016-06-29 01:41:01.933000
+IT: updating stops for AUD_USD 2016-06-29 01:41:04.636000
+Collecting IT data for NZD_USD 2016-06-29 01:41:05.963000
+IT: updating stops for NZD_USD 2016-06-29 01:41:08.609000
+IntraTrend complete 2016-06-29 01:41:09.948000
+Running IntraTrend 2016-06-29 01:41:19.956000
+Collecting IT data for EUR_USD 2016-06-29 01:41:19.963000
+Collecting IT data for GBP_USD 2016-06-29 01:41:22.681000
+Collecting IT data for USD_CAD 2016-06-29 01:41:25.418000
+Collecting IT data for AUD_USD 2016-06-29 01:41:28.039000
+IT: updating stops for AUD_USD 2016-06-29 01:41:30.661000
+Collecting IT data for NZD_USD 2016-06-29 01:41:32.008000
+IT: updating stops for NZD_USD 2016-06-29 01:41:34.669000
+IntraTrend complete 2016-06-29 01:41:36.007000
+Running IntraTrend 2016-06-29 01:41:46.016000
+Collecting IT data for EUR_USD 2016-06-29 01:41:46.023000
+Collecting IT data for GBP_USD 2016-06-29 01:41:48.710000
+Collecting IT data for USD_CAD 2016-06-29 01:41:51.454000
+Collecting IT data for AUD_USD 2016-06-29 01:41:54.459000
+IT: updating stops for AUD_USD 2016-06-29 01:41:57.111000
+Collecting IT data for NZD_USD 2016-06-29 01:41:58.452000
+IT: updating stops for NZD_USD 2016-06-29 01:42:01.159000
+IntraTrend complete 2016-06-29 01:42:02.482000
+Running IntraTrend 2016-06-29 01:42:12.496000
+Collecting IT data for EUR_USD 2016-06-29 01:42:12.496000
+Collecting IT data for GBP_USD 2016-06-29 01:42:15.170000
+Collecting IT data for USD_CAD 2016-06-29 01:42:17.842000
+Collecting IT data for AUD_USD 2016-06-29 01:42:20.488000
+IT: updating stops for AUD_USD 2016-06-29 01:42:23.163000
+Collecting IT data for NZD_USD 2016-06-29 01:42:24.482000
+IT: updating stops for NZD_USD 2016-06-29 01:42:28.149000
+IntraTrend complete 2016-06-29 01:42:29.487000
+Running IntraTrend 2016-06-29 01:42:39.487000
+Collecting IT data for EUR_USD 2016-06-29 01:42:39.495000
+Collecting IT data for GBP_USD 2016-06-29 01:42:42.172000
+Collecting IT data for USD_CAD 2016-06-29 01:42:44.908000
+Collecting IT data for AUD_USD 2016-06-29 01:42:47.534000
+IT: updating stops for AUD_USD 2016-06-29 01:42:50.189000
+Collecting IT data for NZD_USD 2016-06-29 01:42:51.514000
+IT: updating stops for NZD_USD 2016-06-29 01:42:54.191000
+IntraTrend complete 2016-06-29 01:42:55.510000
+Running IntraTrend 2016-06-29 01:43:05.518000
+Collecting IT data for EUR_USD 2016-06-29 01:43:05.526000
+Collecting IT data for GBP_USD 2016-06-29 01:43:08.315000
+Collecting IT data for USD_CAD 2016-06-29 01:43:11.062000
+Collecting IT data for AUD_USD 2016-06-29 01:43:13.761000
+IT: updating stops for AUD_USD 2016-06-29 01:43:16.419000
+Collecting IT data for NZD_USD 2016-06-29 01:43:17.760000
+IT: updating stops for NZD_USD 2016-06-29 01:43:20.405000
+IntraTrend complete 2016-06-29 01:43:21.746000
+Running IntraTrend 2016-06-29 01:43:31.759000
+Collecting IT data for EUR_USD 2016-06-29 01:43:31.768000
+Collecting IT data for GBP_USD 2016-06-29 01:43:34.498000
+Collecting IT data for USD_CAD 2016-06-29 01:43:37.208000
+Collecting IT data for AUD_USD 2016-06-29 01:43:39.839000
+IT: updating stops for AUD_USD 2016-06-29 01:43:42.490000
+Collecting IT data for NZD_USD 2016-06-29 01:43:43.834000
+IT: updating stops for NZD_USD 2016-06-29 01:43:46.501000
+IntraTrend complete 2016-06-29 01:43:47.832000
+Running IntraTrend 2016-06-29 01:43:57.846000
+Collecting IT data for EUR_USD 2016-06-29 01:43:57.857000
+Collecting IT data for GBP_USD 2016-06-29 01:44:00.541000
+Collecting IT data for USD_CAD 2016-06-29 01:44:03.239000
+Collecting IT data for AUD_USD 2016-06-29 01:44:06.009000
+IT: updating stops for AUD_USD 2016-06-29 01:44:08.685000
+Collecting IT data for NZD_USD 2016-06-29 01:44:10.060000
+IT: updating stops for NZD_USD 2016-06-29 01:44:12.719000
+IntraTrend complete 2016-06-29 01:44:14.081000
+Running IntraTrend 2016-06-29 01:44:24.107000
+Collecting IT data for EUR_USD 2016-06-29 01:44:24.107000
+Collecting IT data for GBP_USD 2016-06-29 01:44:26.796000
+Collecting IT data for USD_CAD 2016-06-29 01:44:29.476000
+Collecting IT data for AUD_USD 2016-06-29 01:44:32.160000
+IT: updating stops for AUD_USD 2016-06-29 01:44:34.969000
+Collecting IT data for NZD_USD 2016-06-29 01:44:36.338000
+IT: updating stops for NZD_USD 2016-06-29 01:44:38.989000
+IntraTrend complete 2016-06-29 01:44:41.324000
+Running IntraTrend 2016-06-29 01:44:51.333000
+Collecting IT data for EUR_USD 2016-06-29 01:44:51.333000
+Collecting IT data for GBP_USD 2016-06-29 01:44:54.040000
+Collecting IT data for USD_CAD 2016-06-29 01:44:56.744000
+Collecting IT data for AUD_USD 2016-06-29 01:44:59.415000
+Collecting IT data for NZD_USD 2016-06-29 01:45:02.075000
+IT: updating stops for NZD_USD 2016-06-29 01:45:04.748000
+IntraTrend complete 2016-06-29 01:45:06.069000
+Running IntraTrend 2016-06-29 01:45:16.081000
+Collecting IT data for EUR_USD 2016-06-29 01:45:16.093000
+Collecting IT data for GBP_USD 2016-06-29 01:45:18.750000
+Collecting IT data for USD_CAD 2016-06-29 01:45:21.436000
+Collecting IT data for AUD_USD 2016-06-29 01:45:24.130000
+Collecting IT data for NZD_USD 2016-06-29 01:45:26.888000
+IT: updating stops for NZD_USD 2016-06-29 01:45:29.549000
+IntraTrend complete 2016-06-29 01:45:30.888000
+Running IntraTrend 2016-06-29 01:45:40.900000
+Collecting IT data for EUR_USD 2016-06-29 01:45:40.913000
+Collecting IT data for GBP_USD 2016-06-29 01:45:43.600000
+Collecting IT data for USD_CAD 2016-06-29 01:45:46.323000
+Collecting IT data for AUD_USD 2016-06-29 01:45:48.995000
+Collecting IT data for NZD_USD 2016-06-29 01:45:51.657000
+IT: updating stops for NZD_USD 2016-06-29 01:45:54.380000
+IntraTrend complete 2016-06-29 01:45:55.743000
+Running IntraTrend 2016-06-29 01:46:05.756000
+Collecting IT data for EUR_USD 2016-06-29 01:46:05.774000

@@ -1,0 +1,13 @@
+Updating Stop Loss ... 
+{
+	"id" : 10310283353,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "USD_CAD",
+	"time" : "2016-06-29T04:40:52.000000Z",
+	"price" : 1.30193,
+	"takeProfit" : 1.30039,
+	"stopLoss" : 1.30192,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
