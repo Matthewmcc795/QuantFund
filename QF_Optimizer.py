@@ -31,11 +31,30 @@
 # To figure out:
 # What is the best way to extract past trades and trade results from Oanda?
 
+from QF_Functions import *
+from QF_Strategy import *
+
 ##########################################################################################################
 #                                                                                                        #
-#                                             Optimizer                                                  #
+#                                              Optimizer                                                 #
 #                                                                                                        #
 ##########################################################################################################
+
+# Good example of a script that solves on optimizer type problem
+# Similar to how indicator routines are ran seperate from the strategy
+
+def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm):
+    if IT["BEV"][sec] == 0:
+        IT["BEV"][sec] += vol + vol_adj
+        IT["SL"][sec] = trd_entry*(vol/IT["BEV"][sec]) + curr_price*(vol_adj/IT["BEV"][sec])
+    else:
+        prev_BEV = IT["BEV"][sec[i]]
+        IT["BEV"][sec] += vol_adj
+        IT["SL"][sec] = IT["SL"][sec]*(prev_BEV/IT["BEV"][sec]) + curr_price*(vol_adj/IT["BEV"][sec])
+    Open_IDs = GetOpenTradeIDs(account_num, sec)
+    for j in range(len(Open_IDs)):
+        UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm)
+
 
 # class PMAC:
 #     def __init__(self,name):
