@@ -88,7 +88,7 @@ while True:
         dt_Swing_PPB = dt_Swing_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Swing_MAC:
         SaveToLog(main_log, "Running Swing_MAC")
-        MovingAverageContrarian(account_id2, Sec, "H4" ,qf_vol, fl_strat2)
+        MovingAverageContrarian(account_id2, Sec, qf_vol, "H4", fl_strat2)
         SaveToLog(main_log, "Swing_MAC complete")
         dt_Swing_MAC += timedelta(hours=4)
         dt_Swing_MAC = dt_Swing_MAC.replace(minute=0, second=1, microsecond=1)

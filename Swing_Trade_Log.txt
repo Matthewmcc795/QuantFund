@@ -1,0 +1,16 @@
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-07-06T02:13:51.000000Z",
+	"price" : 1.28266,
+	"tradeOpened" : {
+		"id" : 10320314131,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.29488,
+		"stopLoss" : 1.26985,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
