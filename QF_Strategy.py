@@ -106,7 +106,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
 def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting MAC data for " + sec[i])
-        c = Get_Price(sec[i], tf, 50, "c")
+        c = Get_Price(sec[i], tf, 51, "c")
         ma = SMA(c,50)
         sd = STDEV(c,50)
         Z = (c[0] - ma)/sd
@@ -220,7 +220,7 @@ def CableSnap(account_id, sec, vol, tf, file_nm):
         SMA50 = SMA(c,50)
         Open_Units = GetOpenUnits(account_id, sec[i], sec)
         if Open_Units <= 15000 - vol:
-            if c[0] > SMA10 and c[0] < SMA21 and c[0] < SMA50:
+            if c[0] > SMA10 and c[0] < SMA21 and SMA21 < SMA50:
                 SaveToLog(main_log, "CS: Sell " + sec[i])
                 if tf == "D":
                     TP = round(c[0] - 2*abs(c[0] - SMA50), 5)

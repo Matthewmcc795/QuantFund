@@ -14,3 +14,37 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "EUR_GBP",
+	"time" : "2016-07-06T02:14:13.000000Z",
+	"price" : 0.86118,
+	"tradeOpened" : {
+		"id" : 10320314746,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.8544,
+		"stopLoss" : 0.86833,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-06T02:14:44.000000Z",
+	"price" : 1.2537,
+	"tradeOpened" : {
+		"id" : 10320315378,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.2648,
+		"stopLoss" : 1.24182,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Closing positions... 
+Closing positions... 

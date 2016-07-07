@@ -839,3 +839,50 @@ Checking MAC signals for USD_CAD 2016-07-05 22:13:47.125000
 Collecting MAC data for AUD_USD 2016-07-05 22:13:47.139000
 Checking MAC signals for AUD_USD 2016-07-05 22:13:49.787000
 Collecting MAC data for NZD_USD 2016-07-05 22:13:49.805000
+Checking MAC signals for NZD_USD 2016-07-05 22:13:57.280000
+Collecting MAC data for USD_CHF 2016-07-05 22:13:57.294000
+Checking MAC signals for USD_CHF 2016-07-05 22:13:59.957000
+Collecting MAC data for NZD_CHF 2016-07-05 22:13:59.973000
+Checking MAC signals for NZD_CHF 2016-07-05 22:14:02.615000
+Collecting MAC data for EUR_GBP 2016-07-05 22:14:02.628000
+Checking MAC signals for EUR_GBP 2016-07-05 22:14:05.380000
+MAC: Sell EUR_GBP 2016-07-05 22:14:05.392000
+Collecting MAC data for EUR_CAD 2016-07-05 22:14:06.670000
+Checking MAC signals for EUR_CAD 2016-07-05 22:14:09.366000
+Collecting MAC data for EUR_AUD 2016-07-05 22:14:09.378000
+Checking MAC signals for EUR_AUD 2016-07-05 22:14:12.067000
+Collecting MAC data for EUR_NZD 2016-07-05 22:14:12.084000
+Checking MAC signals for EUR_NZD 2016-07-05 22:14:14.776000
+Collecting MAC data for GBP_CAD 2016-07-05 22:14:14.793000
+Checking MAC signals for GBP_CAD 2016-07-05 22:14:17.440000
+Collecting MAC data for GBP_AUD 2016-07-05 22:14:17.455000
+Checking MAC signals for GBP_AUD 2016-07-05 22:14:20.146000
+Collecting MAC data for GBP_NZD 2016-07-05 22:14:20.158000
+Checking MAC signals for GBP_NZD 2016-07-05 22:14:22.947000
+Collecting MAC data for AUD_CAD 2016-07-05 22:14:22.963000
+Checking MAC signals for AUD_CAD 2016-07-05 22:14:25.644000
+Collecting MAC data for NZD_CAD 2016-07-05 22:14:25.657000
+Checking MAC signals for NZD_CAD 2016-07-05 22:14:28.379000
+Collecting MAC data for AUD_NZD 2016-07-05 22:14:28.393000
+Checking MAC signals for AUD_NZD 2016-07-05 22:14:31.073000
+Collecting MAC data for EUR_CHF 2016-07-05 22:14:31.090000
+Checking MAC signals for EUR_CHF 2016-07-05 22:14:33.759000
+Collecting MAC data for GBP_CHF 2016-07-05 22:14:33.772000
+Checking MAC signals for GBP_CHF 2016-07-05 22:14:36.468000
+MAC: Buy GBP_CHF 2016-07-05 22:14:36.480000
+Collecting MAC data for CAD_CHF 2016-07-05 22:14:37.741000
+Checking MAC signals for CAD_CHF 2016-07-05 22:14:40.425000
+Collecting MAC data for AUD_CHF 2016-07-05 22:14:40.438000
+Checking MAC signals for AUD_CHF 2016-07-05 22:14:44.096000
+Swing_MAC complete 2016-07-05 22:14:44.108000
+Running Swing_IntraTrendW 2016-07-05 22:14:45.124000
+Collecting IT data for EUR_USD 2016-07-05 22:14:45.142000
+Collecting IT data for GBP_USD 2016-07-05 22:14:47.857000
+IT: updating stops for GBP_USD 2016-07-05 22:14:50.623000
+Collecting IT data for USD_CAD 2016-07-05 22:14:53.335000
+Collecting IT data for AUD_USD 2016-07-05 22:14:56.009000
+Collecting IT data for NZD_USD 2016-07-05 22:14:58.710000
+Collecting IT data for USD_CHF 2016-07-05 22:15:01.375000
+Collecting IT data for NZD_CHF 2016-07-05 22:15:04.037000
+Collecting IT data for EUR_GBP 2016-07-05 22:15:06.718000
+IT: updating stops for EUR_GBP 2016-07-05 22:15:09.455000

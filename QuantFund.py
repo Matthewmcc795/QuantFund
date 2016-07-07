@@ -61,7 +61,7 @@ while True:
         dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_MAC:
         SaveToLog(main_log, "Running Intraday_MAC")
-        MovingAverageContrarian(account_id, Sec, "M15" ,qf_vol, fl_strat1)
+        MovingAverageContrarian(account_id, Sec, qf_vol, "M15", fl_strat1)
         SaveToLog(main_log, "Intraday_MAC complete")
         dt_Intraday_MAC += timedelta(minutes=15)
         dt_Intraday_MAC = dt_Intraday_MAC.replace(second=1, microsecond=1)
