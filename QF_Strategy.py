@@ -219,7 +219,7 @@ def CableSnap(account_id, sec, vol, tf, file_nm):
         SMA21 = SMA(c,21)
         SMA50 = SMA(c,50)
         Open_Units = GetOpenUnits(account_id, sec[i], sec)
-        if Open_Units <= 15000 - vol:
+        if (Open_Units <= 15000 - vol and Positions["CS"][sec[i]] >= 3) or Open_Units == 0:
             if c[0] > SMA10 and c[0] < SMA21 and SMA21 < SMA50:
                 SaveToLog(main_log, "CS: Sell " + sec[i])
                 if tf == "D":
@@ -229,7 +229,9 @@ def CableSnap(account_id, sec, vol, tf, file_nm):
                     TP = round(c[0] - abs(c[0] - SMA50), 5)
                     SL = round(SMA50, 5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm)
+                Positions["CS"][sec[i]] = 0
         elif Open_Units != 0:
+            Positions["CS"][sec[i]] += 1
             SaveToLog(main_log, "CS: updating stops for " + sec[i])
             Open_Trades = GetOpenTrades(account_id, sec[i])
             for positions in Open_Trades["trades"]:

@@ -31,8 +31,8 @@
 # To figure out:
 # What is the best way to extract past trades and trade results from Oanda?
 
-from QF_Functions import *
-from QF_Strategy import *
+# from QF_Functions import *
+# from QF_Strategy import *
 
 ##########################################################################################################
 #                                                                                                        #

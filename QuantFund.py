@@ -16,7 +16,7 @@ Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD", "USD_CHF", "NZD_CH
         "EUR_GBP", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", 
         "AUD_CAD", "NZD_CAD", "AUD_NZD", "EUR_CHF", "GBP_CHF", "CAD_CHF", "AUD_CHF"]
 
-cs_sec = ["EUR_USD", "GBP_USD", "EUR_GBP", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", "EUR_CHF", "GBP_CHF"]
+cs_sec = ["EUR_USD", "GBP_USD", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", "EUR_CHF", "GBP_CHF"]
 
 account_id = 229783
 account_id2 = 406207

@@ -888,3 +888,29 @@ Collecting IT data for EUR_GBP 2016-07-05 22:15:06.718000
 IT: updating stops for EUR_GBP 2016-07-05 22:15:09.455000
 Running Swing_IntraTrendW 2016-07-07 03:22:13.883000
 Collecting IT data for EUR_USD 2016-07-07 03:22:13.900000
+Collecting IT data for GBP_USD 2016-07-07 03:22:19.653000
+Collecting IT data for USD_CAD 2016-07-07 03:22:22.300000
+IT: updating stops for USD_CAD 2016-07-07 03:22:25.056000
+Collecting IT data for AUD_USD 2016-07-07 03:22:26.399000
+Collecting IT data for NZD_USD 2016-07-07 03:22:29.069000
+Collecting IT data for USD_CHF 2016-07-07 03:22:31.733000
+Collecting IT data for NZD_CHF 2016-07-07 03:22:34.550000
+Collecting IT data for EUR_GBP 2016-07-07 03:22:37.328000
+Collecting IT data for EUR_CAD 2016-07-07 03:22:40.083000
+Collecting IT data for EUR_AUD 2016-07-07 03:22:42.815000
+Collecting IT data for EUR_NZD 2016-07-07 03:22:45.580000
+Collecting IT data for GBP_CAD 2016-07-07 03:22:48.304000
+Collecting IT data for GBP_AUD 2016-07-07 03:22:51.327000
+Collecting IT data for GBP_NZD 2016-07-07 03:22:54.007000
+Collecting IT data for AUD_CAD 2016-07-07 03:22:56.720000
+Collecting IT data for NZD_CAD 2016-07-07 03:23:00.487000
+Collecting IT data for AUD_NZD 2016-07-07 03:23:04.215000
+Collecting IT data for EUR_CHF 2016-07-07 03:23:06.920000
+Collecting IT data for GBP_CHF 2016-07-07 03:23:09.607000
+Collecting IT data for CAD_CHF 2016-07-07 03:23:12.344000
+IT: updating stops for CAD_CHF 2016-07-07 03:23:15.030000
+Collecting IT data for AUD_CHF 2016-07-07 03:23:16.366000
+Swing_IntraTrendW complete 2016-07-07 03:23:19.007000
+Running Swing_IntraTrendW 2016-07-07 05:21:08.228000
+Collecting IT data for EUR_USD 2016-07-07 05:21:08.243000
+Collecting IT data for GBP_USD 2016-07-07 05:21:12.269000
