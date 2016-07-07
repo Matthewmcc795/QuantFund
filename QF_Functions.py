@@ -280,14 +280,14 @@ def GetOpenUnits(account_id, sec, sec_list):
                 if positions["instrument"] == sec:
                     Units = positions["units"]
             else:
-                ticker_string1 = sec[:3] + "USD"
-                ticker_string2 = sec[-3:] + "USD"
-                if ticker_string1 not in sec_list:
-                    ticker_string1 = "USD" + sec[:3]
-                elif ticker_string2 not in sec_list:
-                    ticker_string2 = "USD" + sec[-3:]
-                if positions["instrument"] == ticker_string1 or positions["instrument"] == ticker_string2 or positions["instrument"] == sec:
-                    Units += positions["units"]                   
+                ticker_str1 = sec[:3] + "USD"
+                ticker_str2 = sec[-3:] + "USD"
+                if ticker_str1 not in sec_list:
+                    ticker_str1 = "USD" + sec[:3]
+                elif ticker_str2 not in sec_list:
+                    ticker_str2 = "USD" + sec[-3:]
+                if positions["instrument"] == ticker_str1 or positions["instrument"] == ticker_str2 or positions["instrument"] == sec:
+                    Units = positions["units"][sec] + positions["units"][ticker_str1] + positions["units"][ticker_str2]                 
     time.sleep(1)
     return Units
 
