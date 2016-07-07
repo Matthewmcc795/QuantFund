@@ -48,6 +48,8 @@ dt_Swing_IntraTrendD = Get_dt("dt_Swing_IntraTrendD")
 dt_Swing_IntraTrendW = Get_dt("dt_Swing_IntraTrendW")
 dt_Intraday_CableSnap = Get_dt("dt_Intraday_CableSnap")
 dt_Swing_CableSnap = Get_dt("dt_Swing_CableSnap")
+Intraday_PPB_tf = ["M5", "M15", "D"]
+Swing_PPB_tf = ["D", "D", "W"]
 
 while True:
     ###############################################################################
@@ -55,7 +57,7 @@ while True:
     ###############################################################################
     if datetime.now() > dt_Intraday_PPB:
         SaveToLog(main_log, "Running Intraday_PPB")
-        PivotPointBreakout(account_id, Sec, qf_vol, ["M5", "M15", "D"], fl_strat1)
+        PivotPointBreakout(account_id, Sec, qf_vol, Intraday_PPB_tf, fl_strat1)
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_Intraday_PPB += timedelta(minutes=5)
         dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
@@ -82,7 +84,7 @@ while True:
     ###############################################################################
     if datetime.now() > dt_Swing_PPB:
         SaveToLog(main_log, "Running Swing_PPB")
-        PivotPointBreakout(account_id2, Sec, qf_vol, ["D", "D", "W"], fl_strat2)
+        PivotPointBreakout(account_id2, Sec, qf_vol, Swing_PPB_tf, fl_strat2)
         SaveToLog(main_log, "Swing_PPB complete")
         dt_Swing_PPB += timedelta(minutes=5)
         dt_Swing_PPB = dt_Swing_PPB.replace(second=1, microsecond=1)

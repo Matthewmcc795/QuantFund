@@ -50,8 +50,7 @@ PPB = {
     "SL": {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0
-    }, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0} 
 }
 
 MAC = {
@@ -287,7 +286,7 @@ def GetOpenUnits(account_id, sec, sec_list):
                 elif ticker_str2 not in sec_list:
                     ticker_str2 = "USD" + sec[-3:]
                 if positions["instrument"] == ticker_str1 or positions["instrument"] == ticker_str2 or positions["instrument"] == sec:
-                    Units = positions["units"][sec] + positions["units"][ticker_str1] + positions["units"][ticker_str2]                 
+                    Units += positions["units"]               
     time.sleep(1)
     return Units
 
