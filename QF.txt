@@ -886,3 +886,5 @@ Collecting IT data for USD_CHF 2016-07-05 22:15:01.375000
 Collecting IT data for NZD_CHF 2016-07-05 22:15:04.037000
 Collecting IT data for EUR_GBP 2016-07-05 22:15:06.718000
 IT: updating stops for EUR_GBP 2016-07-05 22:15:09.455000
+Running Swing_IntraTrendW 2016-07-07 03:22:13.883000
+Collecting IT data for EUR_USD 2016-07-07 03:22:13.900000
