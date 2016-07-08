@@ -130,8 +130,8 @@ def BusRide(account_id, sec, vol, tf, file_nm):
         if tf == "D":
             sell_tp, buy_tp = Get_Pivot_Points(sec, "D", c[0])
         elif tf == "M15":
-            sell_tp = c[0]/1.0025
-            buy_tp = c[0]*1.0025
+            sell_tp = round(c[0]/1.0025 + 0.00001,5)
+            buy_tp = round(c[0]*1.0025 - 0.00001,5)
         c = Get_Price(sec[i], tf, 51, "c")
         Open_Units = GetOpenUnits(account_id, sec[i], sec)
         lvl_min = round(c[2],2)
@@ -264,11 +264,11 @@ def CableSnap(account_id, sec, vol, tf, file_nm):
 
 def Get_Pivot_Points(sec, tf, curr_price): # Update every 24hrs
     h, l, c = Get_Price(sec, tf, 2, "hlc")
-    PP["PP"][sec] = (h[1] + l[1] + c[1])/3
-    PP["S1"][sec] = 2*PP["PP"][sec] - h[1]
-    PP["S2"][sec] = PP["PP"][sec] - h[1] + l[1]
-    PP["R1"][sec] = 2*PP["PP"][sec] - l[1]
-    PP["R2"][sec] = PP["PP"][sec] + h[1] - l[1]
+    PP["PP"][sec] = round((h[1] + l[1] + c[1])/3+0.00001,5)
+    PP["S1"][sec] = round(2*PP["PP"][sec] - h[1]+0.00001,5)
+    PP["S2"][sec] = round(PP["PP"][sec] - h[1] + l[1]+0.00001,5)
+    PP["R1"][sec] = round(2*PP["PP"][sec] - l[1]+0.00001,5)
+    PP["R2"][sec] = round(PP["PP"][sec] + h[1] - l[1]+0.00001,5)
     if curr_price >= PP["R2"][sec]: # Locate current price in Pivot Points
         PP["Position"][sec] = "R2"
     elif curr_price >= PP["R1"][sec] and curr_price < PP["R2"][sec]:
