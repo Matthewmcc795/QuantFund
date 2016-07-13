@@ -2,7 +2,7 @@
 import requests
 import json
 from array import *
-from Settings import PRICE_DOMAIN, ACCOUNT_DOMAIN, LIVE_ACCESS_TOKEN, ACCOUNT_ID, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import CSTokens, LIVE_ACCESS_TOKEN, MAIL, NREPORT, MREPORT, PWD
 from QF_Strategy import *
 from QF_Functions import *
 from QF_Optimizer import *
@@ -12,31 +12,24 @@ from datetime import datetime, timedelta
 import time
 import sys
 
-Sec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD", "USD_CHF", "NZD_CHF",
+QFSec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD", "USD_CHF", "NZD_CHF",
         "EUR_GBP", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", 
         "AUD_CAD", "NZD_CAD", "AUD_NZD", "EUR_CHF", "GBP_CHF", "CAD_CHF", "AUD_CHF"]
+QFPort = [229783, 406207]
+QFVol = 100
 
-cs_sec = ["EUR_USD", "GBP_USD", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", "EUR_CHF", "GBP_CHF"]
+CSSec = ["EUR_USD", "GBP_USD", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", "EUR_CHF", "GBP_CHF"]
+CSPort = [836663, 581757]
+CSVol = [1500, 750]
 
-account_id = 229783
-account_id2 = 406207
-account_id3 = 836663
-# account_id4 = 167051
-# account_id5 = 306386
-# account_id6 = 816622
-cs_vol = 1500
-qf_vol = 100
 main_log = "QF.txt"
 fl_strat1 = "Day_Trade_Log.txt" 
 fl_strat2 = "Swing_Trade_Log.txt"
 fl_strat3 = "CableSnap_Log.txt"
-# fl_strat1 = "PPBreakout_Log2.txt" 
-# fl_strat2 = "MAC_Log.txt"
-# fl_strat3 = "BusRide_Log.txt"
-# fl_strat4 = "IntraTrend_Log.txt"
-# fl_strat5 = "CableSnap_Log.txt"
-# fl_strat5 = "CableSnap_Log2.txt"
 
+# dt_report = Get_dt("DailyReport")
+
+dt_report = datetime.now()
 dt_Intraday_PPB = Get_dt("dt_Intraday_PPB")
 dt_Intraday_MAC = Get_dt("dt_Intraday_MAC")
 dt_Intraday_BusRide = Get_dt("dt_Intraday_BusRide")
@@ -57,25 +50,25 @@ while True:
     ###############################################################################
     if datetime.now() > dt_Intraday_PPB:
         SaveToLog(main_log, "Running Intraday_PPB")
-        PivotPointBreakout(account_id, Sec, qf_vol, Intraday_PPB_tf, fl_strat1)
+        PivotPointBreakout(QFPort[0], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_Intraday_PPB += timedelta(minutes=5)
         dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_MAC:
         SaveToLog(main_log, "Running Intraday_MAC")
-        MovingAverageContrarian(account_id, Sec, qf_vol, "M15", fl_strat1)
+        MovingAverageContrarian(QFPort[0], QFSec, QFVol, "M15", fl_strat1)
         SaveToLog(main_log, "Intraday_MAC complete")
         dt_Intraday_MAC += timedelta(minutes=15)
         dt_Intraday_MAC = dt_Intraday_MAC.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_BusRide:
         SaveToLog(main_log, "Running Intraday_BusRide")
-        BusRide(account_id, Sec, qf_vol, "M15", fl_strat1)
+        BusRide(QFPort[0], QFSec, QFVol, "M15", fl_strat1)
         SaveToLog(main_log, "Intraday_BusRide complete")
         dt_Intraday_BusRide += timedelta(hours=24)
-        dt_Intraday_BusRide = dt_BusRide.replace(minute=0, second=1, microsecond=1)
+        dt_Intraday_BusRide = dt_Intraday_BusRide.replace(minute=0, second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_IntraTrend:
         SaveToLog(main_log, "Running Intraday_IntraTrend")
-        IntraTrend(account_id, Sec, qf_vol, "M15", fl_strat1)
+        IntraTrend(QFPort[0], QQFSec, QFVol, "M15", fl_strat1)
         SaveToLog(main_log, "Intraday_IntraTrend complete")
         dt_Intraday_IntraTrend += timedelta(minutes=15)
         dt_Intraday_IntraTrend = dt_Intraday_IntraTrend.replace(second=1, microsecond=1)
@@ -84,32 +77,32 @@ while True:
     ###############################################################################
     if datetime.now() > dt_Swing_PPB:
         SaveToLog(main_log, "Running Swing_PPB")
-        PivotPointBreakout(account_id2, Sec, qf_vol, Swing_PPB_tf, fl_strat2)
+        PivotPointBreakout(QFPort[1], QFSec, QFVol, Swing_PPB_tf, fl_strat2)
         SaveToLog(main_log, "Swing_PPB complete")
         dt_Swing_PPB += timedelta(minutes=5)
         dt_Swing_PPB = dt_Swing_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Swing_MAC:
         SaveToLog(main_log, "Running Swing_MAC")
-        MovingAverageContrarian(account_id2, Sec, qf_vol, "H4", fl_strat2)
+        MovingAverageContrarian(QFPort[1], QFSec, QFVol, "H4", fl_strat2)
         SaveToLog(main_log, "Swing_MAC complete")
         dt_Swing_MAC += timedelta(hours=4)
         dt_Swing_MAC = dt_Swing_MAC.replace(minute=0, second=1, microsecond=1)
     elif datetime.now() > dt_Swing_BusRide:
         SaveToLog(main_log, "Running Swing_BusRide")
-        BusRide(account_id2, Sec, qf_vol, "D", fl_strat2)
+        BusRide(QFPort[1], QFSec, QFVol, "D", fl_strat2)
         SaveToLog(main_log, "Swing_BusRide complete")
         dt_Swing_BusRide += timedelta(hours=24)
         dt_Swing_BusRide = dt_Swing_BusRide.replace(minute=0, second=1, microsecond=1)
     elif datetime.now() > dt_Swing_IntraTrendD:
         SaveToLog(main_log, "Running Swing_IntraTrendD")
-        IntraTrend(account_id2, Sec, qf_vol, "D", fl_strat2)
+        IntraTrend(QFPort[1], QFSec, QFVol, "D", fl_strat2)
         SaveToLog(main_log, "Swing_IntraTrendD complete")
         dt_Swing_IntraTrendD += timedelta(hours=24)
         dt_Swing_IntraTrendD = dt_Swing_IntraTrendD.replace(minute=0, second=1, microsecond=1)
     elif datetime.now() > dt_Swing_IntraTrendW:
         SaveToLog(main_log, "Running Swing_IntraTrendW")
-        IntraTrend(account_id2, Sec, qf_vol, "W", fl_strat2)
-        SaveToLog(main_log, "Swing_IntraTrendW complete")
+        IntraTrend(QFPort[1], QFSec, QFVol, "W", fl_strat2)
+        SaveToLog(main_log, "Swing_IntraTrendD complete")
         dt_Swing_IntraTrendW += timedelta(hours=168)
         dt_Swing_IntraTrendW = dt_Swing_IntraTrendW.replace(minute=0, second=1, microsecond=1)
     ###############################################################################
@@ -117,14 +110,32 @@ while True:
     ###############################################################################
     if datetime.now() > dt_Intraday_CableSnap:
         SaveToLog(main_log, "Running Intraday_CableSnap")
-        CableSnap(account_id3, cs_sec, cs_vol, "M15", fl_strat3)
+        CableSnap(CSPort, CSSec, CSVol, "M15", fl_strat3, CSTokens)
         SaveToLog(main_log, "Intraday_CableSnap complete")
         dt_Intraday_CableSnap += timedelta(minutes=15)
         dt_Intraday_CableSnap = dt_Intraday_CableSnap.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Swing_CableSnap:
         SaveToLog(main_log, "Running Swing_CableSnap")
-        CableSnap(account_id3, cs_sec, cs_vol/6, "D", fl_strat3)
+        CableSnap(CSPort, CSSec, CSVol, "D", fl_strat3, CSTokens)
         SaveToLog(main_log, "Swing_CableSnap complete")
         dt_Swing_CableSnap += timedelta(hours=24)
         dt_Swing_CableSnap = dt_Swing_CableSnap.replace(minute=0, second=1, microsecond=1)
+    ###############################################################################
+    #                            Optimizer/Reporting                              #
+    ###############################################################################
+    if datetime.now() > dt_report:
+        body = Report("DailyReport", QFPort[0])
+        print body
+        # SendEmail(EMAIL, PWD, EMAIL, "Daily Quant Fund Report", body)
+        # body = Report("Daily", QF[1])
+        # SendEmail(EMAIL, PWD, EMAIL, "Daily Quant Fund Report", body)
+        # body = Report("Daily", QF[2])
+        # SendEmail(EMAIL, PWD, EMAIL, "Daily Quant Fund Report", body)
+        # body = Report("Daily", CS[0])
+        # SendEmail(EMAIL, PWD, EMAIL, "Daily Cable Snap Report", body)
+        # body = Report("Daily", CS[1])
+        # SendEmail(EMAIL, PWD, NOE_MAIL, "Monday Brexit Report", body)
+        # SendEmail(EMAIL, PWD, NOE_MAIL, "Monday Brexit Report", body)
+        dt_report += timedelta(hours=24)
+        dt_report = dt_report.replace(minute=0, second=1, microsecond=1)
     time.sleep(1)

@@ -1,0 +1,32 @@
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-12T16:49:15.000000Z",
+	"price" : 1.10833,
+	"tradeOpened" : {
+		"id" : 10330882939,
+		"units" : 1500,
+		"side" : "sell",
+		"takeProfit" : 1.10755,
+		"stopLoss" : 1.10924,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-12T16:49:18.000000Z",
+	"price" : 1.10832,
+	"tradeOpened" : {
+		"id" : 10330882950,
+		"units" : 125,
+		"side" : "sell",
+		"takeProfit" : 1.10755,
+		"stopLoss" : 1.10924,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

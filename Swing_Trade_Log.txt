@@ -48,3 +48,191 @@ Sending order...
 }
 Closing positions... 
 Closing positions... 
+Sending order... 
+{
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-12T18:15:27.000000Z",
+	"price" : 0.76398,
+	"tradeOpened" : {
+		"id" : 10330949618,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.76145,
+		"stopLoss" : 0.76664,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "USD_CHF",
+	"time" : "2016-07-12T18:15:35.000000Z",
+	"price" : 0.98793,
+	"tradeOpened" : {
+		"id" : 10330949723,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.98574,
+		"stopLoss" : 0.99029,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "NZD_CHF",
+	"time" : "2016-07-12T18:15:39.000000Z",
+	"price" : 0.72256,
+	"tradeOpened" : {
+		"id" : 10330949739,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.71854,
+		"stopLoss" : 0.72693,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_AUD",
+	"time" : "2016-07-12T18:15:48.000000Z",
+	"price" : 1.44857,
+	"tradeOpened" : {
+		"id" : 10330949804,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.45421,
+		"stopLoss" : 1.44263,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-12T18:16:12.000000Z",
+	"price" : 1.09331,
+	"tradeOpened" : {
+		"id" : 10330949942,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.09193,
+		"stopLoss" : 1.09495,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-12T18:16:16.000000Z",
+	"price" : 1.31056,
+	"tradeOpened" : {
+		"id" : 10330950055,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.30374,
+		"stopLoss" : 1.31775,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "AUD_CHF",
+	"time" : "2016-07-12T18:16:23.000000Z",
+	"price" : 0.75478,
+	"tradeOpened" : {
+		"id" : 10330950108,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.75118,
+		"stopLoss" : 0.75873,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is below price 1.3107",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Updating Stop Loss ... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is below price 1.3107",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Updating Stop Loss ... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is below price 1.3109",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"instrument" : "GBP_CAD",
+	"time" : "2016-07-13T06:51:05.000000Z",
+	"price" : 1.7377,
+	"tradeOpened" : {
+		"id" : 10332172921,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.72899,
+		"stopLoss" : 1.74685,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-13T06:51:25.000000Z",
+	"price" : 1.31424,
+	"tradeOpened" : {
+		"id" : 10332173229,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.3065,
+		"stopLoss" : 1.32216,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10332172921,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "GBP_CAD",
+	"time" : "2016-07-13T06:51:05.000000Z",
+	"price" : 1.7377,
+	"takeProfit" : 1.72899,
+	"stopLoss" : 1.73769,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10332173229,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-13T06:51:25.000000Z",
+	"price" : 1.31424,
+	"takeProfit" : 1.3065,
+	"stopLoss" : 1.31423,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}

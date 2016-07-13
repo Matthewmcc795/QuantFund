@@ -43,7 +43,7 @@
 # Good example of a script that solves on optimizer type problem
 # Similar to how indicator routines are ran seperate from the strategy
 
-def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm):
+def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm, LIVE_ACCESS_TOKEN):
     if IT["BEV"][sec] == 0:
         IT["BEV"][sec] += vol + vol_adj
         IT["SL"][sec] = trd_entry*(vol/IT["BEV"][sec]) + curr_price*(vol_adj/IT["BEV"][sec])
@@ -53,7 +53,7 @@ def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm)
         IT["SL"][sec] = IT["SL"][sec]*(prev_BEV/IT["BEV"][sec]) + curr_price*(vol_adj/IT["BEV"][sec])
     Open_IDs = GetOpenTradeIDs(account_num, sec)
     for j in range(len(Open_IDs)):
-        UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm)
+        UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm, LIVE_ACCESS_TOKEN)
 
 
 # class PMAC:

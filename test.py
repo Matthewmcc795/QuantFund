@@ -14,13 +14,10 @@ from Backtest_Objects import *
 import pandas as pd
 from matplotlib.finance import candlestick2_ochl
 import matplotlib.mlab as mlab
+import smtplib
 
-ticker = "USD_JPY"
-st = "2014-06-01"
-en = "2015-03-01"
-tf1 = "D"
-c = pClose(ticker, tf1, st,  en)
-plt.plot(c, label=str(ticker))
-plt.legend(bbox_to_anchor=(1.5, 1), loc='upper left', borderaxespad=0.)
-plt.ylim(min(c)/1.005, max(c)*1.005)
-plt.show()
+account_id = 229783
+h = {'Authorization' : LIVE_ACCESS_TOKEN}
+url =   "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/alltransactions"
+r = requests.get(url, headers=h)
+print r.headers["Location"]
