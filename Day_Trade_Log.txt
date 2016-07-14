@@ -188,3 +188,35 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "EUR_CAD",
+	"time" : "2016-07-14T20:33:12.000000Z",
+	"price" : 1.43323,
+	"tradeOpened" : {
+		"id" : 10335415413,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.42999,
+		"stopLoss" : 1.43458,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-14T20:34:04.000000Z",
+	"price" : 1.09057,
+	"tradeOpened" : {
+		"id" : 10335428732,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.09173,
+		"stopLoss" : 1.08999,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

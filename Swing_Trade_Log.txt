@@ -236,3 +236,77 @@ Updating Stop Loss ...
 	"trailingStop" : 0,
 	"trailingAmount" : 0
 }
+Updating Stop Loss ... 
+{
+	"id" : 10323918195,
+	"units" : 100,
+	"side" : "buy",
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-07T22:08:11.000000Z",
+	"price" : 0.75324,
+	"takeProfit" : 0.76527,
+	"stopLoss" : 0.75325,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10323917807,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "USD_CAD",
+	"time" : "2016-07-07T22:07:21.000000Z",
+	"price" : 1.30018,
+	"takeProfit" : 1.27477,
+	"stopLoss" : 1.30017,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "AUD_NZD",
+	"time" : "2016-07-14T16:04:57.000000Z",
+	"price" : 1.06016,
+	"tradeOpened" : {
+		"id" : 10334840080,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.03844,
+		"stopLoss" : 1.0847,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10323917807,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "USD_CAD",
+	"time" : "2016-07-07T22:07:21.000000Z",
+	"price" : 1.30018,
+	"takeProfit" : 1.27477,
+	"stopLoss" : 1.30017,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is below price 1.0603",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Updating Stop Loss ... 
+{
+	"id" : 10323917807,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "USD_CAD",
+	"time" : "2016-07-07T22:07:21.000000Z",
+	"price" : 1.30018,
+	"takeProfit" : 1.27477,
+	"stopLoss" : 1.30017,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}

@@ -30,3 +30,67 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-14T01:09:01.000000Z",
+	"price" : 1.10982,
+	"tradeOpened" : {
+		"id" : 10333771435,
+		"units" : 1500,
+		"side" : "sell",
+		"takeProfit" : 1.08622,
+		"stopLoss" : 1.12167,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-07-14T01:09:06.000000Z",
+	"price" : 1.31237,
+	"tradeOpened" : {
+		"id" : 10333771559,
+		"units" : 1500,
+		"side" : "sell",
+		"takeProfit" : 1.11812,
+		"stopLoss" : 1.40973,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CAD",
+	"time" : "2016-07-14T01:09:23.000000Z",
+	"price" : 1.70027,
+	"tradeOpened" : {
+		"id" : 10333771717,
+		"units" : 1500,
+		"side" : "sell",
+		"takeProfit" : 1.45244,
+		"stopLoss" : 1.82472,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-14T01:09:45.000000Z",
+	"price" : 1.29157,
+	"tradeOpened" : {
+		"id" : 10333771798,
+		"units" : 1500,
+		"side" : "sell",
+		"takeProfit" : 1.12228,
+		"stopLoss" : 1.37666,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
