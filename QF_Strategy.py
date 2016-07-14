@@ -309,9 +309,9 @@ def Banzai(port_list, sec, vol, tf, file_nm, tokens):
         for k in range(len(port_list)):
             Open_Units = GetOpenUnits(port_list[k], sec[i], sec, tokens[k])
             if (Open_Units <= 15000 - vol[k] and Positions["Banzai"][sec[i]] >= 3) or Open_Units == 0:
-                if c[0] > SMA10 and c[0] < SMA21 and SMA21 < SMA50:
+                if c[0] < SMA10 and c[0] > SMA21 and SMA21 > SMA50:
                     SaveToLog(main_log, "Banzai: Buy " + sec[i])
-                    TP = round(c[0] - abs(c[0] - SMA50), 5)
+                    TP = round(c[0] + abs(c[0] - SMA50), 5)
                     SL = round(SMA50, 5)
                     OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "buy", TP, SL, file_nm, tokens[k])
                     Positions["Banzai"][sec[i]] = 0
@@ -324,10 +324,10 @@ def Banzai(port_list, sec, vol, tf, file_nm, tokens):
                     trd_entry = float(positions["price"])
                     trd_side = positions["side"]
                     trd_size = positions["units"]
-                    if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol[k]:
+                    if c[0] > SMA21/1.0025 and c[0] > trd_entry and Open_Units == vol[k]:
                         SL = round(trd_entry - 0.00001, 5)
                         UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
-                    elif c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units > vol[k]:
+                    elif c[0] > SMA21/1.0025 and c[0] > trd_entry and Open_Units > vol[k]:
                         SL = round(SMA21, 5)
                         UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
 
