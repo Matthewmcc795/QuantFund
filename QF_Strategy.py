@@ -308,15 +308,15 @@ def Banzai(port_list, sec, vol, tf, file_nm, tokens):
         SMA50 = SMA(c,50)
         for k in range(len(port_list)):
             Open_Units = GetOpenUnits(port_list[k], sec[i], sec, tokens[k])
-            if (Open_Units <= 15000 - vol[k] and Positions["Banzai"][sec[i]] >= 3) or Open_Units == 0:
+            if (Open_Units <= 15000 - vol[k] and Banzai["counter"][sec[i]] >= 3) or Open_Units == 0:
                 if c[0] < SMA10 and c[0] > SMA21 and SMA21 > SMA50:
                     SaveToLog(main_log, "Banzai: Buy " + sec[i])
                     TP = round(c[0] + abs(c[0] - SMA50), 5)
                     SL = round(SMA50, 5)
                     OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "buy", TP, SL, file_nm, tokens[k])
-                    Positions["Banzai"][sec[i]] = 0
+                    Banzai["counter"][sec[i]] = 0
             elif Open_Units != 0:
-                Positions["Banzai"][sec[i]] += 1
+                Banzai["counter"][sec[i]] += 1
                 SaveToLog(main_log, "Bazai: updating stops for " + sec[i])
                 Open_Trades = GetOpenTrades(port_list[k], sec[i], tokens[k])
                 for positions in Open_Trades["trades"]:
