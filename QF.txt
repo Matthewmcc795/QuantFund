@@ -10313,3 +10313,2487 @@ Collecting PPB data for EUR_CHF 2016-07-14 16:33:43.797000
 PPB: Buy EUR_CHF 2016-07-14 16:33:49.481000
 Collecting PPB data for GBP_CHF 2016-07-14 16:33:51.759000
 Collecting PPB data for CAD_CHF 2016-07-14 16:33:57.116000
+Running Swing_PPB 2016-07-14 21:47:43.713000
+Collecting PPB data for EUR_USD 2016-07-14 21:47:43.743000
+Collecting PPB data for GBP_USD 2016-07-14 21:47:51.327000
+Collecting PPB data for USD_CAD 2016-07-14 21:47:56.737000
+Running Intraday_PPB 2016-07-15 12:57:00.097000
+Collecting PPB data for EUR_USD 2016-07-15 12:57:00.163000
+Collecting PPB data for GBP_USD 2016-07-15 12:57:07.566000
+Collecting PPB data for USD_CAD 2016-07-15 12:57:12.910000
+Collecting PPB data for AUD_USD 2016-07-15 12:57:18.209000
+Collecting PPB data for NZD_USD 2016-07-15 12:57:23.490000
+Collecting PPB data for USD_CHF 2016-07-15 12:57:28.691000
+Collecting PPB data for NZD_CHF 2016-07-15 12:57:34.272000
+Collecting PPB data for EUR_GBP 2016-07-15 12:57:40.552000
+Collecting PPB data for EUR_CAD 2016-07-15 12:57:45.928000
+Collecting PPB data for EUR_AUD 2016-07-15 12:57:51.265000
+Collecting PPB data for EUR_NZD 2016-07-15 12:57:56.678000
+Collecting PPB data for GBP_CAD 2016-07-15 12:58:01.985000
+Collecting PPB data for GBP_AUD 2016-07-15 12:58:07.288000
+Collecting PPB data for GBP_NZD 2016-07-15 12:58:12.568000
+Collecting PPB data for AUD_CAD 2016-07-15 12:58:18.048000
+Collecting PPB data for NZD_CAD 2016-07-15 12:58:23.338000
+Collecting PPB data for AUD_NZD 2016-07-15 12:58:28.618000
+Collecting PPB data for EUR_CHF 2016-07-15 12:58:34.043000
+Collecting PPB data for GBP_CHF 2016-07-15 12:58:39.362000
+Collecting PPB data for CAD_CHF 2016-07-15 12:58:44.665000
+Collecting PPB data for AUD_CHF 2016-07-15 12:58:49.992000
+Intraday_PPB complete 2016-07-15 12:58:55.287000
+Running Intraday_BusRide 2016-07-15 13:02:00.380000
+Collecting BusRide data for EUR_USD 2016-07-15 13:02:00.388000
+Checking Bus Ride signals for EUR_USD 2016-07-15 13:02:03.201000
+Collecting BusRide data for GBP_USD 2016-07-15 13:02:03.208000
+Checking Bus Ride signals for GBP_USD 2016-07-15 13:02:05.815000
+Collecting BusRide data for USD_CAD 2016-07-15 13:02:05.822000
+Checking Bus Ride signals for USD_CAD 2016-07-15 13:02:08.468000
+Collecting BusRide data for AUD_USD 2016-07-15 13:02:08.477000
+Checking Bus Ride signals for AUD_USD 2016-07-15 13:02:11.243000
+Collecting BusRide data for NZD_USD 2016-07-15 13:02:11.253000
+Checking Bus Ride signals for NZD_USD 2016-07-15 13:02:13.903000
+Collecting BusRide data for USD_CHF 2016-07-15 13:02:13.910000
+Checking Bus Ride signals for USD_CHF 2016-07-15 13:02:16.613000
+Collecting BusRide data for NZD_CHF 2016-07-15 13:02:16.621000
+Checking Bus Ride signals for NZD_CHF 2016-07-15 13:02:19.306000
+Collecting BusRide data for EUR_GBP 2016-07-15 13:02:19.313000
+Checking Bus Ride signals for EUR_GBP 2016-07-15 13:02:21.957000
+Collecting BusRide data for EUR_CAD 2016-07-15 13:02:21.964000
+Checking Bus Ride signals for EUR_CAD 2016-07-15 13:02:24.632000
+Collecting BusRide data for EUR_AUD 2016-07-15 13:02:24.639000
+Checking Bus Ride signals for EUR_AUD 2016-07-15 13:02:27.247000
+Collecting BusRide data for EUR_NZD 2016-07-15 13:02:27.253000
+Checking Bus Ride signals for EUR_NZD 2016-07-15 13:02:29.912000
+Collecting BusRide data for GBP_CAD 2016-07-15 13:02:29.919000
+Checking Bus Ride signals for GBP_CAD 2016-07-15 13:02:32.743000
+Collecting BusRide data for GBP_AUD 2016-07-15 13:02:32.750000
+Checking Bus Ride signals for GBP_AUD 2016-07-15 13:02:35.435000
+Collecting BusRide data for GBP_NZD 2016-07-15 13:02:35.442000
+Checking Bus Ride signals for GBP_NZD 2016-07-15 13:02:38.090000
+Collecting BusRide data for AUD_CAD 2016-07-15 13:02:38.097000
+Checking Bus Ride signals for AUD_CAD 2016-07-15 13:02:40.722000
+Collecting BusRide data for NZD_CAD 2016-07-15 13:02:40.728000
+Checking Bus Ride signals for NZD_CAD 2016-07-15 13:02:43.443000
+Collecting BusRide data for AUD_NZD 2016-07-15 13:02:43.452000
+Checking Bus Ride signals for AUD_NZD 2016-07-15 13:02:46.092000
+Collecting BusRide data for EUR_CHF 2016-07-15 13:02:46.100000
+Checking Bus Ride signals for EUR_CHF 2016-07-15 13:02:48.823000
+Collecting BusRide data for GBP_CHF 2016-07-15 13:02:48.830000
+Checking Bus Ride signals for GBP_CHF 2016-07-15 13:02:52.472000
+Collecting BusRide data for CAD_CHF 2016-07-15 13:02:52.480000
+Checking Bus Ride signals for CAD_CHF 2016-07-15 13:02:55.161000
+Collecting BusRide data for AUD_CHF 2016-07-15 13:02:55.167000
+Checking Bus Ride signals for AUD_CHF 2016-07-15 13:02:58.803000
+Intraday_BusRide complete 2016-07-15 13:02:58.810000
+Running Intraday_CableSnap 2016-07-15 13:02:58.819000
+Collecting CableSnap data for EUR_USD 2016-07-15 13:02:58.825000
+CS: updating stops for EUR_USD 2016-07-15 13:03:01.494000
+Collecting CableSnap data for GBP_USD 2016-07-15 13:03:04.853000
+CS: updating stops for GBP_USD 2016-07-15 13:03:07.502000
+Collecting CableSnap data for EUR_CAD 2016-07-15 13:03:10.152000
+Collecting CableSnap data for EUR_AUD 2016-07-15 13:03:14.162000
+Collecting CableSnap data for EUR_NZD 2016-07-15 13:03:18.406000
+Collecting CableSnap data for GBP_CAD 2016-07-15 13:03:22.361000
+Collecting CableSnap data for GBP_AUD 2016-07-15 13:03:26.292000
+Collecting CableSnap data for GBP_NZD 2016-07-15 13:03:30.243000
+Collecting CableSnap data for EUR_CHF 2016-07-15 13:03:34.442000
+CS: Sell EUR_CHF 2016-07-15 13:03:37.091000
+CS: Sell EUR_CHF 2016-07-15 13:03:39.714000
+Collecting CableSnap data for GBP_CHF 2016-07-15 13:03:40.969000
+Intraday_CableSnap complete 2016-07-15 13:03:45.025000
+Running Intraday_Banzai 2016-07-15 13:03:45.031000
+Running Intraday_PPB 2016-07-15 13:07:00.608000
+Collecting PPB data for EUR_USD 2016-07-15 13:07:00.615000
+Collecting PPB data for GBP_USD 2016-07-15 13:07:06.817000
+Collecting PPB data for USD_CAD 2016-07-15 13:07:12.122000
+Collecting PPB data for AUD_USD 2016-07-15 13:07:17.787000
+Collecting PPB data for NZD_USD 2016-07-15 13:07:23.060000
+Collecting PPB data for USD_CHF 2016-07-15 13:07:28.350000
+Collecting PPB data for NZD_CHF 2016-07-15 13:07:33.696000
+Collecting PPB data for EUR_GBP 2016-07-15 13:07:40.015000
+Collecting PPB data for EUR_CAD 2016-07-15 13:07:45.315000
+Collecting PPB data for EUR_AUD 2016-07-15 13:07:50.646000
+Collecting PPB data for EUR_NZD 2016-07-15 13:07:56.925000
+Collecting PPB data for GBP_CAD 2016-07-15 13:08:02.225000
+Collecting PPB data for GBP_AUD 2016-07-15 13:08:07.555000
+Collecting PPB data for GBP_NZD 2016-07-15 13:08:12.816000
+Collecting PPB data for AUD_CAD 2016-07-15 13:08:18.097000
+Collecting PPB data for NZD_CAD 2016-07-15 13:08:23.406000
+Collecting PPB data for AUD_NZD 2016-07-15 13:08:28.764000
+Collecting PPB data for EUR_CHF 2016-07-15 13:08:34.096000
+Collecting PPB data for GBP_CHF 2016-07-15 13:08:39.484000
+Collecting PPB data for CAD_CHF 2016-07-15 13:08:44.791000
+Collecting PPB data for AUD_CHF 2016-07-15 13:08:53.098000
+Intraday_PPB complete 2016-07-15 13:08:58.405000
+Running Intraday_PPB 2016-07-15 13:12:01.452000
+Collecting PPB data for EUR_USD 2016-07-15 13:12:01.460000
+Collecting PPB data for GBP_USD 2016-07-15 13:12:08.908000
+Collecting PPB data for USD_CAD 2016-07-15 13:12:14.180000
+Collecting PPB data for AUD_USD 2016-07-15 13:12:19.509000
+Collecting PPB data for NZD_USD 2016-07-15 13:12:25.871000
+Collecting PPB data for USD_CHF 2016-07-15 13:12:32.359000
+Collecting PPB data for NZD_CHF 2016-07-15 13:12:37.800000
+Collecting PPB data for EUR_GBP 2016-07-15 13:12:43.198000
+Collecting PPB data for EUR_CAD 2016-07-15 13:12:48.569000
+Collecting PPB data for EUR_AUD 2016-07-15 13:12:54.864000
+PPB: Sell EUR_AUD 2016-07-15 13:13:00.128000
+Collecting PPB data for EUR_NZD 2016-07-15 13:13:01.453000
+Collecting PPB data for GBP_CAD 2016-07-15 13:13:06.799000
+Collecting PPB data for GBP_AUD 2016-07-15 13:13:12.171000
+Collecting PPB data for GBP_NZD 2016-07-15 13:13:17.459000
+Collecting PPB data for AUD_CAD 2016-07-15 13:13:23.748000
+Collecting PPB data for NZD_CAD 2016-07-15 13:13:29.621000
+Collecting PPB data for AUD_NZD 2016-07-15 13:13:34.911000
+Collecting PPB data for EUR_CHF 2016-07-15 13:13:40.409000
+Collecting PPB data for GBP_CHF 2016-07-15 13:13:45.668000
+Collecting PPB data for CAD_CHF 2016-07-15 13:13:51.048000
+Collecting PPB data for AUD_CHF 2016-07-15 13:13:56.447000
+Intraday_PPB complete 2016-07-15 13:14:01.727000
+Running Intraday_BusRide 2016-07-15 13:17:00.779000
+Collecting BusRide data for EUR_USD 2016-07-15 13:17:00.785000
+Checking Bus Ride signals for EUR_USD 2016-07-15 13:17:03.447000
+Collecting BusRide data for GBP_USD 2016-07-15 13:17:03.454000
+Checking Bus Ride signals for GBP_USD 2016-07-15 13:17:06.132000
+Collecting BusRide data for USD_CAD 2016-07-15 13:17:06.139000
+Checking Bus Ride signals for USD_CAD 2016-07-15 13:17:08.834000
+Collecting BusRide data for AUD_USD 2016-07-15 13:17:08.840000
+Checking Bus Ride signals for AUD_USD 2016-07-15 13:17:11.473000
+Collecting BusRide data for NZD_USD 2016-07-15 13:17:11.480000
+Checking Bus Ride signals for NZD_USD 2016-07-15 13:17:14.110000
+Collecting BusRide data for USD_CHF 2016-07-15 13:17:14.117000
+Checking Bus Ride signals for USD_CHF 2016-07-15 13:17:16.827000
+Collecting BusRide data for NZD_CHF 2016-07-15 13:17:16.834000
+Checking Bus Ride signals for NZD_CHF 2016-07-15 13:17:19.605000
+Collecting BusRide data for EUR_GBP 2016-07-15 13:17:19.614000
+Checking Bus Ride signals for EUR_GBP 2016-07-15 13:17:22.284000
+Collecting BusRide data for EUR_CAD 2016-07-15 13:17:22.291000
+Checking Bus Ride signals for EUR_CAD 2016-07-15 13:17:24.973000
+Collecting BusRide data for EUR_AUD 2016-07-15 13:17:24.982000
+Collecting BusRide data for EUR_NZD 2016-07-15 13:17:27.683000
+Checking Bus Ride signals for EUR_NZD 2016-07-15 13:17:30.349000
+Collecting BusRide data for GBP_CAD 2016-07-15 13:17:30.356000
+Checking Bus Ride signals for GBP_CAD 2016-07-15 13:17:33.022000
+Collecting BusRide data for GBP_AUD 2016-07-15 13:17:33.029000
+Checking Bus Ride signals for GBP_AUD 2016-07-15 13:17:35.642000
+Collecting BusRide data for GBP_NZD 2016-07-15 13:17:35.649000
+Checking Bus Ride signals for GBP_NZD 2016-07-15 13:17:38.293000
+Collecting BusRide data for AUD_CAD 2016-07-15 13:17:38.300000
+Checking Bus Ride signals for AUD_CAD 2016-07-15 13:17:40.942000
+Collecting BusRide data for NZD_CAD 2016-07-15 13:17:40.949000
+Checking Bus Ride signals for NZD_CAD 2016-07-15 13:17:43.649000
+Collecting BusRide data for AUD_NZD 2016-07-15 13:17:43.656000
+Checking Bus Ride signals for AUD_NZD 2016-07-15 13:17:46.292000
+Collecting BusRide data for EUR_CHF 2016-07-15 13:17:46.298000
+Checking Bus Ride signals for EUR_CHF 2016-07-15 13:17:48.912000
+Collecting BusRide data for GBP_CHF 2016-07-15 13:17:48.919000
+Checking Bus Ride signals for GBP_CHF 2016-07-15 13:17:52.582000
+Collecting BusRide data for CAD_CHF 2016-07-15 13:17:52.589000
+Checking Bus Ride signals for CAD_CHF 2016-07-15 13:17:55.265000
+Collecting BusRide data for AUD_CHF 2016-07-15 13:17:55.271000
+Checking Bus Ride signals for AUD_CHF 2016-07-15 13:17:57.922000
+Intraday_BusRide complete 2016-07-15 13:17:57.929000
+Running Intraday_CableSnap 2016-07-15 13:17:57.935000
+Collecting CableSnap data for EUR_USD 2016-07-15 13:17:57.942000
+CS: updating stops for EUR_USD 2016-07-15 13:18:00.581000
+CS: Sell EUR_USD 2016-07-15 13:18:03.201000
+Collecting CableSnap data for GBP_USD 2016-07-15 13:18:04.517000
+CS: updating stops for GBP_USD 2016-07-15 13:18:07.191000
+Collecting CableSnap data for EUR_CAD 2016-07-15 13:18:09.945000
+Collecting CableSnap data for EUR_AUD 2016-07-15 13:18:13.902000
+Collecting CableSnap data for EUR_NZD 2016-07-15 13:18:18.834000
+Collecting CableSnap data for GBP_CAD 2016-07-15 13:18:24.892000
+Collecting CableSnap data for GBP_AUD 2016-07-15 13:18:28.861000
+Collecting CableSnap data for GBP_NZD 2016-07-15 13:18:32.817000
+Collecting CableSnap data for EUR_CHF 2016-07-15 13:18:36.794000
+CS: updating stops for EUR_CHF 2016-07-15 13:18:39.491000
+CS: updating stops for EUR_CHF 2016-07-15 13:18:42.110000
+Collecting CableSnap data for GBP_CHF 2016-07-15 13:18:43.440000
+Intraday_CableSnap complete 2016-07-15 13:18:47.420000
+Running Intraday_Banzai 2016-07-15 13:18:47.428000
+Collecting Banzai data for GBP_JPY 2016-07-15 13:18:47.434000
+Collecting Banzai data for AUD_JPY 2016-07-15 13:18:52.413000
+Collecting Banzai data for USD_JPY 2016-07-15 13:18:57.360000
+Intraday_Banzai complete 2016-07-15 13:19:01.320000
+Running Intraday_PPB 2016-07-15 13:19:02.327000
+Collecting PPB data for EUR_USD 2016-07-15 13:19:02.334000
+Collecting PPB data for GBP_USD 2016-07-15 13:19:07.689000
+Collecting PPB data for USD_CAD 2016-07-15 13:19:14.049000
+Collecting PPB data for AUD_USD 2016-07-15 13:19:19.350000
+Collecting PPB data for NZD_USD 2016-07-15 13:19:25.631000
+Collecting PPB data for USD_CHF 2016-07-15 13:19:31.027000
+Collecting PPB data for NZD_CHF 2016-07-15 13:19:36.359000
+Collecting PPB data for EUR_GBP 2016-07-15 13:19:41.723000
+Collecting PPB data for EUR_CAD 2016-07-15 13:19:48.011000
+Collecting PPB data for EUR_AUD 2016-07-15 13:19:53.560000
+PPB: updating stops for EUR_AUD 2016-07-15 13:19:58.830000
+Collecting PPB data for EUR_NZD 2016-07-15 13:20:00.161000
+Collecting PPB data for GBP_CAD 2016-07-15 13:20:06.440000
+Collecting PPB data for GBP_AUD 2016-07-15 13:20:11.734000
+Collecting PPB data for GBP_NZD 2016-07-15 13:20:17.050000
+Collecting PPB data for AUD_CAD 2016-07-15 13:20:22.329000
+Collecting PPB data for NZD_CAD 2016-07-15 13:20:28.620000
+Collecting PPB data for AUD_NZD 2016-07-15 13:20:34.042000
+Collecting PPB data for EUR_CHF 2016-07-15 13:20:39.338000
+Collecting PPB data for GBP_CHF 2016-07-15 13:20:44.628000
+Collecting PPB data for CAD_CHF 2016-07-15 13:20:49.958000
+Collecting PPB data for AUD_CHF 2016-07-15 13:20:55.220000
+Intraday_PPB complete 2016-07-15 13:21:00.579000
+Running Intraday_MAC 2016-07-15 13:21:01.586000
+Collecting MAC data for EUR_USD 2016-07-15 13:21:01.592000
+Checking MAC signals for EUR_USD 2016-07-15 13:21:04.259000
+Collecting MAC data for GBP_USD 2016-07-15 13:21:04.266000
+Checking MAC signals for GBP_USD 2016-07-15 13:21:06.899000
+Collecting MAC data for USD_CAD 2016-07-15 13:21:06.907000
+Checking MAC signals for USD_CAD 2016-07-15 13:21:09.588000
+Collecting MAC data for AUD_USD 2016-07-15 13:21:09.596000
+Checking MAC signals for AUD_USD 2016-07-15 13:21:13.573000
+Collecting MAC data for NZD_USD 2016-07-15 13:21:13.581000
+Checking MAC signals for NZD_USD 2016-07-15 13:21:17.198000
+Collecting MAC data for USD_CHF 2016-07-15 13:21:17.205000
+Checking MAC signals for USD_CHF 2016-07-15 13:21:19.857000
+Collecting MAC data for NZD_CHF 2016-07-15 13:21:19.864000
+Checking MAC signals for NZD_CHF 2016-07-15 13:21:22.549000
+Collecting MAC data for EUR_GBP 2016-07-15 13:21:22.556000
+Checking MAC signals for EUR_GBP 2016-07-15 13:21:25.200000
+Collecting MAC data for EUR_CAD 2016-07-15 13:21:25.206000
+Checking MAC signals for EUR_CAD 2016-07-15 13:21:27.897000
+Collecting MAC data for EUR_AUD 2016-07-15 13:21:27.904000
+Collecting MAC data for EUR_NZD 2016-07-15 13:21:30.507000
+Checking MAC signals for EUR_NZD 2016-07-15 13:21:33.167000
+Collecting MAC data for GBP_CAD 2016-07-15 13:21:33.174000
+Checking MAC signals for GBP_CAD 2016-07-15 13:21:35.839000
+Collecting MAC data for GBP_AUD 2016-07-15 13:21:35.846000
+Checking MAC signals for GBP_AUD 2016-07-15 13:21:38.482000
+MAC: Buy GBP_AUD 2016-07-15 13:21:38.489000
+Collecting MAC data for GBP_NZD 2016-07-15 13:21:39.740000
+Checking MAC signals for GBP_NZD 2016-07-15 13:21:42.398000
+MAC: Buy GBP_NZD 2016-07-15 13:21:42.404000
+Collecting MAC data for AUD_CAD 2016-07-15 13:21:43.682000
+Checking MAC signals for AUD_CAD 2016-07-15 13:21:46.337000
+Collecting MAC data for NZD_CAD 2016-07-15 13:21:46.344000
+Checking MAC signals for NZD_CAD 2016-07-15 13:21:48.987000
+Collecting MAC data for AUD_NZD 2016-07-15 13:21:48.993000
+Checking MAC signals for AUD_NZD 2016-07-15 13:21:51.647000
+Collecting MAC data for EUR_CHF 2016-07-15 13:21:51.654000
+Checking MAC signals for EUR_CHF 2016-07-15 13:21:54.327000
+Collecting MAC data for GBP_CHF 2016-07-15 13:21:54.334000
+Checking MAC signals for GBP_CHF 2016-07-15 13:21:57.008000
+Collecting MAC data for CAD_CHF 2016-07-15 13:21:57.015000
+Checking MAC signals for CAD_CHF 2016-07-15 13:21:59.698000
+Collecting MAC data for AUD_CHF 2016-07-15 13:21:59.705000
+Checking MAC signals for AUD_CHF 2016-07-15 13:22:02.498000
+Intraday_MAC complete 2016-07-15 13:22:02.504000
+Running Intraday_PPB 2016-07-15 13:22:03.511000
+Collecting PPB data for EUR_USD 2016-07-15 13:22:03.518000
+Collecting PPB data for GBP_USD 2016-07-15 13:22:08.968000
+Collecting PPB data for USD_CAD 2016-07-15 13:22:14.267000
+Collecting PPB data for AUD_USD 2016-07-15 13:22:19.877000
+Collecting PPB data for NZD_USD 2016-07-15 13:22:25.156000
+Collecting PPB data for USD_CHF 2016-07-15 13:22:31.441000
+Collecting PPB data for NZD_CHF 2016-07-15 13:22:36.676000
+Collecting PPB data for EUR_GBP 2016-07-15 13:22:41.985000
+Collecting PPB data for EUR_CAD 2016-07-15 13:22:47.619000
+Collecting PPB data for EUR_AUD 2016-07-15 13:22:53.106000
+PPB: updating stops for EUR_AUD 2016-07-15 13:22:58.428000
+Collecting PPB data for EUR_NZD 2016-07-15 13:22:59.796000
+Collecting PPB data for GBP_CAD 2016-07-15 13:23:05.126000
+Collecting PPB data for GBP_AUD 2016-07-15 13:23:10.428000
+PPB: updating stops for GBP_AUD 2016-07-15 13:23:16.874000
+Collecting PPB data for GBP_NZD 2016-07-15 13:23:18.203000
+PPB: updating stops for GBP_NZD 2016-07-15 13:23:23.525000
+Collecting PPB data for AUD_CAD 2016-07-15 13:23:25.046000
+Collecting PPB data for NZD_CAD 2016-07-15 13:23:30.447000
+Collecting PPB data for AUD_NZD 2016-07-15 13:23:35.785000
+Collecting PPB data for EUR_CHF 2016-07-15 13:23:41.129000
+Collecting PPB data for GBP_CHF 2016-07-15 13:23:46.385000
+Collecting PPB data for CAD_CHF 2016-07-15 13:23:51.724000
+Collecting PPB data for AUD_CHF 2016-07-15 13:23:57.178000
+Intraday_PPB complete 2016-07-15 13:24:02.475000
+Running Intraday_IntraTrend 2016-07-15 13:24:03.481000
+Collecting IT data for EUR_USD 2016-07-15 13:24:03.488000
+ITM: Sell EUR_USD 2016-07-15 13:24:06.163000
+Running Intraday_PPB 2016-07-15 13:42:00.206000
+Collecting PPB data for EUR_USD 2016-07-15 13:42:00.213000
+Collecting PPB data for GBP_USD 2016-07-15 13:42:06.651000
+Collecting PPB data for USD_CAD 2016-07-15 13:42:12.014000
+Collecting PPB data for AUD_USD 2016-07-15 13:42:17.359000
+Collecting PPB data for NZD_USD 2016-07-15 13:42:23.670000
+Collecting PPB data for USD_CHF 2016-07-15 13:42:28.965000
+Collecting PPB data for NZD_CHF 2016-07-15 13:42:34.259000
+Collecting PPB data for EUR_GBP 2016-07-15 13:42:39.692000
+Collecting PPB data for EUR_CAD 2016-07-15 13:42:44.991000
+Collecting PPB data for EUR_AUD 2016-07-15 13:42:53.410000
+PPB: updating stops for EUR_AUD 2016-07-15 13:42:59.757000
+Collecting PPB data for EUR_NZD 2016-07-15 13:43:01.096000
+Collecting PPB data for GBP_CAD 2016-07-15 13:43:06.362000
+Collecting PPB data for GBP_AUD 2016-07-15 13:43:11.697000
+PPB: updating stops for GBP_AUD 2016-07-15 13:43:17.078000
+Collecting PPB data for GBP_NZD 2016-07-15 13:43:18.397000
+PPB: updating stops for GBP_NZD 2016-07-15 13:43:23.738000
+Collecting PPB data for AUD_CAD 2016-07-15 13:43:25.088000
+Collecting PPB data for NZD_CAD 2016-07-15 13:43:30.378000
+Collecting PPB data for AUD_NZD 2016-07-15 13:43:35.657000
+Collecting PPB data for EUR_CHF 2016-07-15 13:43:40.987000
+Collecting PPB data for GBP_CHF 2016-07-15 13:43:47.297000
+Collecting PPB data for CAD_CHF 2016-07-15 13:43:53.617000
+Collecting PPB data for AUD_CHF 2016-07-15 13:43:59.019000
+Intraday_PPB complete 2016-07-15 13:44:04.316000
+Running Intraday_PPB 2016-07-15 14:04:36.236000
+Collecting PPB data for EUR_USD 2016-07-15 14:04:37.043000
+Collecting PPB data for GBP_USD 2016-07-15 14:04:43.283000
+Collecting PPB data for USD_CAD 2016-07-15 14:04:48.665000
+Collecting PPB data for AUD_USD 2016-07-15 14:04:54.311000
+Collecting PPB data for NZD_USD 2016-07-15 14:04:59.992000
+Collecting PPB data for USD_CHF 2016-07-15 14:05:05.332000
+Collecting PPB data for NZD_CHF 2016-07-15 14:05:10.881000
+Collecting PPB data for EUR_GBP 2016-07-15 14:05:16.172000
+Collecting PPB data for EUR_CAD 2016-07-15 14:05:21.565000
+Collecting PPB data for EUR_AUD 2016-07-15 14:05:26.917000
+PPB: updating stops for EUR_AUD 2016-07-15 14:05:32.362000
+Collecting PPB data for EUR_NZD 2016-07-15 14:05:33.682000
+Collecting PPB data for GBP_CAD 2016-07-15 14:05:39.013000
+Collecting PPB data for GBP_AUD 2016-07-15 14:05:45.411000
+PPB: updating stops for GBP_AUD 2016-07-15 14:05:50.832000
+Collecting PPB data for GBP_NZD 2016-07-15 14:05:53.472000
+PPB: updating stops for GBP_NZD 2016-07-15 14:05:58.732000
+Collecting PPB data for AUD_CAD 2016-07-15 14:06:01.353000
+Collecting PPB data for NZD_CAD 2016-07-15 14:06:06.725000
+Collecting PPB data for AUD_NZD 2016-07-15 14:06:11.981000
+Collecting PPB data for EUR_CHF 2016-07-15 14:06:19.501000
+Collecting PPB data for GBP_CHF 2016-07-15 14:06:24.940000
+Collecting PPB data for CAD_CHF 2016-07-15 14:06:30.253000
+Collecting PPB data for AUD_CHF 2016-07-15 14:06:35.609000
+Intraday_PPB complete 2016-07-15 14:06:41.921000
+Running Swing_MAC 2016-07-15 14:06:41.928000
+Collecting MAC data for EUR_USD 2016-07-15 14:06:41.935000
+Checking MAC signals for EUR_USD 2016-07-15 14:06:44.620000
+Collecting MAC data for GBP_USD 2016-07-15 14:06:44.627000
+Checking MAC signals for GBP_USD 2016-07-15 14:06:47.300000
+Collecting MAC data for USD_CAD 2016-07-15 14:06:47.307000
+Collecting MAC data for AUD_USD 2016-07-15 14:06:49.950000
+Checking MAC signals for AUD_USD 2016-07-15 14:06:52.627000
+Collecting MAC data for NZD_USD 2016-07-15 14:06:52.635000
+Checking MAC signals for NZD_USD 2016-07-15 14:06:55.280000
+Collecting MAC data for USD_CHF 2016-07-15 14:06:55.288000
+Checking MAC signals for USD_CHF 2016-07-15 14:06:57.963000
+Collecting MAC data for NZD_CHF 2016-07-15 14:06:57.969000
+Checking MAC signals for NZD_CHF 2016-07-15 14:07:00.650000
+Collecting MAC data for EUR_GBP 2016-07-15 14:07:00.657000
+Checking MAC signals for EUR_GBP 2016-07-15 14:07:03.281000
+Collecting MAC data for EUR_CAD 2016-07-15 14:07:03.288000
+Checking MAC signals for EUR_CAD 2016-07-15 14:07:06.055000
+Collecting MAC data for EUR_AUD 2016-07-15 14:07:06.062000
+Checking MAC signals for EUR_AUD 2016-07-15 14:07:08.691000
+Collecting MAC data for EUR_NZD 2016-07-15 14:07:08.698000
+Checking MAC signals for EUR_NZD 2016-07-15 14:07:11.473000
+Collecting MAC data for GBP_CAD 2016-07-15 14:07:11.480000
+Checking MAC signals for GBP_CAD 2016-07-15 14:07:14.171000
+Collecting MAC data for GBP_AUD 2016-07-15 14:07:14.174000
+Checking MAC signals for GBP_AUD 2016-07-15 14:07:16.820000
+Collecting MAC data for GBP_NZD 2016-07-15 14:07:16.827000
+Checking MAC signals for GBP_NZD 2016-07-15 14:07:19.511000
+Collecting MAC data for AUD_CAD 2016-07-15 14:07:19.518000
+Checking MAC signals for AUD_CAD 2016-07-15 14:07:22.159000
+Collecting MAC data for NZD_CAD 2016-07-15 14:07:22.166000
+Checking MAC signals for NZD_CAD 2016-07-15 14:07:25.026000
+Collecting MAC data for AUD_NZD 2016-07-15 14:07:25.033000
+Collecting MAC data for EUR_CHF 2016-07-15 14:07:27.687000
+Checking MAC signals for EUR_CHF 2016-07-15 14:07:30.445000
+Collecting MAC data for GBP_CHF 2016-07-15 14:07:30.452000
+Checking MAC signals for GBP_CHF 2016-07-15 14:07:33.188000
+Collecting MAC data for CAD_CHF 2016-07-15 14:07:33.195000
+Collecting MAC data for AUD_CHF 2016-07-15 14:07:35.859000
+Checking MAC signals for AUD_CHF 2016-07-15 14:07:38.615000
+Swing_MAC complete 2016-07-15 14:07:38.624000
+Running Intraday_CableSnap 2016-07-15 14:07:38.631000
+Collecting CableSnap data for EUR_USD 2016-07-15 14:07:38.638000
+CS: updating stops for EUR_USD 2016-07-15 14:07:42.295000
+CS: updating stops for EUR_USD 2016-07-15 14:07:44.939000
+Collecting CableSnap data for GBP_USD 2016-07-15 14:07:46.270000
+CS: updating stops for GBP_USD 2016-07-15 14:07:48.919000
+CS: Sell GBP_USD 2016-07-15 14:07:51.550000
+Collecting CableSnap data for EUR_CAD 2016-07-15 14:07:52.809000
+Collecting CableSnap data for EUR_AUD 2016-07-15 14:07:56.768000
+Collecting CableSnap data for EUR_NZD 2016-07-15 14:08:00.809000
+Collecting CableSnap data for GBP_CAD 2016-07-15 14:08:04.800000
+Collecting CableSnap data for GBP_AUD 2016-07-15 14:08:08.818000
+CS: Sell GBP_AUD 2016-07-15 14:08:12.481000
+CS: Sell GBP_AUD 2016-07-15 14:08:15.068000
+Collecting CableSnap data for GBP_NZD 2016-07-15 14:08:16.346000
+CS: Sell GBP_NZD 2016-07-15 14:08:19.031000
+CS: Sell GBP_NZD 2016-07-15 14:08:21.598000
+Collecting CableSnap data for EUR_CHF 2016-07-15 14:08:22.861000
+CS: updating stops for EUR_CHF 2016-07-15 14:08:25.498000
+CS: updating stops for EUR_CHF 2016-07-15 14:08:28.182000
+Collecting CableSnap data for GBP_CHF 2016-07-15 14:08:29.507000
+CS: Sell GBP_CHF 2016-07-15 14:08:32.161000
+CS: Sell GBP_CHF 2016-07-15 14:08:34.757000
+Intraday_CableSnap complete 2016-07-15 14:08:36.084000
+Running Intraday_Banzai 2016-07-15 14:08:36.093000
+Collecting Banzai data for GBP_JPY 2016-07-15 14:08:36.100000
+Collecting Banzai data for AUD_JPY 2016-07-15 14:08:40.187000
+Collecting Banzai data for USD_JPY 2016-07-15 14:08:45.150000
+Intraday_Banzai complete 2016-07-15 14:08:49.287000
+Running Intraday_PPB 2016-07-15 14:08:50.294000
+Collecting PPB data for EUR_USD 2016-07-15 14:08:50.303000
+Collecting PPB data for GBP_USD 2016-07-15 14:08:55.607000
+Collecting PPB data for USD_CAD 2016-07-15 14:09:00.937000
+Collecting PPB data for AUD_USD 2016-07-15 14:09:06.259000
+Collecting PPB data for NZD_USD 2016-07-15 14:09:11.507000
+Collecting PPB data for USD_CHF 2016-07-15 14:09:16.936000
+Collecting PPB data for NZD_CHF 2016-07-15 14:09:22.317000
+Collecting PPB data for EUR_GBP 2016-07-15 14:09:27.613000
+Collecting PPB data for EUR_CAD 2016-07-15 14:09:32.920000
+Collecting PPB data for EUR_AUD 2016-07-15 14:09:38.370000
+PPB: updating stops for EUR_AUD 2016-07-15 14:09:43.736000
+Collecting PPB data for EUR_NZD 2016-07-15 14:09:46.065000
+Collecting PPB data for GBP_CAD 2016-07-15 14:09:51.347000
+Collecting PPB data for GBP_AUD 2016-07-15 14:09:56.785000
+Collecting PPB data for GBP_NZD 2016-07-15 14:10:02.035000
+PPB: updating stops for GBP_NZD 2016-07-15 14:10:08.507000
+Collecting PPB data for AUD_CAD 2016-07-15 14:10:11.117000
+Collecting PPB data for NZD_CAD 2016-07-15 14:10:16.539000
+Collecting PPB data for AUD_NZD 2016-07-15 14:10:21.886000
+Collecting PPB data for EUR_CHF 2016-07-15 14:10:28.345000
+Collecting PPB data for GBP_CHF 2016-07-15 14:10:33.695000
+Collecting PPB data for CAD_CHF 2016-07-15 14:10:39.027000
+Collecting PPB data for AUD_CHF 2016-07-15 14:10:44.320000
+Intraday_PPB complete 2016-07-15 14:10:49.691000
+Running Intraday_CableSnap 2016-07-15 14:10:49.698000
+Collecting CableSnap data for EUR_USD 2016-07-15 14:10:49.705000
+CS: updating stops for EUR_USD 2016-07-15 14:10:52.465000
+Collecting CableSnap data for GBP_USD 2016-07-15 14:10:55.148000
+CS: updating stops for GBP_USD 2016-07-15 14:10:58.135000
+CS: updating stops for GBP_USD 2016-07-15 14:11:00.797000
+Collecting CableSnap data for EUR_CAD 2016-07-15 14:11:02.145000
+Collecting CableSnap data for EUR_AUD 2016-07-15 14:11:06.075000
+Collecting CableSnap data for EUR_NZD 2016-07-15 14:11:10.054000
+Collecting CableSnap data for GBP_CAD 2016-07-15 14:11:14.305000
+CS: Sell GBP_CAD 2016-07-15 14:11:17.005000
+CS: Sell GBP_CAD 2016-07-15 14:11:19.595000
+Collecting CableSnap data for GBP_AUD 2016-07-15 14:11:20.889000
+CS: updating stops for GBP_AUD 2016-07-15 14:11:23.533000
+CS: updating stops for GBP_AUD 2016-07-15 14:11:26.157000
+Collecting CableSnap data for GBP_NZD 2016-07-15 14:11:27.476000
+CS: updating stops for GBP_NZD 2016-07-15 14:11:30.119000
+CS: updating stops for GBP_NZD 2016-07-15 14:11:32.827000
+Collecting CableSnap data for EUR_CHF 2016-07-15 14:11:34.283000
+CS: updating stops for EUR_CHF 2016-07-15 14:11:36.947000
+CS: Sell EUR_CHF 2016-07-15 14:11:39.604000
+Collecting CableSnap data for GBP_CHF 2016-07-15 14:11:40.865000
+CS: updating stops for GBP_CHF 2016-07-15 14:11:43.525000
+CS: updating stops for GBP_CHF 2016-07-15 14:11:46.365000
+Intraday_CableSnap complete 2016-07-15 14:11:47.727000
+Running Intraday_Banzai 2016-07-15 14:11:47.732000
+Collecting Banzai data for GBP_JPY 2016-07-15 14:11:47.743000
+Collecting Banzai data for AUD_JPY 2016-07-15 14:11:51.724000
+Collecting Banzai data for USD_JPY 2016-07-15 14:11:55.706000
+Intraday_Banzai complete 2016-07-15 14:11:59.729000
+Running Intraday_PPB 2016-07-15 14:12:00.737000
+Collecting PPB data for EUR_USD 2016-07-15 14:12:00.743000
+Collecting PPB data for GBP_USD 2016-07-15 14:12:06.173000
+Collecting PPB data for USD_CAD 2016-07-15 14:12:12.484000
+Collecting PPB data for AUD_USD 2016-07-15 14:12:17.916000
+Collecting PPB data for NZD_USD 2016-07-15 14:12:23.234000
+Collecting PPB data for USD_CHF 2016-07-15 14:12:28.534000
+Collecting PPB data for NZD_CHF 2016-07-15 14:12:33.824000
+Collecting PPB data for EUR_GBP 2016-07-15 14:12:40.614000
+Collecting PPB data for EUR_CAD 2016-07-15 14:12:45.938000
+Collecting PPB data for EUR_AUD 2016-07-15 14:12:51.234000
+PPB: updating stops for EUR_AUD 2016-07-15 14:12:56.602000
+Collecting PPB data for EUR_NZD 2016-07-15 14:12:57.933000
+Collecting PPB data for GBP_CAD 2016-07-15 14:13:03.233000
+Collecting PPB data for GBP_AUD 2016-07-15 14:13:08.532000
+Collecting PPB data for GBP_NZD 2016-07-15 14:13:13.811000
+PPB: updating stops for GBP_NZD 2016-07-15 14:13:19.122000
+Collecting PPB data for AUD_CAD 2016-07-15 14:13:21.931000
+Collecting PPB data for NZD_CAD 2016-07-15 14:13:27.291000
+Collecting PPB data for AUD_NZD 2016-07-15 14:13:32.602000
+Collecting PPB data for EUR_CHF 2016-07-15 14:13:37.961000
+Collecting PPB data for GBP_CHF 2016-07-15 14:13:43.289000
+Collecting PPB data for CAD_CHF 2016-07-15 14:13:48.602000
+Collecting PPB data for AUD_CHF 2016-07-15 14:13:53.911000
+Intraday_PPB complete 2016-07-15 14:13:59.233000
+Running Intraday_PPB 2016-07-15 14:14:00.241000
+Collecting PPB data for EUR_USD 2016-07-15 14:14:00.249000
+Collecting PPB data for GBP_USD 2016-07-15 14:14:05.626000
+Collecting PPB data for USD_CAD 2016-07-15 14:14:10.935000
+Collecting PPB data for AUD_USD 2016-07-15 14:14:16.217000
+Collecting PPB data for NZD_USD 2016-07-15 14:14:21.672000
+Collecting PPB data for USD_CHF 2016-07-15 14:14:28.121000
+Collecting PPB data for NZD_CHF 2016-07-15 14:14:33.541000
+Collecting PPB data for EUR_GBP 2016-07-15 14:14:39.030000
+Collecting PPB data for EUR_CAD 2016-07-15 14:14:44.536000
+Collecting PPB data for EUR_AUD 2016-07-15 14:14:50.951000
+PPB: updating stops for EUR_AUD 2016-07-15 14:14:57.405000
+Collecting PPB data for EUR_NZD 2016-07-15 14:14:58.742000
+Collecting PPB data for GBP_CAD 2016-07-15 14:15:04.020000
+Collecting PPB data for GBP_AUD 2016-07-15 14:15:09.360000
+Collecting PPB data for GBP_NZD 2016-07-15 14:15:15.919000
+Collecting PPB data for AUD_CAD 2016-07-15 14:15:21.349000
+Collecting PPB data for NZD_CAD 2016-07-15 14:15:26.722000
+Collecting PPB data for AUD_NZD 2016-07-15 14:15:32.180000
+Collecting PPB data for EUR_CHF 2016-07-15 14:15:37.521000
+Collecting PPB data for GBP_CHF 2016-07-15 14:15:42.879000
+Collecting PPB data for CAD_CHF 2016-07-15 14:15:49.229000
+Collecting PPB data for AUD_CHF 2016-07-15 14:15:54.478000
+Intraday_PPB complete 2016-07-15 14:16:00.840000
+Running Intraday_PPB 2016-07-15 14:16:01.847000
+Collecting PPB data for EUR_USD 2016-07-15 14:16:01.855000
+Collecting PPB data for GBP_USD 2016-07-15 14:16:07.271000
+Collecting PPB data for USD_CAD 2016-07-15 14:16:12.771000
+Collecting PPB data for AUD_USD 2016-07-15 14:16:18.068000
+Collecting PPB data for NZD_USD 2016-07-15 14:16:23.438000
+Collecting PPB data for USD_CHF 2016-07-15 14:16:30.455000
+Collecting PPB data for NZD_CHF 2016-07-15 14:16:35.918000
+Collecting PPB data for EUR_GBP 2016-07-15 14:16:41.232000
+Collecting PPB data for EUR_CAD 2016-07-15 14:16:46.529000
+Collecting PPB data for EUR_AUD 2016-07-15 14:16:52.019000
+PPB: updating stops for EUR_AUD 2016-07-15 14:16:57.296000
+Collecting PPB data for EUR_NZD 2016-07-15 14:16:58.627000
+Collecting PPB data for GBP_CAD 2016-07-15 14:17:04.058000
+Collecting PPB data for GBP_AUD 2016-07-15 14:17:09.370000
+Collecting PPB data for GBP_NZD 2016-07-15 14:17:14.718000
+Collecting PPB data for AUD_CAD 2016-07-15 14:17:20.287000
+Collecting PPB data for NZD_CAD 2016-07-15 14:17:25.647000
+Collecting PPB data for AUD_NZD 2016-07-15 14:17:30.968000
+Collecting PPB data for EUR_CHF 2016-07-15 14:17:36.316000
+Collecting PPB data for GBP_CHF 2016-07-15 14:17:41.956000
+Collecting PPB data for CAD_CHF 2016-07-15 14:17:47.246000
+Collecting PPB data for AUD_CHF 2016-07-15 14:17:52.646000
+Intraday_PPB complete 2016-07-15 14:17:57.986000
+Running Intraday_CableSnap 2016-07-15 14:17:57.993000
+Collecting CableSnap data for EUR_USD 2016-07-15 14:17:57.999000
+Collecting CableSnap data for GBP_USD 2016-07-15 14:18:02.026000
+CS: updating stops for GBP_USD 2016-07-15 14:18:04.750000
+CS: Sell GBP_USD 2016-07-15 14:18:07.396000
+Collecting CableSnap data for EUR_CAD 2016-07-15 14:18:08.658000
+Collecting CableSnap data for EUR_AUD 2016-07-15 14:18:12.613000
+Collecting CableSnap data for EUR_NZD 2016-07-15 14:18:16.685000
+CS: Sell EUR_NZD 2016-07-15 14:18:19.326000
+CS: Sell EUR_NZD 2016-07-15 14:18:21.886000
+Collecting CableSnap data for GBP_CAD 2016-07-15 14:18:23.158000
+CS: updating stops for GBP_CAD 2016-07-15 14:18:26.079000
+CS: updating stops for GBP_CAD 2016-07-15 14:18:28.733000
+Collecting CableSnap data for GBP_AUD 2016-07-15 14:18:30.056000
+CS: updating stops for GBP_AUD 2016-07-15 14:18:32.717000
+CS: Sell GBP_AUD 2016-07-15 14:18:35.360000
+Collecting CableSnap data for GBP_NZD 2016-07-15 14:18:36.627000
+CS: updating stops for GBP_NZD 2016-07-15 14:18:40.325000
+CS: Sell GBP_NZD 2016-07-15 14:18:42.969000
+Collecting CableSnap data for EUR_CHF 2016-07-15 14:18:44.248000
+CS: updating stops for EUR_CHF 2016-07-15 14:18:46.865000
+CS: updating stops for EUR_CHF 2016-07-15 14:18:49.547000
+Collecting CableSnap data for GBP_CHF 2016-07-15 14:18:50.936000
+CS: updating stops for GBP_CHF 2016-07-15 14:18:53.713000
+CS: Sell GBP_CHF 2016-07-15 14:18:56.478000
+Intraday_CableSnap complete 2016-07-15 14:18:57.770000
+Running Intraday_Banzai 2016-07-15 14:18:57.777000
+Collecting Banzai data for GBP_JPY 2016-07-15 14:18:57.783000
+Collecting Banzai data for AUD_JPY 2016-07-15 14:47:44.684000
+Collecting Banzai data for USD_JPY 2016-07-15 14:47:49.144000
+Intraday_Banzai complete 2016-07-15 14:47:53.134000
+Running Intraday_PPB 2016-07-15 14:47:54.141000
+Collecting PPB data for EUR_USD 2016-07-15 14:47:54.147000
+Collecting PPB data for GBP_USD 2016-07-15 14:47:59.723000
+Collecting PPB data for USD_CAD 2016-07-15 14:48:05.085000
+Collecting PPB data for AUD_USD 2016-07-15 14:48:10.472000
+Collecting PPB data for NZD_USD 2016-07-15 14:48:15.772000
+Collecting PPB data for USD_CHF 2016-07-15 14:48:21.095000
+Collecting PPB data for NZD_CHF 2016-07-15 14:48:27.412000
+Collecting PPB data for EUR_GBP 2016-07-15 14:48:32.654000
+Collecting PPB data for EUR_CAD 2016-07-15 14:48:38.924000
+Collecting PPB data for EUR_AUD 2016-07-15 14:48:44.622000
+PPB: updating stops for EUR_AUD 2016-07-15 14:48:50.083000
+Collecting PPB data for EUR_NZD 2016-07-15 14:48:51.432000
+Collecting PPB data for GBP_CAD 2016-07-15 14:48:56.798000
+Collecting PPB data for GBP_AUD 2016-07-15 14:49:02.159000
+Collecting PPB data for GBP_NZD 2016-07-15 14:49:07.465000
+Collecting PPB data for AUD_CAD 2016-07-15 14:49:12.781000
+Collecting PPB data for NZD_CAD 2016-07-15 14:49:18.022000
+Collecting PPB data for AUD_NZD 2016-07-15 14:49:23.552000
+Collecting PPB data for EUR_CHF 2016-07-15 14:49:28.822000
+Collecting PPB data for GBP_CHF 2016-07-15 14:49:34.113000
+Collecting PPB data for CAD_CHF 2016-07-15 14:49:39.434000
+PPB: Sell CAD_CHF 2016-07-15 14:49:45.021000
+Collecting PPB data for AUD_CHF 2016-07-15 14:49:46.316000
+Intraday_PPB complete 2016-07-15 14:49:51.601000
+Running Intraday_CableSnap 2016-07-15 14:49:51.608000
+Collecting CableSnap data for EUR_USD 2016-07-15 14:49:51.614000
+Collecting CableSnap data for GBP_USD 2016-07-15 14:49:55.761000
+CS: updating stops for GBP_USD 2016-07-15 14:49:58.394000
+CS: updating stops for GBP_USD 2016-07-15 14:50:01.022000
+Collecting CableSnap data for EUR_CAD 2016-07-15 14:50:02.355000
+Collecting CableSnap data for EUR_AUD 2016-07-15 14:50:07.571000
+Collecting CableSnap data for EUR_NZD 2016-07-15 14:50:11.631000
+CS: updating stops for EUR_NZD 2016-07-15 14:50:14.352000
+CS: updating stops for EUR_NZD 2016-07-15 14:50:16.994000
+Collecting CableSnap data for GBP_CAD 2016-07-15 14:50:18.315000
+CS: updating stops for GBP_CAD 2016-07-15 14:50:20.992000
+CS: Sell GBP_CAD 2016-07-15 14:50:23.663000
+Collecting CableSnap data for GBP_AUD 2016-07-15 14:50:24.922000
+CS: updating stops for GBP_AUD 2016-07-15 14:50:27.580000
+CS: updating stops for GBP_AUD 2016-07-15 14:50:30.242000
+Collecting CableSnap data for GBP_NZD 2016-07-15 14:50:31.552000
+CS: updating stops for GBP_NZD 2016-07-15 14:50:34.234000
+CS: updating stops for GBP_NZD 2016-07-15 14:50:36.902000
+Collecting CableSnap data for EUR_CHF 2016-07-15 14:50:38.241000
+CS: updating stops for EUR_CHF 2016-07-15 14:50:41.021000
+Collecting CableSnap data for GBP_CHF 2016-07-15 14:50:43.725000
+CS: updating stops for GBP_CHF 2016-07-15 14:50:46.401000
+CS: updating stops for GBP_CHF 2016-07-15 14:50:49.081000
+Intraday_CableSnap complete 2016-07-15 14:50:50.345000
+Running Intraday_Banzai 2016-07-15 14:50:50.354000
+Collecting Banzai data for GBP_JPY 2016-07-15 14:50:50.361000
+Collecting Banzai data for AUD_JPY 2016-07-15 14:50:54.392000
+Collecting Banzai data for USD_JPY 2016-07-15 14:50:58.420000
+Intraday_Banzai complete 2016-07-15 14:51:02.462000
+Running Intraday_PPB 2016-07-15 14:51:03.469000
+Collecting PPB data for EUR_USD 2016-07-15 14:51:03.476000
+Collecting PPB data for GBP_USD 2016-07-15 14:51:08.780000
+Collecting PPB data for USD_CAD 2016-07-15 14:51:14.100000
+Collecting PPB data for AUD_USD 2016-07-15 14:51:19.370000
+Collecting PPB data for NZD_USD 2016-07-15 14:51:24.980000
+Collecting PPB data for USD_CHF 2016-07-15 14:51:30.391000
+Collecting PPB data for NZD_CHF 2016-07-15 14:51:35.691000
+Collecting PPB data for EUR_GBP 2016-07-15 14:51:41.103000
+Collecting PPB data for EUR_CAD 2016-07-15 14:51:46.381000
+Collecting PPB data for EUR_AUD 2016-07-15 14:51:53.670000
+PPB: updating stops for EUR_AUD 2016-07-15 14:51:59.085000
+Collecting PPB data for EUR_NZD 2016-07-15 14:52:00.439000
+Collecting PPB data for GBP_CAD 2016-07-15 14:52:05.834000
+Collecting PPB data for GBP_AUD 2016-07-15 14:52:11.152000
+Collecting PPB data for GBP_NZD 2016-07-15 14:52:16.560000
+Collecting PPB data for AUD_CAD 2016-07-15 14:52:21.901000
+Collecting PPB data for NZD_CAD 2016-07-15 14:52:27.580000
+Collecting PPB data for AUD_NZD 2016-07-15 14:52:33.852000
+Collecting PPB data for EUR_CHF 2016-07-15 14:52:39.185000
+Collecting PPB data for GBP_CHF 2016-07-15 14:52:44.590000
+Collecting PPB data for CAD_CHF 2016-07-15 14:52:49.910000
+PPB: updating stops for CAD_CHF 2016-07-15 14:52:55.251000
+Collecting PPB data for AUD_CHF 2016-07-15 14:52:56.588000
+Intraday_PPB complete 2016-07-15 14:53:01.928000
+Running Intraday_CableSnap 2016-07-15 14:53:01.935000
+Collecting CableSnap data for EUR_USD 2016-07-15 14:53:01.942000
+CS: Sell EUR_USD 2016-07-15 14:53:04.609000
+CS: updating stops for EUR_USD 2016-07-15 14:53:07.258000
+Collecting CableSnap data for GBP_USD 2016-07-15 14:53:08.570000
+CS: updating stops for GBP_USD 2016-07-15 14:53:11.205000
+CS: Sell GBP_USD 2016-07-15 14:53:13.844000
+Collecting CableSnap data for EUR_CAD 2016-07-15 14:53:15.099000
+Collecting CableSnap data for EUR_AUD 2016-07-15 14:53:19.058000
+Collecting CableSnap data for EUR_NZD 2016-07-15 14:53:23.102000
+CS: updating stops for EUR_NZD 2016-07-15 14:53:25.789000
+CS: Sell EUR_NZD 2016-07-15 14:53:28.469000
+Collecting CableSnap data for GBP_CAD 2016-07-15 14:53:29.795000
+CS: updating stops for GBP_CAD 2016-07-15 14:53:32.439000
+CS: updating stops for GBP_CAD 2016-07-15 14:53:35.098000
+Collecting CableSnap data for GBP_AUD 2016-07-15 14:53:36.473000
+CS: updating stops for GBP_AUD 2016-07-15 14:53:39.278000
+CS: Sell GBP_AUD 2016-07-15 14:53:41.959000
+Collecting CableSnap data for GBP_NZD 2016-07-15 14:53:43.216000
+CS: updating stops for GBP_NZD 2016-07-15 14:53:45.869000
+CS: Sell GBP_NZD 2016-07-15 14:53:48.510000
+Collecting CableSnap data for EUR_CHF 2016-07-15 14:53:49.801000
+Collecting CableSnap data for GBP_CHF 2016-07-15 14:53:53.759000
+CS: updating stops for GBP_CHF 2016-07-15 14:53:56.398000
+CS: Sell GBP_CHF 2016-07-15 14:53:59.090000
+Intraday_CableSnap complete 2016-07-15 14:54:00.454000
+Running Intraday_Banzai 2016-07-15 14:54:00.461000
+Collecting Banzai data for GBP_JPY 2016-07-15 14:54:00.467000
+Collecting Banzai data for AUD_JPY 2016-07-15 14:54:04.441000
+Collecting Banzai data for USD_JPY 2016-07-15 14:54:08.399000
+Intraday_Banzai complete 2016-07-15 14:54:12.368000
+Running Intraday_PPB 2016-07-15 14:54:13.378000
+Collecting PPB data for EUR_USD 2016-07-15 14:54:13.386000
+Collecting PPB data for GBP_USD 2016-07-15 14:54:18.959000
+Collecting PPB data for USD_CAD 2016-07-15 14:54:24.258000
+Collecting PPB data for AUD_USD 2016-07-15 14:54:29.621000
+Collecting PPB data for NZD_USD 2016-07-15 14:54:34.898000
+Collecting PPB data for USD_CHF 2016-07-15 14:54:40.218000
+Collecting PPB data for NZD_CHF 2016-07-15 14:54:45.568000
+Collecting PPB data for EUR_GBP 2016-07-15 14:54:51.008000
+Collecting PPB data for EUR_CAD 2016-07-15 14:54:56.366000
+Collecting PPB data for EUR_AUD 2016-07-15 14:55:01.678000
+PPB: updating stops for EUR_AUD 2016-07-15 14:55:07.028000
+Collecting PPB data for EUR_NZD 2016-07-15 14:55:08.371000
+Collecting PPB data for GBP_CAD 2016-07-15 14:55:13.717000
+Collecting PPB data for GBP_AUD 2016-07-15 14:55:18.987000
+Collecting PPB data for GBP_NZD 2016-07-15 14:55:24.307000
+Collecting PPB data for AUD_CAD 2016-07-15 14:55:29.567000
+Collecting PPB data for NZD_CAD 2016-07-15 14:55:34.870000
+Collecting PPB data for AUD_NZD 2016-07-15 14:55:40.149000
+Collecting PPB data for EUR_CHF 2016-07-15 14:55:45.706000
+Collecting PPB data for GBP_CHF 2016-07-15 14:55:51.027000
+Collecting PPB data for CAD_CHF 2016-07-15 14:55:56.337000
+PPB: updating stops for CAD_CHF 2016-07-15 14:56:01.676000
+Collecting PPB data for AUD_CHF 2016-07-15 14:56:03.009000
+Intraday_PPB complete 2016-07-15 14:56:08.359000
+Running Intraday_PPB 2016-07-15 14:56:09.367000
+Collecting PPB data for EUR_USD 2016-07-15 14:56:09.375000
+Collecting PPB data for GBP_USD 2016-07-15 14:56:14.677000
+Collecting PPB data for USD_CAD 2016-07-15 14:56:20.007000
+Collecting PPB data for AUD_USD 2016-07-15 14:56:25.336000
+Collecting PPB data for NZD_USD 2016-07-15 14:56:30.616000
+Collecting PPB data for USD_CHF 2016-07-15 14:56:36.010000
+Collecting PPB data for NZD_CHF 2016-07-15 14:56:41.298000
+Collecting PPB data for EUR_GBP 2016-07-15 14:56:46.653000
+Collecting PPB data for EUR_CAD 2016-07-15 14:56:51.926000
+Collecting PPB data for EUR_AUD 2016-07-15 14:56:57.232000
+PPB: updating stops for EUR_AUD 2016-07-15 14:57:02.569000
+Collecting PPB data for EUR_NZD 2016-07-15 14:57:03.906000
+Collecting PPB data for GBP_CAD 2016-07-15 14:57:09.209000
+Collecting PPB data for GBP_AUD 2016-07-15 14:57:14.542000
+Collecting PPB data for GBP_NZD 2016-07-15 14:57:19.826000
+Collecting PPB data for AUD_CAD 2016-07-15 14:57:25.535000
+Collecting PPB data for NZD_CAD 2016-07-15 14:57:30.977000
+Collecting PPB data for AUD_NZD 2016-07-15 14:57:36.276000
+Collecting PPB data for EUR_CHF 2016-07-15 14:57:41.588000
+Collecting PPB data for GBP_CHF 2016-07-15 14:57:46.919000
+Collecting PPB data for CAD_CHF 2016-07-15 14:57:52.195000
+PPB: updating stops for CAD_CHF 2016-07-15 14:57:57.535000
+Collecting PPB data for AUD_CHF 2016-07-15 14:57:58.846000
+Intraday_PPB complete 2016-07-15 14:58:04.098000
+Running Intraday_PPB 2016-07-15 14:58:05.105000
+Collecting PPB data for EUR_USD 2016-07-15 14:58:05.111000
+Collecting PPB data for GBP_USD 2016-07-15 14:58:10.701000
+Collecting PPB data for USD_CAD 2016-07-15 14:58:16.006000
+Collecting PPB data for AUD_USD 2016-07-15 14:58:21.271000
+Collecting PPB data for NZD_USD 2016-07-15 14:58:26.515000
+Collecting PPB data for USD_CHF 2016-07-15 14:58:31.764000
+Collecting PPB data for NZD_CHF 2016-07-15 14:58:38.077000
+Collecting PPB data for EUR_GBP 2016-07-15 14:58:43.355000
+Collecting PPB data for EUR_CAD 2016-07-15 14:58:49.605000
+Collecting PPB data for EUR_AUD 2016-07-15 14:58:54.895000
+PPB: updating stops for EUR_AUD 2016-07-15 14:59:00.204000
+Collecting PPB data for EUR_NZD 2016-07-15 14:59:01.535000
+Collecting PPB data for GBP_CAD 2016-07-15 14:59:06.865000
+Collecting PPB data for GBP_AUD 2016-07-15 14:59:13.165000
+Collecting PPB data for GBP_NZD 2016-07-15 14:59:18.686000
+Collecting PPB data for AUD_CAD 2016-07-15 14:59:24.045000
+Collecting PPB data for NZD_CAD 2016-07-15 14:59:29.304000
+Collecting PPB data for AUD_NZD 2016-07-15 14:59:34.665000
+Collecting PPB data for EUR_CHF 2016-07-15 14:59:39.944000
+Collecting PPB data for GBP_CHF 2016-07-15 14:59:45.244000
+Collecting PPB data for CAD_CHF 2016-07-15 14:59:50.799000
+PPB: updating stops for CAD_CHF 2016-07-15 14:59:56.124000
+Collecting PPB data for AUD_CHF 2016-07-15 14:59:57.534000
+Intraday_PPB complete 2016-07-15 15:00:03.097000
+Running Intraday_PPB 2016-07-15 15:00:04.105000
+Collecting PPB data for EUR_USD 2016-07-15 15:00:04.112000
+Collecting PPB data for GBP_USD 2016-07-15 15:00:09.594000
+Collecting PPB data for USD_CAD 2016-07-15 15:00:15.024000
+Collecting PPB data for AUD_USD 2016-07-15 15:00:20.403000
+PPB: Sell AUD_USD 2016-07-15 15:00:25.715000
+Collecting PPB data for NZD_USD 2016-07-15 15:00:26.988000
+Collecting PPB data for USD_CHF 2016-07-15 15:00:32.284000
+Collecting PPB data for NZD_CHF 2016-07-15 15:00:37.646000
+Collecting PPB data for EUR_GBP 2016-07-15 15:00:43.915000
+Collecting PPB data for EUR_CAD 2016-07-15 15:00:49.444000
+Collecting PPB data for EUR_AUD 2016-07-15 15:00:54.744000
+PPB: updating stops for EUR_AUD 2016-07-15 15:01:01.076000
+Collecting PPB data for EUR_NZD 2016-07-15 15:01:02.417000
+Collecting PPB data for GBP_CAD 2016-07-15 15:01:07.744000
+Collecting PPB data for GBP_AUD 2016-07-15 15:01:13.025000
+Collecting PPB data for GBP_NZD 2016-07-15 15:01:18.402000
+Collecting PPB data for AUD_CAD 2016-07-15 15:01:23.733000
+Collecting PPB data for NZD_CAD 2016-07-15 15:01:28.967000
+Collecting PPB data for AUD_NZD 2016-07-15 15:01:34.264000
+Collecting PPB data for EUR_CHF 2016-07-15 15:01:39.624000
+Collecting PPB data for GBP_CHF 2016-07-15 15:01:45.025000
+Collecting PPB data for CAD_CHF 2016-07-15 15:01:50.422000
+PPB: updating stops for CAD_CHF 2016-07-15 15:01:56.712000
+Collecting PPB data for AUD_CHF 2016-07-15 15:01:58.054000
+Intraday_PPB complete 2016-07-15 15:02:03.423000
+Running Intraday_CableSnap 2016-07-15 15:02:03.429000
+Collecting CableSnap data for EUR_USD 2016-07-15 15:02:03.436000
+CS: updating stops for EUR_USD 2016-07-15 15:02:06.104000
+CS: updating stops for EUR_USD 2016-07-15 15:02:08.768000
+Collecting CableSnap data for GBP_USD 2016-07-15 15:02:10.092000
+CS: updating stops for GBP_USD 2016-07-15 15:02:12.732000
+CS: updating stops for GBP_USD 2016-07-15 15:02:15.373000
+Collecting CableSnap data for EUR_CAD 2016-07-15 15:02:16.704000
+Collecting CableSnap data for EUR_AUD 2016-07-15 15:02:20.822000
+Collecting CableSnap data for EUR_NZD 2016-07-15 15:02:24.782000
+CS: updating stops for EUR_NZD 2016-07-15 15:02:27.449000
+CS: updating stops for EUR_NZD 2016-07-15 15:02:30.086000
+Collecting CableSnap data for GBP_CAD 2016-07-15 15:02:31.515000
+CS: updating stops for GBP_CAD 2016-07-15 15:02:34.194000
+Collecting CableSnap data for GBP_AUD 2016-07-15 15:02:36.873000
+CS: updating stops for GBP_AUD 2016-07-15 15:02:39.519000
+CS: updating stops for GBP_AUD 2016-07-15 15:02:42.156000
+Collecting CableSnap data for GBP_NZD 2016-07-15 15:02:43.531000
+CS: updating stops for GBP_NZD 2016-07-15 15:02:46.225000
+CS: updating stops for GBP_NZD 2016-07-15 15:02:48.892000
+Collecting CableSnap data for EUR_CHF 2016-07-15 15:02:50.240000
+Collecting CableSnap data for GBP_CHF 2016-07-15 15:02:54.307000
+CS: updating stops for GBP_CHF 2016-07-15 15:02:57.012000
+CS: updating stops for GBP_CHF 2016-07-15 15:02:59.619000
+Intraday_CableSnap complete 2016-07-15 15:03:00.961000
+Running Intraday_Banzai 2016-07-15 15:03:00.968000
+Collecting Banzai data for GBP_JPY 2016-07-15 15:03:00.975000
+Collecting Banzai data for AUD_JPY 2016-07-15 15:03:04.932000
+Collecting Banzai data for USD_JPY 2016-07-15 15:03:08.962000
+Intraday_Banzai complete 2016-07-15 15:03:12.935000
+Running Intraday_PPB 2016-07-15 15:03:13.942000
+Collecting PPB data for EUR_USD 2016-07-15 15:03:13.951000
+Collecting PPB data for GBP_USD 2016-07-15 15:03:19.251000
+Collecting PPB data for USD_CAD 2016-07-15 15:03:24.611000
+Collecting PPB data for AUD_USD 2016-07-15 15:03:29.891000
+PPB: updating stops for AUD_USD 2016-07-15 15:03:35.202000
+Collecting PPB data for NZD_USD 2016-07-15 15:03:36.541000
+Collecting PPB data for USD_CHF 2016-07-15 15:03:42.045000
+Collecting PPB data for NZD_CHF 2016-07-15 15:03:48.431000
+Collecting PPB data for EUR_GBP 2016-07-15 15:03:53.732000
+Collecting PPB data for EUR_CAD 2016-07-15 15:03:59.011000
+Collecting PPB data for EUR_AUD 2016-07-15 15:04:04.281000
+PPB: updating stops for EUR_AUD 2016-07-15 15:04:09.601000
+Collecting PPB data for EUR_NZD 2016-07-15 15:04:11.921000
+Collecting PPB data for GBP_CAD 2016-07-15 15:04:17.306000
+Collecting PPB data for GBP_AUD 2016-07-15 15:04:22.591000
+Collecting PPB data for GBP_NZD 2016-07-15 15:04:27.869000
+Collecting PPB data for AUD_CAD 2016-07-15 15:04:33.181000
+Collecting PPB data for NZD_CAD 2016-07-15 15:04:38.461000
+Collecting PPB data for AUD_NZD 2016-07-15 15:04:44.896000
+Collecting PPB data for EUR_CHF 2016-07-15 15:04:50.391000
+Collecting PPB data for GBP_CHF 2016-07-15 15:04:55.700000
+Collecting PPB data for CAD_CHF 2016-07-15 15:05:01.051000
+PPB: updating stops for CAD_CHF 2016-07-15 15:05:06.361000
+Collecting PPB data for AUD_CHF 2016-07-15 15:05:07.660000
+Intraday_PPB complete 2016-07-15 15:05:13.032000
+Running Intraday_PPB 2016-07-15 15:05:14.040000
+Collecting PPB data for EUR_USD 2016-07-15 15:05:14.047000
+Collecting PPB data for GBP_USD 2016-07-15 15:05:19.471000
+Collecting PPB data for USD_CAD 2016-07-15 15:05:24.737000
+Collecting PPB data for AUD_USD 2016-07-15 15:05:30.197000
+PPB: updating stops for AUD_USD 2016-07-15 15:05:35.549000
+Collecting PPB data for NZD_USD 2016-07-15 15:05:36.870000
+Collecting PPB data for USD_CHF 2016-07-15 15:05:42.189000
+Collecting PPB data for NZD_CHF 2016-07-15 15:05:48.454000
+Collecting PPB data for EUR_GBP 2016-07-15 15:05:53.747000
+Collecting PPB data for EUR_CAD 2016-07-15 15:06:00.059000
+Collecting PPB data for EUR_AUD 2016-07-15 15:06:05.339000
+PPB: updating stops for EUR_AUD 2016-07-15 15:06:10.929000
+Collecting PPB data for EUR_NZD 2016-07-15 15:06:12.252000
+Collecting PPB data for GBP_CAD 2016-07-15 15:06:17.619000
+Collecting PPB data for GBP_AUD 2016-07-15 15:06:22.892000
+Collecting PPB data for GBP_NZD 2016-07-15 15:06:28.179000
+Collecting PPB data for AUD_CAD 2016-07-15 15:06:33.478000
+Collecting PPB data for NZD_CAD 2016-07-15 15:06:38.789000
+Collecting PPB data for AUD_NZD 2016-07-15 15:06:44.259000
+Collecting PPB data for EUR_CHF 2016-07-15 15:06:49.589000
+Collecting PPB data for GBP_CHF 2016-07-15 15:06:54.908000
+Collecting PPB data for CAD_CHF 2016-07-15 15:07:00.220000
+PPB: updating stops for CAD_CHF 2016-07-15 15:07:05.508000
+Collecting PPB data for AUD_CHF 2016-07-15 15:07:06.828000
+Intraday_PPB complete 2016-07-15 15:07:12.215000
+Running Intraday_PPB 2016-07-15 15:07:13.223000
+Collecting PPB data for EUR_USD 2016-07-15 15:07:13.234000
+Collecting PPB data for GBP_USD 2016-07-15 15:07:18.549000
+Collecting PPB data for USD_CAD 2016-07-15 15:07:24.011000
+Collecting PPB data for AUD_USD 2016-07-15 15:07:29.391000
+PPB: updating stops for AUD_USD 2016-07-15 15:07:34.672000
+Collecting PPB data for NZD_USD 2016-07-15 15:07:36.039000
+Collecting PPB data for USD_CHF 2016-07-15 15:07:41.298000
+Collecting PPB data for NZD_CHF 2016-07-15 15:07:46.568000
+Collecting PPB data for EUR_GBP 2016-07-15 15:07:52.171000
+Collecting PPB data for EUR_CAD 2016-07-15 15:07:57.420000
+Collecting PPB data for EUR_AUD 2016-07-15 15:08:02.779000
+PPB: updating stops for EUR_AUD 2016-07-15 15:08:08.198000
+Collecting PPB data for EUR_NZD 2016-07-15 15:08:09.528000
+Collecting PPB data for GBP_CAD 2016-07-15 15:08:14.807000
+Collecting PPB data for GBP_AUD 2016-07-15 15:08:20.140000
+Collecting PPB data for GBP_NZD 2016-07-15 15:08:25.479000
+Collecting PPB data for AUD_CAD 2016-07-15 15:08:30.907000
+Collecting PPB data for NZD_CAD 2016-07-15 15:08:37.177000
+Collecting PPB data for AUD_NZD 2016-07-15 15:08:42.462000
+Collecting PPB data for EUR_CHF 2016-07-15 15:08:47.767000
+Collecting PPB data for GBP_CHF 2016-07-15 15:08:53.029000
+Collecting PPB data for CAD_CHF 2016-07-15 15:08:58.287000
+PPB: updating stops for CAD_CHF 2016-07-15 15:09:03.666000
+Collecting PPB data for AUD_CHF 2016-07-15 15:09:05.029000
+Intraday_PPB complete 2016-07-15 15:09:10.431000
+Running Intraday_PPB 2016-07-15 15:09:11.438000
+Collecting PPB data for EUR_USD 2016-07-15 15:09:11.445000
+Collecting PPB data for GBP_USD 2016-07-15 15:09:16.757000
+Collecting PPB data for USD_CAD 2016-07-15 15:09:23.067000
+Collecting PPB data for AUD_USD 2016-07-15 15:09:28.338000
+PPB: updating stops for AUD_USD 2016-07-15 15:09:33.638000
+Collecting PPB data for NZD_USD 2016-07-15 15:09:34.984000
+Collecting PPB data for USD_CHF 2016-07-15 15:09:40.431000
+Collecting PPB data for NZD_CHF 2016-07-15 15:09:45.756000
+Collecting PPB data for EUR_GBP 2016-07-15 15:09:52.027000
+Collecting PPB data for EUR_CAD 2016-07-15 15:09:57.936000
+Collecting PPB data for EUR_AUD 2016-07-15 15:10:03.266000
+PPB: updating stops for EUR_AUD 2016-07-15 15:10:08.568000
+Collecting PPB data for EUR_NZD 2016-07-15 15:10:10.002000
+Collecting PPB data for GBP_CAD 2016-07-15 15:10:15.275000
+Collecting PPB data for GBP_AUD 2016-07-15 15:10:20.606000
+Collecting PPB data for GBP_NZD 2016-07-15 15:10:25.875000
+Collecting PPB data for AUD_CAD 2016-07-15 15:10:31.186000
+Collecting PPB data for NZD_CAD 2016-07-15 15:10:37.516000
+Collecting PPB data for AUD_NZD 2016-07-15 15:10:42.827000
+Collecting PPB data for EUR_CHF 2016-07-15 15:10:48.076000
+Collecting PPB data for GBP_CHF 2016-07-15 15:10:53.445000
+Collecting PPB data for CAD_CHF 2016-07-15 15:10:59.806000
+PPB: updating stops for CAD_CHF 2016-07-15 15:11:05.095000
+Collecting PPB data for AUD_CHF 2016-07-15 15:11:06.460000
+Intraday_PPB complete 2016-07-15 15:11:13.045000
+Running Intraday_PPB 2016-07-15 15:11:14.052000
+Collecting PPB data for EUR_USD 2016-07-15 15:11:14.059000
+Collecting PPB data for GBP_USD 2016-07-15 15:11:19.355000
+Collecting PPB data for USD_CAD 2016-07-15 15:11:25.835000
+Collecting PPB data for AUD_USD 2016-07-15 15:11:32.115000
+PPB: updating stops for AUD_USD 2016-07-15 15:11:37.815000
+Collecting PPB data for NZD_USD 2016-07-15 15:11:39.140000
+Collecting PPB data for USD_CHF 2016-07-15 15:11:44.555000
+Collecting PPB data for NZD_CHF 2016-07-15 15:11:49.885000
+Collecting PPB data for EUR_GBP 2016-07-15 15:11:55.185000
+Collecting PPB data for EUR_CAD 2016-07-15 15:12:00.447000
+Collecting PPB data for EUR_AUD 2016-07-15 15:12:05.734000
+PPB: updating stops for EUR_AUD 2016-07-15 15:12:11.045000
+Collecting PPB data for EUR_NZD 2016-07-15 15:12:12.370000
+Collecting PPB data for GBP_CAD 2016-07-15 15:12:17.618000
+Collecting PPB data for GBP_AUD 2016-07-15 15:12:22.916000
+Collecting PPB data for GBP_NZD 2016-07-15 15:12:28.185000
+Collecting PPB data for AUD_CAD 2016-07-15 15:12:33.546000
+Collecting PPB data for NZD_CAD 2016-07-15 15:12:38.934000
+Collecting PPB data for AUD_NZD 2016-07-15 15:12:44.181000
+Collecting PPB data for EUR_CHF 2016-07-15 15:12:49.504000
+Collecting PPB data for GBP_CHF 2016-07-15 15:12:54.785000
+Collecting PPB data for CAD_CHF 2016-07-15 15:13:00.115000
+PPB: updating stops for CAD_CHF 2016-07-15 15:13:05.394000
+Collecting PPB data for AUD_CHF 2016-07-15 15:13:06.717000
+Intraday_PPB complete 2016-07-15 15:13:12.046000
+Running Intraday_PPB 2016-07-15 15:13:13.054000
+Collecting PPB data for EUR_USD 2016-07-15 15:13:13.061000
+Collecting PPB data for GBP_USD 2016-07-15 15:13:18.356000
+Collecting PPB data for USD_CAD 2016-07-15 15:13:23.616000
+Collecting PPB data for AUD_USD 2016-07-15 15:13:28.897000
+PPB: updating stops for AUD_USD 2016-07-15 15:13:34.283000
+Collecting PPB data for NZD_USD 2016-07-15 15:13:35.613000
+Collecting PPB data for USD_CHF 2016-07-15 15:13:40.884000
+Collecting PPB data for NZD_CHF 2016-07-15 15:13:46.234000
+Collecting PPB data for EUR_GBP 2016-07-15 15:13:51.544000
+Collecting PPB data for EUR_CAD 2016-07-15 15:13:56.884000
+Collecting PPB data for EUR_AUD 2016-07-15 15:14:02.245000
+PPB: updating stops for EUR_AUD 2016-07-15 15:14:07.613000
+Collecting PPB data for EUR_NZD 2016-07-15 15:14:09.014000
+Collecting PPB data for GBP_CAD 2016-07-15 15:14:14.315000
+Collecting PPB data for GBP_AUD 2016-07-15 15:14:19.574000
+Collecting PPB data for GBP_NZD 2016-07-15 15:14:24.913000
+Collecting PPB data for AUD_CAD 2016-07-15 15:14:31.204000
+Collecting PPB data for NZD_CAD 2016-07-15 15:14:36.513000
+Collecting PPB data for AUD_NZD 2016-07-15 15:14:41.843000
+Collecting PPB data for EUR_CHF 2016-07-15 15:14:47.153000
+Collecting PPB data for GBP_CHF 2016-07-15 15:14:52.444000
+Collecting PPB data for CAD_CHF 2016-07-15 15:14:57.763000
+PPB: updating stops for CAD_CHF 2016-07-15 15:15:04.113000
+Collecting PPB data for AUD_CHF 2016-07-15 15:15:05.426000
+Intraday_PPB complete 2016-07-15 15:15:10.822000
+Running Intraday_PPB 2016-07-15 15:15:11.833000
+Collecting PPB data for EUR_USD 2016-07-15 15:15:11.839000
+Collecting PPB data for GBP_USD 2016-07-15 15:15:17.142000
+Collecting PPB data for USD_CAD 2016-07-15 15:15:22.483000
+Collecting PPB data for AUD_USD 2016-07-15 15:15:27.834000
+PPB: updating stops for AUD_USD 2016-07-15 15:15:33.085000
+Collecting PPB data for NZD_USD 2016-07-15 15:15:34.433000
+Collecting PPB data for USD_CHF 2016-07-15 15:15:39.733000
+Collecting PPB data for NZD_CHF 2016-07-15 15:15:45.055000
+Collecting PPB data for EUR_GBP 2016-07-15 15:15:51.463000
+Collecting PPB data for EUR_CAD 2016-07-15 15:15:56.785000
+Collecting PPB data for EUR_AUD 2016-07-15 15:16:02.067000
+PPB: updating stops for EUR_AUD 2016-07-15 15:16:07.361000
+Collecting PPB data for EUR_NZD 2016-07-15 15:16:08.824000
+Collecting PPB data for GBP_CAD 2016-07-15 15:16:14.172000
+Collecting PPB data for GBP_AUD 2016-07-15 15:16:19.555000
+Collecting PPB data for GBP_NZD 2016-07-15 15:16:24.892000
+Collecting PPB data for AUD_CAD 2016-07-15 15:16:30.272000
+Collecting PPB data for NZD_CAD 2016-07-15 15:16:35.531000
+Collecting PPB data for AUD_NZD 2016-07-15 15:16:40.822000
+Collecting PPB data for EUR_CHF 2016-07-15 15:16:47.161000
+Collecting PPB data for GBP_CHF 2016-07-15 15:16:52.401000
+Collecting PPB data for CAD_CHF 2016-07-15 15:16:57.664000
+PPB: updating stops for CAD_CHF 2016-07-15 15:17:03.011000
+Collecting PPB data for AUD_CHF 2016-07-15 15:17:04.341000
+Intraday_PPB complete 2016-07-15 15:17:09.622000
+Running Intraday_CableSnap 2016-07-15 15:17:09.629000
+Collecting CableSnap data for EUR_USD 2016-07-15 15:17:09.636000
+Collecting CableSnap data for GBP_USD 2016-07-15 15:17:13.611000
+CS: updating stops for GBP_USD 2016-07-15 15:17:16.296000
+Collecting CableSnap data for EUR_CAD 2016-07-15 15:17:18.972000
+Collecting CableSnap data for EUR_AUD 2016-07-15 15:17:23.026000
+Collecting CableSnap data for EUR_NZD 2016-07-15 15:17:27.053000
+CS: updating stops for EUR_NZD 2016-07-15 15:17:29.711000
+CS: Sell EUR_NZD 2016-07-15 15:17:32.341000
+Collecting CableSnap data for GBP_CAD 2016-07-15 15:17:33.621000
+Collecting CableSnap data for GBP_AUD 2016-07-15 15:17:37.621000
+CS: updating stops for GBP_AUD 2016-07-15 15:17:41.251000
+CS: Sell GBP_AUD 2016-07-15 15:17:43.911000
+Collecting CableSnap data for GBP_NZD 2016-07-15 15:17:45.453000
+CS: updating stops for GBP_NZD 2016-07-15 15:17:48.161000
+CS: Sell GBP_NZD 2016-07-15 15:17:50.821000
+Collecting CableSnap data for EUR_CHF 2016-07-15 15:17:52.100000
+Collecting CableSnap data for GBP_CHF 2016-07-15 15:17:56.121000
+CS: updating stops for GBP_CHF 2016-07-15 15:17:58.770000
+CS: Sell GBP_CHF 2016-07-15 15:18:01.492000
+Intraday_CableSnap complete 2016-07-15 15:18:02.764000
+Running Intraday_Banzai 2016-07-15 15:18:02.770000
+Collecting Banzai data for GBP_JPY 2016-07-15 15:18:02.777000
+Collecting Banzai data for AUD_JPY 2016-07-15 15:18:06.629000
+Collecting Banzai data for USD_JPY 2016-07-15 15:18:10.718000
+Intraday_Banzai complete 2016-07-15 15:18:14.720000
+Running Intraday_PPB 2016-07-15 15:18:15.726000
+Collecting PPB data for EUR_USD 2016-07-15 15:18:15.735000
+Collecting PPB data for GBP_USD 2016-07-15 15:18:22.020000
+Collecting PPB data for USD_CAD 2016-07-15 15:18:27.440000
+Collecting PPB data for AUD_USD 2016-07-15 15:18:32.711000
+PPB: updating stops for AUD_USD 2016-07-15 15:18:38.010000
+Collecting PPB data for NZD_USD 2016-07-15 15:18:39.340000
+Collecting PPB data for USD_CHF 2016-07-15 15:18:44.673000
+Collecting PPB data for NZD_CHF 2016-07-15 15:18:50.373000
+Collecting PPB data for EUR_GBP 2016-07-15 15:18:55.709000
+Collecting PPB data for EUR_CAD 2016-07-15 15:19:01.040000
+Collecting PPB data for EUR_AUD 2016-07-15 15:19:06.330000
+PPB: updating stops for EUR_AUD 2016-07-15 15:19:11.663000
+Collecting PPB data for EUR_NZD 2016-07-15 15:19:12.991000
+Collecting PPB data for GBP_CAD 2016-07-15 15:19:18.289000
+Collecting PPB data for GBP_AUD 2016-07-15 15:19:24.552000
+Collecting PPB data for GBP_NZD 2016-07-15 15:19:29.879000
+Collecting PPB data for AUD_CAD 2016-07-15 15:19:35.220000
+Collecting PPB data for NZD_CAD 2016-07-15 15:19:40.700000
+Collecting PPB data for AUD_NZD 2016-07-15 15:19:46.144000
+Collecting PPB data for EUR_CHF 2016-07-15 15:19:51.499000
+Collecting PPB data for GBP_CHF 2016-07-15 15:19:56.808000
+Collecting PPB data for CAD_CHF 2016-07-15 15:20:02.173000
+PPB: updating stops for CAD_CHF 2016-07-15 15:20:07.440000
+Collecting PPB data for AUD_CHF 2016-07-15 15:20:08.808000
+Intraday_PPB complete 2016-07-15 15:20:14.079000
+Running Intraday_MAC 2016-07-15 15:20:15.087000
+Collecting MAC data for EUR_USD 2016-07-15 15:20:15.093000
+Checking MAC signals for EUR_USD 2016-07-15 15:20:17.739000
+Collecting MAC data for GBP_USD 2016-07-15 15:20:17.746000
+Checking MAC signals for GBP_USD 2016-07-15 15:20:20.409000
+Collecting MAC data for USD_CAD 2016-07-15 15:20:20.415000
+Checking MAC signals for USD_CAD 2016-07-15 15:20:23.129000
+Collecting MAC data for AUD_USD 2016-07-15 15:20:23.138000
+Collecting MAC data for NZD_USD 2016-07-15 15:20:25.779000
+Checking MAC signals for NZD_USD 2016-07-15 15:20:28.416000
+Collecting MAC data for USD_CHF 2016-07-15 15:20:28.423000
+Checking MAC signals for USD_CHF 2016-07-15 15:20:31.380000
+Collecting MAC data for NZD_CHF 2016-07-15 15:20:31.386000
+Checking MAC signals for NZD_CHF 2016-07-15 15:20:34.139000
+Collecting MAC data for EUR_GBP 2016-07-15 15:20:34.146000
+Checking MAC signals for EUR_GBP 2016-07-15 15:20:37.420000
+Collecting MAC data for EUR_CAD 2016-07-15 15:20:37.428000
+Checking MAC signals for EUR_CAD 2016-07-15 15:20:40.170000
+Collecting MAC data for EUR_AUD 2016-07-15 15:20:40.176000
+Collecting MAC data for EUR_NZD 2016-07-15 15:20:42.900000
+Checking MAC signals for EUR_NZD 2016-07-15 15:20:45.518000
+Collecting MAC data for GBP_CAD 2016-07-15 15:20:45.524000
+Checking MAC signals for GBP_CAD 2016-07-15 15:20:48.189000
+Collecting MAC data for GBP_AUD 2016-07-15 15:20:48.199000
+Checking MAC signals for GBP_AUD 2016-07-15 15:20:50.888000
+Collecting MAC data for GBP_NZD 2016-07-15 15:20:50.896000
+Checking MAC signals for GBP_NZD 2016-07-15 15:20:54.169000
+Collecting MAC data for AUD_CAD 2016-07-15 15:20:54.178000
+Checking MAC signals for AUD_CAD 2016-07-15 15:20:56.830000
+Collecting MAC data for NZD_CAD 2016-07-15 15:20:56.840000
+Checking MAC signals for NZD_CAD 2016-07-15 15:20:59.548000
+Collecting MAC data for AUD_NZD 2016-07-15 15:20:59.555000
+Checking MAC signals for AUD_NZD 2016-07-15 15:21:02.210000
+Collecting MAC data for EUR_CHF 2016-07-15 15:21:02.216000
+Checking MAC signals for EUR_CHF 2016-07-15 15:21:04.854000
+Collecting MAC data for GBP_CHF 2016-07-15 15:21:04.860000
+Checking MAC signals for GBP_CHF 2016-07-15 15:21:07.869000
+Collecting MAC data for CAD_CHF 2016-07-15 15:21:07.876000
+Collecting MAC data for AUD_CHF 2016-07-15 15:21:10.558000
+Checking MAC signals for AUD_CHF 2016-07-15 15:21:13.219000
+Intraday_MAC complete 2016-07-15 15:21:13.226000
+Running Intraday_MAC 2016-07-15 15:21:14.233000
+Collecting MAC data for EUR_USD 2016-07-15 15:21:14.240000
+Checking MAC signals for EUR_USD 2016-07-15 15:21:17.868000
+Collecting MAC data for GBP_USD 2016-07-15 15:21:17.875000
+Checking MAC signals for GBP_USD 2016-07-15 15:21:20.540000
+Collecting MAC data for USD_CAD 2016-07-15 15:21:20.546000
+Checking MAC signals for USD_CAD 2016-07-15 15:21:23.188000
+Collecting MAC data for AUD_USD 2016-07-15 15:21:23.195000
+Collecting MAC data for NZD_USD 2016-07-15 15:21:25.908000
+Checking MAC signals for NZD_USD 2016-07-15 15:21:28.638000
+Collecting MAC data for USD_CHF 2016-07-15 15:21:28.645000
+Checking MAC signals for USD_CHF 2016-07-15 15:21:31.319000
+Collecting MAC data for NZD_CHF 2016-07-15 15:21:31.325000
+Checking MAC signals for NZD_CHF 2016-07-15 15:21:33.958000
+Collecting MAC data for EUR_GBP 2016-07-15 15:21:33.964000
+Checking MAC signals for EUR_GBP 2016-07-15 15:21:36.638000
+Collecting MAC data for EUR_CAD 2016-07-15 15:21:36.645000
+Checking MAC signals for EUR_CAD 2016-07-15 15:21:39.268000
+Collecting MAC data for EUR_AUD 2016-07-15 15:21:39.275000
+Collecting MAC data for EUR_NZD 2016-07-15 15:21:41.949000
+Checking MAC signals for EUR_NZD 2016-07-15 15:21:44.709000
+Collecting MAC data for GBP_CAD 2016-07-15 15:21:44.715000
+Checking MAC signals for GBP_CAD 2016-07-15 15:21:48.337000
+Collecting MAC data for GBP_AUD 2016-07-15 15:21:48.343000
+Checking MAC signals for GBP_AUD 2016-07-15 15:21:51.277000
+Collecting MAC data for GBP_NZD 2016-07-15 15:21:51.284000
+Checking MAC signals for GBP_NZD 2016-07-15 15:21:53.948000
+Collecting MAC data for AUD_CAD 2016-07-15 15:21:53.955000
+Checking MAC signals for AUD_CAD 2016-07-15 15:21:56.678000
+Collecting MAC data for NZD_CAD 2016-07-15 15:21:56.692000
+Checking MAC signals for NZD_CAD 2016-07-15 15:22:00.357000
+Collecting MAC data for AUD_NZD 2016-07-15 15:22:00.364000
+Checking MAC signals for AUD_NZD 2016-07-15 15:22:03.028000
+Collecting MAC data for EUR_CHF 2016-07-15 15:22:03.035000
+Checking MAC signals for EUR_CHF 2016-07-15 15:22:06.708000
+Collecting MAC data for GBP_CHF 2016-07-15 15:22:06.714000
+Checking MAC signals for GBP_CHF 2016-07-15 15:22:09.638000
+Collecting MAC data for CAD_CHF 2016-07-15 15:22:09.644000
+Collecting MAC data for AUD_CHF 2016-07-15 15:22:12.289000
+Checking MAC signals for AUD_CHF 2016-07-15 15:22:14.967000
+Intraday_MAC complete 2016-07-15 15:22:14.975000
+Running Intraday_PPB 2016-07-15 15:22:15.983000
+Collecting PPB data for EUR_USD 2016-07-15 15:22:15.989000
+Collecting PPB data for GBP_USD 2016-07-15 15:22:21.578000
+Collecting PPB data for USD_CAD 2016-07-15 15:22:26.867000
+Collecting PPB data for AUD_USD 2016-07-15 15:22:32.177000
+PPB: updating stops for AUD_USD 2016-07-15 15:22:37.543000
+Collecting PPB data for NZD_USD 2016-07-15 15:22:38.877000
+Collecting PPB data for USD_CHF 2016-07-15 15:22:44.158000
+Collecting PPB data for NZD_CHF 2016-07-15 15:22:49.449000
+Collecting PPB data for EUR_GBP 2016-07-15 15:22:54.717000
+Collecting PPB data for EUR_CAD 2016-07-15 15:23:00.988000
+Collecting PPB data for EUR_AUD 2016-07-15 15:23:06.229000
+PPB: updating stops for EUR_AUD 2016-07-15 15:23:11.568000
+Collecting PPB data for EUR_NZD 2016-07-15 15:23:12.899000
+Collecting PPB data for GBP_CAD 2016-07-15 15:23:18.237000
+Collecting PPB data for GBP_AUD 2016-07-15 15:23:23.507000
+Collecting PPB data for GBP_NZD 2016-07-15 15:23:28.811000
+Collecting PPB data for AUD_CAD 2016-07-15 15:23:34.064000
+Collecting PPB data for NZD_CAD 2016-07-15 15:23:39.556000
+Collecting PPB data for AUD_NZD 2016-07-15 15:23:45.826000
+Collecting PPB data for EUR_CHF 2016-07-15 15:23:51.296000
+Collecting PPB data for GBP_CHF 2016-07-15 15:23:56.590000
+Collecting PPB data for CAD_CHF 2016-07-15 15:24:02.016000
+Collecting PPB data for AUD_CHF 2016-07-15 15:24:07.346000
+Intraday_PPB complete 2016-07-15 15:24:12.579000
+Running Intraday_MAC 2016-07-15 15:24:13.588000
+Collecting MAC data for EUR_USD 2016-07-15 15:24:13.594000
+Checking MAC signals for EUR_USD 2016-07-15 15:24:16.256000
+Collecting MAC data for GBP_USD 2016-07-15 15:24:16.264000
+Checking MAC signals for GBP_USD 2016-07-15 15:24:18.902000
+Collecting MAC data for USD_CAD 2016-07-15 15:24:18.909000
+Checking MAC signals for USD_CAD 2016-07-15 15:24:21.546000
+Collecting MAC data for AUD_USD 2016-07-15 15:24:21.552000
+Collecting MAC data for NZD_USD 2016-07-15 15:24:24.194000
+Checking MAC signals for NZD_USD 2016-07-15 15:24:26.867000
+Collecting MAC data for USD_CHF 2016-07-15 15:24:26.873000
+Checking MAC signals for USD_CHF 2016-07-15 15:24:29.496000
+Collecting MAC data for NZD_CHF 2016-07-15 15:24:29.503000
+Checking MAC signals for NZD_CHF 2016-07-15 15:24:32.138000
+Collecting MAC data for EUR_GBP 2016-07-15 15:24:32.144000
+Checking MAC signals for EUR_GBP 2016-07-15 15:24:34.858000
+Collecting MAC data for EUR_CAD 2016-07-15 15:24:34.865000
+Checking MAC signals for EUR_CAD 2016-07-15 15:24:38.797000
+Collecting MAC data for EUR_AUD 2016-07-15 15:24:38.804000
+Collecting MAC data for EUR_NZD 2016-07-15 15:24:41.446000
+Checking MAC signals for EUR_NZD 2016-07-15 15:24:44.095000
+Collecting MAC data for GBP_CAD 2016-07-15 15:24:44.101000
+Checking MAC signals for GBP_CAD 2016-07-15 15:24:46.745000
+Collecting MAC data for GBP_AUD 2016-07-15 15:24:46.752000
+Checking MAC signals for GBP_AUD 2016-07-15 15:24:49.435000
+Collecting MAC data for GBP_NZD 2016-07-15 15:24:49.442000
+Checking MAC signals for GBP_NZD 2016-07-15 15:24:52.118000
+Collecting MAC data for AUD_CAD 2016-07-15 15:24:52.125000
+Checking MAC signals for AUD_CAD 2016-07-15 15:24:54.745000
+Collecting MAC data for NZD_CAD 2016-07-15 15:24:54.752000
+Checking MAC signals for NZD_CAD 2016-07-15 15:24:57.475000
+Collecting MAC data for AUD_NZD 2016-07-15 15:24:57.482000
+Checking MAC signals for AUD_NZD 2016-07-15 15:25:00.185000
+Collecting MAC data for EUR_CHF 2016-07-15 15:25:00.192000
+Checking MAC signals for EUR_CHF 2016-07-15 15:25:02.862000
+Collecting MAC data for GBP_CHF 2016-07-15 15:25:02.868000
+Checking MAC signals for GBP_CHF 2016-07-15 15:25:05.610000
+Collecting MAC data for CAD_CHF 2016-07-15 15:25:05.616000
+Checking MAC signals for CAD_CHF 2016-07-15 15:25:08.290000
+Collecting MAC data for AUD_CHF 2016-07-15 15:25:08.296000
+Checking MAC signals for AUD_CHF 2016-07-15 15:25:10.945000
+Intraday_MAC complete 2016-07-15 15:25:10.952000
+Running Intraday_MAC 2016-07-15 15:25:11.957000
+Collecting MAC data for EUR_USD 2016-07-15 15:25:11.964000
+Checking MAC signals for EUR_USD 2016-07-15 15:25:14.595000
+Collecting MAC data for GBP_USD 2016-07-15 15:25:14.602000
+Checking MAC signals for GBP_USD 2016-07-15 15:25:17.498000
+Collecting MAC data for USD_CAD 2016-07-15 15:25:17.506000
+Checking MAC signals for USD_CAD 2016-07-15 15:25:20.135000
+Collecting MAC data for AUD_USD 2016-07-15 15:25:20.142000
+Collecting MAC data for NZD_USD 2016-07-15 15:25:22.782000
+Checking MAC signals for NZD_USD 2016-07-15 15:25:25.456000
+Collecting MAC data for USD_CHF 2016-07-15 15:25:25.463000
+Checking MAC signals for USD_CHF 2016-07-15 15:25:28.095000
+Collecting MAC data for NZD_CHF 2016-07-15 15:25:28.101000
+Checking MAC signals for NZD_CHF 2016-07-15 15:25:30.745000
+Collecting MAC data for EUR_GBP 2016-07-15 15:25:30.751000
+Checking MAC signals for EUR_GBP 2016-07-15 15:25:33.514000
+Collecting MAC data for EUR_CAD 2016-07-15 15:25:33.521000
+Checking MAC signals for EUR_CAD 2016-07-15 15:25:36.156000
+Collecting MAC data for EUR_AUD 2016-07-15 15:25:36.162000
+Collecting MAC data for EUR_NZD 2016-07-15 15:25:38.808000
+Checking MAC signals for EUR_NZD 2016-07-15 15:25:41.454000
+Collecting MAC data for GBP_CAD 2016-07-15 15:25:41.460000
+Checking MAC signals for GBP_CAD 2016-07-15 15:25:44.104000
+Collecting MAC data for GBP_AUD 2016-07-15 15:25:44.112000
+Checking MAC signals for GBP_AUD 2016-07-15 15:25:47.765000
+Collecting MAC data for GBP_NZD 2016-07-15 15:25:47.772000
+Checking MAC signals for GBP_NZD 2016-07-15 15:25:50.429000
+Collecting MAC data for AUD_CAD 2016-07-15 15:25:50.435000
+Checking MAC signals for AUD_CAD 2016-07-15 15:25:53.075000
+Collecting MAC data for NZD_CAD 2016-07-15 15:25:53.083000
+Checking MAC signals for NZD_CAD 2016-07-15 15:25:55.745000
+Collecting MAC data for AUD_NZD 2016-07-15 15:25:55.751000
+Checking MAC signals for AUD_NZD 2016-07-15 15:25:58.454000
+Collecting MAC data for EUR_CHF 2016-07-15 15:25:58.461000
+Checking MAC signals for EUR_CHF 2016-07-15 15:26:01.235000
+Collecting MAC data for GBP_CHF 2016-07-15 15:26:01.241000
+Checking MAC signals for GBP_CHF 2016-07-15 15:26:03.898000
+Collecting MAC data for CAD_CHF 2016-07-15 15:26:03.908000
+Checking MAC signals for CAD_CHF 2016-07-15 15:26:06.547000
+Collecting MAC data for AUD_CHF 2016-07-15 15:26:06.554000
+Checking MAC signals for AUD_CHF 2016-07-15 15:26:09.214000
+Intraday_MAC complete 2016-07-15 15:26:09.222000
+Running Intraday_MAC 2016-07-15 15:26:10.230000
+Collecting MAC data for EUR_USD 2016-07-15 15:26:10.235000
+Checking MAC signals for EUR_USD 2016-07-15 15:26:12.894000
+Collecting MAC data for GBP_USD 2016-07-15 15:26:12.901000
+Checking MAC signals for GBP_USD 2016-07-15 15:26:15.555000
+Collecting MAC data for USD_CAD 2016-07-15 15:26:15.561000
+Checking MAC signals for USD_CAD 2016-07-15 15:26:18.197000
+Collecting MAC data for AUD_USD 2016-07-15 15:26:18.205000
+Collecting MAC data for NZD_USD 2016-07-15 15:26:20.867000
+Checking MAC signals for NZD_USD 2016-07-15 15:26:23.877000
+Collecting MAC data for USD_CHF 2016-07-15 15:26:23.883000
+Checking MAC signals for USD_CHF 2016-07-15 15:26:26.540000
+Collecting MAC data for NZD_CHF 2016-07-15 15:26:26.547000
+Checking MAC signals for NZD_CHF 2016-07-15 15:26:29.254000
+Collecting MAC data for EUR_GBP 2016-07-15 15:26:29.260000
+Checking MAC signals for EUR_GBP 2016-07-15 15:26:32.904000
+Collecting MAC data for EUR_CAD 2016-07-15 15:26:32.911000
+Checking MAC signals for EUR_CAD 2016-07-15 15:26:35.590000
+Collecting MAC data for EUR_AUD 2016-07-15 15:26:35.598000
+Collecting MAC data for EUR_NZD 2016-07-15 15:26:38.257000
+Checking MAC signals for EUR_NZD 2016-07-15 15:26:40.894000
+Collecting MAC data for GBP_CAD 2016-07-15 15:26:40.900000
+Checking MAC signals for GBP_CAD 2016-07-15 15:26:43.537000
+Collecting MAC data for GBP_AUD 2016-07-15 15:26:43.544000
+Checking MAC signals for GBP_AUD 2016-07-15 15:26:46.214000
+Collecting MAC data for GBP_NZD 2016-07-15 15:26:46.221000
+Checking MAC signals for GBP_NZD 2016-07-15 15:26:48.884000
+Collecting MAC data for AUD_CAD 2016-07-15 15:26:48.891000
+Checking MAC signals for AUD_CAD 2016-07-15 15:26:51.524000
+Collecting MAC data for NZD_CAD 2016-07-15 15:26:51.531000
+Checking MAC signals for NZD_CAD 2016-07-15 15:26:54.164000
+Collecting MAC data for AUD_NZD 2016-07-15 15:26:54.170000
+Checking MAC signals for AUD_NZD 2016-07-15 15:26:56.854000
+Collecting MAC data for EUR_CHF 2016-07-15 15:26:56.862000
+Checking MAC signals for EUR_CHF 2016-07-15 15:27:00.563000
+Collecting MAC data for GBP_CHF 2016-07-15 15:27:00.570000
+Checking MAC signals for GBP_CHF 2016-07-15 15:27:03.202000
+Collecting MAC data for CAD_CHF 2016-07-15 15:27:03.211000
+Checking MAC signals for CAD_CHF 2016-07-15 15:27:05.863000
+Collecting MAC data for AUD_CHF 2016-07-15 15:27:05.873000
+Checking MAC signals for AUD_CHF 2016-07-15 15:27:08.568000
+Intraday_MAC complete 2016-07-15 15:27:08.575000
+Running Intraday_PPB 2016-07-15 15:27:09.583000
+Collecting PPB data for EUR_USD 2016-07-15 15:27:09.590000
+Collecting PPB data for GBP_USD 2016-07-15 15:27:14.934000
+Collecting PPB data for USD_CAD 2016-07-15 15:27:21.245000
+Collecting PPB data for AUD_USD 2016-07-15 15:27:26.544000
+PPB: updating stops for AUD_USD 2016-07-15 15:27:31.884000
+Collecting PPB data for NZD_USD 2016-07-15 15:27:33.213000
+Collecting PPB data for USD_CHF 2016-07-15 15:27:38.613000
+Collecting PPB data for NZD_CHF 2016-07-15 15:27:43.893000
+Collecting PPB data for EUR_GBP 2016-07-15 15:27:50.063000
+Collecting PPB data for EUR_CAD 2016-07-15 15:27:55.343000
+Collecting PPB data for EUR_AUD 2016-07-15 15:28:00.703000
+PPB: updating stops for EUR_AUD 2016-07-15 15:28:07.273000
+Collecting PPB data for EUR_NZD 2016-07-15 15:28:08.707000
+Collecting PPB data for GBP_CAD 2016-07-15 15:28:14.063000
+Collecting PPB data for GBP_AUD 2016-07-15 15:28:20.363000
+Collecting PPB data for GBP_NZD 2016-07-15 15:28:25.626000
+Collecting PPB data for AUD_CAD 2016-07-15 15:28:31.043000
+Collecting PPB data for NZD_CAD 2016-07-15 15:28:36.325000
+Collecting PPB data for AUD_NZD 2016-07-15 15:28:41.612000
+Collecting PPB data for EUR_CHF 2016-07-15 15:28:46.936000
+Collecting PPB data for GBP_CHF 2016-07-15 15:28:52.402000
+Collecting PPB data for CAD_CHF 2016-07-15 15:28:57.783000
+Collecting PPB data for AUD_CHF 2016-07-15 15:29:03.062000
+Intraday_PPB complete 2016-07-15 15:29:08.398000
+Running Intraday_MAC 2016-07-15 15:29:09.404000
+Collecting MAC data for EUR_USD 2016-07-15 15:29:09.411000
+Checking MAC signals for EUR_USD 2016-07-15 15:29:12.085000
+Collecting MAC data for GBP_USD 2016-07-15 15:29:12.094000
+Checking MAC signals for GBP_USD 2016-07-15 15:29:15.753000
+Collecting MAC data for USD_CAD 2016-07-15 15:29:15.760000
+Checking MAC signals for USD_CAD 2016-07-15 15:29:18.419000
+Collecting MAC data for AUD_USD 2016-07-15 15:29:18.426000
+Collecting MAC data for NZD_USD 2016-07-15 15:29:21.082000
+Checking MAC signals for NZD_USD 2016-07-15 15:29:23.712000
+Collecting MAC data for USD_CHF 2016-07-15 15:29:23.719000
+Checking MAC signals for USD_CHF 2016-07-15 15:29:26.363000
+Collecting MAC data for NZD_CHF 2016-07-15 15:29:26.371000
+Checking MAC signals for NZD_CHF 2016-07-15 15:29:29.052000
+Collecting MAC data for EUR_GBP 2016-07-15 15:29:29.059000
+Checking MAC signals for EUR_GBP 2016-07-15 15:29:32.683000
+Collecting MAC data for EUR_CAD 2016-07-15 15:29:32.689000
+Checking MAC signals for EUR_CAD 2016-07-15 15:29:35.322000
+Collecting MAC data for EUR_AUD 2016-07-15 15:29:35.329000
+Collecting MAC data for EUR_NZD 2016-07-15 15:29:37.974000
+Checking MAC signals for EUR_NZD 2016-07-15 15:29:40.643000
+Collecting MAC data for GBP_CAD 2016-07-15 15:29:40.649000
+Checking MAC signals for GBP_CAD 2016-07-15 15:29:43.302000
+Collecting MAC data for GBP_AUD 2016-07-15 15:29:43.308000
+Checking MAC signals for GBP_AUD 2016-07-15 15:29:45.922000
+Collecting MAC data for GBP_NZD 2016-07-15 15:29:45.928000
+Checking MAC signals for GBP_NZD 2016-07-15 15:29:48.572000
+Collecting MAC data for AUD_CAD 2016-07-15 15:29:48.578000
+Checking MAC signals for AUD_CAD 2016-07-15 15:29:52.231000
+Collecting MAC data for NZD_CAD 2016-07-15 15:29:52.238000
+Checking MAC signals for NZD_CAD 2016-07-15 15:29:54.901000
+Collecting MAC data for AUD_NZD 2016-07-15 15:29:54.908000
+Checking MAC signals for AUD_NZD 2016-07-15 15:29:57.547000
+Collecting MAC data for EUR_CHF 2016-07-15 15:29:57.553000
+Checking MAC signals for EUR_CHF 2016-07-15 15:30:00.231000
+Collecting MAC data for GBP_CHF 2016-07-15 15:30:00.238000
+Checking MAC signals for GBP_CHF 2016-07-15 15:30:02.861000
+Collecting MAC data for CAD_CHF 2016-07-15 15:30:02.868000
+Checking MAC signals for CAD_CHF 2016-07-15 15:30:05.524000
+Collecting MAC data for AUD_CHF 2016-07-15 15:30:05.534000
+Checking MAC signals for AUD_CHF 2016-07-15 15:30:09.163000
+Intraday_MAC complete 2016-07-15 15:30:09.169000
+Running Intraday_MAC 2016-07-15 15:30:10.176000
+Collecting MAC data for EUR_USD 2016-07-15 15:30:10.183000
+Checking MAC signals for EUR_USD 2016-07-15 15:30:12.851000
+Collecting MAC data for GBP_USD 2016-07-15 15:30:12.888000
+Checking MAC signals for GBP_USD 2016-07-15 15:30:15.523000
+Collecting MAC data for USD_CAD 2016-07-15 15:30:15.530000
+Checking MAC signals for USD_CAD 2016-07-15 15:30:18.181000
+Collecting MAC data for AUD_USD 2016-07-15 15:30:18.188000
+Collecting MAC data for NZD_USD 2016-07-15 15:30:20.821000
+Checking MAC signals for NZD_USD 2016-07-15 15:30:23.522000
+Collecting MAC data for USD_CHF 2016-07-15 15:30:23.529000
+Checking MAC signals for USD_CHF 2016-07-15 15:30:26.182000
+Collecting MAC data for NZD_CHF 2016-07-15 15:30:26.189000
+Checking MAC signals for NZD_CHF 2016-07-15 15:30:28.841000
+Collecting MAC data for EUR_GBP 2016-07-15 15:30:28.848000
+Checking MAC signals for EUR_GBP 2016-07-15 15:30:32.556000
+Collecting MAC data for EUR_CAD 2016-07-15 15:30:32.563000
+Checking MAC signals for EUR_CAD 2016-07-15 15:30:35.232000
+Collecting MAC data for EUR_AUD 2016-07-15 15:30:35.239000
+Collecting MAC data for EUR_NZD 2016-07-15 15:30:37.893000
+Checking MAC signals for EUR_NZD 2016-07-15 15:30:41.522000
+Collecting MAC data for GBP_CAD 2016-07-15 15:30:41.528000
+Checking MAC signals for GBP_CAD 2016-07-15 15:30:44.191000
+Collecting MAC data for GBP_AUD 2016-07-15 15:30:44.198000
+Checking MAC signals for GBP_AUD 2016-07-15 15:30:46.823000
+Collecting MAC data for GBP_NZD 2016-07-15 15:30:46.830000
+Checking MAC signals for GBP_NZD 2016-07-15 15:30:49.453000
+Collecting MAC data for AUD_CAD 2016-07-15 15:30:49.460000
+Checking MAC signals for AUD_CAD 2016-07-15 15:30:52.101000
+Collecting MAC data for NZD_CAD 2016-07-15 15:30:52.108000
+Checking MAC signals for NZD_CAD 2016-07-15 15:30:54.750000
+Collecting MAC data for AUD_NZD 2016-07-15 15:30:54.758000
+Checking MAC signals for AUD_NZD 2016-07-15 15:30:57.391000
+Collecting MAC data for EUR_CHF 2016-07-15 15:30:57.397000
+Checking MAC signals for EUR_CHF 2016-07-15 15:31:00.255000
+Collecting MAC data for GBP_CHF 2016-07-15 15:31:00.262000
+Checking MAC signals for GBP_CHF 2016-07-15 15:31:02.900000
+Collecting MAC data for CAD_CHF 2016-07-15 15:31:02.907000
+Checking MAC signals for CAD_CHF 2016-07-15 15:31:05.642000
+Collecting MAC data for AUD_CHF 2016-07-15 15:31:05.651000
+Checking MAC signals for AUD_CHF 2016-07-15 15:31:08.358000
+Intraday_MAC complete 2016-07-15 15:31:08.365000
+Running Intraday_BusRide 2016-07-15 15:31:09.371000
+Collecting BusRide data for EUR_USD 2016-07-15 15:31:09.380000
+Checking Bus Ride signals for EUR_USD 2016-07-15 15:31:12.071000
+Collecting BusRide data for GBP_USD 2016-07-15 15:31:12.077000
+Checking Bus Ride signals for GBP_USD 2016-07-15 15:31:15.714000
+Collecting BusRide data for USD_CAD 2016-07-15 15:31:15.721000
+Checking Bus Ride signals for USD_CAD 2016-07-15 15:31:18.391000
+Collecting BusRide data for AUD_USD 2016-07-15 15:31:18.398000
+Checking Bus Ride signals for AUD_USD 2016-07-15 15:31:21.040000
+Collecting BusRide data for NZD_USD 2016-07-15 15:31:21.047000
+Checking Bus Ride signals for NZD_USD 2016-07-15 15:31:23.672000
+Collecting BusRide data for USD_CHF 2016-07-15 15:31:23.679000
+Checking Bus Ride signals for USD_CHF 2016-07-15 15:31:26.313000
+Collecting BusRide data for NZD_CHF 2016-07-15 15:31:26.321000
+Checking Bus Ride signals for NZD_CHF 2016-07-15 15:31:29.031000
+Collecting BusRide data for EUR_GBP 2016-07-15 15:31:29.038000
+Checking Bus Ride signals for EUR_GBP 2016-07-15 15:31:31.971000
+Collecting BusRide data for EUR_CAD 2016-07-15 15:31:31.978000
+Checking Bus Ride signals for EUR_CAD 2016-07-15 15:31:34.630000
+Collecting BusRide data for EUR_AUD 2016-07-15 15:31:34.636000
+Collecting BusRide data for EUR_NZD 2016-07-15 15:31:37.274000
+Checking Bus Ride signals for EUR_NZD 2016-07-15 15:31:39.932000
+Collecting BusRide data for GBP_CAD 2016-07-15 15:31:39.939000
+Checking Bus Ride signals for GBP_CAD 2016-07-15 15:31:42.671000
+Collecting BusRide data for GBP_AUD 2016-07-15 15:31:42.677000
+Checking Bus Ride signals for GBP_AUD 2016-07-15 15:31:45.336000
+Collecting BusRide data for GBP_NZD 2016-07-15 15:31:45.343000
+Checking Bus Ride signals for GBP_NZD 2016-07-15 15:31:48.007000
+Bus Ride: Sell GBP_NZD 2016-07-15 15:31:48.013000
+Collecting BusRide data for AUD_CAD 2016-07-15 15:31:49.298000
+Checking Bus Ride signals for AUD_CAD 2016-07-15 15:31:51.950000
+Collecting BusRide data for NZD_CAD 2016-07-15 15:31:51.957000
+Checking Bus Ride signals for NZD_CAD 2016-07-15 15:31:54.661000
+Collecting BusRide data for AUD_NZD 2016-07-15 15:31:54.668000
+Checking Bus Ride signals for AUD_NZD 2016-07-15 15:31:57.349000
+Collecting BusRide data for EUR_CHF 2016-07-15 15:31:57.356000
+Checking Bus Ride signals for EUR_CHF 2016-07-15 15:32:00.121000
+Collecting BusRide data for GBP_CHF 2016-07-15 15:32:00.128000
+Checking Bus Ride signals for GBP_CHF 2016-07-15 15:32:02.799000
+Collecting BusRide data for CAD_CHF 2016-07-15 15:32:02.806000
+Checking Bus Ride signals for CAD_CHF 2016-07-15 15:32:05.430000
+Collecting BusRide data for AUD_CHF 2016-07-15 15:32:05.437000
+Checking Bus Ride signals for AUD_CHF 2016-07-15 15:32:08.110000
+Intraday_BusRide complete 2016-07-15 15:32:08.117000
+Running Intraday_CableSnap 2016-07-15 15:32:08.123000
+Collecting CableSnap data for EUR_USD 2016-07-15 15:32:08.130000
+Collecting CableSnap data for GBP_USD 2016-07-15 15:32:12.140000
+Collecting CableSnap data for EUR_CAD 2016-07-15 15:32:16.700000
+Collecting CableSnap data for EUR_AUD 2016-07-15 15:32:20.687000
+Collecting CableSnap data for EUR_NZD 2016-07-15 15:32:25.009000
+CS: updating stops for EUR_NZD 2016-07-15 15:32:27.650000
+CS: updating stops for EUR_NZD 2016-07-15 15:32:31.389000
+Collecting CableSnap data for GBP_CAD 2016-07-15 15:32:32.899000
+Collecting CableSnap data for GBP_AUD 2016-07-15 15:32:36.859000
+CS: updating stops for GBP_AUD 2016-07-15 15:32:39.500000
+CS: updating stops for GBP_AUD 2016-07-15 15:32:42.180000
+Collecting CableSnap data for GBP_NZD 2016-07-15 15:32:43.523000
+CS: updating stops for GBP_NZD 2016-07-15 15:32:46.206000
+CS: updating stops for GBP_NZD 2016-07-15 15:32:48.869000
+Collecting CableSnap data for EUR_CHF 2016-07-15 15:32:50.490000
+Collecting CableSnap data for GBP_CHF 2016-07-15 15:32:54.489000
+CS: updating stops for GBP_CHF 2016-07-15 15:32:57.129000
+CS: updating stops for GBP_CHF 2016-07-15 15:32:59.840000
+Intraday_CableSnap complete 2016-07-15 15:33:01.510000
+Running Intraday_Banzai 2016-07-15 15:33:01.516000
+Collecting Banzai data for GBP_JPY 2016-07-15 15:33:01.522000
+Collecting Banzai data for AUD_JPY 2016-07-15 15:33:05.479000
+Collecting Banzai data for USD_JPY 2016-07-15 15:33:09.421000
+Intraday_Banzai complete 2016-07-15 15:33:13.469000
+Running Intraday_PPB 2016-07-15 15:33:14.476000
+Collecting PPB data for EUR_USD 2016-07-15 15:33:14.482000
+Collecting PPB data for GBP_USD 2016-07-15 15:33:19.779000
+Collecting PPB data for USD_CAD 2016-07-15 15:33:26.130000
+Collecting PPB data for AUD_USD 2016-07-15 15:33:31.469000
+Collecting PPB data for NZD_USD 2016-07-15 15:33:36.814000
+Collecting PPB data for USD_CHF 2016-07-15 15:33:42.049000
+Collecting PPB data for NZD_CHF 2016-07-15 15:33:47.332000
+Collecting PPB data for EUR_GBP 2016-07-15 15:33:52.649000
+Collecting PPB data for EUR_CAD 2016-07-15 15:33:58.070000
+Collecting PPB data for EUR_AUD 2016-07-15 15:34:03.445000
+PPB: updating stops for EUR_AUD 2016-07-15 15:34:08.708000
+Collecting PPB data for EUR_NZD 2016-07-15 15:34:10.029000
+Collecting PPB data for GBP_CAD 2016-07-15 15:34:15.425000
+Collecting PPB data for GBP_AUD 2016-07-15 15:34:20.678000
+Collecting PPB data for GBP_NZD 2016-07-15 15:34:26.038000
+Collecting PPB data for AUD_CAD 2016-07-15 15:34:31.338000
+Collecting PPB data for NZD_CAD 2016-07-15 15:34:37.679000
+Collecting PPB data for AUD_NZD 2016-07-15 15:34:44.018000
+Collecting PPB data for EUR_CHF 2016-07-15 15:34:50.348000
+Collecting PPB data for GBP_CHF 2016-07-15 15:34:55.685000
+Collecting PPB data for CAD_CHF 2016-07-15 15:35:01.957000
+Collecting PPB data for AUD_CHF 2016-07-15 15:35:07.218000
+Intraday_PPB complete 2016-07-15 15:35:12.532000
+Running Intraday_MAC 2016-07-15 15:35:13.539000
+Collecting MAC data for EUR_USD 2016-07-15 15:35:13.545000
+Checking MAC signals for EUR_USD 2016-07-15 15:35:16.278000
+Collecting MAC data for GBP_USD 2016-07-15 15:35:16.285000
+Checking MAC signals for GBP_USD 2016-07-15 15:35:18.989000
+Collecting MAC data for USD_CAD 2016-07-15 15:35:18.996000
+Checking MAC signals for USD_CAD 2016-07-15 15:35:21.658000
+Collecting MAC data for AUD_USD 2016-07-15 15:35:21.665000
+Checking MAC signals for AUD_USD 2016-07-15 15:35:24.380000
+Collecting MAC data for NZD_USD 2016-07-15 15:35:24.387000
+Checking MAC signals for NZD_USD 2016-07-15 15:35:27.003000
+Collecting MAC data for USD_CHF 2016-07-15 15:35:27.010000
+Checking MAC signals for USD_CHF 2016-07-15 15:35:29.651000
+Collecting MAC data for NZD_CHF 2016-07-15 15:35:29.660000
+Checking MAC signals for NZD_CHF 2016-07-15 15:35:32.297000
+Collecting MAC data for EUR_GBP 2016-07-15 15:35:32.304000
+Checking MAC signals for EUR_GBP 2016-07-15 15:35:35.005000
+Collecting MAC data for EUR_CAD 2016-07-15 15:35:35.011000
+Checking MAC signals for EUR_CAD 2016-07-15 15:35:37.667000
+Collecting MAC data for EUR_AUD 2016-07-15 15:35:37.674000
+Collecting MAC data for EUR_NZD 2016-07-15 15:35:40.306000
+Checking MAC signals for EUR_NZD 2016-07-15 15:35:43.257000
+Collecting MAC data for GBP_CAD 2016-07-15 15:35:43.264000
+Checking MAC signals for GBP_CAD 2016-07-15 15:36:01.432000
+Collecting MAC data for GBP_AUD 2016-07-15 15:36:01.439000
+Checking MAC signals for GBP_AUD 2016-07-15 15:36:04.093000
+Collecting MAC data for GBP_NZD 2016-07-15 15:36:04.099000
+Checking MAC signals for GBP_NZD 2016-07-15 15:36:06.754000
+Collecting MAC data for AUD_CAD 2016-07-15 15:36:06.760000
+Checking MAC signals for AUD_CAD 2016-07-15 15:36:09.397000
+Collecting MAC data for NZD_CAD 2016-07-15 15:36:09.406000
+Checking MAC signals for NZD_CAD 2016-07-15 15:36:12.061000
+Collecting MAC data for AUD_NZD 2016-07-15 15:36:12.068000
+Checking MAC signals for AUD_NZD 2016-07-15 15:36:14.693000
+Collecting MAC data for EUR_CHF 2016-07-15 15:36:14.699000
+Checking MAC signals for EUR_CHF 2016-07-15 15:36:17.346000
+Collecting MAC data for GBP_CHF 2016-07-15 15:36:17.352000
+Checking MAC signals for GBP_CHF 2016-07-15 15:36:19.997000
+Collecting MAC data for CAD_CHF 2016-07-15 15:36:20.003000
+Checking MAC signals for CAD_CHF 2016-07-15 15:36:22.632000
+Collecting MAC data for AUD_CHF 2016-07-15 15:36:22.639000
+Checking MAC signals for AUD_CHF 2016-07-15 15:36:25.293000
+Intraday_MAC complete 2016-07-15 15:36:25.299000
+Running Intraday_IntraTrend 2016-07-15 15:36:26.305000
+Collecting IT data for EUR_USD 2016-07-15 15:36:26.312000
+Collecting IT data for GBP_USD 2016-07-15 15:36:28.986000
+Collecting IT data for USD_CAD 2016-07-15 15:36:31.632000
+Collecting IT data for AUD_USD 2016-07-15 15:36:34.294000
+Collecting IT data for NZD_USD 2016-07-15 15:36:36.963000
+Collecting IT data for USD_CHF 2016-07-15 15:36:39.605000
+Collecting IT data for NZD_CHF 2016-07-15 15:36:42.244000
+Collecting IT data for EUR_GBP 2016-07-15 15:36:44.873000
+Collecting IT data for EUR_CAD 2016-07-15 15:36:47.533000
+Collecting IT data for EUR_AUD 2016-07-15 15:36:50.596000
+Collecting IT data for EUR_NZD 2016-07-15 15:36:54.632000
+Collecting IT data for GBP_CAD 2016-07-15 15:36:57.292000
+Collecting IT data for GBP_AUD 2016-07-15 15:36:59.932000
+ITM: Sell GBP_AUD 2016-07-15 15:37:04.043000
+Collecting IT data for GBP_NZD 2016-07-15 15:37:05.391000
+ITM: Sell GBP_NZD 2016-07-15 15:37:08.126000
+Collecting IT data for AUD_CAD 2016-07-15 15:37:09.401000
+Collecting IT data for NZD_CAD 2016-07-15 15:37:12.392000
+Collecting IT data for AUD_NZD 2016-07-15 15:37:15.064000
+Collecting IT data for EUR_CHF 2016-07-15 15:37:17.694000
+Collecting IT data for GBP_CHF 2016-07-15 15:37:20.365000
+Collecting IT data for CAD_CHF 2016-07-15 15:37:23.092000
+Collecting IT data for AUD_CHF 2016-07-15 15:37:25.768000
+Intraday_IntraTrend complete 2016-07-15 15:37:28.483000
+Running Intraday_PPB 2016-07-15 15:37:29.490000
+Collecting PPB data for EUR_USD 2016-07-15 15:37:29.497000
+Collecting PPB data for GBP_USD 2016-07-15 15:37:34.748000
+Collecting PPB data for USD_CAD 2016-07-15 15:37:40.086000
+Collecting PPB data for AUD_USD 2016-07-15 15:37:45.342000
+Collecting PPB data for NZD_USD 2016-07-15 15:37:50.744000
+Collecting PPB data for USD_CHF 2016-07-15 15:37:56.011000
+Collecting PPB data for NZD_CHF 2016-07-15 15:38:01.312000
+Collecting PPB data for EUR_GBP 2016-07-15 15:38:07.602000
+Collecting PPB data for EUR_CAD 2016-07-15 15:38:12.920000
+Collecting PPB data for EUR_AUD 2016-07-15 15:38:18.202000
+PPB: updating stops for EUR_AUD 2016-07-15 15:38:23.621000
+Collecting PPB data for EUR_NZD 2016-07-15 15:38:25.021000
+Collecting PPB data for GBP_CAD 2016-07-15 15:38:30.350000
+Collecting PPB data for GBP_AUD 2016-07-15 15:38:35.649000
+PPB: updating stops for GBP_AUD 2016-07-15 15:38:40.963000
+Collecting PPB data for GBP_NZD 2016-07-15 15:38:42.361000
+PPB: updating stops for GBP_NZD 2016-07-15 15:38:47.670000
+Collecting PPB data for AUD_CAD 2016-07-15 15:38:50.002000
+Collecting PPB data for NZD_CAD 2016-07-15 15:38:55.461000
+Collecting PPB data for AUD_NZD 2016-07-15 15:39:00.813000
+Collecting PPB data for EUR_CHF 2016-07-15 15:39:06.183000
+Collecting PPB data for GBP_CHF 2016-07-15 15:39:11.520000
+Collecting PPB data for CAD_CHF 2016-07-15 15:39:17.180000
+Collecting PPB data for AUD_CHF 2016-07-15 15:39:22.490000
+Intraday_PPB complete 2016-07-15 15:39:27.781000
+Running Intraday_IntraTrend 2016-07-15 15:39:28.790000
+Collecting IT data for EUR_USD 2016-07-15 15:39:28.799000
+Collecting IT data for GBP_USD 2016-07-15 15:39:31.471000
+Collecting IT data for USD_CAD 2016-07-15 15:39:34.120000
+Collecting IT data for AUD_USD 2016-07-15 15:39:36.820000
+Collecting IT data for NZD_USD 2016-07-15 15:39:39.541000
+Collecting IT data for USD_CHF 2016-07-15 15:39:42.230000
+Collecting IT data for NZD_CHF 2016-07-15 15:39:44.900000
+Collecting IT data for EUR_GBP 2016-07-15 15:39:47.584000
+Collecting IT data for EUR_CAD 2016-07-15 15:39:50.239000
+Collecting IT data for EUR_AUD 2016-07-15 15:39:52.912000
+Collecting IT data for EUR_NZD 2016-07-15 15:39:56.891000
+Collecting IT data for GBP_CAD 2016-07-15 15:39:59.626000
+Collecting IT data for GBP_AUD 2016-07-15 15:40:02.302000
+Collecting IT data for GBP_NZD 2016-07-15 15:40:06.330000
+Collecting IT data for AUD_CAD 2016-07-15 15:40:11.326000
+Collecting IT data for NZD_CAD 2016-07-15 15:40:14.010000
+Collecting IT data for AUD_NZD 2016-07-15 15:40:16.673000
+Collecting IT data for EUR_CHF 2016-07-15 15:40:19.340000
+Collecting IT data for GBP_CHF 2016-07-15 15:40:21.989000
+Collecting IT data for CAD_CHF 2016-07-15 15:40:24.640000
+Collecting IT data for AUD_CHF 2016-07-15 15:40:27.419000
+Intraday_IntraTrend complete 2016-07-15 15:40:30.080000
+Running Intraday_IntraTrend 2016-07-15 15:40:31.088000
+Collecting IT data for EUR_USD 2016-07-15 15:40:31.095000
+Collecting IT data for GBP_USD 2016-07-15 15:40:33.770000
+Collecting IT data for USD_CAD 2016-07-15 15:40:36.407000
+Collecting IT data for AUD_USD 2016-07-15 15:40:39.043000
+Collecting IT data for NZD_USD 2016-07-15 15:40:41.715000
+Collecting IT data for USD_CHF 2016-07-15 15:40:44.379000
+Collecting IT data for NZD_CHF 2016-07-15 15:40:47.038000
+Collecting IT data for EUR_GBP 2016-07-15 15:40:49.689000
+Collecting IT data for EUR_CAD 2016-07-15 15:40:52.369000
+Collecting IT data for EUR_AUD 2016-07-15 15:40:55.035000
+Collecting IT data for EUR_NZD 2016-07-15 15:40:59.032000
+Collecting IT data for GBP_CAD 2016-07-15 15:41:01.700000
+Collecting IT data for GBP_AUD 2016-07-15 15:41:04.372000
+Collecting IT data for GBP_NZD 2016-07-15 15:41:08.369000
+Collecting IT data for AUD_CAD 2016-07-15 15:41:12.659000
+Collecting IT data for NZD_CAD 2016-07-15 15:41:15.320000
+Collecting IT data for AUD_NZD 2016-07-15 15:41:17.979000
+Collecting IT data for EUR_CHF 2016-07-15 15:41:20.647000
+Collecting IT data for GBP_CHF 2016-07-15 15:41:23.440000
+Collecting IT data for CAD_CHF 2016-07-15 15:41:26.070000
+Collecting IT data for AUD_CHF 2016-07-15 15:41:28.894000
+Intraday_IntraTrend complete 2016-07-15 15:41:33.539000
+Running Intraday_IntraTrend 2016-07-15 15:41:34.548000
+Collecting IT data for EUR_USD 2016-07-15 15:41:34.555000
+Collecting IT data for GBP_USD 2016-07-15 15:41:37.209000
+Collecting IT data for USD_CAD 2016-07-15 15:41:40.898000
+Collecting IT data for AUD_USD 2016-07-15 15:41:43.568000
+Collecting IT data for NZD_USD 2016-07-15 15:41:46.248000
+Collecting IT data for USD_CHF 2016-07-15 15:41:48.908000
+Collecting IT data for NZD_CHF 2016-07-15 15:41:51.569000
+Collecting IT data for EUR_GBP 2016-07-15 15:41:54.218000
+Collecting IT data for EUR_CAD 2016-07-15 15:41:56.875000
+Collecting IT data for EUR_AUD 2016-07-15 15:41:59.625000
+Collecting IT data for EUR_NZD 2016-07-15 15:42:03.612000
+Collecting IT data for GBP_CAD 2016-07-15 15:42:07.312000
+Collecting IT data for GBP_AUD 2016-07-15 15:42:09.950000
+Collecting IT data for GBP_NZD 2016-07-15 15:42:14.008000
+Collecting IT data for AUD_CAD 2016-07-15 15:42:17.983000
+Collecting IT data for NZD_CAD 2016-07-15 15:42:20.627000
+Collecting IT data for AUD_NZD 2016-07-15 15:42:23.274000
+Collecting IT data for EUR_CHF 2016-07-15 15:42:25.945000
+Collecting IT data for GBP_CHF 2016-07-15 15:42:28.616000
+Collecting IT data for CAD_CHF 2016-07-15 15:42:31.248000
+Collecting IT data for AUD_CHF 2016-07-15 15:42:33.887000
+Intraday_IntraTrend complete 2016-07-15 15:42:36.587000
+Running Intraday_PPB 2016-07-15 15:42:37.595000
+Collecting PPB data for EUR_USD 2016-07-15 15:42:37.601000
+Collecting PPB data for GBP_USD 2016-07-15 15:42:43.937000
+Collecting PPB data for USD_CAD 2016-07-15 15:42:49.618000
+Collecting PPB data for AUD_USD 2016-07-15 15:42:54.898000
+Collecting PPB data for NZD_USD 2016-07-15 15:43:01.078000
+Collecting PPB data for USD_CHF 2016-07-15 15:43:06.466000
+Collecting PPB data for NZD_CHF 2016-07-15 15:43:11.838000
+Collecting PPB data for EUR_GBP 2016-07-15 15:43:17.127000
+Collecting PPB data for EUR_CAD 2016-07-15 15:43:23.467000
+Collecting PPB data for EUR_AUD 2016-07-15 15:43:28.810000
+PPB: updating stops for EUR_AUD 2016-07-15 15:43:34.122000
+Collecting PPB data for EUR_NZD 2016-07-15 15:43:35.450000
+Collecting PPB data for GBP_CAD 2016-07-15 15:43:40.813000
+Collecting PPB data for GBP_AUD 2016-07-15 15:43:46.228000
+PPB: updating stops for GBP_AUD 2016-07-15 15:43:52.813000
+Collecting PPB data for GBP_NZD 2016-07-15 15:43:54.151000
+PPB: updating stops for GBP_NZD 2016-07-15 15:43:59.829000
+Collecting PPB data for AUD_CAD 2016-07-15 15:44:01.187000
+Collecting PPB data for NZD_CAD 2016-07-15 15:44:06.566000
+Collecting PPB data for AUD_NZD 2016-07-15 15:44:11.880000
+Collecting PPB data for EUR_CHF 2016-07-15 15:44:17.227000
+Collecting PPB data for GBP_CHF 2016-07-15 15:44:22.677000
+Collecting PPB data for CAD_CHF 2016-07-15 15:44:28.045000
+Collecting PPB data for AUD_CHF 2016-07-15 15:44:33.768000
+Intraday_PPB complete 2016-07-15 15:44:39.035000
+Running Intraday_IntraTrend 2016-07-15 15:44:40.044000
+Collecting IT data for EUR_USD 2016-07-15 15:44:40.051000
+Collecting IT data for GBP_USD 2016-07-15 15:44:42.756000
+Collecting IT data for USD_CAD 2016-07-15 15:44:45.478000
+Collecting IT data for AUD_USD 2016-07-15 15:44:48.137000
+Collecting IT data for NZD_USD 2016-07-15 15:44:50.860000
+Collecting IT data for USD_CHF 2016-07-15 15:44:53.553000
+Collecting IT data for NZD_CHF 2016-07-15 15:44:56.291000
+Collecting IT data for EUR_GBP 2016-07-15 15:44:58.969000
+Collecting IT data for EUR_CAD 2016-07-15 15:45:01.698000
+Collecting IT data for EUR_AUD 2016-07-15 15:45:04.428000
+Collecting IT data for EUR_NZD 2016-07-15 15:45:08.506000
+Collecting IT data for GBP_CAD 2016-07-15 15:45:11.287000
+Collecting IT data for GBP_AUD 2016-07-15 15:45:13.943000
+Collecting IT data for GBP_NZD 2016-07-15 15:45:17.957000
+Collecting IT data for AUD_CAD 2016-07-15 15:45:22.085000
+Collecting IT data for NZD_CAD 2016-07-15 15:45:24.766000
+Collecting IT data for AUD_NZD 2016-07-15 15:45:27.438000
+Collecting IT data for EUR_CHF 2016-07-15 15:45:30.136000
+Collecting IT data for GBP_CHF 2016-07-15 15:45:32.777000
+Collecting IT data for CAD_CHF 2016-07-15 15:45:35.456000
+Collecting IT data for AUD_CHF 2016-07-15 15:45:38.169000
+Intraday_IntraTrend complete 2016-07-15 15:45:40.856000
+Running Intraday_IntraTrend 2016-07-15 15:45:41.864000
+Collecting IT data for EUR_USD 2016-07-15 15:45:41.870000
+Collecting IT data for GBP_USD 2016-07-15 15:45:44.538000
+Collecting IT data for USD_CAD 2016-07-15 15:45:47.237000
+Collecting IT data for AUD_USD 2016-07-15 15:45:50.889000
+Collecting IT data for NZD_USD 2016-07-15 15:45:53.540000
+Collecting IT data for USD_CHF 2016-07-15 15:45:56.209000
+Collecting IT data for NZD_CHF 2016-07-15 15:45:58.886000
+Collecting IT data for EUR_GBP 2016-07-15 15:46:02.515000
+Collecting IT data for EUR_CAD 2016-07-15 15:46:06.556000
+Collecting IT data for EUR_AUD 2016-07-15 15:46:09.197000
+Collecting IT data for EUR_NZD 2016-07-15 15:46:13.186000
+Collecting IT data for GBP_CAD 2016-07-15 15:46:15.928000
+Collecting IT data for GBP_AUD 2016-07-15 15:46:18.616000
+Collecting IT data for GBP_NZD 2016-07-15 15:46:22.615000
+Collecting IT data for AUD_CAD 2016-07-15 15:46:26.624000
+Collecting IT data for NZD_CAD 2016-07-15 15:46:29.315000
+Collecting IT data for AUD_NZD 2016-07-15 15:46:31.997000
+Collecting IT data for EUR_CHF 2016-07-15 15:46:34.656000
+Collecting IT data for GBP_CHF 2016-07-15 15:46:37.378000
+Collecting IT data for CAD_CHF 2016-07-15 15:46:40.066000
+Collecting IT data for AUD_CHF 2016-07-15 15:46:43.705000
+Intraday_IntraTrend complete 2016-07-15 15:46:46.386000
+Running Intraday_IntraTrend 2016-07-15 15:46:47.399000
+Collecting IT data for EUR_USD 2016-07-15 15:46:47.433000
+Collecting IT data for GBP_USD 2016-07-15 15:46:50.158000
+Collecting IT data for USD_CAD 2016-07-15 15:46:52.838000
+Collecting IT data for AUD_USD 2016-07-15 15:46:55.495000
+Collecting IT data for NZD_USD 2016-07-15 15:46:58.165000
+Collecting IT data for USD_CHF 2016-07-15 15:47:00.805000
+Collecting IT data for NZD_CHF 2016-07-15 15:47:03.456000
+Collecting IT data for EUR_GBP 2016-07-15 15:47:06.194000
+Collecting IT data for EUR_CAD 2016-07-15 15:47:10.566000
+Collecting IT data for EUR_AUD 2016-07-15 15:47:13.298000
+Collecting IT data for EUR_NZD 2016-07-15 15:47:17.376000
+Collecting IT data for GBP_CAD 2016-07-15 15:47:20.025000
+Collecting IT data for GBP_AUD 2016-07-15 15:47:22.645000
+Collecting IT data for GBP_NZD 2016-07-15 15:47:26.716000
+Collecting IT data for AUD_CAD 2016-07-15 15:47:31.675000
+Collecting IT data for NZD_CAD 2016-07-15 15:47:34.296000
+Collecting IT data for AUD_NZD 2016-07-15 15:47:36.928000
+Collecting IT data for EUR_CHF 2016-07-15 15:47:39.592000
+Collecting IT data for GBP_CHF 2016-07-15 15:47:42.249000
+Collecting IT data for CAD_CHF 2016-07-15 15:47:45.016000
+Collecting IT data for AUD_CHF 2016-07-15 15:47:47.705000
+Intraday_IntraTrend complete 2016-07-15 15:47:50.387000
+Running Intraday_CableSnap 2016-07-15 15:47:50.394000
+Collecting CableSnap data for EUR_USD 2016-07-15 15:47:50.400000
+Collecting CableSnap data for GBP_USD 2016-07-15 15:47:54.356000
+Collecting CableSnap data for EUR_CAD 2016-07-15 15:47:58.404000
+Collecting CableSnap data for EUR_AUD 2016-07-15 15:48:02.619000
+Collecting CableSnap data for EUR_NZD 2016-07-15 15:48:06.534000
+CS: updating stops for EUR_NZD 2016-07-15 15:48:09.164000
+Collecting CableSnap data for GBP_CAD 2016-07-15 15:48:11.804000
+Collecting CableSnap data for GBP_AUD 2016-07-15 15:48:16.806000
+CS: updating stops for GBP_AUD 2016-07-15 15:48:19.478000
+Collecting CableSnap data for GBP_NZD 2016-07-15 15:48:22.124000
+CS: updating stops for GBP_NZD 2016-07-15 15:48:24.786000
+Collecting CableSnap data for EUR_CHF 2016-07-15 15:48:27.484000
+Collecting CableSnap data for GBP_CHF 2016-07-15 15:48:31.473000
+CS: updating stops for GBP_CHF 2016-07-15 15:48:35.143000
+Intraday_CableSnap complete 2016-07-15 15:48:37.878000
+Running Intraday_Banzai 2016-07-15 15:48:37.886000
+Collecting Banzai data for GBP_JPY 2016-07-15 15:48:37.894000
+Collecting Banzai data for AUD_JPY 2016-07-15 15:48:41.934000
+Collecting Banzai data for USD_JPY 2016-07-15 15:48:45.903000
+Intraday_Banzai complete 2016-07-15 15:48:49.974000
+Running Intraday_PPB 2016-07-15 15:48:50.980000
+Collecting PPB data for EUR_USD 2016-07-15 15:48:50.987000
+Collecting PPB data for GBP_USD 2016-07-15 15:48:56.283000
+Collecting PPB data for USD_CAD 2016-07-15 15:49:01.615000
+Collecting PPB data for AUD_USD 2016-07-15 15:49:06.894000
+Collecting PPB data for NZD_USD 2016-07-15 15:49:12.225000
+Collecting PPB data for USD_CHF 2016-07-15 15:49:17.533000
+Collecting PPB data for NZD_CHF 2016-07-15 15:49:22.936000
+Collecting PPB data for EUR_GBP 2016-07-15 15:49:28.252000
+Collecting PPB data for EUR_CAD 2016-07-15 15:49:33.555000
+Collecting PPB data for EUR_AUD 2016-07-15 15:49:38.854000
+PPB: updating stops for EUR_AUD 2016-07-15 15:49:44.113000
+Collecting PPB data for EUR_NZD 2016-07-15 15:49:45.457000
+Collecting PPB data for GBP_CAD 2016-07-15 15:49:50.792000
+Collecting PPB data for GBP_AUD 2016-07-15 15:49:56.042000
+PPB: updating stops for GBP_AUD 2016-07-15 15:50:02.386000
+Collecting PPB data for GBP_NZD 2016-07-15 15:50:03.696000
+PPB: updating stops for GBP_NZD 2016-07-15 15:50:08.985000
+Collecting PPB data for AUD_CAD 2016-07-15 15:50:10.335000
+Collecting PPB data for NZD_CAD 2016-07-15 15:50:18.032000
+Collecting PPB data for AUD_NZD 2016-07-15 15:50:23.395000
+Collecting PPB data for EUR_CHF 2016-07-15 15:50:28.653000
+Collecting PPB data for GBP_CHF 2016-07-15 15:50:33.983000
+Collecting PPB data for CAD_CHF 2016-07-15 15:50:39.253000
+Collecting PPB data for AUD_CHF 2016-07-15 15:50:44.552000
+Intraday_PPB complete 2016-07-15 15:50:49.872000
+Running Intraday_MAC 2016-07-15 15:50:50.879000
+Collecting MAC data for EUR_USD 2016-07-15 15:50:50.888000
+Checking MAC signals for EUR_USD 2016-07-15 15:50:53.552000
+Collecting MAC data for GBP_USD 2016-07-15 15:50:53.559000
+Checking MAC signals for GBP_USD 2016-07-15 15:50:56.263000
+Collecting MAC data for USD_CAD 2016-07-15 15:50:56.271000
+Checking MAC signals for USD_CAD 2016-07-15 15:50:58.921000
+Collecting MAC data for AUD_USD 2016-07-15 15:50:58.928000
+Checking MAC signals for AUD_USD 2016-07-15 15:51:01.581000
+Collecting MAC data for NZD_USD 2016-07-15 15:51:01.590000
+Checking MAC signals for NZD_USD 2016-07-15 15:51:04.250000
+Collecting MAC data for USD_CHF 2016-07-15 15:51:04.257000
+Checking MAC signals for USD_CHF 2016-07-15 15:51:06.897000
+Collecting MAC data for NZD_CHF 2016-07-15 15:51:06.906000
+Checking MAC signals for NZD_CHF 2016-07-15 15:51:09.612000
+Collecting MAC data for EUR_GBP 2016-07-15 15:51:09.620000
+Checking MAC signals for EUR_GBP 2016-07-15 15:51:12.301000
+Collecting MAC data for EUR_CAD 2016-07-15 15:51:12.308000
+Checking MAC signals for EUR_CAD 2016-07-15 15:51:14.931000
+Collecting MAC data for EUR_AUD 2016-07-15 15:51:14.938000
+Collecting MAC data for EUR_NZD 2016-07-15 15:51:18.876000
+Checking MAC signals for EUR_NZD 2016-07-15 15:51:21.545000
+Collecting MAC data for GBP_CAD 2016-07-15 15:51:21.552000
+Checking MAC signals for GBP_CAD 2016-07-15 15:51:24.192000
+Collecting MAC data for GBP_AUD 2016-07-15 15:51:24.198000
+Collecting MAC data for GBP_NZD 2016-07-15 15:51:26.842000
+Collecting MAC data for AUD_CAD 2016-07-15 15:51:29.492000
+Checking MAC signals for AUD_CAD 2016-07-15 15:51:32.161000
+Collecting MAC data for NZD_CAD 2016-07-15 15:51:32.168000
+Checking MAC signals for NZD_CAD 2016-07-15 15:51:34.821000
+Collecting MAC data for AUD_NZD 2016-07-15 15:51:34.831000
+Checking MAC signals for AUD_NZD 2016-07-15 15:51:37.481000
+Collecting MAC data for EUR_CHF 2016-07-15 15:51:37.488000
+Checking MAC signals for EUR_CHF 2016-07-15 15:51:40.132000
+Collecting MAC data for GBP_CHF 2016-07-15 15:51:40.142000
+Checking MAC signals for GBP_CHF 2016-07-15 15:51:42.802000
+Collecting MAC data for CAD_CHF 2016-07-15 15:51:42.808000
+Checking MAC signals for CAD_CHF 2016-07-15 15:51:45.512000
+Collecting MAC data for AUD_CHF 2016-07-15 15:51:45.518000
+Checking MAC signals for AUD_CHF 2016-07-15 15:51:48.181000
+Intraday_MAC complete 2016-07-15 15:51:48.187000
+Running Intraday_IntraTrend 2016-07-15 15:51:49.194000
+Collecting IT data for EUR_USD 2016-07-15 15:51:49.203000
+Collecting IT data for GBP_USD 2016-07-15 15:51:51.901000
+Collecting IT data for USD_CAD 2016-07-15 15:51:54.554000
+Collecting IT data for AUD_USD 2016-07-15 15:51:57.171000
+Collecting IT data for NZD_USD 2016-07-15 15:51:59.811000
+Collecting IT data for USD_CHF 2016-07-15 15:52:02.441000
+Collecting IT data for NZD_CHF 2016-07-15 15:52:06.103000
+Collecting IT data for EUR_GBP 2016-07-15 15:52:08.731000
+Collecting IT data for EUR_CAD 2016-07-15 15:52:11.361000
+Collecting IT data for EUR_AUD 2016-07-15 15:52:14.011000
+Collecting IT data for EUR_NZD 2016-07-15 15:52:18.020000
+Collecting IT data for GBP_CAD 2016-07-15 15:52:20.991000
+Collecting IT data for GBP_AUD 2016-07-15 15:52:23.641000
+Collecting IT data for GBP_NZD 2016-07-15 15:52:27.621000
+Collecting IT data for AUD_CAD 2016-07-15 15:52:31.604000
+Collecting IT data for NZD_CAD 2016-07-15 15:52:34.333000
+Collecting IT data for AUD_NZD 2016-07-15 15:52:37.003000
+Collecting IT data for EUR_CHF 2016-07-15 15:52:39.660000
+ITM: Sell EUR_CHF 2016-07-15 15:52:42.331000
+Collecting IT data for GBP_CHF 2016-07-15 15:52:43.707000
+Collecting IT data for CAD_CHF 2016-07-15 15:52:46.471000
+Collecting IT data for AUD_CHF 2016-07-15 15:52:49.122000
+Intraday_IntraTrend complete 2016-07-15 15:52:51.771000
+Running Intraday_PPB 2016-07-15 15:52:52.777000
+Collecting PPB data for EUR_USD 2016-07-15 15:52:52.807000
+Collecting PPB data for GBP_USD 2016-07-15 15:52:58.194000
+Collecting PPB data for USD_CAD 2016-07-15 15:53:03.541000
+Collecting PPB data for AUD_USD 2016-07-15 15:53:08.961000
+Collecting PPB data for NZD_USD 2016-07-15 15:53:14.460000
+Collecting PPB data for USD_CHF 2016-07-15 15:53:19.829000
+Collecting PPB data for NZD_CHF 2016-07-15 15:53:25.170000
+Collecting PPB data for EUR_GBP 2016-07-15 15:53:30.460000
+Collecting PPB data for EUR_CAD 2016-07-15 15:53:35.822000
+Collecting PPB data for EUR_AUD 2016-07-15 15:53:41.238000
+PPB: updating stops for EUR_AUD 2016-07-15 15:53:46.710000
+Collecting PPB data for EUR_NZD 2016-07-15 15:53:48.055000
+Collecting PPB data for GBP_CAD 2016-07-15 15:53:53.407000
+Collecting PPB data for GBP_AUD 2016-07-15 15:53:58.710000
+PPB: updating stops for GBP_AUD 2016-07-15 15:54:03.959000
+Collecting PPB data for GBP_NZD 2016-07-15 15:54:05.284000
+PPB: updating stops for GBP_NZD 2016-07-15 15:54:10.630000
+Collecting PPB data for AUD_CAD 2016-07-15 15:54:11.942000
+Collecting PPB data for NZD_CAD 2016-07-15 15:54:17.229000
+Collecting PPB data for AUD_NZD 2016-07-15 15:54:22.912000
+Collecting PPB data for EUR_CHF 2016-07-15 15:54:28.249000
+PPB: updating stops for EUR_CHF 2016-07-15 15:54:33.705000
+Collecting PPB data for GBP_CHF 2016-07-15 15:54:35.036000
+Collecting PPB data for CAD_CHF 2016-07-15 15:54:40.349000
+Collecting PPB data for AUD_CHF 2016-07-15 15:54:45.676000
+Intraday_PPB complete 2016-07-15 15:54:51.359000
+Running Intraday_IntraTrend 2016-07-15 15:54:52.366000
+Collecting IT data for EUR_USD 2016-07-15 15:54:52.375000
+Collecting IT data for GBP_USD 2016-07-15 15:54:55.059000
+Collecting IT data for USD_CAD 2016-07-15 15:54:57.782000
+Collecting IT data for AUD_USD 2016-07-15 15:55:00.419000
+Collecting IT data for NZD_USD 2016-07-15 15:55:03.080000
+Collecting IT data for USD_CHF 2016-07-15 15:55:05.719000
+Collecting IT data for NZD_CHF 2016-07-15 15:55:08.461000
+ITM: Buy NZD_CHF 2016-07-15 15:55:11.171000
+Collecting IT data for EUR_GBP 2016-07-15 15:55:12.443000
+Collecting IT data for EUR_CAD 2016-07-15 15:55:15.100000
+Collecting IT data for EUR_AUD 2016-07-15 15:55:17.783000
+Collecting IT data for EUR_NZD 2016-07-15 15:55:21.828000
+Collecting IT data for GBP_CAD 2016-07-15 15:55:24.541000
+Collecting IT data for GBP_AUD 2016-07-15 15:55:27.199000
+Collecting IT data for GBP_NZD 2016-07-15 15:55:31.160000
+Collecting IT data for AUD_CAD 2016-07-15 15:55:35.108000
+Collecting IT data for NZD_CAD 2016-07-15 15:55:37.761000
+Collecting IT data for AUD_NZD 2016-07-15 15:55:40.407000
+Collecting IT data for EUR_CHF 2016-07-15 15:55:43.058000
+Collecting IT data for GBP_CHF 2016-07-15 15:55:47.937000
+Collecting IT data for CAD_CHF 2016-07-15 15:55:50.583000
+Collecting IT data for AUD_CHF 2016-07-15 15:55:53.282000
+Intraday_IntraTrend complete 2016-07-15 15:55:55.942000
+Running Intraday_PPB 2016-07-15 15:57:01.983000
+Collecting PPB data for EUR_USD 2016-07-15 15:57:01.990000
+Collecting PPB data for GBP_USD 2016-07-15 15:57:07.268000
+Collecting PPB data for USD_CAD 2016-07-15 15:57:12.667000
+Collecting PPB data for AUD_USD 2016-07-15 15:57:17.989000
+PPB: Sell AUD_USD 2016-07-15 15:57:24.297000
+Collecting PPB data for NZD_USD 2016-07-15 15:57:25.567000
+Collecting PPB data for USD_CHF 2016-07-15 15:57:30.922000
+Collecting PPB data for NZD_CHF 2016-07-15 15:57:36.327000
+Collecting PPB data for EUR_GBP 2016-07-15 15:57:42.567000
+Collecting PPB data for EUR_CAD 2016-07-15 15:57:47.841000
+Collecting PPB data for EUR_AUD 2016-07-15 15:57:53.267000
+PPB: updating stops for EUR_AUD 2016-07-15 15:57:58.607000
+Collecting PPB data for EUR_NZD 2016-07-15 15:57:59.918000
+Collecting PPB data for GBP_CAD 2016-07-15 15:58:06.247000
+Collecting PPB data for GBP_AUD 2016-07-15 15:58:11.637000
+PPB: updating stops for GBP_AUD 2016-07-15 15:58:16.914000
+Collecting PPB data for GBP_NZD 2016-07-15 15:58:18.257000
+PPB: updating stops for GBP_NZD 2016-07-15 15:58:23.702000
+Collecting PPB data for AUD_CAD 2016-07-15 15:58:25.033000
+Collecting PPB data for NZD_CAD 2016-07-15 15:58:30.337000
+Collecting PPB data for AUD_NZD 2016-07-15 15:58:35.650000
+Collecting PPB data for EUR_CHF 2016-07-15 15:58:41.147000
+PPB: updating stops for EUR_CHF 2016-07-15 15:58:46.465000
+Collecting PPB data for GBP_CHF 2016-07-15 15:58:47.805000
+Collecting PPB data for CAD_CHF 2016-07-15 15:58:54.105000
+Collecting PPB data for AUD_CHF 2016-07-15 15:58:59.376000
+Intraday_PPB complete 2016-07-15 15:59:04.797000
+Running Intraday_PPB 2016-07-15 16:02:01.883000
+Collecting PPB data for EUR_USD 2016-07-15 16:02:01.891000
+Collecting PPB data for GBP_USD 2016-07-15 16:02:07.305000
+Collecting PPB data for USD_CAD 2016-07-15 16:02:12.608000
+Collecting PPB data for AUD_USD 2016-07-15 16:02:17.939000
+PPB: updating stops for AUD_USD 2016-07-15 16:02:23.224000
+Collecting PPB data for NZD_USD 2016-07-15 16:02:24.566000
+Collecting PPB data for USD_CHF 2016-07-15 16:02:29.914000
+Collecting PPB data for NZD_CHF 2016-07-15 16:02:36.294000
+Collecting PPB data for EUR_GBP 2016-07-15 16:02:41.586000
+Collecting PPB data for EUR_CAD 2016-07-15 16:02:46.943000
+Collecting PPB data for EUR_AUD 2016-07-15 16:02:52.243000
+PPB: updating stops for EUR_AUD 2016-07-15 16:02:57.563000
+Collecting PPB data for EUR_NZD 2016-07-15 16:02:58.904000
+Collecting PPB data for GBP_CAD 2016-07-15 16:03:04.273000
+Collecting PPB data for GBP_AUD 2016-07-15 16:03:09.772000
+PPB: updating stops for GBP_AUD 2016-07-15 16:03:15.144000
+Collecting PPB data for GBP_NZD 2016-07-15 16:03:16.464000
+PPB: updating stops for GBP_NZD 2016-07-15 16:03:21.902000
+Collecting PPB data for AUD_CAD 2016-07-15 16:03:23.219000
+Collecting PPB data for NZD_CAD 2016-07-15 16:03:28.545000
+Collecting PPB data for AUD_NZD 2016-07-15 16:03:33.833000
+Collecting PPB data for EUR_CHF 2016-07-15 16:03:39.155000
+PPB: updating stops for EUR_CHF 2016-07-15 16:03:44.443000
+Collecting PPB data for GBP_CHF 2016-07-15 16:03:45.782000
+Collecting PPB data for CAD_CHF 2016-07-15 16:03:51.128000
+Collecting PPB data for AUD_CHF 2016-07-15 16:03:56.422000
+Intraday_PPB complete 2016-07-15 16:04:01.722000
+Running Intraday_CableSnap 2016-07-15 16:04:01.732000
+Collecting CableSnap data for EUR_USD 2016-07-15 16:04:01.741000
+Collecting CableSnap data for GBP_USD 2016-07-15 16:04:05.903000
+Collecting CableSnap data for EUR_CAD 2016-07-15 16:04:09.886000
+Collecting CableSnap data for EUR_AUD 2016-07-15 16:04:14.854000
+Collecting CableSnap data for EUR_NZD 2016-07-15 16:04:20.802000
+CS: Sell EUR_NZD 2016-07-15 16:04:23.448000
+CS: updating stops for EUR_NZD 2016-07-15 16:04:26.062000
+Collecting CableSnap data for GBP_CAD 2016-07-15 16:04:27.465000
+Collecting CableSnap data for GBP_AUD 2016-07-15 16:04:31.587000
+Collecting CableSnap data for GBP_NZD 2016-07-15 16:04:35.561000
+Collecting CableSnap data for EUR_CHF 2016-07-15 16:04:39.524000
+Collecting CableSnap data for GBP_CHF 2016-07-15 16:04:43.607000
+Intraday_CableSnap complete 2016-07-15 16:04:47.561000
+Running Intraday_Banzai 2016-07-15 16:04:47.568000
+Collecting Banzai data for GBP_JPY 2016-07-15 16:04:47.574000
+Collecting Banzai data for AUD_JPY 2016-07-15 16:04:52.542000
+Collecting Banzai data for USD_JPY 2016-07-15 16:04:56.513000
+Intraday_Banzai complete 2016-07-15 16:05:01.484000
+Running Intraday_MAC 2016-07-15 16:05:02.490000
+Collecting MAC data for EUR_USD 2016-07-15 16:05:02.498000
+Checking MAC signals for EUR_USD 2016-07-15 16:05:05.144000
+Collecting MAC data for GBP_USD 2016-07-15 16:05:05.154000
+Checking MAC signals for GBP_USD 2016-07-15 16:05:11.069000
+Collecting MAC data for USD_CAD 2016-07-15 16:05:11.076000
+Checking MAC signals for USD_CAD 2016-07-15 16:05:13.821000
+Collecting MAC data for AUD_USD 2016-07-15 16:05:13.830000
+Collecting MAC data for NZD_USD 2016-07-15 16:05:16.511000
+Checking MAC signals for NZD_USD 2016-07-15 16:05:20.174000
+Collecting MAC data for USD_CHF 2016-07-15 16:05:20.181000
+Checking MAC signals for USD_CHF 2016-07-15 16:05:22.863000
+Collecting MAC data for NZD_CHF 2016-07-15 16:05:22.872000
+Checking MAC signals for NZD_CHF 2016-07-15 16:05:25.492000
+Collecting MAC data for EUR_GBP 2016-07-15 16:05:25.499000
+Checking MAC signals for EUR_GBP 2016-07-15 16:05:28.163000
+Collecting MAC data for EUR_CAD 2016-07-15 16:05:28.170000
+Checking MAC signals for EUR_CAD 2016-07-15 16:05:30.811000
+Collecting MAC data for EUR_AUD 2016-07-15 16:05:30.820000
+Collecting MAC data for EUR_NZD 2016-07-15 16:05:33.553000
+Checking MAC signals for EUR_NZD 2016-07-15 16:05:36.216000
+Collecting MAC data for GBP_CAD 2016-07-15 16:05:36.222000
+Checking MAC signals for GBP_CAD 2016-07-15 16:05:38.882000
+Collecting MAC data for GBP_AUD 2016-07-15 16:05:38.890000
+Collecting MAC data for GBP_NZD 2016-07-15 16:05:41.541000
+Collecting MAC data for AUD_CAD 2016-07-15 16:05:44.212000
+Checking MAC signals for AUD_CAD 2016-07-15 16:05:47.941000
+Collecting MAC data for NZD_CAD 2016-07-15 16:05:47.949000
+Checking MAC signals for NZD_CAD 2016-07-15 16:05:50.621000
+Collecting MAC data for AUD_NZD 2016-07-15 16:05:50.628000
+Checking MAC signals for AUD_NZD 2016-07-15 16:05:53.281000
+Collecting MAC data for EUR_CHF 2016-07-15 16:05:53.289000
+Collecting MAC data for GBP_CHF 2016-07-15 16:05:55.931000
+Checking MAC signals for GBP_CHF 2016-07-15 16:05:58.600000
+Collecting MAC data for CAD_CHF 2016-07-15 16:05:58.607000
+Checking MAC signals for CAD_CHF 2016-07-15 16:06:01.381000
+Collecting MAC data for AUD_CHF 2016-07-15 16:06:01.387000
+Checking MAC signals for AUD_CHF 2016-07-15 16:06:04.071000
+Intraday_MAC complete 2016-07-15 16:06:04.078000
+Running Intraday_IntraTrend 2016-07-15 16:06:05.084000
+Collecting IT data for EUR_USD 2016-07-15 16:06:05.093000
+Collecting IT data for GBP_USD 2016-07-15 16:06:07.910000
+Collecting IT data for USD_CAD 2016-07-15 16:06:10.535000
+Collecting IT data for AUD_USD 2016-07-15 16:06:14.241000
+Collecting IT data for NZD_USD 2016-07-15 16:06:19.240000
+Collecting IT data for USD_CHF 2016-07-15 16:06:21.895000
+Collecting IT data for NZD_CHF 2016-07-15 16:06:24.567000
+ITM: Buy NZD_CHF 2016-07-15 16:06:27.220000
+Collecting IT data for EUR_GBP 2016-07-15 16:06:28.546000
+Collecting IT data for EUR_CAD 2016-07-15 16:06:31.182000
+Collecting IT data for EUR_AUD 2016-07-15 16:06:33.883000
+Collecting IT data for EUR_NZD 2016-07-15 16:06:38.237000
+Collecting IT data for GBP_CAD 2016-07-15 16:06:40.944000
+Collecting IT data for GBP_AUD 2016-07-15 16:06:43.582000
+Collecting IT data for GBP_NZD 2016-07-15 16:06:47.540000
+Collecting IT data for AUD_CAD 2016-07-15 16:06:51.501000
+Collecting IT data for NZD_CAD 2016-07-15 16:06:54.150000
+Collecting IT data for AUD_NZD 2016-07-15 16:06:56.823000
+Collecting IT data for EUR_CHF 2016-07-15 16:06:59.520000
+Collecting IT data for GBP_CHF 2016-07-15 16:07:03.619000
+Collecting IT data for CAD_CHF 2016-07-15 16:07:06.297000
+Collecting IT data for AUD_CHF 2016-07-15 16:07:08.923000
+Intraday_IntraTrend complete 2016-07-15 16:07:11.644000
+Running Intraday_PPB 2016-07-15 16:07:12.652000
+Collecting PPB data for EUR_USD 2016-07-15 16:07:12.662000
+Collecting PPB data for GBP_USD 2016-07-15 16:07:18.230000
+Collecting PPB data for USD_CAD 2016-07-15 16:07:23.517000
+Collecting PPB data for AUD_USD 2016-07-15 16:07:28.805000
+PPB: updating stops for AUD_USD 2016-07-15 16:07:34.109000
+Collecting PPB data for NZD_USD 2016-07-15 16:07:35.439000
+Collecting PPB data for USD_CHF 2016-07-15 16:07:40.809000
+Collecting PPB data for NZD_CHF 2016-07-15 16:07:47.100000
+Collecting PPB data for EUR_GBP 2016-07-15 16:07:52.510000
+Collecting PPB data for EUR_CAD 2016-07-15 16:07:58.159000
+Collecting PPB data for EUR_AUD 2016-07-15 16:08:03.457000
+PPB: updating stops for EUR_AUD 2016-07-15 16:08:08.823000
+Collecting PPB data for EUR_NZD 2016-07-15 16:08:10.189000
+Collecting PPB data for GBP_CAD 2016-07-15 16:08:15.550000
+Collecting PPB data for GBP_AUD 2016-07-15 16:08:20.819000
+PPB: updating stops for GBP_AUD 2016-07-15 16:08:26.183000
+Collecting PPB data for GBP_NZD 2016-07-15 16:08:28.511000
+PPB: updating stops for GBP_NZD 2016-07-15 16:08:33.809000
+Collecting PPB data for AUD_CAD 2016-07-15 16:08:35.147000
+Collecting PPB data for NZD_CAD 2016-07-15 16:08:40.489000
+Collecting PPB data for AUD_NZD 2016-07-15 16:08:45.843000
+Collecting PPB data for EUR_CHF 2016-07-15 16:08:52.139000
+PPB: updating stops for EUR_CHF 2016-07-15 16:08:57.439000
+Collecting PPB data for GBP_CHF 2016-07-15 16:09:00.052000
+Collecting PPB data for CAD_CHF 2016-07-15 16:09:05.378000
+Collecting PPB data for AUD_CHF 2016-07-15 16:09:10.660000
+Intraday_PPB complete 2016-07-15 16:09:16.328000
+Running Intraday_PPB 2016-07-15 16:12:01.380000
+Collecting PPB data for EUR_USD 2016-07-15 16:12:01.386000
+Collecting PPB data for GBP_USD 2016-07-15 16:12:06.837000
+Collecting PPB data for USD_CAD 2016-07-15 16:12:12.175000
+Collecting PPB data for AUD_USD 2016-07-15 16:12:17.516000
+PPB: updating stops for AUD_USD 2016-07-15 16:12:22.867000
+Collecting PPB data for NZD_USD 2016-07-15 16:12:25.485000
+Collecting PPB data for USD_CHF 2016-07-15 16:12:30.776000
+Collecting PPB data for NZD_CHF 2016-07-15 16:12:36.238000
+Collecting PPB data for EUR_GBP 2016-07-15 16:12:43.556000
+Collecting PPB data for EUR_CAD 2016-07-15 16:12:48.876000
+Collecting PPB data for EUR_AUD 2016-07-15 16:12:54.268000
+PPB: updating stops for EUR_AUD 2016-07-15 16:12:59.557000
+Collecting PPB data for EUR_NZD 2016-07-15 16:13:00.889000
+Collecting PPB data for GBP_CAD 2016-07-15 16:13:06.199000
+Collecting PPB data for GBP_AUD 2016-07-15 16:13:11.618000
+PPB: updating stops for GBP_AUD 2016-07-15 16:13:17.045000
+Collecting PPB data for GBP_NZD 2016-07-15 16:13:18.368000
+PPB: updating stops for GBP_NZD 2016-07-15 16:13:23.725000
+Collecting PPB data for AUD_CAD 2016-07-15 16:13:25.065000
+Collecting PPB data for NZD_CAD 2016-07-15 16:13:30.357000
+Collecting PPB data for AUD_NZD 2016-07-15 16:13:35.655000
+Collecting PPB data for EUR_CHF 2016-07-15 16:13:40.996000
+PPB: updating stops for EUR_CHF 2016-07-15 16:13:47.316000
+Collecting PPB data for GBP_CHF 2016-07-15 16:13:49.998000
+Collecting PPB data for CAD_CHF 2016-07-15 16:13:55.405000
+Collecting PPB data for AUD_CHF 2016-07-15 16:14:00.744000
+Intraday_PPB complete 2016-07-15 16:14:06.987000
+Running Intraday_PPB 2016-07-15 16:17:01.034000
+Collecting PPB data for EUR_USD 2016-07-15 16:17:01.041000
+Collecting PPB data for GBP_USD 2016-07-15 16:17:06.467000
+Collecting PPB data for USD_CAD 2016-07-15 16:17:11.820000
+Collecting PPB data for AUD_USD 2016-07-15 16:17:17.413000
+PPB: updating stops for AUD_USD 2016-07-15 16:17:22.814000
+Collecting PPB data for NZD_USD 2016-07-15 16:17:25.581000
+Collecting PPB data for USD_CHF 2016-07-15 16:17:30.946000
+Collecting PPB data for NZD_CHF 2016-07-15 16:17:36.232000
+Collecting PPB data for EUR_GBP 2016-07-15 16:17:41.532000
+Collecting PPB data for EUR_CAD 2016-07-15 16:17:48.962000
+Collecting PPB data for EUR_AUD 2016-07-15 16:17:54.303000
+PPB: updating stops for EUR_AUD 2016-07-15 16:17:59.693000
+Collecting PPB data for EUR_NZD 2016-07-15 16:18:01.013000
+Collecting PPB data for GBP_CAD 2016-07-15 16:18:06.401000
+Collecting PPB data for GBP_AUD 2016-07-15 16:18:11.778000
+PPB: updating stops for GBP_AUD 2016-07-15 16:18:17.162000
+Collecting PPB data for GBP_NZD 2016-07-15 16:18:18.485000
+PPB: updating stops for GBP_NZD 2016-07-15 16:18:23.903000
+Collecting PPB data for AUD_CAD 2016-07-15 16:18:25.294000
+Collecting PPB data for NZD_CAD 2016-07-15 16:18:30.721000
+Collecting PPB data for AUD_NZD 2016-07-15 16:18:36.064000
+Collecting PPB data for EUR_CHF 2016-07-15 16:18:41.464000
+Collecting PPB data for GBP_CHF 2016-07-15 16:18:46.902000
+Collecting PPB data for CAD_CHF 2016-07-15 16:18:52.211000
+Collecting PPB data for AUD_CHF 2016-07-15 16:18:57.571000
+Intraday_PPB complete 2016-07-15 16:19:02.851000
+Running Intraday_CableSnap 2016-07-15 16:19:02.859000
+Collecting CableSnap data for EUR_USD 2016-07-15 16:19:02.869000
+Collecting CableSnap data for GBP_USD 2016-07-15 16:19:07.881000
+Collecting CableSnap data for EUR_CAD 2016-07-15 16:19:11.935000
+Collecting CableSnap data for EUR_AUD 2016-07-15 16:19:15.901000
+Collecting CableSnap data for EUR_NZD 2016-07-15 16:19:19.885000
+CS: updating stops for EUR_NZD 2016-07-15 16:19:22.635000
+CS: updating stops for EUR_NZD 2016-07-15 16:19:25.313000
+Collecting CableSnap data for GBP_CAD 2016-07-15 16:19:26.644000
+Collecting CableSnap data for GBP_AUD 2016-07-15 16:19:30.783000
+Collecting CableSnap data for GBP_NZD 2016-07-15 16:19:34.780000
+Collecting CableSnap data for EUR_CHF 2016-07-15 16:19:38.867000
+Collecting CableSnap data for GBP_CHF 2016-07-15 16:19:42.891000
+Intraday_CableSnap complete 2016-07-15 16:19:46.904000
+Running Intraday_Banzai 2016-07-15 16:19:46.911000
+Collecting Banzai data for GBP_JPY 2016-07-15 16:19:46.918000
+Collecting Banzai data for AUD_JPY 2016-07-15 16:19:50.947000
+Collecting Banzai data for USD_JPY 2016-07-15 16:19:54.950000
+Intraday_Banzai complete 2016-07-15 16:19:58.962000
+Running Intraday_MAC 2016-07-15 16:19:59.969000
+Collecting MAC data for EUR_USD 2016-07-15 16:19:59.978000
+Checking MAC signals for EUR_USD 2016-07-15 16:20:02.640000
+Collecting MAC data for GBP_USD 2016-07-15 16:20:02.647000
+Checking MAC signals for GBP_USD 2016-07-15 16:20:05.302000
+Collecting MAC data for USD_CAD 2016-07-15 16:20:05.311000
+Checking MAC signals for USD_CAD 2016-07-15 16:20:07.960000
+Collecting MAC data for AUD_USD 2016-07-15 16:20:07.967000
+Collecting MAC data for NZD_USD 2016-07-15 16:20:11.662000
+Checking MAC signals for NZD_USD 2016-07-15 16:20:14.325000
+Collecting MAC data for USD_CHF 2016-07-15 16:20:14.331000
+Checking MAC signals for USD_CHF 2016-07-15 16:20:16.980000
+Collecting MAC data for NZD_CHF 2016-07-15 16:20:16.987000
+Checking MAC signals for NZD_CHF 2016-07-15 16:20:19.643000
+Collecting MAC data for EUR_GBP 2016-07-15 16:20:19.649000
+Checking MAC signals for EUR_GBP 2016-07-15 16:20:22.360000
+Collecting MAC data for EUR_CAD 2016-07-15 16:20:22.367000
+Checking MAC signals for EUR_CAD 2016-07-15 16:20:25.010000
+Collecting MAC data for EUR_AUD 2016-07-15 16:20:25.017000
+Collecting MAC data for EUR_NZD 2016-07-15 16:20:27.675000
+Checking MAC signals for EUR_NZD 2016-07-15 16:20:30.320000
+Collecting MAC data for GBP_CAD 2016-07-15 16:20:30.327000
+Checking MAC signals for GBP_CAD 2016-07-15 16:20:33.002000
+Collecting MAC data for GBP_AUD 2016-07-15 16:20:33.009000
+Collecting MAC data for GBP_NZD 2016-07-15 16:20:35.740000
+Collecting MAC data for AUD_CAD 2016-07-15 16:20:38.464000
+Checking MAC signals for AUD_CAD 2016-07-15 16:20:41.142000
+Collecting MAC data for NZD_CAD 2016-07-15 16:20:41.148000
+Checking MAC signals for NZD_CAD 2016-07-15 16:20:43.812000
+Collecting MAC data for AUD_NZD 2016-07-15 16:20:43.819000
+Checking MAC signals for AUD_NZD 2016-07-15 16:20:46.472000
+Collecting MAC data for EUR_CHF 2016-07-15 16:20:46.479000
+Checking MAC signals for EUR_CHF 2016-07-15 16:20:49.191000
+MAC: Buy EUR_CHF 2016-07-15 16:20:49.200000
+Collecting MAC data for GBP_CHF 2016-07-15 16:20:50.490000
+Checking MAC signals for GBP_CHF 2016-07-15 16:20:53.160000
+Collecting MAC data for CAD_CHF 2016-07-15 16:20:53.167000
+Checking MAC signals for CAD_CHF 2016-07-15 16:20:55.811000
+Collecting MAC data for AUD_CHF 2016-07-15 16:20:55.818000
+Checking MAC signals for AUD_CHF 2016-07-15 16:20:58.471000
+Intraday_MAC complete 2016-07-15 16:20:58.478000
+Running Intraday_IntraTrend 2016-07-15 16:20:59.484000
+Collecting IT data for EUR_USD 2016-07-15 16:20:59.503000
+Collecting IT data for GBP_USD 2016-07-15 16:21:02.224000
+Collecting IT data for USD_CAD 2016-07-15 16:21:04.900000
+Collecting IT data for AUD_USD 2016-07-15 16:21:07.552000
+Collecting IT data for NZD_USD 2016-07-15 16:21:11.532000
+Collecting IT data for USD_CHF 2016-07-15 16:21:14.218000
+Collecting IT data for NZD_CHF 2016-07-15 16:21:16.892000
+Collecting IT data for EUR_GBP 2016-07-15 16:21:20.560000
+Collecting IT data for EUR_CAD 2016-07-15 16:21:23.225000
+Collecting IT data for EUR_AUD 2016-07-15 16:21:25.872000
+Collecting IT data for EUR_NZD 2016-07-15 16:21:30.818000
+ITM: Sell EUR_NZD 2016-07-15 16:21:34.479000
+Collecting IT data for GBP_CAD 2016-07-15 16:21:35.753000
+Collecting IT data for GBP_AUD 2016-07-15 16:21:38.429000
+Collecting IT data for GBP_NZD 2016-07-15 16:21:42.419000
+Collecting IT data for AUD_CAD 2016-07-15 16:21:46.429000
+Collecting IT data for NZD_CAD 2016-07-15 16:21:49.129000
+Collecting IT data for AUD_NZD 2016-07-15 16:21:51.889000
+Collecting IT data for EUR_CHF 2016-07-15 16:21:54.549000
+Collecting IT data for GBP_CHF 2016-07-15 16:21:58.383000
+Collecting IT data for CAD_CHF 2016-07-15 16:22:01.100000
+Collecting IT data for AUD_CHF 2016-07-15 16:22:05.785000
+Intraday_IntraTrend complete 2016-07-15 16:22:08.495000
+Running Intraday_PPB 2016-07-15 16:22:09.502000
+Collecting PPB data for EUR_USD 2016-07-15 16:22:09.509000
+Collecting PPB data for GBP_USD 2016-07-15 16:22:14.913000
+Collecting PPB data for USD_CAD 2016-07-15 16:22:20.301000
+Collecting PPB data for AUD_USD 2016-07-15 16:22:26.848000
+PPB: updating stops for AUD_USD 2016-07-15 16:22:32.260000
+Collecting PPB data for NZD_USD 2016-07-15 16:22:35.891000
+Collecting PPB data for USD_CHF 2016-07-15 16:22:41.312000
+Collecting PPB data for NZD_CHF 2016-07-15 16:22:46.753000
+Collecting PPB data for EUR_GBP 2016-07-15 16:22:52.306000
+Collecting PPB data for EUR_CAD 2016-07-15 16:22:57.870000
+Collecting PPB data for EUR_AUD 2016-07-15 16:23:04.290000
+PPB: updating stops for EUR_AUD 2016-07-15 16:23:10.163000
+Collecting PPB data for EUR_NZD 2016-07-15 16:23:11.533000
+PPB: updating stops for EUR_NZD 2016-07-15 16:23:17.063000
+Collecting PPB data for GBP_CAD 2016-07-15 16:23:18.390000
+Collecting PPB data for GBP_AUD 2016-07-15 16:23:23.818000
+PPB: updating stops for GBP_AUD 2016-07-15 16:23:29.323000
+Collecting PPB data for GBP_NZD 2016-07-15 16:23:30.650000
+PPB: updating stops for GBP_NZD 2016-07-15 16:23:36.390000
+Collecting PPB data for AUD_CAD 2016-07-15 16:23:37.721000
+Collecting PPB data for NZD_CAD 2016-07-15 16:23:43.195000
+Collecting PPB data for AUD_NZD 2016-07-15 16:23:48.825000
+Collecting PPB data for EUR_CHF 2016-07-15 16:23:54.446000
+Collecting PPB data for GBP_CHF 2016-07-15 16:23:59.970000
+Collecting PPB data for CAD_CHF 2016-07-15 16:24:05.369000
+PPB: Sell CAD_CHF 2016-07-15 16:24:10.721000
+Collecting PPB data for AUD_CHF 2016-07-15 16:24:12.065000
+Intraday_PPB complete 2016-07-15 16:24:18.680000
+Running Intraday_PPB 2016-07-15 16:27:01.728000
+Collecting PPB data for EUR_USD 2016-07-15 16:27:01.735000
+Collecting PPB data for GBP_USD 2016-07-15 16:27:07.147000
+Collecting PPB data for USD_CAD 2016-07-15 16:27:12.475000
+Collecting PPB data for AUD_USD 2016-07-15 16:27:17.850000
+PPB: updating stops for AUD_USD 2016-07-15 16:27:23.199000
+Collecting PPB data for NZD_USD 2016-07-15 16:27:25.845000
+Collecting PPB data for USD_CHF 2016-07-15 16:27:31.154000
+Collecting PPB data for NZD_CHF 2016-07-15 16:27:36.545000
+Collecting PPB data for EUR_GBP 2016-07-15 16:27:41.868000
+Collecting PPB data for EUR_CAD 2016-07-15 16:27:47.205000
+Collecting PPB data for EUR_AUD 2016-07-15 16:27:52.516000
+Collecting PPB data for EUR_NZD 2016-07-15 16:27:57.861000
+PPB: updating stops for EUR_NZD 2016-07-15 16:28:03.205000
+Collecting PPB data for GBP_CAD 2016-07-15 16:28:04.557000
+Collecting PPB data for GBP_AUD 2016-07-15 16:28:10.875000
+PPB: updating stops for GBP_AUD 2016-07-15 16:28:17.153000
+Collecting PPB data for GBP_NZD 2016-07-15 16:28:18.508000
+PPB: updating stops for GBP_NZD 2016-07-15 16:28:23.854000
+Collecting PPB data for AUD_CAD 2016-07-15 16:28:25.174000
+Collecting PPB data for NZD_CAD 2016-07-15 16:28:30.471000
+Collecting PPB data for AUD_NZD 2016-07-15 16:28:36.257000
+Collecting PPB data for EUR_CHF 2016-07-15 16:28:41.504000
+Collecting PPB data for GBP_CHF 2016-07-15 16:28:46.819000
+Collecting PPB data for CAD_CHF 2016-07-15 16:28:52.133000
+PPB: updating stops for CAD_CHF 2016-07-15 16:28:57.415000
+Collecting PPB data for AUD_CHF 2016-07-15 16:28:58.775000
+Intraday_PPB complete 2016-07-15 16:29:04.424000
+Running Intraday_PPB 2016-07-15 16:32:01.471000
+Collecting PPB data for EUR_USD 2016-07-15 16:32:01.480000
+Collecting PPB data for GBP_USD 2016-07-15 16:32:06.902000
+Collecting PPB data for USD_CAD 2016-07-15 16:32:13.276000
+Collecting PPB data for AUD_USD 2016-07-15 16:32:18.599000
+Collecting PPB data for NZD_USD 2016-07-15 16:32:23.923000
+Collecting PPB data for USD_CHF 2016-07-15 16:32:29.271000
+Collecting PPB data for NZD_CHF 2016-07-15 16:32:34.706000
+Collecting PPB data for EUR_GBP 2016-07-15 16:32:40.150000
+Collecting PPB data for EUR_CAD 2016-07-15 16:32:45.420000
+Collecting PPB data for EUR_AUD 2016-07-15 16:32:50.660000
+PPB: Buy EUR_AUD 2016-07-15 16:32:55.955000
+Collecting PPB data for EUR_NZD 2016-07-15 16:32:57.237000
+PPB: updating stops for EUR_NZD 2016-07-15 16:33:02.637000
+Collecting PPB data for GBP_CAD 2016-07-15 16:33:04.942000
+Collecting PPB data for GBP_AUD 2016-07-15 16:33:10.283000
+PPB: updating stops for GBP_AUD 2016-07-15 16:33:15.661000
+Collecting PPB data for GBP_NZD 2016-07-15 16:33:17
+PPB: updating stops for GBP_NZD 2016-07-15 16:33:22.410000
+Collecting PPB data for AUD_CAD 2016-07-15 16:33:23.752000
+Collecting PPB data for NZD_CAD 2016-07-15 16:33:30.063000
+Collecting PPB data for AUD_NZD 2016-07-15 16:33:35.386000
+Collecting PPB data for EUR_CHF 2016-07-15 16:33:40.772000
+Collecting PPB data for GBP_CHF 2016-07-15 16:33:46.100000
+Collecting PPB data for CAD_CHF 2016-07-15 16:33:51.551000
+PPB: updating stops for CAD_CHF 2016-07-15 16:33:56.921000
+Collecting PPB data for AUD_CHF 2016-07-15 16:33:59.528000
+Intraday_PPB complete 2016-07-15 16:34:04.829000
+Running Intraday_CableSnap 2016-07-15 16:34:04.837000
+Collecting CableSnap data for EUR_USD 2016-07-15 16:34:04.843000
+Collecting CableSnap data for GBP_USD 2016-07-15 16:34:09.109000
+Collecting CableSnap data for EUR_CAD 2016-07-15 16:34:13.150000
+Collecting CableSnap data for EUR_AUD 2016-07-15 16:34:17.133000
+Collecting CableSnap data for EUR_NZD 2016-07-15 16:34:21.100000
+Collecting CableSnap data for GBP_CAD 2016-07-15 16:34:25.210000
+Collecting CableSnap data for GBP_AUD 2016-07-15 16:34:29.245000
+Collecting CableSnap data for GBP_NZD 2016-07-15 16:34:33.224000
+Collecting CableSnap data for EUR_CHF 2016-07-15 16:34:37.161000
+Collecting CableSnap data for GBP_CHF 2016-07-15 16:34:42.122000
+Intraday_CableSnap complete 2016-07-15 16:34:46.122000
+Running Intraday_Banzai 2016-07-15 16:34:46.130000
+Collecting Banzai data for GBP_JPY 2016-07-15 16:34:46.136000
+Collecting Banzai data for AUD_JPY 2016-07-15 16:34:50.147000
+Collecting Banzai data for USD_JPY 2016-07-15 16:34:54.129000
+Intraday_Banzai complete 2016-07-15 16:34:58.099000
+Running Intraday_MAC 2016-07-15 16:34:59.107000
+Collecting MAC data for EUR_USD 2016-07-15 16:34:59.116000
+Checking MAC signals for EUR_USD 2016-07-15 16:35:01.795000
+Collecting MAC data for GBP_USD 2016-07-15 16:35:01.802000
+Checking MAC signals for GBP_USD 2016-07-15 16:35:04.451000
+Collecting MAC data for USD_CAD 2016-07-15 16:35:04.461000
+Checking MAC signals for USD_CAD 2016-07-15 16:35:07.150000
+Collecting MAC data for AUD_USD 2016-07-15 16:35:07.156000
+Checking MAC signals for AUD_USD 2016-07-15 16:35:09.852000
+Collecting MAC data for NZD_USD 2016-07-15 16:35:09.859000
+Checking MAC signals for NZD_USD 2016-07-15 16:35:12.509000
+Collecting MAC data for USD_CHF 2016-07-15 16:35:12.516000
+Checking MAC signals for USD_CHF 2016-07-15 16:35:15.182000
+Collecting MAC data for NZD_CHF 2016-07-15 16:35:15.189000
+Checking MAC signals for NZD_CHF 2016-07-15 16:35:17.810000
+Collecting MAC data for EUR_GBP 2016-07-15 16:35:17.819000
+Checking MAC signals for EUR_GBP 2016-07-15 16:35:20.471000
+Collecting MAC data for EUR_CAD 2016-07-15 16:35:20.480000
+Checking MAC signals for EUR_CAD 2016-07-15 16:35:23.270000
+Collecting MAC data for EUR_AUD 2016-07-15 16:35:23.277000
+Checking MAC signals for EUR_AUD 2016-07-15 16:35:25.942000
+Collecting MAC data for EUR_NZD 2016-07-15 16:35:25.949000
+Checking MAC signals for EUR_NZD 2016-07-15 16:35:28.599000
+Collecting MAC data for GBP_CAD 2016-07-15 16:35:28.605000
+Checking MAC signals for GBP_CAD 2016-07-15 16:35:31.364000
+Collecting MAC data for GBP_AUD 2016-07-15 16:35:31.373000
+Collecting MAC data for GBP_NZD 2016-07-15 16:35:35.059000
+Collecting MAC data for AUD_CAD 2016-07-15 16:35:37.711000
+Checking MAC signals for AUD_CAD 2016-07-15 16:35:40.660000
+Collecting MAC data for NZD_CAD 2016-07-15 16:35:40.667000
+Checking MAC signals for NZD_CAD 2016-07-15 16:35:43.369000
+Collecting MAC data for AUD_NZD 2016-07-15 16:35:43.379000
+Checking MAC signals for AUD_NZD 2016-07-15 16:35:46.034000
+Collecting MAC data for EUR_CHF 2016-07-15 16:35:46.041000
+Checking MAC signals for EUR_CHF 2016-07-15 16:35:48.692000
+MAC: Buy EUR_CHF 2016-07-15 16:35:48.700000
+Collecting MAC data for GBP_CHF 2016-07-15 16:35:49.967000
+Checking MAC signals for GBP_CHF 2016-07-15 16:35:52.631000
+Collecting MAC data for CAD_CHF 2016-07-15 16:35:52.637000
+Collecting MAC data for AUD_CHF 2016-07-15 16:35:55.637000
+Checking MAC signals for AUD_CHF 2016-07-15 16:35:58.310000
+MAC: Buy AUD_CHF 2016-07-15 16:35:58.317000
+Intraday_MAC complete 2016-07-15 16:35:59.602000
+Running Intraday_IntraTrend 2016-07-15 16:36:00.612000
+Collecting IT data for EUR_USD 2016-07-15 16:36:00.619000
+Collecting IT data for GBP_USD 2016-07-15 16:36:03.340000
+Collecting IT data for USD_CAD 2016-07-15 16:36:05.983000
+Collecting IT data for AUD_USD 2016-07-15 16:36:08.642000
+Collecting IT data for NZD_USD 2016-07-15 16:36:11.408000
+Collecting IT data for USD_CHF 2016-07-15 16:36:14.090000
+Collecting IT data for NZD_CHF 2016-07-15 16:36:16.743000
+Collecting IT data for EUR_GBP 2016-07-15 16:36:19.429000
+Collecting IT data for EUR_CAD 2016-07-15 16:36:22.093000
+Collecting IT data for EUR_AUD 2016-07-15 16:36:24.828000
+Collecting IT data for EUR_NZD 2016-07-15 16:36:27.585000
+Collecting IT data for GBP_CAD 2016-07-15 16:36:30.250000
+Collecting IT data for GBP_AUD 2016-07-15 16:36:33
+Collecting IT data for GBP_NZD 2016-07-15 16:36:37.009000
+Collecting IT data for AUD_CAD 2016-07-15 16:36:40.998000
+Collecting IT data for NZD_CAD 2016-07-15 16:36:43.633000
+Collecting IT data for AUD_NZD 2016-07-15 16:36:46.311000
+Collecting IT data for EUR_CHF 2016-07-15 16:36:48.958000
+Collecting IT data for GBP_CHF 2016-07-15 16:36:54.159000
+Collecting IT data for CAD_CHF 2016-07-15 16:36:56.819000
+Collecting IT data for AUD_CHF 2016-07-15 16:37:01.822000
+Intraday_IntraTrend complete 2016-07-15 16:37:05.857000
+Running Intraday_PPB 2016-07-15 16:37:06.864000
+Collecting PPB data for EUR_USD 2016-07-15 16:37:06.871000
+PPB: Sell EUR_USD 2016-07-15 16:37:12.280000
+Collecting PPB data for GBP_USD 2016-07-15 16:37:13.583000
+Collecting PPB data for USD_CAD 2016-07-15 16:37:18.877000
+Collecting PPB data for AUD_USD 2016-07-15 16:37:24.217000
+Collecting PPB data for NZD_USD 2016-07-15 16:37:29.567000
+Collecting PPB data for USD_CHF 2016-07-15 16:37:34.807000
+Collecting PPB data for NZD_CHF 2016-07-15 16:37:40.187000
+Collecting PPB data for EUR_GBP 2016-07-15 16:37:46.540000
+Collecting PPB data for EUR_CAD 2016-07-15 16:37:51.843000
+Collecting PPB data for EUR_AUD 2016-07-15 16:37:57.127000
+Collecting PPB data for EUR_NZD 2016-07-15 16:38:03.427000
+Collecting PPB data for GBP_CAD 2016-07-15 16:38:10.086000
+Collecting PPB data for GBP_AUD 2016-07-15 16:38:15.392000
+PPB: updating stops for GBP_AUD 2016-07-15 16:38:20.968000
+Collecting PPB data for GBP_NZD 2016-07-15 16:38:22.306000
+PPB: updating stops for GBP_NZD 2016-07-15 16:38:27.792000
+Collecting PPB data for AUD_CAD 2016-07-15 16:38:30.388000
+Collecting PPB data for NZD_CAD 2016-07-15 16:38:35.786000
+Collecting PPB data for AUD_NZD 2016-07-15 16:38:41.647000
+Collecting PPB data for EUR_CHF 2016-07-15 16:38:46.997000
+PPB: updating stops for EUR_CHF 2016-07-15 16:38:53.596000
+Collecting PPB data for GBP_CHF 2016-07-15 16:38:54.944000
+Collecting PPB data for CAD_CHF 2016-07-15 16:39:00.241000
+Collecting PPB data for AUD_CHF 2016-07-15 16:39:06.551000
+Intraday_PPB complete 2016-07-15 16:39:11.836000
+Running Intraday_PPB 2016-07-15 16:42:01.879000
+Collecting PPB data for EUR_USD 2016-07-15 16:42:01.887000
+PPB: updating stops for EUR_USD 2016-07-15 16:42:08.214000
+Collecting PPB data for GBP_USD 2016-07-15 16:42:09.524000
+Collecting PPB data for USD_CAD 2016-07-15 16:42:14.839000
+Collecting PPB data for AUD_USD 2016-07-15 16:42:20.164000
+Collecting PPB data for NZD_USD 2016-07-15 16:42:25.433000
+Collecting PPB data for USD_CHF 2016-07-15 16:42:30.775000
+Collecting PPB data for NZD_CHF 2016-07-15 16:42:36.033000
+Collecting PPB data for EUR_GBP 2016-07-15 16:42:41.373000
+Collecting PPB data for EUR_CAD 2016-07-15 16:42:46.684000
+Collecting PPB data for EUR_AUD 2016-07-15 16:42:52.038000
+Collecting PPB data for EUR_NZD 2016-07-15 16:42:57.457000
+Collecting PPB data for GBP_CAD 2016-07-15 16:43:02.824000
+Collecting PPB data for GBP_AUD 2016-07-15 16:43:08.103000
+PPB: updating stops for GBP_AUD 2016-07-15 16:43:13.353000
+Collecting PPB data for GBP_NZD 2016-07-15 16:43:14.703000
+Collecting PPB data for AUD_CAD 2016-07-15 16:43:20.004000
+Collecting PPB data for NZD_CAD 2016-07-15 16:43:26.334000
+Collecting PPB data for AUD_NZD 2016-07-15 16:43:31.623000
+Collecting PPB data for EUR_CHF 2016-07-15 16:43:36.875000
+PPB: updating stops for EUR_CHF 2016-07-15 16:43:42.192000
+Collecting PPB data for GBP_CHF 2016-07-15 16:43:43.506000
+Collecting PPB data for CAD_CHF 2016-07-15 16:43:48.883000
+Collecting PPB data for AUD_CHF 2016-07-15 16:43:54.215000
+Intraday_PPB complete 2016-07-15 16:44:00.483000
+Running Intraday_PPB 2016-07-15 16:47:01.529000
+Collecting PPB data for EUR_USD 2016-07-15 16:47:01.538000
+PPB: updating stops for EUR_USD 2016-07-15 16:47:06.942000
+Collecting PPB data for GBP_USD 2016-07-15 16:47:09.569000
+Collecting PPB data for USD_CAD 2016-07-15 16:47:14.845000
+Collecting PPB data for AUD_USD 2016-07-15 16:47:20.160000
+Collecting PPB data for NZD_USD 2016-07-15 16:47:25.409000
+Collecting PPB data for USD_CHF 2016-07-15 16:47:31.824000
+Collecting PPB data for NZD_CHF 2016-07-15 16:47:37.099000
+Collecting PPB data for EUR_GBP 2016-07-15 16:47:42.389000
+Collecting PPB data for EUR_CAD 2016-07-15 16:47:47.680000
+Collecting PPB data for EUR_AUD 2016-07-15 16:47:53.019000
+Collecting PPB data for EUR_NZD 2016-07-15 16:47:58.331000
+Collecting PPB data for GBP_CAD 2016-07-15 16:48:03.969000
+Collecting PPB data for GBP_AUD 2016-07-15 16:48:09.300000
+PPB: updating stops for GBP_AUD 2016-07-15 16:48:15.645000
+Collecting PPB data for GBP_NZD 2016-07-15 16:48:16.992000
+Collecting PPB data for AUD_CAD 2016-07-15 16:48:22.302000
+Collecting PPB data for NZD_CAD 2016-07-15 16:48:28.709000
+Collecting PPB data for AUD_NZD 2016-07-15 16:48:33.978000
+Collecting PPB data for EUR_CHF 2016-07-15 16:48:39.282000
+Running Swing_PPB 2016-07-17 21:02:47.834000
+Collecting PPB data for EUR_USD 2016-07-17 21:02:47.909000
+Collecting PPB data for GBP_USD 2016-07-17 21:02:57.393000
+Collecting PPB data for USD_CAD 2016-07-17 21:03:02.784000
+PPB: updating stops for USD_CAD 2016-07-17 21:03:08.178000
+Collecting PPB data for AUD_USD 2016-07-17 21:03:09.802000
+Collecting PPB data for NZD_USD 2016-07-17 21:03:15.164000
+Collecting PPB data for USD_CHF 2016-07-17 21:03:20.741000
+Collecting PPB data for NZD_CHF 2016-07-17 21:03:26.052000
+Collecting PPB data for EUR_GBP 2016-07-17 21:03:31.402000
+Collecting PPB data for EUR_CAD 2016-07-17 21:03:36.628000
+Collecting PPB data for EUR_AUD 2016-07-17 21:03:43.971000
+Collecting PPB data for EUR_NZD 2016-07-17 21:03:51.805000
+Collecting PPB data for GBP_CAD 2016-07-17 21:03:59.578000
+Collecting PPB data for GBP_AUD 2016-07-17 21:04:07.526000
+Collecting PPB data for GBP_NZD 2016-07-17 21:04:13.478000
+Collecting PPB data for AUD_CAD 2016-07-17 21:04:19.964000
+Collecting PPB data for NZD_CAD 2016-07-17 21:04:26.650000
+Collecting PPB data for AUD_NZD 2016-07-17 21:04:32.194000
+PPB: updating stops for AUD_NZD 2016-07-17 21:04:37.564000
+Collecting PPB data for EUR_CHF 2016-07-17 21:04:38.917000
+Collecting PPB data for GBP_CHF 2016-07-17 21:04:44.298000
+Collecting PPB data for CAD_CHF 2016-07-17 21:04:49.920000
+PPB: updating stops for CAD_CHF 2016-07-17 21:04:55.647000
+Collecting PPB data for AUD_CHF 2016-07-17 21:04:58.314000
+Swing_PPB complete 2016-07-17 21:05:03.669000

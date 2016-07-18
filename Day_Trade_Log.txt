@@ -220,3 +220,452 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "EUR_AUD",
+	"time" : "2016-07-15T17:13:16.000000Z",
+	"price" : 1.45589,
+	"tradeOpened" : {
+		"id" : 10336961802,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.45151,
+		"stopLoss" : 1.45756,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T17:21:54.000000Z",
+	"price" : 1.73469,
+	"tradeOpened" : {
+		"id" : 10336966936,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.73787,
+		"stopLoss" : 1.73114,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T17:21:58.000000Z",
+	"price" : 1.84555,
+	"tradeOpened" : {
+		"id" : 10336966963,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.84956,
+		"stopLoss" : 1.84068,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10336966936,
+	"units" : 100,
+	"side" : "buy",
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T17:21:54.000000Z",
+	"price" : 1.73469,
+	"takeProfit" : 1.73787,
+	"stopLoss" : 1.7347,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10336966963,
+	"units" : 100,
+	"side" : "buy",
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T17:21:58.000000Z",
+	"price" : 1.84555,
+	"takeProfit" : 1.84956,
+	"stopLoss" : 1.84556,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10336966963,
+	"units" : 100,
+	"side" : "buy",
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T17:21:58.000000Z",
+	"price" : 1.84555,
+	"takeProfit" : 1.84956,
+	"stopLoss" : 1.84556,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10336966963,
+	"units" : 100,
+	"side" : "buy",
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T17:21:58.000000Z",
+	"price" : 1.84555,
+	"takeProfit" : 1.84956,
+	"stopLoss" : 1.84556,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-15T18:50:00.000000Z",
+	"price" : 0.75901,
+	"tradeOpened" : {
+		"id" : 10337003447,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.75688,
+		"stopLoss" : 0.75991,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-15T19:00:41.000000Z",
+	"price" : 0.75957,
+	"tradeOpened" : {
+		"id" : 10337007446,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.75773,
+		"stopLoss" : 0.76031,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is below price 1.8503",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T19:37:04.000000Z",
+	"price" : 1.73864,
+	"tradeOpened" : {
+		"id" : 10337020630,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.73339,
+		"stopLoss" : 1.74489,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T19:37:08.000000Z",
+	"price" : 1.84889,
+	"tradeOpened" : {
+		"id" : 10337020686,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.84102,
+		"stopLoss" : 1.85868,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T19:52:42.000000Z",
+	"price" : 1.08778,
+	"tradeOpened" : {
+		"id" : 10337028734,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.08663,
+		"stopLoss" : 1.08924,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is above price 0.7018",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-15T19:57:24.000000Z",
+	"price" : 0.75964,
+	"tradeOpened" : {
+		"id" : 10337031169,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.75792,
+		"stopLoss" : 0.76033,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is above price 0.7018",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337028734,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T19:52:42.000000Z",
+	"price" : 1.08778,
+	"takeProfit" : 1.08663,
+	"stopLoss" : 1.08777,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337031169,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-15T19:57:24.000000Z",
+	"price" : 0.75964,
+	"takeProfit" : 0.75792,
+	"stopLoss" : 0.75963,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337028734,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T19:52:42.000000Z",
+	"price" : 1.08778,
+	"takeProfit" : 1.08663,
+	"stopLoss" : 1.08777,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337031169,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-15T19:57:24.000000Z",
+	"price" : 0.75964,
+	"takeProfit" : 0.75792,
+	"stopLoss" : 0.75963,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T20:20:49.000000Z",
+	"price" : 1.08656,
+	"tradeOpened" : {
+		"id" : 10337471657,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.08705,
+		"stopLoss" : 1.08572,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_NZD",
+	"time" : "2016-07-15T20:21:34.000000Z",
+	"price" : 1.54899,
+	"tradeOpened" : {
+		"id" : 10337489077,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.54742,
+		"stopLoss" : 1.55159,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337031169,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-15T19:57:24.000000Z",
+	"price" : 0.75964,
+	"takeProfit" : 0.75792,
+	"stopLoss" : 0.75963,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-15T20:24:11.000000Z",
+	"price" : 0.75853,
+	"tradeOpened" : {
+		"id" : 10337543788,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.75646,
+		"stopLoss" : 0.75948,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337031169,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "AUD_USD",
+	"time" : "2016-07-15T19:57:24.000000Z",
+	"price" : 0.75964,
+	"takeProfit" : 0.75792,
+	"stopLoss" : 0.75963,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "EUR_AUD",
+	"time" : "2016-07-15T20:32:56.000000Z",
+	"price" : 1.45781,
+	"tradeOpened" : {
+		"id" : 10337733960,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.46099,
+		"stopLoss" : 1.45628,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337543788,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-15T20:24:11.000000Z",
+	"price" : 0.75853,
+	"takeProfit" : 0.75646,
+	"stopLoss" : 0.75852,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T20:35:48.000000Z",
+	"price" : 1.08423,
+	"tradeOpened" : {
+		"id" : 10337784828,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.08486,
+		"stopLoss" : 1.08337,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "AUD_CHF",
+	"time" : "2016-07-15T20:35:58.000000Z",
+	"price" : 0.74467,
+	"tradeOpened" : {
+		"id" : 10337787448,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 0.74509,
+		"stopLoss" : 0.7437,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is above price 1.0838",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-15T20:37:12.000000Z",
+	"price" : 1.104,
+	"tradeOpened" : {
+		"id" : 10337807604,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.10155,
+		"stopLoss" : 1.10493,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337020686,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T19:37:08.000000Z",
+	"price" : 1.84889,
+	"takeProfit" : 1.84102,
+	"stopLoss" : 1.84888,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10337807604,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-15T20:37:12.000000Z",
+	"price" : 1.104,
+	"takeProfit" : 1.10155,
+	"stopLoss" : 1.10399,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}

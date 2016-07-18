@@ -94,3 +94,499 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T17:03:53.000000Z",
+	"price" : 1.08813,
+	"tradeOpened" : {
+		"id" : 10336956095,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.08662,
+		"stopLoss" : 1.08984,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T17:03:55.000000Z",
+	"price" : 1.08813,
+	"tradeOpened" : {
+		"id" : 10336956106,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.08662,
+		"stopLoss" : 1.08984,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-15T17:18:19.000000Z",
+	"price" : 1.10636,
+	"tradeOpened" : {
+		"id" : 10336963969,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.10184,
+		"stopLoss" : 1.11102,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-07-15T18:08:08.000000Z",
+	"price" : 1.31923,
+	"tradeOpened" : {
+		"id" : 10336988375,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.30686,
+		"stopLoss" : 1.33178,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T18:08:28.000000Z",
+	"price" : 1.73766,
+	"tradeOpened" : {
+		"id" : 10336988516,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.72864,
+		"stopLoss" : 1.74704,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T18:08:31.000000Z",
+	"price" : 1.73766,
+	"tradeOpened" : {
+		"id" : 10336988527,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.72864,
+		"stopLoss" : 1.74704,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T18:08:35.000000Z",
+	"price" : 1.84786,
+	"tradeOpened" : {
+		"id" : 10336988555,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.83498,
+		"stopLoss" : 1.8614,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T18:08:38.000000Z",
+	"price" : 1.84793,
+	"tradeOpened" : {
+		"id" : 10336988560,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.83498,
+		"stopLoss" : 1.8614,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-15T18:08:48.000000Z",
+	"price" : 1.29797,
+	"tradeOpened" : {
+		"id" : 10336988600,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.28954,
+		"stopLoss" : 1.3066,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-15T18:08:51.000000Z",
+	"price" : 1.29795,
+	"tradeOpened" : {
+		"id" : 10336988619,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.28954,
+		"stopLoss" : 1.3066,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CAD",
+	"time" : "2016-07-15T18:11:33.000000Z",
+	"price" : 1.70957,
+	"tradeOpened" : {
+		"id" : 10336989525,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.69974,
+		"stopLoss" : 1.71991,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CAD",
+	"time" : "2016-07-15T18:11:36.000000Z",
+	"price" : 1.70954,
+	"tradeOpened" : {
+		"id" : 10336989540,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.69974,
+		"stopLoss" : 1.71991,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_CHF",
+	"time" : "2016-07-15T18:11:56.000000Z",
+	"price" : 1.08807,
+	"tradeOpened" : {
+		"id" : 10336989585,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.08667,
+		"stopLoss" : 1.08966,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-07-15T18:18:23.000000Z",
+	"price" : 1.31959,
+	"tradeOpened" : {
+		"id" : 10336992782,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.30797,
+		"stopLoss" : 1.33141,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_NZD",
+	"time" : "2016-07-15T18:18:35.000000Z",
+	"price" : 1.54949,
+	"tradeOpened" : {
+		"id" : 10336992830,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.54722,
+		"stopLoss" : 1.5522,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_NZD",
+	"time" : "2016-07-15T18:18:38.000000Z",
+	"price" : 1.54949,
+	"tradeOpened" : {
+		"id" : 10336992838,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.54722,
+		"stopLoss" : 1.5522,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T18:18:51.000000Z",
+	"price" : 1.73812,
+	"tradeOpened" : {
+		"id" : 10336992893,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.73011,
+		"stopLoss" : 1.74671,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T18:18:59.000000Z",
+	"price" : 1.84874,
+	"tradeOpened" : {
+		"id" : 10336992934,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.83718,
+		"stopLoss" : 1.8609,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-15T18:19:13.000000Z",
+	"price" : 1.29812,
+	"tradeOpened" : {
+		"id" : 10336993070,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.29026,
+		"stopLoss" : 1.30632,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CAD",
+	"time" : "2016-07-15T18:50:39.000000Z",
+	"price" : 1.71007,
+	"tradeOpened" : {
+		"id" : 10337003672,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.70201,
+		"stopLoss" : 1.71858,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-15T18:53:20.000000Z",
+	"price" : 1.10623,
+	"tradeOpened" : {
+		"id" : 10337004515,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.10228,
+		"stopLoss" : 1.11029,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-07-15T18:53:29.000000Z",
+	"price" : 1.32063,
+	"tradeOpened" : {
+		"id" : 10337004538,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.31081,
+		"stopLoss" : 1.33054,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_NZD",
+	"time" : "2016-07-15T18:53:44.000000Z",
+	"price" : 1.54945,
+	"tradeOpened" : {
+		"id" : 10337004590,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.54744,
+		"stopLoss" : 1.55198,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T18:53:57.000000Z",
+	"price" : 1.73806,
+	"tradeOpened" : {
+		"id" : 10337004647,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.73073,
+		"stopLoss" : 1.74585,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T18:54:04.000000Z",
+	"price" : 1.84948,
+	"tradeOpened" : {
+		"id" : 10337004691,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.8399,
+		"stopLoss" : 1.85983,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-15T18:54:14.000000Z",
+	"price" : 1.29781,
+	"tradeOpened" : {
+		"id" : 10337004811,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.29042,
+		"stopLoss" : 1.30559,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_NZD",
+	"time" : "2016-07-15T19:17:48.000000Z",
+	"price" : 1.54928,
+	"tradeOpened" : {
+		"id" : 10337012303,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.5473,
+		"stopLoss" : 1.55184,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_AUD",
+	"time" : "2016-07-15T19:17:59.000000Z",
+	"price" : 1.73836,
+	"tradeOpened" : {
+		"id" : 10337012323,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.73194,
+		"stopLoss" : 1.74517,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_NZD",
+	"time" : "2016-07-15T19:18:06.000000Z",
+	"price" : 1.84965,
+	"tradeOpened" : {
+		"id" : 10337012349,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.84119,
+		"stopLoss" : 1.859,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "GBP_CHF",
+	"time" : "2016-07-15T19:18:17.000000Z",
+	"price" : 1.29809,
+	"tradeOpened" : {
+		"id" : 10337012457,
+		"units" : 500,
+		"side" : "sell",
+		"takeProfit" : 1.29158,
+		"stopLoss" : 1.30496,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "EUR_NZD",
+	"time" : "2016-07-15T20:04:23.000000Z",
+	"price" : 1.54919,
+	"tradeOpened" : {
+		"id" : 10337080706,
+		"units" : 1000,
+		"side" : "sell",
+		"takeProfit" : 1.54742,
+		"stopLoss" : 1.55164,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

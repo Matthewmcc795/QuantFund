@@ -19,7 +19,7 @@ QFPort = [229783, 406207]
 QFVol = 100
 
 CSSec = ["EUR_USD", "GBP_USD", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", "EUR_CHF", "GBP_CHF"]
-BanzaiSec = ["GBP_JPY", "AUD_JPY", "USD_JPY"]
+BanzaiSec = ["GBP_JPY", "AUD_JPY", "USD_JPY", "TRY_JPY"]
 CSPort = [836663, 581757]
 CSVol = [1000, 500]
 
@@ -28,8 +28,8 @@ fl_strat1 = "Day_Trade_Log.txt"
 fl_strat2 = "Swing_Trade_Log.txt"
 fl_strat3 = "CableSnap_Log.txt"
 
-dt_report = Get_dt("DailyReport")
-dt_report = datetime.now()
+dt_Main_Report = Get_dt("MainReport")
+dt_Weekly_Report = Get_dt("WeeklyReport")
 dt_Intraday_PPB = Get_dt("dt_Intraday_PPB")
 dt_Intraday_MAC = Get_dt("dt_Intraday_MAC")
 dt_Intraday_BusRide = Get_dt("dt_Intraday_BusRide")
@@ -38,10 +38,8 @@ dt_Swing_PPB = Get_dt("dt_Swing_PPB")
 dt_Swing_MAC = Get_dt("dt_Swing_MAC")
 dt_Swing_BusRide = Get_dt("dt_Swing_BusRide")
 dt_Swing_IntraTrendD = Get_dt("dt_Swing_IntraTrendD")
-# dt_Swing_IntraTrendW = Get_dt("dt_Swing_IntraTrendW")
 dt_Intraday_CableSnap = Get_dt("dt_Intraday_CableSnap")
 dt_Intraday_Banzai = Get_dt("dt_Intraday_Banzai")
-# dt_Swing_CableSnap = Get_dt("dt_Swing_CableSnap")
 Intraday_PPB_tf = ["M5", "M15", "D"]
 Swing_PPB_tf = ["D", "D", "W"]
 
@@ -121,16 +119,20 @@ while True:
     ###############################################################################
     #                            Optimizer/Reporting                              #
     ###############################################################################
-    # if datetime.now() > dt_report:
-    #     body = Report("DailyReport", QFPort[0], LIVE_ACCESS_TOKEN)
-    #     SendEmail(MAIL[0], PWD, MAIL[0], "Daily Quant Fund Report - " + str(QFPort[0]), body)
-    #     body = Report("DailyReport", QFPort[1], LIVE_ACCESS_TOKEN)
-    #     SendEmail(MAIL[0], PWD, MAIL[0], "Daily Quant Fund Report - " + str(QFPort[1]), body)
-    #     body = Report("DailyReport", CSPort[0], LIVE_ACCESS_TOKEN)
-    #     SendEmail(MAIL[0], PWD, MAIL[0], "Daily CableSnap/Banzai Report - " + str(CSPort[0]), body)
-    #     body = Report("DailyReport", CSPort[1], CSTokens[1])
-    #     SendEmail(MAIL[0], PWD, NREPORT[0], "Daily Report - " + str(CSPort[1]), body)
-    #     SendEmail(MAIL[0], PWD, NREPORT[1], "Daily Report - " + str(CSPort[1]), body)
-    #     dt_report += timedelta(hours=24)
-    #     dt_report = dt_report.replace(minute=0, second=1, microsecond=1)
+    if datetime.now() > dt_Main_Report:
+        body = Report("DailyReport", QFPort[0], LIVE_ACCESS_TOKEN)
+        SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[0]), body)
+        body = Report("DailyReport", QFPort[1], LIVE_ACCESS_TOKEN)
+        SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[1]), body)
+        body = Report("DailyReport", CSPort[0], LIVE_ACCESS_TOKEN)
+        SendEmail(MAIL[0], PWD, MAIL[0], "CableSnap/Banzai Report - " + str(CSPort[0]), body)
+        dt_Main_Report += timedelta(hours=12)
+        dt_Main_Report = dt_Main_Report.replace(minute=0, second=1, microsecond=1)
+    elif datetime.now() > dt_Weekly_Report:
+        body = Report("WeeklyReport", CSPort[1], CSTokens[1])
+        SendEmail(MAIL[0], PWD, NREPORT[0], "Weekly Report - " + str(CSPort[1]), body)
+        SendEmail(MAIL[0], PWD, NREPORT[1], "Weekly Report - " + str(CSPort[1]), body)
+        SendEmail(MAIL[0], PWD, Mail[0], "Weekly Report - Noe " + str(CSPort[1]), body)
+        dt_Weekly_Report += timedelta(hours=24)
+        dt_Weekly_Report = dt_Weekly_Report.replace(minute=0, second=1, microsecond=1)
     time.sleep(1)

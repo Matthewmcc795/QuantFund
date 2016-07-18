@@ -13,27 +13,6 @@ import time
 import sys
 import smtplib
 
-def Get_Price(curr_pair, tf, bars, ohlc):
-    O = []
-    H = []
-    L = []
-    C = []
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(curr_pair) + "&count=" + str(bars) + "&candleFormat=midpoint&granularity=" + str(tf)
-    r = requests.get(url, headers=h)     
-    data = json.loads(r.text)
-    for i in range(len(data["candles"])):
-        O.append(data["candles"][bars - i - 1][STRO])
-        H.append(data["candles"][bars - i - 1][STRH])
-        L.append(data["candles"][bars - i - 1][STRL])
-        C.append(data["candles"][bars - i - 1][STRC])
-    time.sleep(1)
-    if ohlc == "ohlc":
-        return O, H, L, C
-    elif ohlc == "hlc":
-        return H, L, C
-    elif ohlc == "c":
-        return C
 hr = [2,6,10,14,18,22]
 
 ##########################################################################################################
@@ -117,8 +96,17 @@ def Report(report_temp, account_id, access_token):
         dat = dat + "\n# -----       Market Moves      ----- #  \n"
 
         for i in range(len(sec)):
-            o, h, l, c = Get_Price(sec[i], "D", 3, "ohlc")
-            dat = dat + " " + str(sec[i]) + " " + str(round(c[0]-o[1],5)) + "\n"
+			o = []
+			c = []
+			h = {'Authorization' : LIVE_ACCESS_TOKEN}
+			url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(sec[i]) + "&count=3&candleFormat=midpoint&granularity=D"
+			r = requests.get(url, headers=h)     
+			data = json.loads(r.text)
+			for i in range(len(data["candles"])):
+				o.append(data["candles"][3 - i - 1][STRO])
+				c.append(data["candles"][3 - i - 1][STRC])
+			time.sleep(1)
+			dat = dat + " " + str(sec[i]) + " " + str(round(c[0]-o[1],5)) + "\n"
         return dat
 
 def SendEmail(from_addr, pwd, to_addr, subject, message):
@@ -315,7 +303,7 @@ ITD = {
     "AUD_NZD": -1, "CAD_CHF": -1, "EUR_AUD": -1, "GBP_NZD": -1, "EUR_CHF": -1, "EUR_NZD": -1, "AUD_CAD": -1}
 }
 
-ITW = {
+ITM = {
     "SMA50": {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
@@ -342,7 +330,7 @@ ITW = {
     "AUD_NZD": -1, "CAD_CHF": -1, "EUR_AUD": -1, "GBP_NZD": -1, "EUR_CHF": -1, "EUR_NZD": -1, "AUD_CAD": -1}
 }
 
-Banzai = {
+Ban = {
     "SMA50": {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
@@ -477,7 +465,7 @@ def Get_dt(strat):
     elif strat == "dt_Swing_IntraTrendW":
         dt_Swing_IntraTrendW =  datetime.now()
         dt_Swing_IntraTrendW = dt_Swing_IntraTrendW.replace(minute=2, second=0,microsecond=1)
-        while dt_Swing_IntraTrendW.hour != 21 and dt_Swing_IntraTrendW.weekday() == 0:
+        while dt_Swing_IntraTrendW.hour != 21 and dt_Swing_IntraTrendW.weekday != 0:
             dt_Swing_IntraTrendW += timedelta(hours=1)
         return dt_Swing_IntraTrendW
     elif strat == "dt_Intraday_CableSnap":
@@ -498,10 +486,16 @@ def Get_dt(strat):
         while dt_Swing_CableSnap.hour != 21:
             dt_Swing_CableSnap  += timedelta(hours=1)
         return dt_Swing_CableSnap
-    elif strat == "DailyReport":
+    elif strat == "MainReport":
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
-        while dt_report.hour != 21:
+        while dt_report.hour not in [9,21]:
+            dt_report  += timedelta(hours=1)
+        return dt_report
+    elif strat == "WeeklyReport":
+        dt_report =  datetime.now()
+        dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
+        while dt_report.hour != 21 and dt_Swing_IntraTrendW.weekday != 4:
             dt_report  += timedelta(hours=1)
         return dt_report
 

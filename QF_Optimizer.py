@@ -54,6 +54,7 @@
     # As well as a "Manager Department" that gives oversight to risk, compliance, reporting etc. 
 # Some departments could be consolidators.
     # Traders and Managers would sync up to the analysis of the Optimizer
+
 ##########################################################################################################
 #                                                                                                        #
 #                                              Optimizer                                                 #
@@ -75,7 +76,6 @@ def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm,
     for j in range(len(Open_IDs)):
         UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm, LIVE_ACCESS_TOKEN)
 
-
 # class PMAC:
 #     def __init__(self,name):
 #         self.data = json.loads(R)
@@ -93,3 +93,28 @@ def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm,
 #             self.Health -= 100
 #         elif food == "Ham":
 #             self.Health += 20
+
+##########################################################################################################
+#                                                                                                        #
+#                                                Manager                                                 #
+#                                                                                                        #
+##########################################################################################################
+
+# def RiskvsReward():
+    # If things are going well go hard and seek out more opportunities
+    # If things are going badly do less and lower the volume
+# def Compliance():
+    # Job is to ensure that trade performance is compliant with investors expectations and backtests
+# def Reporting():
+    # Sending the weekly and the reminder to send the monthly reports
+# def HeadTrader():
+    # Consolidate the positions requested from Signals and it had been adjusted by optimizer and managers
+
+##########################################################################################################
+#                                                                                                        #
+#                                                 Trader                                                 #
+#                                                                                                        #
+##########################################################################################################
+
+# Routines to try and optimize best entry prices over a certain time window
+# Next 4hr prices could break out of a pattern and fall another 0.5% to let's buy half now and half then

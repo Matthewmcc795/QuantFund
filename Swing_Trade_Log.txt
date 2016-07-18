@@ -310,3 +310,16 @@ Updating Stop Loss ...
 	"trailingStop" : 0,
 	"trailingAmount" : 0
 }
+Updating Stop Loss ... 
+{
+	"id" : 10323918195,
+	"units" : 100,
+	"side" : "buy",
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-07T22:08:11.000000Z",
+	"price" : 0.75324,
+	"takeProfit" : 0.76527,
+	"stopLoss" : 0.75325,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
