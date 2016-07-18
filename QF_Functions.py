@@ -495,7 +495,7 @@ def Get_dt(strat):
     elif strat == "WeeklyReport":
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
-        while dt_report.hour != 21 and dt_Swing_IntraTrendW.weekday != 4:
+        while dt_report.hour != 21 and dt_report.weekday != 4:
             dt_report  += timedelta(hours=1)
         return dt_report
 
