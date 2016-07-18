@@ -19,7 +19,7 @@ QFPort = [229783, 406207]
 QFVol = 100
 
 CSSec = ["EUR_USD", "GBP_USD", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", "EUR_CHF", "GBP_CHF"]
-BanzaiSec = ["GBP_JPY", "AUD_JPY", "USD_JPY", "TRY_JPY"]
+BanzaiSec = ["GBP_JPY", "AUD_JPY", "USD_JPY"]
 CSPort = [836663, 581757]
 CSVol = [1000, 500]
 

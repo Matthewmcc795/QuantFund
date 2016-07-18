@@ -301,12 +301,8 @@ def Banzai(port_list, sec, vol, tf, file_nm, tokens):
                     SaveToLog(main_log, "Banzai: Buy " + sec[i])
                     TP = round(c[0] + abs(c[0] - SMA50), 3)
                     SL = round(SMA50, 3)
-                    if sec[i] == "TRY_JPY" and c[0] > 34.75:
-                        OpenMarketOrder(port_list[k], sec[i], vol[k]/5, "market", "buy", TP, SL, file_nm, tokens[k])
-                        Ban["counter"][sec[i]] = 0
-                    else:
-                        OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "buy", TP, SL, file_nm, tokens[k])
-                        Ban["counter"][sec[i]] = 0
+                    OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "buy", TP, SL, file_nm, tokens[k])
+                    Ban["counter"][sec[i]] = 0
             elif Open_Units != 0:
                 Ban["counter"][sec[i]] += 1
                 SaveToLog(main_log, "Banzai: updating stops for " + sec[i])

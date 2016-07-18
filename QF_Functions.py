@@ -351,7 +351,7 @@ Ban = {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
     "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "counter": {"GBP_JPY": 0, "USD_JPY": 0, "AUD_JPY": 0, "TRY_JPY": 0}
+    "counter": {"GBP_JPY": 0, "USD_JPY": 0, "AUD_JPY": 0}
 }
 
 CSIntraday = {
