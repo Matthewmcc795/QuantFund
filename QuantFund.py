@@ -53,18 +53,6 @@ while True:
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_Intraday_PPB += timedelta(minutes=5)
         dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
-    elif datetime.now() > dt_Intraday_MAC:
-        SaveToLog(main_log, "Running Intraday_MAC")
-        MovingAverageContrarian(QFPort[0], QFSec, QFVol, "M15", fl_strat1)
-        SaveToLog(main_log, "Intraday_MAC complete")
-        dt_Intraday_MAC += timedelta(minutes=15)
-        dt_Intraday_MAC = dt_Intraday_MAC.replace(second=1, microsecond=1)
-    elif datetime.now() > dt_Intraday_BusRide:
-        SaveToLog(main_log, "Running Intraday_BusRide")
-        BusRide(QFPort[0], QFSec, QFVol, "M15", fl_strat1)
-        SaveToLog(main_log, "Intraday_BusRide complete")
-        dt_Intraday_BusRide += timedelta(hours=24)
-        dt_Intraday_BusRide = dt_Intraday_BusRide.replace(minute=0, second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_IntraTrend:
         SaveToLog(main_log, "Running Intraday_IntraTrend")
         IntraTrend(QFPort[0], QFSec, QFVol, "M15", fl_strat1)
@@ -74,31 +62,31 @@ while True:
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
-    if datetime.now() > dt_Swing_PPB:
-        SaveToLog(main_log, "Running Swing_PPB")
-        PivotPointBreakout(QFPort[1], QFSec, QFVol, Swing_PPB_tf, fl_strat2)
-        SaveToLog(main_log, "Swing_PPB complete")
-        dt_Swing_PPB += timedelta(minutes=5)
-        dt_Swing_PPB = dt_Swing_PPB.replace(second=1, microsecond=1)
-    elif datetime.now() > dt_Swing_MAC:
+    # if datetime.now() > dt_Swing_PPB:
+    #     SaveToLog(main_log, "Running Swing_PPB")
+    #     PivotPointBreakout(QFPort[1], QFSec, QFVol, Swing_PPB_tf, fl_strat2)
+    #     SaveToLog(main_log, "Swing_PPB complete")
+    #     dt_Swing_PPB += timedelta(minutes=5)
+    #     dt_Swing_PPB = dt_Swing_PPB.replace(second=1, microsecond=1)
+    if datetime.now() > dt_Swing_MAC:
         SaveToLog(main_log, "Running Swing_MAC")
         MovingAverageContrarian(QFPort[1], QFSec, QFVol, "H4", fl_strat2)
         SaveToLog(main_log, "Swing_MAC complete")
         dt_Swing_MAC += timedelta(hours=4)
         dt_Swing_MAC = dt_Swing_MAC.replace(minute=0, second=1, microsecond=1)
-    elif datetime.now() > dt_Swing_BusRide:
-        SaveToLog(main_log, "Running Swing_BusRide")
-        BusRide(QFPort[1], QFSec, QFVol, "D", fl_strat2)
-        SaveToLog(main_log, "Swing_BusRide complete")
-        dt_Swing_BusRide += timedelta(hours=24)
-        dt_Swing_BusRide = dt_Swing_BusRide.replace(minute=0, second=1, microsecond=1)
-    elif datetime.now() > dt_Swing_IntraTrendD:
-        SaveToLog(main_log, "Running Swing_IntraTrendD")
-        IntraTrend(QFPort[1], QFSec, QFVol, "D", fl_strat2)
-        SaveToLog(main_log, "Swing_IntraTrendD complete")
-        dt_Swing_IntraTrendD += timedelta(hours=24)
-        dt_Swing_IntraTrendD = dt_Swing_IntraTrendD.replace(minute=0, second=1, microsecond=1)
-    ###############################################################################
+    # elif datetime.now() > dt_Swing_BusRide:
+    #     SaveToLog(main_log, "Running Swing_BusRide")
+    #     BusRide(QFPort[1], QFSec, QFVol, "D", fl_strat2)
+    #     SaveToLog(main_log, "Swing_BusRide complete")
+    #     dt_Swing_BusRide += timedelta(hours=24)
+    #     dt_Swing_BusRide = dt_Swing_BusRide.replace(minute=0, second=1, microsecond=1)
+    # elif datetime.now() > dt_Swing_IntraTrendD:
+    #     SaveToLog(main_log, "Running Swing_IntraTrendD")
+    #     IntraTrend(QFPort[1], QFSec, QFVol, "D", fl_strat2)
+    #     SaveToLog(main_log, "Swing_IntraTrendD complete")
+    #     dt_Swing_IntraTrendD += timedelta(hours=24)
+    #     dt_Swing_IntraTrendD = dt_Swing_IntraTrendD.replace(minute=0, second=1, microsecond=1)
+    # ###############################################################################
     #                            Ultra Short GBP EUR                              #
     ###############################################################################
     if datetime.now() > dt_Intraday_CableSnap:

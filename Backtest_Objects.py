@@ -1,7 +1,7 @@
 import requests
 import json
 from array import *
-from Settings import STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import DEMO_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import httplib
 import urllib
 from datetime import datetime, timedelta

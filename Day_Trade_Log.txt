@@ -669,3 +669,60 @@ Updating Stop Loss ...
 	"trailingStop" : 0,
 	"trailingAmount" : 0
 }
+Sending order... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is below price 0.7568",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-07-20T21:20:03.000000Z",
+	"price" : 1.1014,
+	"tradeOpened" : {
+		"id" : 10345019074,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.10166,
+		"stopLoss" : 1.10073,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-20T21:20:57.000000Z",
+	"price" : 0.75559,
+	"tradeOpened" : {
+		"id" : 10345019516,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.75545,
+		"stopLoss" : 0.7564,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10345019516,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "CAD_CHF",
+	"time" : "2016-07-20T21:20:57.000000Z",
+	"price" : 0.75559,
+	"takeProfit" : 0.75545,
+	"stopLoss" : 0.75558,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"code" : 33,
+	"message" : "Invalid stopLoss error: requested stopLoss is above price 1.0869",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}

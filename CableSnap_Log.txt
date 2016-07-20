@@ -590,3 +590,35 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "USD_JPY",
+	"time" : "2016-07-20T21:04:02.000000Z",
+	"price" : 106.927,
+	"tradeOpened" : {
+		"id" : 10344995013,
+		"units" : 1000,
+		"side" : "buy",
+		"takeProfit" : 107.13,
+		"stopLoss" : 106.683,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "USD_JPY",
+	"time" : "2016-07-20T21:04:05.000000Z",
+	"price" : 106.927,
+	"tradeOpened" : {
+		"id" : 10344995058,
+		"units" : 500,
+		"side" : "buy",
+		"takeProfit" : 107.13,
+		"stopLoss" : 106.683,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

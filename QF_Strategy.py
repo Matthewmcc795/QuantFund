@@ -197,25 +197,25 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                 trd_side = positions["side"]
                 trd_size = positions["units"]
                 if tf == "M15":
-                    if c[0] < SMA21/1.0025 and c[0] < trd_entry and ITM["counter"][sec[i]] == -1 and Open_Units == vol:
+                    if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol:
                         ITM["SL"][sec[i]] = round(trd_entry - 0.00001, 5)
                         UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                         ITM["counter"][sec[i]] = 0
                     elif c[0] < ((SMA21+SMA50)/2)/1.0025 and ITM["counter"][sec[i]] == -1 and Open_Units > vol:
                         ITM["SL"][sec[i]] = round((SMA21 + SMA50)/2, 5)
                         UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                        ITM["counter"][sec[i]] = 0
-                    if ITM["counter"][sec[i]] >= 3 and abs(c[2] - c[0]) >= 0.00075:
-                        SaveToLog(main_log, "ITM: Scaling into " + sec[i])
-                        vol_adj = round(vol*(abs(ITM["SL"][sec[i]] - SMA10)/abs(ITM["SL"][sec[i]] - c[0])),0)
-                        if Open_Units < 5*vol and c[0] > c[1] and c[1] > c[2]:
-                            OpenMarketOrder(account_id, sec[i], vol_adj, "market", "buy", ITM["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
-                        elif Open_Units < 5*vol and c[0] < c[1] and c[1] < c[2]:
-                            OpenMarketOrder(account_id, sec[i], vol_adj, "market", "sell", ITM["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
-                        IT_BreakEven(account_id, sec[i], trd_entry, c[0], vol, vol_adj, file_nm, LIVE_ACCESS_TOKEN)
-                        ITM["counter"][sec[i]] = 0
-                    elif ITM["counter"][sec[i]] != -1:
-                        ITM["counter"][sec[i]] += 1 
+                    #     ITM["counter"][sec[i]] = 0
+                    # if ITM["counter"][sec[i]] >= 3 and abs(c[2] - c[0]) >= 0.00075:
+                    #     SaveToLog(main_log, "ITM: Scaling into " + sec[i])
+                    #     vol_adj = round(vol*(abs(ITM["SL"][sec[i]] - SMA10)/abs(ITM["SL"][sec[i]] - c[0])),0)
+                    #     if Open_Units < 5*vol and c[0] > c[1] and c[1] > c[2]:
+                    #         OpenMarketOrder(account_id, sec[i], vol_adj, "market", "buy", ITM["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
+                    #     elif Open_Units < 5*vol and c[0] < c[1] and c[1] < c[2]:
+                    #         OpenMarketOrder(account_id, sec[i], vol_adj, "market", "sell", ITM["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
+                    #     IT_BreakEven(account_id, sec[i], trd_entry, c[0], vol, vol_adj, file_nm, LIVE_ACCESS_TOKEN)
+                    #     ITM["counter"][sec[i]] = 0
+                    # elif ITM["counter"][sec[i]] != -1:
+                    #     ITM["counter"][sec[i]] += 1 
                     # elif (trd_side == "buy" and c[0] < SMA50) or (trd_side == "sell" and c[0] > SMA50):
                     #     ClosePositions(account_id, sec[i], file_nm)
                 elif tf == "D":
