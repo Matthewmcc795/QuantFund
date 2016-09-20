@@ -16,6 +16,413 @@ import calendar
 
 # --------------- Backtest Functions -------------------- #
 
+def Download_Prices(sec, tf, start, end):
+    d = []
+    d.append(start)
+    end_dt = FindDateRange(start, end, 24*4)
+    d.append(end_dt)
+    end_dt = FindDateRange(end_dt, end, 24*4)
+    d.append(end_dt)
+    while np.busday_count(end_dt, end) > 0:
+        end_dt = FindDateRange(end_dt, end, 24*4)
+        d.append(end_dt)
+    for j in range(len(d)-1):
+        h = {'Authorization' : LIVE_ACCESS_TOKEN}
+        url = "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(sec) + "&start=" + str(d[j]) + "&end=" + str(d[j+1]) + "&candleFormat=midpoint&granularity=" + str(tf)
+        r = requests.get(url, headers=h)     
+        data = json.loads(r.text)
+        for i in range(len(data["candles"])):
+            if i == len(data["candles"])-1:
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-d.txt",'a')
+                file.write(str(data["candles"][i][STRT]))
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-o.txt",'a')
+                file.write(str(data["candles"][i][STRO]))
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-h.txt",'a')
+                file.write(str(data["candles"][i][STRH]))
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-l.txt",'a')
+                file.write(str(data["candles"][i][STRL]))
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-c.txt",'a')
+                file.write(str(data["candles"][i][STRC]))
+                file.close()
+            else:
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-d.txt",'a')
+                file.write(str(data["candles"][i][STRT]) + ",")
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-o.txt",'a')
+                file.write(str(data["candles"][i][STRO]) + ",")
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-h.txt",'a')
+                file.write(str(data["candles"][i][STRH]) + ",")
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-l.txt",'a')
+                file.write(str(data["candles"][i][STRL]) + ",")
+                file.close()
+                file = open(sec + "-" + tf + "-" + start + "-" + end + "-c.txt",'a')
+                file.write(str(data["candles"][i][STRC]) + ",")
+                file.close()
+
+def Get_Prices(sec, tf, start, end):
+    dt_range = genfromtxt(sec + "-" + tf + "-" + start + "-" + end + "-d.txt", delimiter=',')
+    a = genfromtxt(sec + "-" + tf + "-" + start + "-" + end + "-o.txt", delimiter=',')
+    b = genfromtxt(sec + "-" + tf + "-" + start + "-" + end + "-h.txt", delimiter=',')
+    c = genfromtxt(sec + "-" + tf + "-" + start + "-" + end + "-l.txt", delimiter=',')
+    d = genfromtxt(sec + "-" + tf + "-" + start + "-" + end + "-c.txt", delimiter=',')
+    dat = np.vstack((a,b))
+    dat = np.vstack((dat,c))
+    dat = np.vstack((dat,d))
+    return dat
+
+def SplitArray(a, n):
+    Splt = np.zeros(n)
+    a = np.array(a)
+    for i in range(n-1):
+        index = i*len(a)/n
+        Splt[i] = round(a[index],5)
+    Splt[n-1] = round(max(a),5)
+    return Splt
+
+def UpDoji(o,h,l,c,num):
+    ud_data = np.zeros((1,len(c)))
+    d = Doji(o,h,l,c)
+    for i in range(0, len(c)):
+        if d[i-num] == 1 and c[i] > h[i-num]:
+            ud_data[0,i] = 1
+    return ud_data[0,:]
+
+def DownDoji(o,h,l,c,num):
+    dd_data = np.zeros((1,len(c)))
+    d = Doji(o,h,l,c)
+    for i in range(0, len(c)):
+        if d[i-num] == 1 and c[i] < l[i-num]:
+            dd_data[0,i] = 1
+    return dd_data[0,:]
+
+def InsideBarBreakUp(h,l,c,num):
+    i_data = np.zeros((1,len(c)))
+    b = InsideBar(h,l)
+    for i in range(0, len(c)):
+        if b[i-num] == 1 and c[i] > h[i-num]:
+            i_data[0,i] = 1
+    return i_data[0,:]
+
+def InsideBarBreakDown(h,l,c,num):
+    i_data = np.zeros((1,len(c)))
+    b = InsideBar(h,l)
+    for i in range(0, len(c)):
+        if b[i-num] == 1 and c[i] < l[i-num]:
+            i_data[0,i] = 1
+    return i_data[0,:]
+
+# --------------- Backtest Functions -------------------- #
+
+class PriceAction:
+    def __init__(self, symbol, o, h, l, c):
+        self.symbol = symbol
+        self.open = o
+        self.high = h
+        self.low = l
+        self.close = c
+        self.bars = np.zeros((30,len(c)))
+        self.lvls = np.zeros((10,len(c)))
+        self.bars[0,:] = Doji(self.open, self.high, self.low, self.close)
+        self.bars[1,:] = Hammer(self.open, self.high, self.low, self.close)
+        self.bars[2,:] = ShootingStar(self.open, self.high, self.low, self.close)
+        self.bars[3,:] = UpDoji(self.open, self.high, self.low, self.close,1)
+        self.bars[4,:] = DownDoji(self.open, self.high, self.low, self.close,1)
+        self.bars[5,:] = InsideBarBreakUp(self.high, self.low, self.close,1)
+        self.bars[6,:] = InsideBarBreakDown(self.high, self.low, self.close,1)
+        self.bars[7,:] = BullishMarubozu(self.open, self.high, self.low, self.close)
+        self.bars[8,:] = BearishMarubozu(self.open, self.high, self.low, self.close)
+        self.bars[9,:] = LongLeggedDoji(self.open, self.high, self.low, self.close)
+        self.bars[10,:] = Gravestone(self.open, self.high, self.low, self.close)
+        self.bars[11,:] = Dragonfly(self.open, self.high, self.low, self.close)
+        self.bars[12,:] = LongUp(self.close)
+        self.bars[13,:] = LongDown(self.close)
+        self.bars[14,:] = FallingThree(self.open, self.high, self.low, self.close)
+        self.bars[15,:] = RisingThree(self.open, self.high, self.low, self.close)
+        self.bars[16,:] = MorningStar(self.open, self.high, self.low, self.close)
+        self.bars[17,:] = EveningStar(self.open, self.high, self.low, self.close)
+        self.bars[18,:] = HighWave(self.open, self.high, self.low, self.close)
+        self.bars[19,:] = BullishEngulfing(self.open, self.high, self.low, self.close)
+        self.bars[20,:] = BearishEngulfing(self.open, self.high, self.low, self.close)
+        self.bars[21,:] = DarkCloudCover(self.open, self.high, self.low, self.close)
+        self.bars[22,:] = BullishPiercing(self.open, self.high, self.low, self.close)
+        self.bars[23,:] = BullishHarami(self.open, self.high, self.low, self.close)
+        self.bars[24,:] = BearishHarami(self.open, self.high, self.low, self.close)
+        self.bars[25,:] = BullishKeyReversal(self.open, self.high, self.low, self.close)
+        self.bars[26,:] = BearishKeyReversal(self.open, self.high, self.low, self.close)
+        self.bars[27,:] = ThreeWhiteSoldiers(self.close)
+        self.bars[28,:] = ThreeBlackCrows(self.close)
+    def Trends(self):
+        cnt0 = 0
+        cnt1 = 0
+        cnt2 = 0
+        dat = np.zeros((15,len(self.close)))
+        pct = [0]
+        for i in range(1,len(self.close)):
+            pct.append(self.close[i]/self.close[i-1]-1)
+        ma_d = pMa(self.close, 20)
+        ma_s = pMa(self.close, 10)
+        pct = np.array(pct)
+        ma = pMa(pct,50)
+        sd = pStd(self.close, 10)
+        for i in range(1, len(self.close)):
+            if ma[i] > 0.0001:
+                dat[0, i] = 1
+                cnt0 += 1
+            elif ma[i] < -0.0001:
+                dat[1, i] = 1
+                cnt1 += 1
+            else:
+                dat[2, i] = 1
+                cnt2 += 1
+        for i in range(10, len(self.close)):
+            mx = 0.0
+            mn = max(self.close)
+            if self.close[i] > ma_d[i] and self.close[i] > ma_s[i] and dat[2,i] == 1:
+                dat[0,i] = 1
+                dat[2,i] = 0
+            if self.close[i] < ma_d[i] and self.close[i] < ma_s[i] and dat[2,i] == 1:
+                dat[1,i] = 1
+                dat[2,i] = 0
+            if abs(ma_s[i-20]-ma_s[i]) <= 0.001 and abs(self.close[i] - ma_s[i]) < 0.001:
+                flt = True
+                for j in range(20):
+                    if self.close[i] < ma_s[i] + 2*sd[i] and self.close[i] > ma_s[i] - 2*sd[i]:
+                        flt = True
+                    else:
+                        flt = False
+                        break
+                if flt == True:
+                    for j in range(20):
+                        dat[0,i-j] = 0
+                        dat[1,i-j] = 0
+                        dat[2,i-j] = 1
+        for j in range(10):        
+            for i in range(len(self.close)):
+                if dat[0,i] == 1:
+                    dat[8,i] = dat[8,i-1] + 1
+                    dat[9,i] = 0
+                    dat[10,i] = 0
+                if dat[1,i] == 1:
+                    dat[8,i] = 0
+                    dat[9,i] = dat[9,i-1] + 1
+                    dat[10,i] = 0
+                if dat[2,i] == 1:
+                    dat[8,i] = 0
+                    dat[9,i] = 0
+                    dat[10,i] = dat[10,i-1] + 1
+            for i in range(len(self.close)):
+                if dat[8,i-2] > 20 and dat[2,i-1] == 1 and dat[2,i] == 0:
+                    dat[2,i-1] = 0
+                    dat[0,i] = 1
+                if dat[9,i-2] > 20 and dat[2,i-1] == 1 and dat[2,i] == 0: 
+                    dat[2,i-1] = 0
+                    dat[1,i] = 1
+        for i in range(len(self.close)):
+            if dat[8,i] > 0 and dat[8,i-1] == 0:
+                dat[11,i] == 1
+            if dat[8,i] == 0 and dat[8,i-1] > 0:
+                dat[11,i] == -1
+            if dat[9,i] > 0 and dat[9,i-1] == 0:
+                dat[12,i] == 1
+            if dat[9,i] == 0 and dat[9,i-1] > 0:
+                dat[12,i] == -1
+            if dat[10,i] > 0 and dat[10,i-1] == 0:
+                dat[13,i] == 1
+            if dat[10,i] == 0 and dat[10,i-1] > 0:
+                dat[13,i] == -1
+        self.up = np.zeros((2,len(self.close)))
+        self.down = np.zeros((2,len(self.close)))
+        self.range = np.zeros((2,len(self.close)))
+        self.up[0,:] = dat[0,:]
+        self.up[1,:] = pMa(dat[0,:],100)
+        self.down[0,:] = dat[1,:]
+        self.down[1,:] = pMa(dat[1,:],100)
+        self.range[0,:] = dat[2,:]
+        self.range[1,:] = pMa(dat[2,:],100)
+    def Candlesticks(self):
+        self.BullishRev = np.zeros((5,len(self.close)))
+        self.BearishRev = np.zeros((5,len(self.close)))
+        self.BullishMom = np.zeros((5,len(self.close)))
+        self.BearishMom = np.zeros((5,len(self.close)))
+        self.BullishRev[0,:] = self.bars[1,:]
+        self.BullishRev[1,:] = self.bars[11,:]
+        self.BearishRev[2,:] = self.bars[16,:]
+        self.BearishRev[0,:] = self.bars[2,:]
+        self.BearishRev[1,:] = self.bars[10,:]
+        self.BearishRev[2,:] = self.bars[17,:]
+        self.BullishMom[0,:] = self.bars[3,:]
+        self.BullishMom[1,:] = self.bars[19,:]
+        self.BullishMom[2,:] = self.bars[7,:]
+        self.BullishMom[3,:] = self.bars[5,:]
+        self.BearishMom[0,:] = self.bars[4,:]
+        self.BearishMom[1,:] = self.bars[20,:]
+        self.BearishMom[2,:] = self.bars[8,:]
+        self.BearishMom[3,:] = self.bars[6,:]
+        for i in range(len(self.close)):
+            if self.bars[0,i] + self.bars[9,i] + self.bars[18,i] >= 1:
+                if self.up[1,i] > 0.5:
+                    self.BearishRev[3,i] = 1
+                if self.down[1,i] > 0.5:
+                    self.BullishRev[3,i] = 1
+        # for i in range(len(self.close)):
+        #     if self.up[1,i] > 0.5:
+        #         for j in [1,3,5,7,11,12,14,16,19,22,23,25,27]:
+        #             if self.bars[j,i] == 1:
+        #                 self.Bullish[0,i] = 1
+        #         for j in [0,1,2,4,6,8,9,10,11,13,15,17,18,20,21,24,26,28]:
+        #             if self.bars[j,i] == 1:
+        #                 self.Bearish[0,i] = 1
+        #     if self.down[1,i] > 0.5:
+        #         for j in [0,1,2,3,5,7,9,10,11,12,14,16,18,19,22,23,25,27]:
+        #             if self.bars[j,i] == 1:
+        #                 self.Bullish[1,i] = 1
+        #         for j in [2,4,6,8,10,13,15,17,20,21,24,26,28]:
+        #             if self.bars[j,i] == 1:
+        #                 self.Bearish[1,i] = 1
+    def Chart(self):
+        print sum(self.Bullish), sum(self.Bearish), len(self.close)
+        self.Bullish
+        for i in range(len(self.close)):
+            self.Bearish[i] = self.Bearish[i]*self.high[i]
+            self.Bullish[i] = self.Bullish[i]*self.low[i]
+        plt.plot(self.Bullish,'gx')
+        plt.plot(self.Bearish,'rx')
+        plt.plot(self.close,'b')
+        plt.show()
+    def MAC(self):
+        ub = np.zeros((4,len(self.close)))
+        lb = np.zeros((4,len(self.close)))
+        self.ubb = np.zeros((4,len(self.close)))
+        self.lbb = np.zeros((4,len(self.close)))
+        ma = np.zeros((4,len(self.close)))
+        sd = np.zeros((4,len(self.close)))
+        ma[0,:] = pMa(self.close,20)
+        ma[1,:] = pMa(self.close,50)
+        ma[2,:] = pMa(self.close,100)
+        ma[3,:] = pMa(self.close,200)
+        sd[0,:] = pStd(self.close,20)
+        sd[1,:] = pStd(self.close,50)
+        sd[2,:] = pStd(self.close,100)
+        sd[3,:] = pStd(self.close,200)
+        upma = pMa(self.up[0,:],20)
+        dwnma = pMa(self.down[0,:],20)
+        for i in range(len(self.close)):
+            for j in range(4):
+                ub[j,i] = ma[j,i] + 1.645*sd[j,i]
+                lb[j,i] = ma[j,i] - 1.645*sd[j,i]
+        for i in range(len(self.close)):
+            for j in range(4):
+                if self.close[i] > ub[j,i]:
+                    self.ubb[j,i] = 1
+                if self.close[i] < lb[j,i]:
+                    self.lbb[j,i] = 1
+        macup = np.zeros((10,len(self.close)))
+        macdwn = np.zeros((10,len(self.close)))
+        for j in range(4):
+            for i in range(20,len(self.close)):
+                if self.ubb[j,i] == 1:
+                    if self.BearishRev[0,i] == 1:
+                        macdwn[0,i] = self.close[i]
+                    if self.BearishRev[1,i] == 1:
+                        macdwn[1,i] = self.close[i]
+                    if self.BearishRev[2,i] == 1:
+                        macdwn[2,i] = self.close[i]
+                    if self.BearishRev[3,i] == 1:
+                        macdwn[3,i] = self.close[i]
+                if self.lbb[j,i] == 1:
+                    if self.BearishRev[0,i] == 1:
+                        macup[0,i] = self.close[i]
+                    if self.BearishRev[1,i] == 1:
+                        macup[1,i] = self.close[i]
+                    if self.BearishRev[2,i] == 1:
+                        macup[2,i] = self.close[i]
+                    if self.BearishRev[3,i] == 1:
+                        macup[3,i] = self.close[i]
+        self.Z = np.zeros(len(self.close))
+        self.wicks = np.zeros(len(self.close))
+        self.tails = np.zeros(len(self.close))
+        for i in range(len(self.close)):
+            self.Z[i] = float((self.close[i]-ma[1,i]))/sd[1,i]
+            self.wicks[i] = self.high[i]-max(self.open[i],self.close[i])
+            self.tails[i] = min(self.open[i],self.close[i])-self.low[i]
+        # plt.plot(self.Z)
+        # plt.show()
+        h1 = []
+        h2 = []
+        l1 = []
+        l2 = []
+        ubbv_temp = []
+        for i in range(1,len(self.close)):
+            if self.ubb[1,i] == 1:
+                ubbv_temp.append(self.close[i])
+            if self.ubb[1,i] == 0 and self.ubb[1,i-1] == 1:
+                uv = 0.0
+                for j in range(len(ubbv_temp)):
+                    uv += ubbv_temp[j]
+                uv = uv/len(ubbv_temp)
+                h1.append(i)
+                h2.append(uv)
+                ubbv_temp = []
+        lbbv_temp = []
+        for i in range(1,len(self.close)):
+            if self.lbb[1,i] == 1:
+                lbbv_temp.append(self.close[i])
+            if self.lbb[1,i] == 0 and self.lbb[1,i-1] == 1:
+                lv = 0.0
+                for j in range(len(lbbv_temp)):
+                    lv += lbbv_temp[j]
+                lv = lv/len(lbbv_temp)
+                l1.append(i)
+                l2.append(lv)
+                lbbv_temp = []
+        self.lows = np.zeros((2,len(l1)))
+        self.highs = np.zeros((2,len(h1)))
+        self.lows[0,:] = l1
+        self.lows[1,:] = l2
+        self.highs[0,:] = h1
+        self.highs[1,:] = h2
+        # plt.plot(self.highs[1,:])
+        # plt.show()
+        # plt.plot(self.lows[1,:])
+        # plt.show()
+        # plt.plot(macdwn[0,:],'bo')
+        # plt.plot(macdwn[1,:],'yo')
+        # plt.plot(macdwn[2,:],'go')
+        # plt.plot(macdwn[3,:],'ro')
+        # plt.plot(self.close,'b')
+        # plt.show()
+        # plt.plot(macup[0,:],'bo')
+        # plt.plot(macup[1,:],'yo')
+        # plt.plot(macup[2,:],'go')
+        # plt.plot(macup[3,:],'ro')
+        # plt.plot(self.close,'b')
+        # plt.show()
+    def SupportResistance(self):
+        mx = round(max(self.close),2) + 0.01
+        mn = round(min(self.close),2) - 0.01
+        n = 100*(mx - mn)
+        self.sr = np.zeros((int(n),len(self.close)))
+        self.zerosup = np.zeros((int(n),len(self.close)))
+        self.zerosdwn = np.zeros((int(n),len(self.close)))
+        for i in range(len(self.close)):
+            for j in range(int(n)):
+                self.sr[j,i] = mx - j*0.01
+        for i in range(len(self.close)):
+            for j in range(int(n)):
+                if self.close[i] > self.sr[j,i] - 0.0025 and self.close[i] < self.sr[j,i]:
+                    self.zerosdwn[j,i] = 1
+                if self.close[i] < self.sr[j,i] + 0.0025 and self.close[i] > self.sr[j,i]:
+                    self.zerosup[j,i] = 1
+        # self.lvls[0,:] = Doji_Resistance(self.open, self.high, self.low, self.close)
+        # self.lvls[1,:] = Doji_Support(self.open, self.high, self.low, self.close)
+        # print self.lvls
+
 class MarketOnClosePortfolio:
     def __init__(self, symbol, bars, lots, Entry_array, Exit_array, initial_capital = 1000):
         self.symbol = symbol
@@ -174,7 +581,9 @@ def pMonth(dt):
 def pDay(dt):
     return int(dt[len(dt) -2:])
 
-def FindDateRange(start, tf):
+def FindDateRange(start, end, tf):
+    d = []
+    d.append(start)
     yr = pYear(start)
     mnth = pMonth(start)
     dy = pDay(start)
@@ -186,8 +595,7 @@ def FindDateRange(start, tf):
         day_string = str(dy)
     else:
         day_string = "0" + str(dy)
-    # print "from function init: " + str(yr) + "-" + month_string + "-" + day_string 
-    while np.busday_count(start, str(yr) + "-" + month_string + "-" + day_string) <= 3000/(tf):
+    while np.busday_count(end, str(yr) + "-" + month_string + "-" + day_string) < 0:
         if calendar.monthrange(yr, mnth)[1] != dy + 1:
             dy = dy + 1
             if dy >= 10:
@@ -213,7 +621,8 @@ def FindDateRange(start, tf):
                 day_string = str(dy)
             else:
                 day_string = "0" + str(dy)
-    # print "from function: " + str(yr) + "-" + month_string + "-" + day_string 
+        if np.busday_count(start, str(yr) + "-" + month_string + "-" + day_string) > 4000/(tf):
+            break
     return str(yr) + "-" + month_string + "-" + day_string 
 
 # def pOpen():
@@ -371,7 +780,7 @@ def Calendar_Forecast(sym, tm):
     url = "https://api-fxpractice.oanda.com/labs/v1/calendar?instrument=" + str(sym) + "&period=" + str(tm)
     r = requests.get(url, headers=h)     
     data = json.loads(r.text)
-    print data
+    print data[0]
     # iterable = (x["forecast"] for x in data)
     # a = np.fromiter(iterable, np.float, count=-1)
     # print a
@@ -426,12 +835,12 @@ def LevelizedPrice(mc, hr, End_Points, Window):
     return lvlprice[0,:]
 
 
-def PriceAction(hr, Price_Action, hour_time, avg_period):
-    Beam6 = []
-    for i in range(0,len(hr)):
-        if hr[i] == hour_time:
-            Beam6.append(Price_Action[i])
-    return pMa(np.array(Beam6),avg_period)
+# def PriceAction(hr, Price_Action, hour_time, avg_period):
+#     Beam6 = []
+#     for i in range(0,len(hr)):
+#         if hr[i] == hour_time:
+#             Beam6.append(Price_Action[i])
+#     return pMa(np.array(Beam6),avg_period)
 
 def BearishReversal(o, h, l, c, rng):
     BearishReversal_Data = []
@@ -499,11 +908,103 @@ def BullishReversal(o, h, l, c, rng):
                 BullishReversal_Data2.append(0)
         return BullishReversal_Data2
 
+def Doji_Resistance(o,h,l,c):
+    DojiR_data = []
+    d = Doji(o, h, l, c)
+    lvl = 0.0
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if d[i] == 1:
+            lvl = (h[i] + h[i-1])/2
+            DojiR_data.append(lvl)
+        else:
+            DojiR_data.append(0)
+    return DojiR_data
+
+def Doji_Support(o,h,l,c):
+    DojiS_data = []
+    d = Doji(o, h, l, c)
+    lvl = 0.0
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if d[i] == 1:
+            lvl = (l[i] + l[i-1])/2
+            DojiS_data.append(lvl)
+        else:
+            DojiS_data.append(0)
+    return DojiS_data
+
+def HighWave(o,h,l,c):
+    HW_data = []
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if h[i] - max(o[i], c[i]) > 2*abs(o[i]-c[i]) and min(o[i], c[i]) - l[i] > 2*abs(o[i]-c[i]):
+            HW_data.append(1)
+        else:
+            HW_data.append(0)
+    return HW_data
+
+def BullishEngulfing(o,h,l,c):
+    BE_data = []
+    sd_data = pStd(c,50)
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if c[i] > h[i-1] and o[i-1] - c[i-1] > sd_data[i]/64:
+            # print sd_data[i]/8
+            BE_data.append(1)
+        else:
+            BE_data.append(0)
+    return BE_data
+
+def BearishEngulfing(o,h,l,c):
+    BE_data = []
+    sd_data = pStd(c,50)
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if c[i] < l[i-1] and c[i-1]-o[i-1] > sd_data[i]/64:
+            BE_data.append(1)
+        else:
+            BE_data.append(0)
+    return BE_data
+
+def DarkCloudCover(o,h,l,c):
+    DCC_data = []
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if c[i] < max(o[i-1],c[i-1]) - (max(o[i-1],c[i-1]) - min(o[i-1],c[i-1]))/2:
+            DCC_data.append(1)
+        else:
+            DCC_data.append(0)
+    return DCC_data
+
+def BullishPiercing(o,h,l,c):
+    BP_data = []
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if c[i] > min(o[i-1],c[i-1]) + (max(o[i-1],c[i-1]) - min(o[i-1],c[i-1]))/2:
+            BP_data.append(1)
+        else:
+            BP_data.append(0)
+    return BP_data
+
+def BullishHarami(o,h,l,c):
+    BH_data = []
+    sd = pStd(c, 60)
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if c[i-1] - o[i-1] > sd[i-1] and c[i] > c[i-1]:
+            BH_data.append(1)
+        else:
+            BH_data.append(0)
+    return BH_data
+
+def BearishHarami(o,h,l,c):
+    BH_data = []
+    sd = pStd(c, 60)
+    for i in range(0, max(len(o),len(h),len(l),len(c))):
+        if o[i-1] - c[i-1] > sd[i-1] and c[i] < c[i-1]:
+            BH_data.append(1)
+        else:
+            BH_data.append(0)
+    return BH_data
 
 def BullishMarubozu(o, h, l, c):
     BullM_data = []
+    sd_data = pStd(c,50)
     for i in range(0, max(len(o),len(h),len(l),len(c))):
-        if c[i] > o[i] and TR(h[i], l[i], o[i])/c[i] > 0.25 and h[i] - max(o[i],c[i]) < 0.1*(c[i] - o[i]) and 0.1*(c[i] - o[i]) > min(o[i],c[i]) - l[i]:
+        if c[i] > o[i] and abs(c[i]-o[i]) > sd_data[i] and h[i] - max(o[i],c[i]) < 0.1*(c[i] - o[i]):
             BullM_data.append(1)
         else:
             BullM_data.append(0)
@@ -511,8 +1012,9 @@ def BullishMarubozu(o, h, l, c):
 
 def BearishMarubozu(o, h, l, c):
     BearM_data = []
+    sd_data = pStd(c,50)
     for i in range(0, max(len(o),len(h),len(l),len(c))):
-        if c[i] < o[i] and TR(h[i], l[i], o[i])/c[i] > 0.25 and h[i] - max(o[i],c[i]) < 0.1*(c[i] - o[i]) and 0.1*(c[i] - o[i]) > min(o[i],c[i]) - l[i]:
+        if c[i] < o[i] and abs(c[i]-o[i]) > sd_data[i] and 0.1*(c[i] - o[i]) > min(o[i],c[i]) - l[i]:
             BearM_data.append(1)
         else:
             BearM_data.append(0)
@@ -530,7 +1032,7 @@ def LongLeggedDoji(o, h, l, c):
 def Doji(o, h, l, c):
     Doji_data = []
     for i in range(0, max(len(o),len(h),len(l),len(c))):
-        if abs(o[i] - c[i]) < 0.001:
+        if abs(o[i] - c[i]) < 0.0005:
             Doji_data.append(1)
         else:
             Doji_data.append(0)
@@ -551,9 +1053,8 @@ def Dragonfly(o,h,l,c):
     Dragonfly_Data = []
     h = Hammer(o,h,l,c)
     d = Doji(o,h,l,c)
-    g = h + d
-    for i in range(0,len(g)):
-        if g[i] == 2:
+    for i in range(0,len(c)):
+        if h[i] == 1 and d[i] == 1:
             Dragonfly_Data.append(1)
         else:
             Dragonfly_Data.append(0)
@@ -593,7 +1094,9 @@ def MorningStar(o,h,l,c):
         if rev[i] > 0 and be[i-1] == 1 and bu[i+1] == 1:
             MorningStar_Data[0,i] = 1
     return MorningStar_Data[0,:]
-
+# Revise Morning & Evening star
+# 3rd > 50% of 1st and engulfs 2nd
+# 2nd usually continues the trend
 def EveningStar(o,h,l,c):
     be = BearishMarubozu(o,h,l,c)
     bu = BullishMarubozu(o,h,l,c)
@@ -618,7 +1121,7 @@ def LongDown(c):
     LD_data = np.zeros((1,len(c)))
     sd_data = pStd(c,50)
     for i in range(0, len(c)):
-        if c[i] - c[i-1] > 2*sd_data[i]:
+        if c[i] - c[i-1] < -2*sd_data[i]:
             LD_data[0,i] = 1
     return LD_data[0,:]
 
@@ -648,7 +1151,7 @@ def ThreeWhiteSoldiers(c):
     TWS_data = np.zeros((1,len(c)))
     sd_data = pStd(c,50)
     for i in range(0, len(c)):
-        if c[i] - c[i-1] > 2*sd_data[i] and c[i-1] - c[i-2] > 2*sd_data[i] and c[i-2] - c[i-3] > 2*sd_data[i]:
+        if c[i] > c[i-1] and c[i-1] > c[i-2] and c[i-2] > c[i-3]:
             TWS_data[0,i] = 1
     return TWS_data[0,:]
 
@@ -656,7 +1159,7 @@ def ThreeBlackCrows(c):
     TBC_data = np.zeros((1,len(c)))
     sd_data = pStd(c,50)
     for i in range(0, len(c)):
-        if c[i] - c[i-1] < -2*sd_data[i] and c[i-1] - c[i-2] < -2*sd_data[i] and c[i-2] - c[i-3] < -2*sd_data[i]:
+        if c[i] < c[i-1] and c[i-1] < c[i-2] and c[i-2] < c[i-3]:
             TBC_data[0,i] = 1
     return TBC_data[0,:]
 

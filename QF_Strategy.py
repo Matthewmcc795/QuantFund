@@ -126,29 +126,29 @@ def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
                 TP = round(c[0] + sd/2 + 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
 
-def BusRide(account_id, sec, vol, tf, file_nm):
-    for i in range(len(sec)):
-        SaveToLog(main_log, "Collecting BusRide data for " + sec[i])
-        c = Get_Price(sec[i], tf, 51, "c")
-        if tf == "D":
-            sell_tp, buy_tp = Get_Pivot_Points(sec, "D", c[0])
-        elif tf == "M15":
-            sell_tp = round(c[0]/1.0025 + 0.00001,5)
-            buy_tp = round(c[0]*1.0025 - 0.00001,5)
-        Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
-        lvl_min = round(c[2],2)
-        lvl_max = round(c[2],2) + 0.01 
-        ma = SMA(c, 50)      
-        if Open_Units == 0:
-            SaveToLog(main_log, "Checking Bus Ride signals for " + sec[i])
-            if c[2] > lvl_min and c[0] < lvl_min and ma > lvl_min:
-                SaveToLog(main_log, "Bus Ride: Sell " + sec[i])
-                SL = round(c[2] - 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", sell_tp, SL, file_nm, LIVE_ACCESS_TOKEN)
-            elif c[2] < lvl_max and c[0] > lvl_max and ma < lvl_max:
-                SaveToLog(main_log, "Bus Ride: Buy " + sec[i])
-                SL = round(c[2] + 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, SL, file_nm, LIVE_ACCESS_TOKEN)
+# def BusRide(account_id, sec, vol, tf, file_nm):
+#     for i in range(len(sec)):
+#         SaveToLog(main_log, "Collecting BusRide data for " + sec[i])
+#         c = Get_Price(sec[i], tf, 51, "c")
+#         if tf == "D":
+#             sell_tp, buy_tp = Get_Pivot_Points(sec, "D", c[0])
+#         elif tf == "M15":
+#             sell_tp = round(c[0]/1.0025 + 0.00001,5)
+#             buy_tp = round(c[0]*1.0025 - 0.00001,5)
+#         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+#         lvl_min = round(c[2],2)
+#         lvl_max = round(c[2],2) + 0.01 
+#         ma = SMA(c, 50)      
+#         if Open_Units == 0:
+#             SaveToLog(main_log, "Checking Bus Ride signals for " + sec[i])
+#             if c[2] > lvl_min and c[0] < lvl_min and ma > lvl_min:
+#                 SaveToLog(main_log, "Bus Ride: Sell " + sec[i])
+#                 SL = round(c[2] - 0.00001,5)
+#                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", sell_tp, SL, file_nm, LIVE_ACCESS_TOKEN)
+#             elif c[2] < lvl_max and c[0] > lvl_max and ma < lvl_max:
+#                 SaveToLog(main_log, "Bus Ride: Buy " + sec[i])
+#                 SL = round(c[2] + 0.00001,5)
+#                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, SL, file_nm, LIVE_ACCESS_TOKEN)
 
 def IntraTrend(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
@@ -218,106 +218,106 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                     #     ITM["counter"][sec[i]] += 1 
                     # elif (trd_side == "buy" and c[0] < SMA50) or (trd_side == "sell" and c[0] > SMA50):
                     #     ClosePositions(account_id, sec[i], file_nm)
-                elif tf == "D":
-                    if c[0] < SMA21/1.0025 and c[0] < trd_entry and ITD["counter"][sec[i]] == -1 and Open_Units == vol:
-                        ITD["SL"][sec[i]] = round(trd_entry - 0.00001, 5)
-                        UpdateStopLoss(account_id, trd_ID, ITD["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                        ITD["counter"][sec[i]] = 0
-                    elif c[0] < SMA21/1.0025 and c[0] < trd_entry and ITD["counter"][sec[i]] == -1 and Open_Units > vol:
-                        ITD["SL"][sec[i]] = round(SMA21, 5)
-                        UpdateStopLoss(account_id, trd_ID, ITD["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                        ITD["counter"][sec[i]] = 0
-                    if ITD["counter"][sec[i]] >= 3 and abs(c[2] - c[0]) >= 0.00075:
-                        SaveToLog(main_log, "ITD: Scaling into " + sec[i])
-                        vol_adj = round(vol*(abs(ITD["SL"][sec[i]] - SMA10)/abs(ITD["SL"][sec[i]] - c[0])),0)
-                        if Open_Units < 5*vol and c[0] > c[1] and c[1] > c[2]:
-                            OpenMarketOrder(account_id, sec[i], vol_adj, "market", "buy", ITD["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
-                        elif Open_Units < 5*vol and c[0] < c[1] and c[1] < c[2]:
-                            OpenMarketOrder(account_id, sec[i], vol_adj, "market", "sell", ITD["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
-                        IT_BreakEven(account_id, sec[i], trd_entry, c[0], vol, vol_adj, file_nm, LIVE_ACCESS_TOKEN)
-                        ITD["counter"][sec[i]] = 0
-                    elif ITD["counter"][sec[i]] != -1:
-                        ITD["counter"][sec[i]] += 1 
-                    elif (trd_side == "buy" and c[0] < SMA50) or (trd_side == "sell" and c[0] > SMA50):
-                        ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
+                # elif tf == "D":
+                #     if c[0] < SMA21/1.0025 and c[0] < trd_entry and ITD["counter"][sec[i]] == -1 and Open_Units == vol:
+                #         ITD["SL"][sec[i]] = round(trd_entry - 0.00001, 5)
+                #         UpdateStopLoss(account_id, trd_ID, ITD["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                #         ITD["counter"][sec[i]] = 0
+                #     elif c[0] < SMA21/1.0025 and c[0] < trd_entry and ITD["counter"][sec[i]] == -1 and Open_Units > vol:
+                #         ITD["SL"][sec[i]] = round(SMA21, 5)
+                #         UpdateStopLoss(account_id, trd_ID, ITD["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                #         ITD["counter"][sec[i]] = 0
+                #     if ITD["counter"][sec[i]] >= 3 and abs(c[2] - c[0]) >= 0.00075:
+                #         SaveToLog(main_log, "ITD: Scaling into " + sec[i])
+                #         vol_adj = round(vol*(abs(ITD["SL"][sec[i]] - SMA10)/abs(ITD["SL"][sec[i]] - c[0])),0)
+                #         if Open_Units < 5*vol and c[0] > c[1] and c[1] > c[2]:
+                #             OpenMarketOrder(account_id, sec[i], vol_adj, "market", "buy", ITD["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
+                #         elif Open_Units < 5*vol and c[0] < c[1] and c[1] < c[2]:
+                #             OpenMarketOrder(account_id, sec[i], vol_adj, "market", "sell", ITD["TP"][sec[i]], SMA10, file_nm, LIVE_ACCESS_TOKEN)
+                #         IT_BreakEven(account_id, sec[i], trd_entry, c[0], vol, vol_adj, file_nm, LIVE_ACCESS_TOKEN)
+                #         ITD["counter"][sec[i]] = 0
+                #     elif ITD["counter"][sec[i]] != -1:
+                #         ITD["counter"][sec[i]] += 1 
+                #     elif (trd_side == "buy" and c[0] < SMA50) or (trd_side == "sell" and c[0] > SMA50):
+                #         ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
                     # elif (trd_side == "buy" and c[0] < SMA50) or (trd_side == "sell" and c[0] > SMA50):
                     #     ClosePositions(port_list[k], sec[i], file_nm)
 
-def CableSnap(port_list, sec, vol, tf, file_nm, tokens):
-    for i in range(len(sec)):
-        SaveToLog(main_log, "Collecting CableSnap data for " + sec[i])
-        c = Get_Price(sec[i], tf, 51, "c")
-        SMA10 = SMA(c,10)
-        SMA21 = SMA(c,21)
-        SMA50 = SMA(c,50)
-        for k in range(len(port_list)):
-            Open_Units = GetOpenUnits(port_list[k], sec[i], sec, tokens[k])
-            if (Open_Units <= 4*vol[k] and Positions["CS"][sec[i]] >= 3) or Open_Units == 0:
-                if c[0] > SMA10 and c[0] < SMA21 and SMA21 < SMA50:
-                    SaveToLog(main_log, "CS: Sell " + sec[i])
-                    if tf == "D":
-                        TP = round(c[0] - 2*abs(c[0] - SMA50), 5)
-                        SL = round(SMA50, 5)
-                    elif tf == "M15":
-                        TP = round(c[0] - abs(c[0] - SMA50), 5)
-                        SL = round(SMA50, 5)
-                    OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "sell", TP, SL, file_nm, tokens[k])
-                    Positions["CS"][sec[i]] = 0
-            elif Open_Units != 0:
-                Positions["CS"][sec[i]] += 1
-                SaveToLog(main_log, "CS: updating stops for " + sec[i])
-                Open_Trades = GetOpenTrades(port_list[k], sec[i], tokens[k])
-                for positions in Open_Trades["trades"]:
-                    trd_ID = positions["id"]
-                    trd_entry = float(positions["price"])
-                    trd_side = positions["side"]
-                    trd_size = positions["units"]
-                    if tf == "D":
-                        if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol[k]:
-                            SL = round(trd_entry - 0.00001, 5)
-                            UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
-                        elif c[0] < ((SMA21+SMA50)/2)/1.0025 and Open_Units > vol[k]:
-                            SL = round((SMA21 + SMA50)/2, 5)
-                            UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
-                    elif tf == "M15":
-                        if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol[k]:
-                            SL = round(trd_entry - 0.00001, 5)
-                            UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
-                        elif c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units > vol[k]:
-                            SL = round(SMA21, 5)
-                            UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
+# def CableSnap(port_list, sec, vol, tf, file_nm, tokens):
+#     for i in range(len(sec)):
+#         SaveToLog(main_log, "Collecting CableSnap data for " + sec[i])
+#         c = Get_Price(sec[i], tf, 51, "c")
+#         SMA10 = SMA(c,10)
+#         SMA21 = SMA(c,21)
+#         SMA50 = SMA(c,50)
+#         for k in range(len(port_list)):
+#             Open_Units = GetOpenUnits(port_list[k], sec[i], sec, tokens[k])
+#             if (Open_Units <= 4*vol[k] and Positions["CS"][sec[i]] >= 3) or Open_Units == 0:
+#                 if c[0] > SMA10 and c[0] < SMA21 and SMA21 < SMA50:
+#                     SaveToLog(main_log, "CS: Sell " + sec[i])
+#                     if tf == "D":
+#                         TP = round(c[0] - 2*abs(c[0] - SMA50), 5)
+#                         SL = round(SMA50, 5)
+#                     elif tf == "M15":
+#                         TP = round(c[0] - abs(c[0] - SMA50), 5)
+#                         SL = round(SMA50, 5)
+#                     OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "sell", TP, SL, file_nm, tokens[k])
+#                     Positions["CS"][sec[i]] = 0
+#             elif Open_Units != 0:
+#                 Positions["CS"][sec[i]] += 1
+#                 SaveToLog(main_log, "CS: updating stops for " + sec[i])
+#                 Open_Trades = GetOpenTrades(port_list[k], sec[i], tokens[k])
+#                 for positions in Open_Trades["trades"]:
+#                     trd_ID = positions["id"]
+#                     trd_entry = float(positions["price"])
+#                     trd_side = positions["side"]
+#                     trd_size = positions["units"]
+#                     if tf == "D":
+#                         if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol[k]:
+#                             SL = round(trd_entry - 0.00001, 5)
+#                             UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
+#                         elif c[0] < ((SMA21+SMA50)/2)/1.0025 and Open_Units > vol[k]:
+#                             SL = round((SMA21 + SMA50)/2, 5)
+#                             UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
+#                     elif tf == "M15":
+#                         if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol[k]:
+#                             SL = round(trd_entry - 0.00001, 5)
+#                             UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
+#                         elif c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units > vol[k]:
+#                             SL = round(SMA21, 5)
+#                             UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
 
-def Banzai(port_list, sec, vol, tf, file_nm, tokens):
-    for i in range(len(sec)):
-        SaveToLog(main_log, "Collecting Banzai data for " + sec[i])
-        c = Get_Price(sec[i], tf, 51, "c")
-        SMA10 = SMA(c,10)
-        SMA21 = SMA(c,21)
-        SMA50 = SMA(c,50)
-        for k in range(len(port_list)):
-            Open_Units = GetOpenUnits(port_list[k], sec[i], sec, tokens[k])
-            if (Open_Units <= 4*vol[k] and Ban["counter"][sec[i]] >= 3) or Open_Units == 0:
-                if c[0] < SMA10 and c[0] > SMA21 and SMA21 > SMA50:
-                    SaveToLog(main_log, "Banzai: Buy " + sec[i])
-                    TP = round(c[0] + abs(c[0] - SMA50), 3)
-                    SL = round(SMA50, 3)
-                    OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "buy", TP, SL, file_nm, tokens[k])
-                    Ban["counter"][sec[i]] = 0
-            elif Open_Units != 0:
-                Ban["counter"][sec[i]] += 1
-                SaveToLog(main_log, "Banzai: updating stops for " + sec[i])
-                Open_Trades = GetOpenTrades(port_list[k], sec[i], tokens[k])
-                for positions in Open_Trades["trades"]:
-                    trd_ID = positions["id"]
-                    trd_entry = float(positions["price"])
-                    trd_side = positions["side"]
-                    trd_size = positions["units"]
-                    if c[0] > SMA21/1.0025 and c[0] > trd_entry and Open_Units == vol[k]:
-                        SL = round(trd_entry - 0.001, 3)
-                        UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
-                    elif c[0] > SMA21/1.0025 and c[0] > trd_entry and Open_Units > vol[k]:
-                        SL = round(SMA21, 3)
-                        UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
+# def Banzai(port_list, sec, vol, tf, file_nm, tokens):
+#     for i in range(len(sec)):
+#         SaveToLog(main_log, "Collecting Banzai data for " + sec[i])
+#         c = Get_Price(sec[i], tf, 51, "c")
+#         SMA10 = SMA(c,10)
+#         SMA21 = SMA(c,21)
+#         SMA50 = SMA(c,50)
+#         for k in range(len(port_list)):
+#             Open_Units = GetOpenUnits(port_list[k], sec[i], sec, tokens[k])
+#             if (Open_Units <= 4*vol[k] and Ban["counter"][sec[i]] >= 3) or Open_Units == 0:
+#                 if c[0] < SMA10 and c[0] > SMA21 and SMA21 > SMA50:
+#                     SaveToLog(main_log, "Banzai: Buy " + sec[i])
+#                     TP = round(c[0] + abs(c[0] - SMA50), 3)
+#                     SL = round(SMA50, 3)
+#                     OpenMarketOrder(port_list[k], sec[i], vol[k], "market", "buy", TP, SL, file_nm, tokens[k])
+#                     Ban["counter"][sec[i]] = 0
+#             elif Open_Units != 0:
+#                 Ban["counter"][sec[i]] += 1
+#                 SaveToLog(main_log, "Banzai: updating stops for " + sec[i])
+#                 Open_Trades = GetOpenTrades(port_list[k], sec[i], tokens[k])
+#                 for positions in Open_Trades["trades"]:
+#                     trd_ID = positions["id"]
+#                     trd_entry = float(positions["price"])
+#                     trd_side = positions["side"]
+#                     trd_size = positions["units"]
+#                     if c[0] > SMA21/1.0025 and c[0] > trd_entry and Open_Units == vol[k]:
+#                         SL = round(trd_entry - 0.001, 3)
+#                         UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
+#                     elif c[0] > SMA21/1.0025 and c[0] > trd_entry and Open_Units > vol[k]:
+#                         SL = round(SMA21, 3)
+#                         UpdateStopLoss(port_list[k], trd_ID, SL, file_nm, tokens[k])
 
 ##########################################################################################################
 #                                                                                                        #

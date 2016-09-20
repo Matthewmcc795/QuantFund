@@ -37,23 +37,23 @@
 # 14/7/2016
 # Explore the idea of having multiple methodologies that meet periodically to make decisions
 # Idea came about as a result of thinking of HR planning for the rest of the fund
-    # You could design jobs and then design scripts to accomplish the tasks/asmuchaspossible
-    # Think of a fund with various roles than have morning meetings, sector and PM meetings
+#     You could design jobs and then design scripts to accomplish the tasks/asmuchaspossible
+#     Think of a fund with various roles than have morning meetings, sector and PM meetings
 # My theory is that by looking through different lenses we can establish competing points of view
-    # Then when we compile our findings we can gain better perspective
-    # Example, 
-        # Have a macro analyst have periodic M --> W --> D analysis of macro patterns
-        # Have a day trader who can give daily feedback of how the market is responding
-        # By comparing the findings we can better estimate probabilities, R:R
+#     Then when we compile our findings we can gain better perspective
+#     Example, 
+#         Have a macro analyst have periodic M --> W --> D analysis of macro patterns
+#         Have a day trader who can give daily feedback of how the market is responding
+#         By comparing the findings we can better estimate probabilities, R:R
 # This could create the structure that motivates various Optimizer functions
-    # Similar to how QF_Strategy has the strategies that motivate the indicator order functions
+#     Similar to how QF_Strategy has the strategies that motivate the indicator order functions
 # The ideas of an Eric and a compliance officer or a risk manager would be functions w/ names
-    # This script is sort of our "Optimizer Department" 
-    # In addition to our "Strategy Department" which handles all signals
-    # We could then create a "Trader Department" that optimizes entries
-    # As well as a "Manager Department" that gives oversight to risk, compliance, reporting etc. 
+#     This script is sort of our "Optimizer Department" 
+#     In addition to our "Strategy Department" which handles all signals
+#     We could then create a "Trader Department" that optimizes entries
+#     As well as a "Manager Department" that gives oversight to risk, compliance, reporting etc. 
 # Some departments could be consolidators.
-    # Traders and Managers would sync up to the analysis of the Optimizer
+#     Traders and Managers would sync up to the analysis of the Optimizer
 
 ##########################################################################################################
 #                                                                                                        #

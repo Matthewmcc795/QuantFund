@@ -89,7 +89,7 @@ for k in range(0,9):
         SMA10 = aavg/10
 
         if Close(i) < SMA10 and Close(i) > SMA21 and Close(i) > SMA50 and Open_Order == 0 and SMA50/FIRSTSMA50-1 > 0.000005 and i - last_entry > 5:
-            Trade_Counter = Trade_Counter + 1 
+            Trade_Counter += 1 
             Open_Order = 1
             Open_Price = Close(i)
             Stop_Loss = (SMA21 + SMA50)/2
@@ -97,7 +97,7 @@ for k in range(0,9):
             Carry_Price = Close(i)
             last_entry = i
         elif Close(i) > SMA10 and Close(i) < SMA21 and Close(i) < SMA50 and Open_Order == 0 and SMA50/FIRSTSMA50-1 < -0.000005 and i - last_entry > 5:
-            Trade_Counter = Trade_Counter + 1 
+            Trade_Counter += 1 
             Open_Order = -1
             Open_Price = Close(i)
             Stop_Loss = (SMA21 + SMA50)/2
