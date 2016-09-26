@@ -5,7 +5,7 @@ from array import *
 from Settings import CSTokens, LIVE_ACCESS_TOKEN, MAIL, NREPORT, MREPORT, PWD
 from QF_Strategy import *
 from QF_Functions import *
-from QF_Optimizer import *
+# from QF_Optimizer import *
 import httplib
 import urllib
 from datetime import datetime, timedelta
@@ -42,7 +42,7 @@ while True:
         dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_IntraTrend:
         SaveToLog(main_log, "Running Intraday_IntraTrend")
-        IntraTrend(QFPort[0], QFSec, QFVol, "M15", fl_strat1)
+        IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat1)
         SaveToLog(main_log, "Intraday_IntraTrend complete")
         dt_Intraday_IntraTrend += timedelta(minutes=15)
         dt_Intraday_IntraTrend = dt_Intraday_IntraTrend.replace(second=1, microsecond=1)
@@ -51,7 +51,7 @@ while True:
     ###############################################################################
     if datetime.now() > dt_Swing_MAC:
         SaveToLog(main_log, "Running Swing_MAC")
-        MovingAverageContrarian(QFPort[1], QFSec, QFVol, "H4", fl_strat2)
+        MovingAverageContrarian(QFPort[2], QFSec, QFVol, "H4", fl_strat2)
         SaveToLog(main_log, "Swing_MAC complete")
         dt_Swing_MAC += timedelta(hours=4)
         dt_Swing_MAC = dt_Swing_MAC.replace(minute=0, second=1, microsecond=1)

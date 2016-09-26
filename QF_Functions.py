@@ -7,7 +7,7 @@ from Settings import LIVE_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STRV, STRC
 import httplib
 import urllib
 from QF_Strategy import *
-from QF_Optimizer import *
+# from QF_Optimizer import *
 from datetime import datetime, timedelta
 import time
 import sys

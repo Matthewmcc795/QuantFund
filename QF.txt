@@ -13408,3 +13408,38 @@ Collecting PPB data for GBP_CHF 2016-07-20 18:08:39.974000
 Collecting PPB data for CAD_CHF 2016-07-20 18:08:45.435000
 Collecting PPB data for AUD_CHF 2016-07-20 18:08:50.779000
 Intraday_PPB complete 2016-07-20 18:08:56.320000
+Running Intraday_PPB 2016-09-26 15:12:00.795000
+Collecting PPB data for EUR_USD 2016-09-26 15:12:00.846000
+Collecting PPB data for GBP_USD 2016-09-26 15:12:08.296000
+Collecting PPB data for USD_CAD 2016-09-26 15:12:14.545000
+Collecting PPB data for AUD_USD 2016-09-26 15:12:19.930000
+Collecting PPB data for NZD_USD 2016-09-26 15:12:25.145000
+Intraday_PPB complete 2016-09-26 15:12:30.435000
+Running Intraday_IntraTrend 2016-09-26 15:17:00.551000
+Collecting IT data for EUR_USD 2016-09-26 15:17:00.560000
+Collecting IT data for GBP_USD 2016-09-26 15:17:03.410000
+Collecting IT data for USD_CAD 2016-09-26 15:17:06.167000
+Collecting IT data for AUD_USD 2016-09-26 15:17:08.907000
+Collecting IT data for NZD_USD 2016-09-26 15:17:12.310000
+Intraday_IntraTrend complete 2016-09-26 15:17:15.223000
+Running Intraday_PPB 2016-09-26 15:17:16.231000
+Collecting PPB data for EUR_USD 2016-09-26 15:17:16.238000
+Collecting PPB data for GBP_USD 2016-09-26 15:17:21.928000
+Collecting PPB data for USD_CAD 2016-09-26 15:17:28.749000
+Collecting PPB data for AUD_USD 2016-09-26 15:17:35.817000
+Collecting PPB data for NZD_USD 2016-09-26 15:17:41.519000
+Intraday_PPB complete 2016-09-26 15:17:48.240000
+Running Intraday_PPB 2016-09-26 15:22:01.330000
+Collecting PPB data for EUR_USD 2016-09-26 15:22:01.337000
+Collecting PPB data for GBP_USD 2016-09-26 15:22:07.018000
+Collecting PPB data for USD_CAD 2016-09-26 15:22:12.418000
+Collecting PPB data for AUD_USD 2016-09-26 15:22:17.788000
+Collecting PPB data for NZD_USD 2016-09-26 15:22:24.798000
+Intraday_PPB complete 2016-09-26 15:22:30.192000
+Running Intraday_PPB 2016-09-26 15:27:00.051000
+Collecting PPB data for EUR_USD 2016-09-26 15:27:00.058000
+Collecting PPB data for GBP_USD 2016-09-26 15:27:06.576000
+Collecting PPB data for USD_CAD 2016-09-26 15:27:11.910000
+Collecting PPB data for AUD_USD 2016-09-26 15:27:17.208000
+Collecting PPB data for NZD_USD 2016-09-26 15:27:22.492000
+Intraday_PPB complete 2016-09-26 15:27:27.800000

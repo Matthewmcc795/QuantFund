@@ -160,35 +160,19 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
         if Open_Units == 0:
             if c[0] > SMA10 and c[0] < SMA21 and c[0] < SMA50:
-                if tf == "M15":
-                    SaveToLog(main_log, "ITM: Sell " + sec[i])
-                    ITM["TP"][sec[i]] = round(c[0] - 0.9*abs(c[0] - SMA50), 5)
-                    ITM["SL"][sec[i]] = round(SMA50, 5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "sell", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                    ITM["counter"][sec[i]] = -1
-                    ITM["BEV"][sec[i]] = 0
-                elif tf == "D":
-                    SaveToLog(main_log, "ITD: Sell " + sec[i])
-                    ITD["TP"][sec[i]] = round(c[0] - 0.9*abs(c[0] - SMA50), 5)
-                    ITD["SL"][sec[i]] = round(SMA50, 5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "sell", ITD["TP"][sec[i]], ITD["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                    ITD["counter"][sec[i]] = -1
-                    ITD["BEV"][sec[i]] = 0
+                SaveToLog(main_log, "ITM: Sell " + sec[i])
+                ITM["TP"][sec[i]] = round(c[0] - 0.9*abs(c[0] - SMA50), 5)
+                ITM["SL"][sec[i]] = round(SMA50, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                ITM["counter"][sec[i]] = -1
+                ITM["BEV"][sec[i]] = 0
             elif c[0] < SMA10 and c[0] > SMA21 and c[0] > SMA50:
-                if tf == "M15":
-                    SaveToLog(main_log, "ITM: Buy " + sec[i])
-                    ITM["TP"][sec[i]] = round(c[0] + 0.9*abs(c[0] - SMA50), 5)
-                    ITM["SL"][sec[i]] = round(SMA50, 5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "buy", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                    ITM["counter"][sec[i]] = -1
-                    ITM["BEV"][sec[i]] = 0
-                elif tf == "D":
-                    SaveToLog(main_log, "ITD: Buy " + sec[i])
-                    ITD["TP"][sec[i]] = round(c[0] + 0.9*abs(c[0] - SMA50), 5)
-                    ITD["SL"][sec[i]] = round(SMA50, 5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "buy", ITD["TP"][sec[i]], ITD["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                    ITD["counter"][sec[i]] = -1
-                    ITD["BEV"][sec[i]] = 0
+                SaveToLog(main_log, "ITM: Buy " + sec[i])
+                ITM["TP"][sec[i]] = round(c[0] + 0.9*abs(c[0] - SMA50), 5)
+                ITM["SL"][sec[i]] = round(SMA50, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                ITM["counter"][sec[i]] = -1
+                ITM["BEV"][sec[i]] = 0
         elif Open_Units != 0:
             Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
             for positions in Open_Trades["trades"]:
@@ -196,12 +180,20 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
                 trd_size = positions["units"]
-                if tf == "M15":
-                    if c[0] < SMA21/1.0025 and c[0] < trd_entry and Open_Units == vol:
+                if trd_side == "buy":
+                    if c[0] < SMA21/1.0025 and c[0] < trd_entry:
                         ITM["SL"][sec[i]] = round(trd_entry - 0.00001, 5)
                         UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                         ITM["counter"][sec[i]] = 0
-                    elif c[0] < ((SMA21+SMA50)/2)/1.0025 and ITM["counter"][sec[i]] == -1 and Open_Units > vol:
+                    elif c[0] < ((SMA21+SMA50)/2)/1.0025:
+                        ITM["SL"][sec[i]] = round((SMA21 + SMA50)/2, 5)
+                        UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                elif trd_side == "sell":
+                    if c[0] > SMA21*1.0025 and c[0] > trd_entry:
+                        ITM["SL"][sec[i]] = round(trd_entry + 0.00001, 5)
+                        UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                        ITM["counter"][sec[i]] = 0
+                    elif c[0] > ((SMA21+SMA50)/2)*1.0025:
                         ITM["SL"][sec[i]] = round((SMA21 + SMA50)/2, 5)
                         UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                     #     ITM["counter"][sec[i]] = 0
