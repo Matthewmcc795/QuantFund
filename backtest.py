@@ -12,13 +12,13 @@ import json
 from array import *
 
 h = {'Authorization' : LIVE_ACCESS_TOKEN}
-url = "https://api-fxtrade.oanda.com/v1/accounts/229783/trades?count=100"
+url = "https://api-fxtrade.oanda.com/v1/accounts/406207/trades?count=100"
 r = requests.get(url, headers=h)     
 data = json.loads(r.text)
 print data
 
 h = {'Authorization' : LIVE_ACCESS_TOKEN}
-url = "https://api-fxtrade.oanda.com/v1/accounts/229783/transactions?count=100"
+url = "https://api-fxtrade.oanda.com/v1/accounts/406207/transactions?count=100"
 r = requests.get(url, headers=h)     
 data = json.loads(r.text)
 print data

@@ -1,0 +1,103 @@
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-09-27T12:12:43.000000Z",
+	"price" : 1.12184,
+	"tradeOpened" : {
+		"id" : 10447842753,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.11997,
+		"stopLoss" : 1.1226,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "AUD_USD",
+	"time" : "2016-09-27T12:18:00.000000Z",
+	"price" : 0.76469,
+	"tradeOpened" : {
+		"id" : 10447850790,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.76246,
+		"stopLoss" : 0.76552,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Updating Stop Loss ... 
+{
+	"id" : 10447842753,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "EUR_USD",
+	"time" : "2016-09-27T12:12:43.000000Z",
+	"price" : 1.12184,
+	"takeProfit" : 1.11997,
+	"stopLoss" : 1.12183,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10447842753,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "EUR_USD",
+	"time" : "2016-09-27T12:12:43.000000Z",
+	"price" : 1.12184,
+	"takeProfit" : 1.11997,
+	"stopLoss" : 1.12183,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Updating Stop Loss ... 
+{
+	"id" : 10447842753,
+	"units" : 100,
+	"side" : "sell",
+	"instrument" : "EUR_USD",
+	"time" : "2016-09-27T12:12:43.000000Z",
+	"price" : 1.12184,
+	"takeProfit" : 1.11997,
+	"stopLoss" : 1.12183,
+	"trailingStop" : 0,
+	"trailingAmount" : 0
+}
+Sending order... 
+{
+	"instrument" : "USD_CAD",
+	"time" : "2016-09-27T13:12:54.000000Z",
+	"price" : 1.32724,
+	"tradeOpened" : {
+		"id" : 10447905842,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.33153,
+		"stopLoss" : 1.32554,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "NZD_USD",
+	"time" : "2016-09-28T22:28:07.000000Z",
+	"price" : 0.72765,
+	"tradeOpened" : {
+		"id" : 10450577736,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 0.72939,
+		"stopLoss" : 0.72691,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

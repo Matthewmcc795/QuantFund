@@ -52,37 +52,37 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting PPB data for " + sec[i])
         m15h, m15l, m15c = Get_Price(sec[i], tf[1], 101, "hlc")
-        ma = SMA(m15c, 50)
-        sd = STDEV(m15c,50)
-        Z = (m15c[0] - ma)/sd
+        ma = SMA(m15c, 20,0)
+        # sd = STDEV(m15c,50)
+        # Z = (m15c[0] - ma)/sd
         atr = Get_ATR(m15h, m15l, m15c, sec[i])
         m5c = Get_Price(sec[i], tf[0], 3, "c")
         s, r = Get_Pivot_Points(sec[i], tf[2], m5c[0])
         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
         dt = datetime.now()
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
-            if abs(Z) > 0.1 and abs(Z) < 1.5:
-                if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
-                    SaveToLog(main_log, "PPB: Sell " + sec[i])
-                    PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
-                    TP = round(m5c[0] - 3*atr - 0.00001,5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
-                    SaveToLog(main_log, "PPB: Buy " + sec[i])
-                    PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
-                    TP = round(m5c[0] + 3*atr + 0.00001,5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-            elif abs(Z) > 1.5:
-                if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma < r and PP["Position"][sec[i]] == ("PP-R1" or "R1-R2"):
-                    SaveToLog(main_log, "PPB: Sell " + sec[i])
-                    PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
-                    TP = round(m5c[0] - 3*atr - 0.00001,5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma > s and PP["Position"][sec[i]] == ("S1-PP" or "S2-S1"):
-                    SaveToLog(main_log, "PPB: Buy " + sec[i])
-                    PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
-                    TP = round(m5c[0] + 3*atr + 0.00001,5)
-                    OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+            # if abs(Z) > 0.1 and abs(Z) < 1.5:
+            if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
+                SaveToLog(main_log, "PPB: Sell " + sec[i])
+                PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
+                TP = round(m5c[0] - 3*atr - 0.00001,5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+            elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
+                SaveToLog(main_log, "PPB: Buy " + sec[i])
+                PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
+                TP = round(m5c[0] + 3*atr + 0.00001,5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+            # elif abs(Z) > 1.5:
+            #     if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma < r and PP["Position"][sec[i]] == ("PP-R1" or "R1-R2"):
+            #         SaveToLog(main_log, "PPB: Sell " + sec[i])
+            #         PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
+            #         TP = round(m5c[0] - 3*atr - 0.00001,5)
+            #         OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+            #     elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma > s and PP["Position"][sec[i]] == ("S1-PP" or "S2-S1"):
+            #         SaveToLog(main_log, "PPB: Buy " + sec[i])
+            #         PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
+            #         TP = round(m5c[0] + 3*atr + 0.00001,5)
+            #         OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
         elif Open_Units != 0:
             SaveToLog(main_log, "PPB: updating stops for " + sec[i])
             Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
@@ -109,18 +109,21 @@ def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting MAC data for " + sec[i])
         c = Get_Price(sec[i], tf, 51, "c")
-        ma = SMA(c,50)
-        sd = STDEV(c,50)
-        Z = (c[0] - ma)/sd
+        ma1 = SMA(c,50,1)
+        sd1 = STDEV(c,50,1)
+        ma0 = SMA(c,50,0)
+        sd0 = STDEV(c,50,0)
+        Z1 = (c[1] - ma1)/sd1
+        Z0 = (c[0] - ma0)/sd0
         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
         if Open_Units == 0:
             SaveToLog(main_log, "Checking MAC signals for " + sec[i])
-            if Z > 2:
+            if Z1 > 2 and Z0 < 2:
                 SaveToLog(main_log, "MAC: Sell " + sec[i])
                 SL = round(c[0] + sd/2 + 0.00001,5)
                 TP = round(c[0] - sd/2 - 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
-            elif Z < -2:
+            elif Z1 < -2 and Z0 > -2:
                 SaveToLog(main_log, "MAC: Buy " + sec[i])
                 SL = round(c[0] - sd/2 - 0.00001,5)
                 TP = round(c[0] + sd/2 + 0.00001,5)
@@ -154,11 +157,12 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting IT data for " + sec[i])
         c = Get_Price(sec[i], tf, 51, "c")
-        SMA10 = SMA(c,10)
-        SMA21 = SMA(c,21)
-        SMA50 = SMA(c,50)
+        SMA10 = SMA(c,10, 0)
+        SMA21 = SMA(c,21, 0)
+        SMA50 = SMA(c,50, 0)
         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
-        if Open_Units == 0:
+        dt = datetime.now()
+        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
             if c[0] > SMA10 and c[0] < SMA21 and c[0] < SMA50:
                 SaveToLog(main_log, "ITM: Sell " + sec[i])
                 ITM["TP"][sec[i]] = round(c[0] - 0.9*abs(c[0] - SMA50), 5)
@@ -377,17 +381,17 @@ def ATR(h, l, c):
         p -= 1
     return ATR_val
 
-def SMA(c, n):
+def SMA(c, n, offset):
     sma_val = 0.0
     for i in range(n):
-        sma_val += c[i]
+        sma_val += c[i + offset]
     return sma_val/n
 
-def STDEV(c, n):
-    ma = SMA(c,n)
+def STDEV(c, n, offset):
+    ma = SMA(c, n, offset)
     sd_val = 0.0
     for i in range(n):
-        sd_val += (ma - c[i])**2 
+        sd_val += (ma - c[i + offset])**2 
     return (sd_val/(n-1))**(0.5)
 
 def CORREL(c1, c2):

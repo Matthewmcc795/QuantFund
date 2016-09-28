@@ -3,7 +3,7 @@
 import requests
 import json
 from array import *
-from Settings import LIVE_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STRV, STRCO, PWD
+from Settings import LIVE_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
 import httplib
 import urllib
 from QF_Strategy import *

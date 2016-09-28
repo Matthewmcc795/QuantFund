@@ -2,7 +2,7 @@
 import requests
 import json
 from array import *
-from Settings import CSTokens, LIVE_ACCESS_TOKEN, MAIL, NREPORT, MREPORT, PWD
+from Settings import CSTokens, LIVE_ACCESS_TOKEN
 from QF_Strategy import *
 from QF_Functions import *
 # from QF_Optimizer import *
@@ -42,7 +42,7 @@ while True:
         dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
     elif datetime.now() > dt_Intraday_IntraTrend:
         SaveToLog(main_log, "Running Intraday_IntraTrend")
-        IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat1)
+        IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
         SaveToLog(main_log, "Intraday_IntraTrend complete")
         dt_Intraday_IntraTrend += timedelta(minutes=15)
         dt_Intraday_IntraTrend = dt_Intraday_IntraTrend.replace(second=1, microsecond=1)
@@ -58,13 +58,13 @@ while True:
     ###############################################################################
     #                                 Reporting                                   #
     ###############################################################################
-    if datetime.now() > dt_Main_Report:
-        body = Report("DailyReport", QFPort[0], LIVE_ACCESS_TOKEN)
-        SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[0]), body)
-        body = Report("DailyReport", QFPort[1], LIVE_ACCESS_TOKEN)
-        SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[1]), body)
-        body = Report("DailyReport", QFPort[2], LIVE_ACCESS_TOKEN)
-        SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[1]), body)
-        dt_Main_Report += timedelta(hours=12)
-        dt_Main_Report = dt_Main_Report.replace(minute=0, second=1, microsecond=1)
+    # if datetime.now() > dt_Main_Report:
+    #     body = Report("DailyReport", QFPort[0], LIVE_ACCESS_TOKEN)
+    #     SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[0]), body)
+    #     body = Report("DailyReport", QFPort[1], LIVE_ACCESS_TOKEN)
+    #     SendEmail(MAIL[0], PWD, MAIL[0]," QF Report - " + str(QFPort[1]), body)
+    #     body = Report("DailyReport", QFPort[2], LIVE_ACCESS_TOKEN)
+    #     SendEmail(MAIL[0], PWD, MAIL[0], "QF Report - " + str(QFPort[2]), body)
+    #     dt_Main_Report += timedelta(hours=12)
+    #     dt_Main_Report = dt_Main_Report.replace(minute=0, second=1, microsecond=1)
     time.sleep(1)

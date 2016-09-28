@@ -13443,3 +13443,353 @@ Collecting PPB data for USD_CAD 2016-09-26 15:27:11.910000
 Collecting PPB data for AUD_USD 2016-09-26 15:27:17.208000
 Collecting PPB data for NZD_USD 2016-09-26 15:27:22.492000
 Intraday_PPB complete 2016-09-26 15:27:27.800000
+Running Intraday_PPB 2016-09-27 07:17:00.589000
+Collecting PPB data for EUR_USD 2016-09-27 07:17:00.599000
+Collecting PPB data for GBP_USD 2016-09-27 07:17:07.560000
+Collecting PPB data for USD_CAD 2016-09-27 07:17:12.743000
+Collecting PPB data for AUD_USD 2016-09-27 07:17:18.559000
+Collecting PPB data for NZD_USD 2016-09-27 07:17:23.749000
+Intraday_PPB complete 2016-09-27 07:17:29.579000
+Running Intraday_IntraTrend 2016-09-27 07:17:30.587000
+Collecting IT data for EUR_USD 2016-09-27 07:17:30.595000
+Running Intraday_PPB 2016-09-27 07:47:00.621000
+Collecting PPB data for EUR_USD 2016-09-27 07:47:00.630000
+Collecting PPB data for GBP_USD 2016-09-27 07:47:08.146000
+Collecting PPB data for USD_CAD 2016-09-27 07:47:13.360000
+Collecting PPB data for AUD_USD 2016-09-27 07:47:18.598000
+Collecting PPB data for NZD_USD 2016-09-27 07:47:23.847000
+Intraday_PPB complete 2016-09-27 07:47:29.086000
+Running Intraday_IntraTrend 2016-09-27 07:47:30.096000
+Collecting IT data for EUR_USD 2016-09-27 07:47:30.105000
+Collecting IT data for GBP_USD 2016-09-27 07:47:32.725000
+Collecting IT data for USD_CAD 2016-09-27 07:47:35.318000
+Collecting IT data for AUD_USD 2016-09-27 07:47:37.947000
+Collecting IT data for NZD_USD 2016-09-27 07:47:40.565000
+Intraday_IntraTrend complete 2016-09-27 07:47:43.183000
+Running Intraday_PPB 2016-09-27 07:52:01.317000
+Collecting PPB data for EUR_USD 2016-09-27 07:52:01.325000
+Collecting PPB data for GBP_USD 2016-09-27 07:52:06.651000
+Collecting PPB data for USD_CAD 2016-09-27 07:52:11.831000
+Collecting PPB data for AUD_USD 2016-09-27 07:52:17.060000
+Collecting PPB data for NZD_USD 2016-09-27 07:52:22.280000
+Intraday_PPB complete 2016-09-27 07:52:28.451000
+Running Intraday_PPB 2016-09-27 07:57:01.652000
+Collecting PPB data for EUR_USD 2016-09-27 07:57:01.652000
+Collecting PPB data for GBP_USD 2016-09-27 07:57:07.013000
+Collecting PPB data for USD_CAD 2016-09-27 07:57:12.231000
+Collecting PPB data for AUD_USD 2016-09-27 07:57:18.421000
+Collecting PPB data for NZD_USD 2016-09-27 07:57:23.658000
+Intraday_PPB complete 2016-09-27 07:57:28.964000
+Running Intraday_PPB 2016-09-27 08:02:01.949000
+Collecting PPB data for EUR_USD 2016-09-27 08:02:01.958000
+Collecting PPB data for GBP_USD 2016-09-27 08:02:07.282000
+Collecting PPB data for USD_CAD 2016-09-27 08:02:12.533000
+Collecting PPB data for AUD_USD 2016-09-27 08:02:17.760000
+Collecting PPB data for NZD_USD 2016-09-27 08:02:22.971000
+Intraday_PPB complete 2016-09-27 08:02:28.531000
+Running Intraday_IntraTrend 2016-09-27 08:02:29.539000
+Collecting IT data for EUR_USD 2016-09-27 08:02:29.550000
+Collecting IT data for GBP_USD 2016-09-27 08:02:32.175000
+Collecting IT data for USD_CAD 2016-09-27 08:02:34.785000
+Collecting IT data for AUD_USD 2016-09-27 08:02:37.553000
+Collecting IT data for NZD_USD 2016-09-27 08:02:40.431000
+Intraday_IntraTrend complete 2016-09-27 08:02:43.083000
+Running Intraday_PPB 2016-09-27 08:07:01.180000
+Collecting PPB data for EUR_USD 2016-09-27 08:07:01.191000
+Collecting PPB data for GBP_USD 2016-09-27 08:07:06.432000
+Collecting PPB data for USD_CAD 2016-09-27 08:07:11.552000
+Collecting PPB data for AUD_USD 2016-09-27 08:07:16.702000
+Collecting PPB data for NZD_USD 2016-09-27 08:07:21.890000
+Intraday_PPB complete 2016-09-27 08:07:27.071000
+Running Intraday_PPB 2016-09-27 08:12:01.207000
+Collecting PPB data for EUR_USD 2016-09-27 08:12:01.215000
+PPB: Sell EUR_USD 2016-09-27 08:12:06.497000
+Collecting PPB data for GBP_USD 2016-09-27 08:12:07.748000
+Collecting PPB data for USD_CAD 2016-09-27 08:12:12.995000
+Collecting PPB data for AUD_USD 2016-09-27 08:12:18.211000
+Collecting PPB data for NZD_USD 2016-09-27 08:12:23.459000
+Intraday_PPB complete 2016-09-27 08:12:28.686000
+Running Intraday_PPB 2016-09-27 08:17:01.789000
+Collecting PPB data for EUR_USD 2016-09-27 08:17:01.798000
+PPB: updating stops for EUR_USD 2016-09-27 08:17:07.051000
+Collecting PPB data for GBP_USD 2016-09-27 08:17:08.361000
+Collecting PPB data for USD_CAD 2016-09-27 08:17:13.519000
+Collecting PPB data for AUD_USD 2016-09-27 08:17:18.771000
+PPB: Sell AUD_USD 2016-09-27 08:17:23.941000
+Collecting PPB data for NZD_USD 2016-09-27 08:17:25.205000
+Intraday_PPB complete 2016-09-27 08:17:30.678000
+Running Intraday_IntraTrend 2016-09-27 08:17:31.687000
+Collecting IT data for EUR_USD 2016-09-27 08:17:31.696000
+Collecting IT data for GBP_USD 2016-09-27 08:17:34.271000
+Collecting IT data for USD_CAD 2016-09-27 08:17:36.861000
+Collecting IT data for AUD_USD 2016-09-27 08:17:40.901000
+Collecting IT data for NZD_USD 2016-09-27 08:17:43.774000
+Intraday_IntraTrend complete 2016-09-27 08:17:46.381000
+Running Intraday_PPB 2016-09-27 08:22:01.503000
+Collecting PPB data for EUR_USD 2016-09-27 08:22:01.511000
+PPB: updating stops for EUR_USD 2016-09-27 08:22:06.828000
+Collecting PPB data for GBP_USD 2016-09-27 08:22:08.118000
+Collecting PPB data for USD_CAD 2016-09-27 08:22:13.298000
+Collecting PPB data for AUD_USD 2016-09-27 08:22:18.490000
+PPB: updating stops for AUD_USD 2016-09-27 08:22:23.821000
+Collecting PPB data for NZD_USD 2016-09-27 08:22:25.177000
+Intraday_PPB complete 2016-09-27 08:22:30.378000
+Running Intraday_PPB 2016-09-27 08:27:01.569000
+Collecting PPB data for EUR_USD 2016-09-27 08:27:01.577000
+PPB: updating stops for EUR_USD 2016-09-27 08:27:06.978000
+Collecting PPB data for GBP_USD 2016-09-27 08:27:08.284000
+Collecting PPB data for USD_CAD 2016-09-27 08:27:13.546000
+Collecting PPB data for AUD_USD 2016-09-27 08:27:18.808000
+PPB: updating stops for AUD_USD 2016-09-27 08:27:24.007000
+Collecting PPB data for NZD_USD 2016-09-27 08:27:25.493000
+Intraday_PPB complete 2016-09-27 08:27:30.791000
+Running Intraday_PPB 2016-09-27 08:32:01.373000
+Collecting PPB data for EUR_USD 2016-09-27 08:32:01.380000
+PPB: updating stops for EUR_USD 2016-09-27 08:32:06.761000
+Collecting PPB data for GBP_USD 2016-09-27 08:32:09.328000
+Collecting PPB data for USD_CAD 2016-09-27 08:32:14.812000
+Collecting PPB data for AUD_USD 2016-09-27 08:32:20.136000
+PPB: updating stops for AUD_USD 2016-09-27 08:32:25.343000
+Collecting PPB data for NZD_USD 2016-09-27 08:32:26.660000
+Intraday_PPB complete 2016-09-27 08:32:31.853000
+Running Intraday_IntraTrend 2016-09-27 08:32:32.862000
+Collecting IT data for EUR_USD 2016-09-27 08:32:32.870000
+Collecting IT data for GBP_USD 2016-09-27 08:32:35.613000
+Collecting IT data for USD_CAD 2016-09-27 08:32:38.233000
+Collecting IT data for AUD_USD 2016-09-27 08:32:40.907000
+Collecting IT data for NZD_USD 2016-09-27 08:32:43.494000
+Intraday_IntraTrend complete 2016-09-27 08:32:46.104000
+Running Intraday_PPB 2016-09-27 08:37:01.503000
+Collecting PPB data for EUR_USD 2016-09-27 08:37:01.511000
+PPB: updating stops for EUR_USD 2016-09-27 08:37:07.149000
+Collecting PPB data for GBP_USD 2016-09-27 08:37:09.686000
+Collecting PPB data for USD_CAD 2016-09-27 08:37:14.869000
+Collecting PPB data for AUD_USD 2016-09-27 08:37:20.116000
+PPB: updating stops for AUD_USD 2016-09-27 08:37:25.347000
+Collecting PPB data for NZD_USD 2016-09-27 08:37:26.668000
+Intraday_PPB complete 2016-09-27 08:37:31.914000
+Running Intraday_PPB 2016-09-27 08:42:01.340000
+Collecting PPB data for EUR_USD 2016-09-27 08:42:01.348000
+PPB: updating stops for EUR_USD 2016-09-27 08:42:06.646000
+Collecting PPB data for GBP_USD 2016-09-27 08:42:09.194000
+Collecting PPB data for USD_CAD 2016-09-27 08:42:14.451000
+Collecting PPB data for AUD_USD 2016-09-27 08:42:19.662000
+PPB: updating stops for AUD_USD 2016-09-27 08:42:24.900000
+Collecting PPB data for NZD_USD 2016-09-27 08:42:26.212000
+Intraday_PPB complete 2016-09-27 08:42:31.529000
+Running Intraday_PPB 2016-09-27 08:47:01.955000
+Collecting PPB data for EUR_USD 2016-09-27 08:47:01.963000
+Collecting PPB data for GBP_USD 2016-09-27 08:47:07.204000
+Collecting PPB data for USD_CAD 2016-09-27 08:47:12.375000
+Collecting PPB data for AUD_USD 2016-09-27 08:47:17.564000
+PPB: updating stops for AUD_USD 2016-09-27 08:47:22.754000
+Collecting PPB data for NZD_USD 2016-09-27 08:47:24.171000
+Intraday_PPB complete 2016-09-27 08:47:29.424000
+Running Intraday_IntraTrend 2016-09-27 08:47:30.432000
+Collecting IT data for EUR_USD 2016-09-27 08:47:30.440000
+Collecting IT data for GBP_USD 2016-09-27 08:47:33.022000
+Collecting IT data for USD_CAD 2016-09-27 08:47:35.632000
+Collecting IT data for AUD_USD 2016-09-27 08:47:38.226000
+Collecting IT data for NZD_USD 2016-09-27 08:47:41.825000
+Intraday_IntraTrend complete 2016-09-27 08:47:44.422000
+Running Intraday_PPB 2016-09-27 08:52:01.919000
+Collecting PPB data for EUR_USD 2016-09-27 08:52:01.927000
+Collecting PPB data for GBP_USD 2016-09-27 08:52:07.315000
+Collecting PPB data for USD_CAD 2016-09-27 08:52:12.647000
+Collecting PPB data for AUD_USD 2016-09-27 08:52:17.963000
+PPB: updating stops for AUD_USD 2016-09-27 08:52:23.184000
+Collecting PPB data for NZD_USD 2016-09-27 08:52:24.555000
+Intraday_PPB complete 2016-09-27 08:52:29.783000
+Running Intraday_PPB 2016-09-27 08:57:01.459000
+Collecting PPB data for EUR_USD 2016-09-27 08:57:01.467000
+Collecting PPB data for GBP_USD 2016-09-27 08:57:07.120000
+Collecting PPB data for USD_CAD 2016-09-27 08:57:12.717000
+Collecting PPB data for AUD_USD 2016-09-27 08:57:17.990000
+PPB: updating stops for AUD_USD 2016-09-27 08:57:23.272000
+Collecting PPB data for NZD_USD 2016-09-27 08:57:24.605000
+Intraday_PPB complete 2016-09-27 08:57:29.939000
+Running Intraday_PPB 2016-09-27 09:02:01.426000
+Collecting PPB data for EUR_USD 2016-09-27 09:02:01.456000
+Collecting PPB data for GBP_USD 2016-09-27 09:02:07.157000
+Collecting PPB data for USD_CAD 2016-09-27 09:02:12.466000
+Collecting PPB data for AUD_USD 2016-09-27 09:02:17.696000
+Collecting PPB data for NZD_USD 2016-09-27 09:02:23.184000
+Intraday_PPB complete 2016-09-27 09:02:29.394000
+Running Intraday_IntraTrend 2016-09-27 09:02:30.404000
+Collecting IT data for EUR_USD 2016-09-27 09:02:30.415000
+Collecting IT data for GBP_USD 2016-09-27 09:02:33.039000
+Collecting IT data for USD_CAD 2016-09-27 09:02:35.679000
+Collecting IT data for AUD_USD 2016-09-27 09:02:38.316000
+Collecting IT data for NZD_USD 2016-09-27 09:02:40.938000
+Intraday_IntraTrend complete 2016-09-27 09:02:43.598000
+Running Intraday_PPB 2016-09-27 09:07:01.074000
+Collecting PPB data for EUR_USD 2016-09-27 09:07:01.084000
+Collecting PPB data for GBP_USD 2016-09-27 09:07:06.358000
+Collecting PPB data for USD_CAD 2016-09-27 09:07:12.566000
+Collecting PPB data for AUD_USD 2016-09-27 09:07:17.853000
+Collecting PPB data for NZD_USD 2016-09-27 09:07:23.168000
+Intraday_PPB complete 2016-09-27 09:07:28.385000
+Running Intraday_PPB 2016-09-27 09:12:01.896000
+Collecting PPB data for EUR_USD 2016-09-27 09:12:01.905000
+Collecting PPB data for GBP_USD 2016-09-27 09:12:07.401000
+Collecting PPB data for USD_CAD 2016-09-27 09:12:12.687000
+PPB: Buy USD_CAD 2016-09-27 09:12:17.842000
+Collecting PPB data for AUD_USD 2016-09-27 09:12:19.124000
+Collecting PPB data for NZD_USD 2016-09-27 09:12:24.348000
+Intraday_PPB complete 2016-09-27 09:12:30.710000
+Running Intraday_PPB 2016-09-27 09:17:01.202000
+Collecting PPB data for EUR_USD 2016-09-27 09:17:01.212000
+Collecting PPB data for GBP_USD 2016-09-27 09:17:06.584000
+Collecting PPB data for USD_CAD 2016-09-27 09:17:11.804000
+PPB: updating stops for USD_CAD 2016-09-27 09:17:17.121000
+Collecting PPB data for AUD_USD 2016-09-27 09:17:18.561000
+Collecting PPB data for NZD_USD 2016-09-27 09:17:24.396000
+Intraday_PPB complete 2016-09-27 09:17:29.782000
+Running Intraday_IntraTrend 2016-09-27 09:17:30.792000
+Collecting IT data for EUR_USD 2016-09-27 09:17:30.804000
+Collecting IT data for GBP_USD 2016-09-27 09:17:33.443000
+Collecting IT data for USD_CAD 2016-09-27 09:17:36.051000
+Collecting IT data for AUD_USD 2016-09-27 09:17:38.691000
+Collecting IT data for NZD_USD 2016-09-27 09:17:41.293000
+Intraday_IntraTrend complete 2016-09-27 09:17:43.942000
+Running Intraday_PPB 2016-09-27 09:22:01.447000
+Collecting PPB data for EUR_USD 2016-09-27 09:22:01.456000
+Collecting PPB data for GBP_USD 2016-09-27 09:22:06.802000
+Collecting PPB data for USD_CAD 2016-09-27 09:22:13.065000
+PPB: updating stops for USD_CAD 2016-09-27 09:22:18.339000
+Collecting PPB data for AUD_USD 2016-09-27 09:22:19.649000
+Collecting PPB data for NZD_USD 2016-09-27 09:22:25.878000
+Intraday_PPB complete 2016-09-27 09:22:31.179000
+Running Intraday_PPB 2016-09-27 09:27:01.659000
+Collecting PPB data for EUR_USD 2016-09-27 09:27:01.668000
+Collecting PPB data for GBP_USD 2016-09-27 09:27:06.959000
+Collecting PPB data for USD_CAD 2016-09-27 09:27:12.186000
+PPB: updating stops for USD_CAD 2016-09-27 09:27:17.450000
+Collecting PPB data for AUD_USD 2016-09-27 09:27:18.766000
+Collecting PPB data for NZD_USD 2016-09-27 09:27:25.165000
+Intraday_PPB complete 2016-09-27 09:27:30.386000
+Running Intraday_PPB 2016-09-27 09:32:01.943000
+Collecting PPB data for EUR_USD 2016-09-27 09:32:01.952000
+Collecting PPB data for GBP_USD 2016-09-27 09:32:07.250000
+Collecting PPB data for USD_CAD 2016-09-27 09:32:12.484000
+PPB: updating stops for USD_CAD 2016-09-27 09:32:17.733000
+Collecting PPB data for AUD_USD 2016-09-27 09:32:19.045000
+Collecting PPB data for NZD_USD 2016-09-27 09:32:24.246000
+Intraday_PPB complete 2016-09-27 09:32:29.501000
+Running Intraday_IntraTrend 2016-09-27 09:32:30.513000
+Collecting IT data for EUR_USD 2016-09-27 09:32:30.521000
+Collecting IT data for GBP_USD 2016-09-27 09:32:33.126000
+Collecting IT data for USD_CAD 2016-09-27 09:32:35.771000
+Collecting IT data for AUD_USD 2016-09-27 09:32:38.393000
+ITM: Sell AUD_USD 2016-09-27 09:32:41.005000
+Collecting IT data for NZD_USD 2016-09-27 09:32:42.245000
+Intraday_IntraTrend complete 2016-09-27 09:32:44.786000
+Running Intraday_PPB 2016-09-27 09:37:01.339000
+Collecting PPB data for EUR_USD 2016-09-27 09:37:01.349000
+Collecting PPB data for GBP_USD 2016-09-27 09:37:06.650000
+Collecting PPB data for USD_CAD 2016-09-27 09:37:11.960000
+Collecting PPB data for AUD_USD 2016-09-27 09:37:17.502000
+Collecting PPB data for NZD_USD 2016-09-27 09:37:22.821000
+Intraday_PPB complete 2016-09-27 09:37:28.131000
+Running Intraday_PPB 2016-09-27 09:42:01.637000
+Collecting PPB data for EUR_USD 2016-09-27 09:42:01.647000
+Collecting PPB data for GBP_USD 2016-09-27 09:42:06.955000
+Collecting PPB data for USD_CAD 2016-09-27 09:42:12.217000
+Collecting PPB data for AUD_USD 2016-09-27 09:42:17.388000
+Collecting PPB data for NZD_USD 2016-09-27 09:42:22.645000
+Intraday_PPB complete 2016-09-27 09:42:27.887000
+Running Intraday_PPB 2016-09-27 09:47:01.392000
+Collecting PPB data for EUR_USD 2016-09-27 09:47:01.401000
+Collecting PPB data for GBP_USD 2016-09-27 09:47:06.694000
+Collecting PPB data for USD_CAD 2016-09-27 09:47:11.916000
+Collecting PPB data for AUD_USD 2016-09-27 09:47:17.132000
+Collecting PPB data for NZD_USD 2016-09-27 09:47:22.343000
+Intraday_PPB complete 2016-09-27 09:47:27.597000
+Running Intraday_IntraTrend 2016-09-27 09:47:28.606000
+Collecting IT data for EUR_USD 2016-09-27 09:47:28.616000
+ITM: Sell EUR_USD 2016-09-27 09:47:31.228000
+Collecting IT data for GBP_USD 2016-09-27 09:47:32.621000
+ITM: Buy GBP_USD 2016-09-27 09:47:35.234000
+Collecting IT data for USD_CAD 2016-09-27 09:47:36.524000
+ITM: Buy USD_CAD 2016-09-27 09:47:39.149000
+Collecting IT data for AUD_USD 2016-09-27 09:47:40.391000
+Collecting IT data for NZD_USD 2016-09-27 09:47:44.447000
+ITM: Sell NZD_USD 2016-09-27 09:47:47.100000
+Intraday_IntraTrend complete 2016-09-27 09:47:48.416000
+Running Intraday_PPB 2016-09-27 12:51:07.779000
+Collecting PPB data for EUR_USD 2016-09-27 12:51:10.340000
+Running Swing_MAC 2016-09-28 18:08:47.087000
+Collecting MAC data for EUR_USD 2016-09-28 18:08:47.125000
+Checking MAC signals for EUR_USD 2016-09-28 18:08:52.894000
+Collecting MAC data for GBP_USD 2016-09-28 18:08:52.902000
+Checking MAC signals for GBP_USD 2016-09-28 18:08:55.715000
+Collecting MAC data for USD_CAD 2016-09-28 18:08:55.723000
+Checking MAC signals for USD_CAD 2016-09-28 18:08:58.333000
+Collecting MAC data for AUD_USD 2016-09-28 18:08:58.341000
+Checking MAC signals for AUD_USD 2016-09-28 18:09:00.943000
+Collecting MAC data for NZD_USD 2016-09-28 18:09:00.948000
+Checking MAC signals for NZD_USD 2016-09-28 18:09:03.634000
+Swing_MAC complete 2016-09-28 18:09:03.638000
+Running Intraday_PPB 2016-09-28 18:12:00.776000
+Collecting PPB data for EUR_USD 2016-09-28 18:12:00.785000
+Collecting PPB data for GBP_USD 2016-09-28 18:12:08.420000
+Collecting PPB data for USD_CAD 2016-09-28 18:12:13.800000
+Collecting PPB data for AUD_USD 2016-09-28 18:12:19.531000
+Collecting PPB data for NZD_USD 2016-09-28 18:12:24.919000
+Intraday_PPB complete 2016-09-28 18:12:30.510000
+Running Intraday_IntraTrend 2016-09-28 18:17:00.773000
+Collecting IT data for EUR_USD 2016-09-28 18:17:00.787000
+ITM: Buy EUR_USD 2016-09-28 18:17:03.455000
+Collecting IT data for GBP_USD 2016-09-28 18:17:04.725000
+ITM: Buy GBP_USD 2016-09-28 18:17:07.324000
+Collecting IT data for USD_CAD 2016-09-28 18:17:08.584000
+Collecting IT data for AUD_USD 2016-09-28 18:17:11.209000
+ITM: Buy AUD_USD 2016-09-28 18:17:13.849000
+Collecting IT data for NZD_USD 2016-09-28 18:17:15.136000
+Intraday_IntraTrend complete 2016-09-28 18:17:17.779000
+Running Intraday_PPB 2016-09-28 18:17:18.787000
+Collecting PPB data for EUR_USD 2016-09-28 18:17:18.795000
+Collecting PPB data for GBP_USD 2016-09-28 18:17:23.985000
+Collecting PPB data for USD_CAD 2016-09-28 18:17:29.305000
+Collecting PPB data for AUD_USD 2016-09-28 18:17:34.529000
+Collecting PPB data for NZD_USD 2016-09-28 18:17:40.787000
+Intraday_PPB complete 2016-09-28 18:17:45.979000
+Running Intraday_PPB 2016-09-28 18:22:01.216000
+Collecting PPB data for EUR_USD 2016-09-28 18:22:01.423000
+Collecting PPB data for GBP_USD 2016-09-28 18:22:06.639000
+Collecting PPB data for USD_CAD 2016-09-28 18:22:11.835000
+Collecting PPB data for AUD_USD 2016-09-28 18:22:17.030000
+Collecting PPB data for NZD_USD 2016-09-28 18:22:22.219000
+Intraday_PPB complete 2016-09-28 18:22:27.978000
+Running Intraday_PPB 2016-09-28 18:27:01.280000
+Collecting PPB data for EUR_USD 2016-09-28 18:27:01.289000
+Collecting PPB data for GBP_USD 2016-09-28 18:27:06.614000
+Collecting PPB data for USD_CAD 2016-09-28 18:27:11.803000
+Collecting PPB data for AUD_USD 2016-09-28 18:27:17.122000
+Collecting PPB data for NZD_USD 2016-09-28 18:27:23.364000
+PPB: Buy NZD_USD 2016-09-28 18:27:28.624000
+Intraday_PPB complete 2016-09-28 18:27:29.942000
+Running Intraday_PPB 2016-09-28 18:32:01.268000
+Collecting PPB data for EUR_USD 2016-09-28 18:32:01.276000
+Collecting PPB data for GBP_USD 2016-09-28 18:32:06.563000
+Collecting PPB data for USD_CAD 2016-09-28 18:32:11.770000
+Collecting PPB data for AUD_USD 2016-09-28 18:32:16.955000
+Collecting PPB data for NZD_USD 2016-09-28 18:32:22.230000
+PPB: updating stops for NZD_USD 2016-09-28 18:32:27.489000
+Intraday_PPB complete 2016-09-28 18:32:28.800000
+Running Intraday_IntraTrend 2016-09-28 18:32:29.800000
+Collecting IT data for EUR_USD 2016-09-28 18:32:29.803000
+Collecting IT data for GBP_USD 2016-09-28 18:32:33.713000
+Collecting IT data for USD_CAD 2016-09-28 18:32:37.611000
+Collecting IT data for AUD_USD 2016-09-28 18:32:40.273000
+Collecting IT data for NZD_USD 2016-09-28 18:32:45.155000
+ITM: Buy NZD_USD 2016-09-28 18:32:48.746000
+Intraday_IntraTrend complete 2016-09-28 18:32:49.997000
+Running Intraday_PPB 2016-09-28 18:37:01.287000
+Collecting PPB data for EUR_USD 2016-09-28 18:37:01.295000
+Collecting PPB data for GBP_USD 2016-09-28 18:37:07.515000
+Collecting PPB data for USD_CAD 2016-09-28 18:37:13.005000
+Collecting PPB data for AUD_USD 2016-09-28 18:37:18.274000
+Collecting PPB data for NZD_USD 2016-09-28 18:37:23.485000
+PPB: updating stops for NZD_USD 2016-09-28 18:37:28.733000
+Intraday_PPB complete 2016-09-28 18:37:30.043000
