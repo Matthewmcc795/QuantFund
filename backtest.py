@@ -13,15 +13,16 @@ from array import *
 
 h = {'Authorization' : LIVE_ACCESS_TOKEN}
 url = "https://api-fxtrade.oanda.com/v1/accounts/406207/trades?count=100"
-r = requests.get(url, headers=h)     
+r = requests.get(url, headers=h)
 data = json.loads(r.text)
 print data
 
 h = {'Authorization' : LIVE_ACCESS_TOKEN}
 url = "https://api-fxtrade.oanda.com/v1/accounts/406207/transactions?count=100"
-r = requests.get(url, headers=h)     
+r = requests.get(url, headers=h)
 data = json.loads(r.text)
 print data
+
 
 # # st = "2012-01-01"
 # # en = "2016-08-01"
