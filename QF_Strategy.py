@@ -57,6 +57,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
         s, r = Get_Pivot_Points(sec[i], tf[2], m5c[0])
         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
         dt = datetime.now()
+        pos = PP["Position"][sec[i]]
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
             PPB["Open"][sec[i]] = 0
             PPB["Status"][sec[i]] = ""
