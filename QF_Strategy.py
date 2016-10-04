@@ -57,21 +57,20 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
         s, r = Get_Pivot_Points(sec[i], tf[2], m5c[0])
         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
         dt = datetime.now()
-        pos = PP["Position"][sec[i]]
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
             PPB["Open"][sec[i]] = datetime.now()
             PPB["Status"][sec[i]] = ""
-            if m5c[0] > s and m5c[1] > s and m5c[2] < s and ma > s:
+            if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
                 SaveToLog(main_log, "PPB: Sell " + sec[i])
                 PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
-                PPB["TP"][sec[i]] = max(PP[pos[-2:]][sec[i]], round(m5c[0] - 2*atr - 0.00001,5))
+                PPB["TP"][sec[i]] = max(s, round(m5c[0] - 2*atr - 0.00001,5))
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 PPB["Open"][sec[i]] = dt
                 PPB["Status"][sec[i]] = "Entry"
-            elif m5c[0] < r and m5c[1] < r and m5c[2] > r and ma < r:
+            elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
                 SaveToLog(main_log, "PPB: Buy " + sec[i])
                 PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
-                PPB["TP"][sec[i]] = min(PP[pos[:2]][sec[i]], round(m5c[0] + 2*atr + 0.00001,5))
+                PPB["TP"][sec[i]] = min(r, round(m5c[0] + 2*atr + 0.00001,5))
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 PPB["Open"][sec[i]] = dt
                 PPB["Status"][sec[i]] = "Entry"
@@ -301,8 +300,6 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                             if ITM["SL"][sec[i]] < trd_entry and ITM["SL"][sec[i]] > c[0]:
                                 UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                                 ITM["Status"][sec[i]] = "50%"
-
-
 
 ##########################################################################################################
 #                                                                                                        #

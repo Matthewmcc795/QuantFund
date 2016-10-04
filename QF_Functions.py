@@ -496,13 +496,12 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
     file = open(file_str,'a')
     file.write("Sending order... " + "\n")
     file.close()
-    if Take_Profit == 0 and Stop_Loss == 0: 
+    if Take_Profit == 0.0 and Stop_Loss == 0.0: 
         params = urllib.urlencode({
-                "instrument" : str(instrument),
-                "units" : units,
-                "type" : order_type,
-                "side" : order_side
-            })
+            "instrument" : str(instrument),
+            "units" : units,
+            "type" : order_type,
+            "side" : order_side})
     else:
         params = urllib.urlencode({
             "instrument" : str(instrument),
@@ -510,8 +509,7 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
             "type" : order_type,
             "side" : order_side,
             "takeProfit": Take_Profit,
-            "stopLoss": Stop_Loss
-        })
+            "stopLoss": Stop_Loss})
     conn.request("POST", "/v1/accounts/" + str(Account_Num) + "/orders", params, headers)
     response = conn.getresponse().read()
     file = open(file_str,'a')
