@@ -164,3 +164,19 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "EUR_USD",
+	"time" : "2016-10-05T15:17:09.000000Z",
+	"price" : 1.12076,
+	"tradeOpened" : {
+		"id" : 10459763227,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 1.12017,
+		"stopLoss" : 1.12163,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
