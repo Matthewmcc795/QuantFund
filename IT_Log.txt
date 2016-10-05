@@ -180,3 +180,35 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-10-05T15:47:39.000000Z",
+	"price" : 1.27451,
+	"tradeOpened" : {
+		"id" : 10459782872,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.27553,
+		"stopLoss" : 1.27304,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
+Sending order... 
+{
+	"instrument" : "NZD_USD",
+	"time" : "2016-10-05T15:47:48.000000Z",
+	"price" : 0.71719,
+	"tradeOpened" : {
+		"id" : 10459782922,
+		"units" : 100,
+		"side" : "sell",
+		"takeProfit" : 0.71664,
+		"stopLoss" : 0.71807,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}

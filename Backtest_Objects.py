@@ -16,13 +16,17 @@ import calendar
 
 # --------------- Backtest Functions -------------------- #
 
+class DripFeed:
+    def __init__(self, st_dt, end_dt):
+        
+
 def Download_Prices(sec, tf, start, end):
     d = []
     d.append(start)
     end_dt = FindDateRange(start, end, 24*4)
     d.append(end_dt)
     end_dt = FindDateRange(end_dt, end, 24*4)
-    d.append(end_dt)
+    d.append(end_dt)    `
     while np.busday_count(end_dt, end) > 0:
         end_dt = FindDateRange(end_dt, end, 24*4)
         d.append(end_dt)

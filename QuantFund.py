@@ -31,6 +31,7 @@ dt_Swing_MAC = Get_dt("dt_Swing_MAC")
 Intraday_PPB_tf = ["M5", "M15", "D"]
 
 while True:
+    d = datetime.now()
     ###############################################################################
     #                                QF - Day Trade                               #
     ###############################################################################
@@ -55,6 +56,14 @@ while True:
         SaveToLog(main_log, "Swing_MAC complete")
         dt_Swing_MAC += timedelta(hours=4)
         dt_Swing_MAC = dt_Swing_MAC.replace(minute=0, second=1, microsecond=1)
+    ###############################################################################
+    #                                 Optimizer                                   #
+    ###############################################################################
+    if d.weekday() == 4 and d.hour == 8 and d.minute > 50:
+        for i in range(len(sec)):
+            ClosePositions(QFPort[0], sec[i], fl_strat1, LIVE_ACCESS_TOKEN)
+            ClosePositions(QFPort[1], sec[i], fl_strat3, LIVE_ACCESS_TOKEN)
+        time.sleep(3600)
     ###############################################################################
     #                                 Reporting                                   #
     ###############################################################################

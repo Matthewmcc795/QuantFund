@@ -229,9 +229,9 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                 ITM["Status"][sec[i]] = "Entry"
         elif Open_Units != 0:
             SaveToLog(main_log, "ITM: Managing trade for " + sec[i])
-            if PPB["Status"][sec[i]] == "":
-                PPB["Status"][sec[i]] = "Entry"
-                PPB["Open"][sec[i]] = dt
+            if ITM["Status"][sec[i]] == "":
+                ITM["Status"][sec[i]] = "Entry"
+                ITM["Open"][sec[i]] = dt
             Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
             for positions in Open_Trades["trades"]:
                 trd_ID = positions["id"]
@@ -247,10 +247,9 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                             ITM["Status"][sec[i]] = "75%"
                         elif dt - timedelta(minutes=45) > ITM["Open"][sec[i]] and c[0] > (ITM["TP"][sec[i]] - trd_entry)/3 + trd_entry and ITM["Status"][sec[i]] == "Entry":
                             SaveToLog(main_log, "ITM: BE " + sec[i])
-                            ITM["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(c[0] - trd_entry)/2) + 0.00001,5)
-                            if ITM["SL"][sec[i]] > trd_entry and ITM["SL"][sec[i]] < c[0]:
-                                UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN) 
-                                ITM["Status"][sec[i]] = "BE"
+                            ITM["SL"][sec[i]] = round(trd_entry + min(0.00025, abs(c[0] - trd_entry)/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN) 
+                            ITM["Status"][sec[i]] = "BE"
                     elif trd_side == "sell":
                         if c[0] < trd_entry - 0.75*(trd_entry - ITM["TP"][sec[i]]) and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry"):
                             SaveToLog(main_log, "ITM: 75% " + sec[i])
@@ -260,10 +259,9 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                             ITM["Status"][sec[i]] = "75%"
                         elif dt - timedelta(minutes=45) > ITM["Open"][sec[i]] and c[0] < trd_entry - (trd_entry - ITM["TP"][sec[i]])/3 and ITM["Status"][sec[i]] == "Entry":
                             SaveToLog(main_log, "ITM: BE " + sec[i])
-                            ITM["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - c[0])/2) + 0.00001,5)
-                            if ITM["SL"][sec[i]] < trd_entry and ITM["SL"][sec[i]] > c[0]:
-                                UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                                ITM["Status"][sec[i]] = "BE"
+                            ITM["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            ITM["Status"][sec[i]] = "BE"
                 else:
                     if ITM["Status"][sec[i]] == "Entry":
                         SaveToLog(main_log, "ITM: Flat at Entry" + sec[i])
@@ -287,10 +285,9 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                         elif c[0] > (ITM["TP"][sec[i]] - trd_entry)/3 + trd_entry and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry-Long"):
                             SaveToLog(main_log, "ITM: 50% " + sec[i])
                             OpenMarketOrder(account_id, sec[i], 0.5*vol, "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(c[0] - trd_entry)/2) + 0.00001,5)
-                            if ITM["SL"][sec[i]] > trd_entry and ITM["SL"][sec[i]] < c[0]:
-                                UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                                ITM["Status"][sec[i]] = "50%"
+                            ITM["SL"][sec[i]] = round(trd_entry + min(0.00025, abs(c[0] - trd_entry)/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            ITM["Status"][sec[i]] = "50%"
                     elif trd_side == "sell":
                         if c[0] < trd_entry - 0.5*(trd_entry - ITM["TP"][sec[i]]):
                             SaveToLog(main_log, "ITM: close " + sec[i])
@@ -298,10 +295,9 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                         elif c[0] < trd_entry - (trd_entry - ITM["TP"][sec[i]])/3 and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry-Long"):
                             SaveToLog(main_log, "ITM: 50% " + sec[i])
                             OpenMarketOrder(account_id, sec[i], 0.5*vol, "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - c[0])/2) + 0.00001,5)
-                            if ITM["SL"][sec[i]] < trd_entry and ITM["SL"][sec[i]] > c[0]:
-                                UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                                ITM["Status"][sec[i]] = "50%"
+                            ITM["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            ITM["Status"][sec[i]] = "50%"
 
 ##########################################################################################################
 #                                                                                                        #
