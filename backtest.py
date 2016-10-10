@@ -11,7 +11,62 @@ import requests
 import json
 from array import *
 
+start = "2016-10-05T01%3A00%3A00Z"
+end = "2016-10-06T15%3A00%3A00Z"
 
+sym = "EUR_USD"
+tf = "M15"
+
+h = {'Authorization' : DEMO_ACCESS_TOKEN}
+url = "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(sym) + "&start=" + str(start) + "&end=" + str(end) + "&candleFormat=midpoint&granularity=" + str(tf)
+r = requests.get(url, headers=h)     
+data = json.loads(r.text)
+iterable = (x[STRT] for x in data["candles"])
+t = np.fromiter(iterable, np.dtype('a27'), count=-1)
+iterable = (x[STRO] for x in data["candles"])
+o = np.fromiter(iterable, np.float, count=-1)
+iterable = (x[STRH] for x in data["candles"])
+h = np.fromiter(iterable, np.float, count=-1)
+iterable = (x[STRC] for x in data["candles"])
+c = np.fromiter(iterable, np.float, count=-1)
+iterable = (x[STRL] for x in data["candles"])
+l = np.fromiter(iterable, np.float, count=-1)
+
+
+def TR(h,l,yc):
+    x = h-l
+    y = abs(h-yc)
+    z = abs(l-yc)
+    if y <= x >= z:
+        TR = x
+    elif x <= y >= z:
+        TR = y
+    elif x <= z >= y:
+        TR = z
+    return TR
+
+# def TrueRanges(h, l, c):
+
+tr = []
+d = []
+tr.append(0)
+le = len(c)-1
+for i in range(0, le):
+	tr.append(TR(h[le-i], l[le-i], c[le-i-1]))
+
+
+# def ROC(c):
+#     roc = []
+#     for i in range(len(c)):
+#         roc.append(c[i]/c[0] - 1)
+#     return roc
+plt.plot(tr)
+plt.show()
+# plt.plot(o)
+# plt.plot(h)
+# plt.plot(l)
+plt.plot(c)
+plt.show()
 # h = {'Authorization' : LIVE_ACCESS_TOKEN}
 # url = "https://api-fxtrade.oanda.com/v1/accounts/406207/trades?count=100"
 # r = requests.get(url, headers=h)

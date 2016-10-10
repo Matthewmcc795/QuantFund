@@ -212,3 +212,9 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"code" : 1,
+	"message" : "Invalid or malformed argument: units",
+	"moreInfo" : "http:\/\/developer.oanda.com\/docs\/v1\/troubleshooting\/#errors"
+}

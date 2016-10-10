@@ -17,6 +17,49 @@ hr = [2,6,10,14,18,22]
 
 ##########################################################################################################
 #                                                                                                        #
+#                                                Prices                                                  #
+#                                                                                                        #
+##########################################################################################################
+
+def Get_Price(curr_pair, tf, bars, ohlc, rep):
+    O = []
+    H = []
+    L = []
+    C = []
+    OB = []
+    HB = []
+    LB = []
+    CB = []
+    OA = []
+    HA = []
+    LA = []
+    CA = []
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(curr_pair) + "&count=" + str(bars) + "&candleFormat=" + str(rep) +"&granularity=" + str(tf)
+    r = requests.get(url, headers=h)     
+    data = json.loads(r.text)
+    time.sleep(1)
+    if rep == "midpoint":
+        for i in range(len(data["candles"])):
+            O.append(data["candles"][bars - i - 1][STRO])
+            H.append(data["candles"][bars - i - 1][STRH])
+            L.append(data["candles"][bars - i - 1][STRL])
+            C.append(data["candles"][bars - i - 1][STRC])
+        if ohlc == "ohlc":
+            return O, H, L, C
+        elif ohlc == "hlc":
+            return H, L, C
+        elif ohlc == "c":
+            return C
+    else:
+        for i in range(len(data["candles"])):
+            CB.append(data["candles"][bars - i - 1][STRCB])
+            CA.append(data["candles"][bars - i - 1][STRCA])
+        if ohlc == "c":
+            return CB, CA
+
+##########################################################################################################
+#                                                                                                        #
 #                                           Email & Reports                                              #
 #                                                                                                        #
 ##########################################################################################################
@@ -243,6 +286,10 @@ PPB = {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
     "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Units": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
     "Open": {
     "EUR_USD": datetime.now(), "GBP_USD": datetime.now(), "USD_CAD": datetime.now(), "AUD_USD": datetime.now(), "NZD_USD": datetime.now(), "USD_CHF": datetime.now(), "GBP_CHF": datetime.now(), 
     "EUR_GBP": datetime.now(), "GBP_CAD": datetime.now(), "NZD_CAD": datetime.now(), "AUD_CHF": datetime.now(), "EUR_CAD": datetime.now(), "GBP_AUD": datetime.now(), "NZD_CHF": datetime.now(), 
@@ -315,7 +362,53 @@ ITD = {
     "AUD_NZD": -1, "CAD_CHF": -1, "EUR_AUD": -1, "GBP_NZD": -1, "EUR_CHF": -1, "EUR_NZD": -1, "AUD_CAD": -1}
 }
 
-ITM = {
+Optimizer = {
+    "EUR_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "GBP_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "USD_CAD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AUD_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "NZD_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0} 
+}
+
+Indicators = {
+    "EUR_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "GBP_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "USD_CAD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AUD_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "NZD_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}
+}
+
+IT = {
     "SMA50": {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
@@ -329,6 +422,10 @@ ITM = {
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
     "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
     "BEP": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Units": {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
     "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
@@ -348,78 +445,24 @@ ITM = {
 #                                                                                                        #
 ##########################################################################################################
 def Get_dt(strat):
-    if strat == "dt_Intraday_PPB":
-        dt_Intraday_PPB =  datetime.now()
-        dt_Intraday_PPB = dt_Intraday_PPB.replace(minute=2, second=0,microsecond=1)
-        while dt_Intraday_PPB < datetime.now():
-            dt_Intraday_PPB += timedelta(minutes=5)
-        return dt_Intraday_PPB
-    elif strat == "dt_Intraday_MAC":
-        dt_Intraday_MAC =  datetime.now()
-        dt_Intraday_MAC = dt_Intraday_MAC.replace(minute=3, second=0,microsecond=1)
-        while dt_Intraday_MAC < datetime.now():
-            dt_Intraday_MAC += timedelta(minutes=15)
-        return dt_Intraday_MAC
-    elif strat == "dt_Intraday_BusRide":
-        dt_Intraday_BusRide =  datetime.now()
-        dt_Intraday_BusRide = dt_Intraday_BusRide.replace(minute=2, second=0,microsecond=1)
-        while dt_Intraday_BusRide < datetime.now():
-            dt_Intraday_BusRide += timedelta(minutes=15)
-        return dt_Intraday_BusRide
-    elif strat == "dt_Intraday_IntraTrend":
-        dt_Intraday_IntraTrend =  datetime.now()
-        dt_Intraday_IntraTrend = dt_Intraday_IntraTrend.replace(minute=2, second=0,microsecond=1)
-        while dt_Intraday_IntraTrend < datetime.now():
-            dt_Intraday_IntraTrend += timedelta(minutes=15)
-        return dt_Intraday_IntraTrend
-    elif strat == "dt_Swing_PPB":
-        dt_Swing_PPB =  datetime.now()
-        dt_Swing_PPB = dt_Swing_PPB.replace(minute=2, second=0,microsecond=1)
-        while dt_Swing_PPB.hour != 21:
-            dt_Swing_PPB  += timedelta(hours=1)
-        return dt_Swing_PPB
-    elif strat == "dt_Swing_MAC":
-        dt_Swing_MAC =  datetime.now()
-        dt_Swing_MAC = dt_Swing_MAC.replace(minute=3, second=0,microsecond=1)
-        while not dt_Swing_MAC.hour in hr:
-            dt_Swing_MAC += timedelta(hours=1)
-        return dt_Swing_MAC
-    elif strat == "dt_Swing_BusRide":
-        dt_Swing_BusRide =  datetime.now()
-        dt_Swing_BusRide = dt_Swing_BusRide.replace(minute=2, second=0,microsecond=1)
-        while dt_Swing_BusRide.hour != 21:
-            dt_Swing_BusRide += timedelta(hours=1)
-        return dt_Swing_BusRide
-    elif strat == "dt_Swing_IntraTrendD":
-        dt_Swing_IntraTrendD =  datetime.now()
-        dt_Swing_IntraTrendD = dt_Swing_IntraTrendD.replace(minute=2, second=0,microsecond=1)
-        while dt_Swing_IntraTrendD.hour != 21:
-            dt_Swing_IntraTrendD += timedelta(minutes=15)
-        return dt_Swing_IntraTrendD
-    elif strat == "dt_Swing_IntraTrendW":
-        dt_Swing_IntraTrendW =  datetime.now()
-        dt_Swing_IntraTrendW = dt_Swing_IntraTrendW.replace(minute=2, second=0,microsecond=1)
-        while dt_Swing_IntraTrendW.hour != 21 and dt_Swing_IntraTrendW.weekday != 0:
-            dt_Swing_IntraTrendW += timedelta(hours=1)
-        return dt_Swing_IntraTrendW
-    elif strat == "dt_Intraday_CableSnap":
-        dt_Intraday_CableSnap =  datetime.now()
-        dt_Intraday_CableSnap = dt_Intraday_CableSnap.replace(minute=2, second=0,microsecond=1)
-        while dt_Intraday_CableSnap < datetime.now():
-            dt_Intraday_CableSnap += timedelta(minutes=15)
-        return dt_Intraday_CableSnap
-    elif strat == "dt_Intraday_Banzai":
-        dt_Intraday_Banzai =  datetime.now()
-        dt_Intraday_Banzai = dt_Intraday_Banzai.replace(minute=2, second=0,microsecond=1)
-        while dt_Intraday_Banzai < datetime.now():
-            dt_Intraday_Banzai += timedelta(minutes=15)
-        return dt_Intraday_Banzai
-    elif strat == "dt_Swing_CableSnap":
-        dt_Swing_CableSnap =  datetime.now()
-        dt_Swing_CableSnap = dt_Swing_CableSnap.replace(minute=2, second=0,microsecond=1)
-        while dt_Swing_CableSnap.hour != 21:
-            dt_Swing_CableSnap  += timedelta(hours=1)
-        return dt_Swing_CableSnap
+    if strat == "dt_PPB":
+        dt_PPB =  datetime.now()
+        dt_PPB = dt_PPB.replace(minute=2, second=0,microsecond=1)
+        while dt_PPB < datetime.now():
+            dt_PPB += timedelta(minutes=5)
+        return dt_PPB
+    elif strat == "dt_IT":
+        dt_IT =  datetime.now()
+        dt_IT = dt_IT.replace(minute=2, second=0,microsecond=1)
+        while dt_IT < datetime.now():
+            dt_IT += timedelta(minutes=15)
+        return dt_IT
+    elif strat == "dt_MAC":
+        dt_MAC =  datetime.now()
+        dt_MAC = dt_MAC.replace(minute=3, second=0,microsecond=1)
+        while not dt_MAC.hour in hr:
+            dt_MAC += timedelta(hours=1)
+        return dt_MAC
     elif strat == "MainReport":
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
@@ -430,6 +473,12 @@ def Get_dt(strat):
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
         while dt_report.hour != 21 and dt_report.weekday != 4:
+            dt_report  += timedelta(hours=1)
+        return dt_report
+    elif strat == "dt_PivPts":
+        dt_report =  datetime.now()
+        dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
+        while dt_report.hour != 21:
             dt_report  += timedelta(hours=1)
         return dt_report
 
@@ -505,7 +554,7 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
     else:
         params = urllib.urlencode({
             "instrument" : str(instrument),
-            "units" : units,
+            "units" :   units,
             "type" : order_type,
             "side" : order_side,
             "takeProfit": Take_Profit,
@@ -555,3 +604,97 @@ def SaveToLog(file_name, msg):
     file = open(file_name,'a')
     file.write(msg + " " + str(datetime.now()) +"\n")
     file.close()
+
+
+##########################################################################################################
+#                                                                                                        #
+#                                              Indicators                                                #
+#                                                                                                        #
+##########################################################################################################
+
+def Get_Pivot_Points(sec, curr_price):
+    if curr_price >= PP["R2"][sec]:
+        PP["Position"][sec] = "R2"
+    elif curr_price >= PP["R1"][sec] and curr_price < PP["R2"][sec]:
+        PP["Position"][sec] = "R1-R2"
+    elif curr_price >= PP["PP"][sec] and curr_price < PP["R1"][sec]:
+        PP["Position"][sec] = "PP-R1"
+    elif curr_price >= PP["S1"][sec] and curr_price < PP["PP"][sec]:
+        PP["Position"][sec] = "S1-PP"
+    elif curr_price >= PP["S2"][sec] and curr_price < PP["S1"][sec]:
+        PP["Position"][sec] = "S2-S1"
+    elif curr_price < PP["S2"][sec]:
+        PP["Position"][sec] = "S2"
+    pos = PP["Position"][sec]
+    if pos == "R2":
+        s, r = PP[pos][sec], 2*curr_price
+    elif pos == "S2":
+        s, r = 0, PP[pos][sec]
+    elif pos != "":
+        s, r = PP[pos[:2]][sec], PP[pos[-2:]][sec]
+    return s, r
+
+def TR(h,l,yc):
+    x = h-l
+    y = abs(h-yc)
+    z = abs(l-yc)
+    if y <= x >= z:
+        TR = x
+    elif x <= y >= z:
+        TR = y
+    elif x <= z >= y:
+        TR = z
+    return TR
+
+def TrueRanges(h, l, c):
+    tr = []
+    tr.append(0)
+    for i in range(1, len(c)):
+        tr.append(TR(h[i], l[i], c[i-1]))
+    return tr
+
+def ROC(c):
+    roc = []
+    for i in range(len(c)):
+        roc.append(c[i]/c[0] - 1)
+    return roc
+
+def Get_ATR(h, l, c, sec):
+    if PPB["ATR"][sec] == 0:
+        return ATR(h,l,c)
+    else:
+        PPB["ATR"][sec] = (PPB["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
+        return PPB["ATR"][sec]
+
+def ATR(h, l, c):
+    p = 98
+    TrueRanges = 0.0
+    ATR_val = 0
+    while p > 84:
+        TrueRanges = TrueRanges + TR(h[p], l[p], c[p+1])
+        p -= 1
+    ATR_val = TrueRanges/14
+    while p >= 0:
+        ATR_val = (ATR_val*13 + TR(h[p], l[p], c[p+1]))/14
+        p -= 1
+    return ATR_val
+
+def SMA(c, n, offset):
+    sma_val = 0.0
+    for i in range(n):
+        sma_val += c[i + offset]
+    return sma_val/n
+
+def STDEV(c, n, offset):
+    ma = SMA(c, n, offset)
+    sd_val = 0.0
+    for i in range(n):
+        sd_val += (ma - c[i + offset])**2 
+    return (sd_val/(n-1))**(0.5)
+
+def CORREL(c1, c2):
+    ma1 = SMA(c1,len(c1))
+    ma2 = SMA(c2,len(c2))
+    for i in range(len(c1)):
+        exy += (c1[i] - ma1)*(c2[i]-ma2)
+    exy = exy/len(c1)

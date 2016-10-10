@@ -2,7 +2,7 @@
 import requests
 import json
 from array import *
-from Settings import LIVE_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STRV, STRCO
+from Settings import LIVE_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STROA, STRHA, STRLA, STRCA, STROB, STRHB, STRLB, STRCB, STRV, STRCO
 import httplib
 import urllib
 from QF_Optimizer import *
@@ -12,33 +12,6 @@ import time
 import sys
 main_log = "QF.txt"
 
-##########################################################################################################
-#                                                                                                        #
-#                                                Prices                                                  #
-#                                                                                                        #
-##########################################################################################################
-
-def Get_Price(curr_pair, tf, bars, ohlc):
-    O = []
-    H = []
-    L = []
-    C = []
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(curr_pair) + "&count=" + str(bars) + "&candleFormat=midpoint&granularity=" + str(tf)
-    r = requests.get(url, headers=h)     
-    data = json.loads(r.text)
-    for i in range(len(data["candles"])):
-        O.append(data["candles"][bars - i - 1][STRO])
-        H.append(data["candles"][bars - i - 1][STRH])
-        L.append(data["candles"][bars - i - 1][STRL])
-        C.append(data["candles"][bars - i - 1][STRC])
-    time.sleep(1)
-    if ohlc == "ohlc":
-        return O, H, L, C
-    elif ohlc == "hlc":
-        return H, L, C
-    elif ohlc == "c":
-        return C
 hr = [2,6,10,14,18,22]
 
 ##########################################################################################################
@@ -50,17 +23,14 @@ hr = [2,6,10,14,18,22]
 def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting PPB data for " + sec[i])
-        m15h, m15l, m15c = Get_Price(sec[i], tf[1], 101, "hlc")
-        ma = SMA(m15c, 20,0)
-        atr = Get_ATR(m15h, m15l, m15c, sec[i])
-        m5c = Get_Price(sec[i], tf[0], 20, "c")
-        s, r = Get_Pivot_Points(sec[i], tf[2], m5c[0])
-        # print s, m5c[0], r 
-        Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+        m5c = Get_Price(sec[i], tf[0], 7, "c", "midpoint")
+        Open_Units = PPB["Units"][sec[i]]
         dt = datetime.now()
-        # print "Buy", round(m5c[0] - atr - 0.00001,5), m5c[0], round(min(r, m5c[0] + 2*atr) + 0.00001,5)
-        # print "Sell", round(m5c[0] + atr + 0.00001,5), m5c[0], round(max(s, m5c[0] - 2*atr) - 0.00001,5)
-        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
+        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
+            ma = Indicators[sec[i]]["SMA210"]
+            atr = Indicators[sec[i]]["ATR"]
+            s = Indicators[sec[i]]["s"]
+            r = Indicators[sec[i]]["r"]
             PPB["Open"][sec[i]] = datetime.now()
             PPB["Status"][sec[i]] = ""
             if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
@@ -82,17 +52,16 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
             if PPB["Status"][sec[i]] == "":
                 PPB["Status"][sec[i]] = "Entry"
                 PPB["Open"][sec[i]] = dt
-            SaveToLog(main_log, "PPB: updating stops for " + sec[i])
             Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
             for positions in Open_Trades["trades"]:
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
-                if dt - timedelta(minutes=45) < PPB["Open"][sec[i]]:
+                if dt - timedelta(minutes=30) < PPB["Open"][sec[i]]:
                     if trd_side == "buy":
                         if m5c[0] > 0.75*(PPB["TP"][sec[i]] - trd_entry) + trd_entry and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry"):
                             SaveToLog(main_log, "PPB: 75% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.75*vol, "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                            OpenMarketOrder(account_id, sec[i], int(round(0.75*vol,0)), "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
                             PPB["SL"][sec[i]] = round(0.25*(PPB["TP"][sec[i]] - trd_entry) + trd_entry + 0.00001, 5)
                             UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                             PPB["Status"][sec[i]] = "75%"
@@ -105,7 +74,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                     elif trd_side == "sell":
                         if m5c[0] < trd_entry - 0.75*(trd_entry - PPB["TP"][sec[i]]) and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry"):
                             SaveToLog(main_log, "PPB: 75% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.75*vol, "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN) 
+                            OpenMarketOrder(account_id, sec[i], int(round(0.75*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN) 
                             PPB["SL"][sec[i]] = round(trd_entry - 0.25*(trd_entry - PPB["TP"][sec[i]]) - 0.00001, 5)
                             UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                             PPB["Status"][sec[i]] = "75%"
@@ -122,7 +91,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                         bound = max(abs(PPB["SL"][sec[i]] - trd_entry), abs(PPB["TP"][sec[i]] - trd_entry))
                         ubound = trd_entry + 0.1*bound
                         lbound = trd_entry + 0.1*bound
-                        for t in range(14):
+                        for t in range(6):
                             if m5c[t] > lbound and m5c[t] < ubound and bounded == True:
                                 bounded = True
                             else:
@@ -137,7 +106,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                             ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
                         elif m5c[0] > (PPB["TP"][sec[i]] - trd_entry)/3 + trd_entry and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry-Long"):
                             SaveToLog(main_log, "PPB: 50% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.5*vol, "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                            OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
                             PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
                             if PPB["SL"][sec[i]] > trd_entry and PPB["SL"][sec[i]] < m5c[0]:
                                 UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
@@ -148,7 +117,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                             ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN) 
                         elif m5c[0] < trd_entry - (trd_entry - PPB["TP"][sec[i]])/3 and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry-Long"):
                             SaveToLog(main_log, "PPB: 50% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.5*vol, "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                            OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
                             PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
                             if PPB["SL"][sec[i]] < trd_entry and PPB["SL"][sec[i]] > m5c[0]:
                                 UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
@@ -157,7 +126,7 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
 def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting MAC data for " + sec[i])
-        c = Get_Price(sec[i], tf, 51, "c")
+        c = Get_Price(sec[i], tf, 51, "c", "midpoint")
         ma1 = SMA(c,50,1)
         sd1 = STDEV(c,50,1)
         ma0 = SMA(c,50,0)
@@ -204,72 +173,76 @@ def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
 def IntraTrend(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting IT data for " + sec[i])
-        c = Get_Price(sec[i], tf, 51, "c")
-        SMA10 = SMA(c,10, 0)
-        SMA21 = SMA(c,21, 0)
-        SMA50 = SMA(c,50, 0)
-        Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+        c = Get_Price(sec[i], tf, 7, "c", "midpoint")
+        Open_Units = IT["Units"][sec[i]]
         dt = datetime.now()
-        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
-            ITM["Open"][sec[i]] = datetime.now()
-            ITM["Status"][sec[i]] = ""
-            if c[0] > SMA10 and c[0] < SMA21 and c[0] < SMA50:
-                SaveToLog(main_log, "ITM: Sell " + sec[i])
-                ITM["TP"][sec[i]] = round(c[0] - 0.8*abs(c[0] - SMA50), 5)
-                ITM["SL"][sec[i]] = round(SMA50, 5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                ITM["Open"][sec[i]] = dt
-                ITM["Status"][sec[i]] = "Entry"
-            elif c[0] < SMA10 and c[0] > SMA21 and c[0] > SMA50:
-                SaveToLog(main_log, "ITM: Buy " + sec[i])
-                ITM["TP"][sec[i]] = round(c[0] + 0.8*abs(c[0] - SMA50), 5)
-                ITM["SL"][sec[i]] = round(SMA50, 5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                ITM["Open"][sec[i]] = dt
-                ITM["Status"][sec[i]] = "Entry"
+        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
+            SMA100 = Indicators[sec[i]]["SMA100"]
+            SMA101 = Indicators[sec[i]]["SMA101"]
+            SMA102 = Indicators[sec[i]]["SMA102"]
+            SMA210 = Indicators[sec[i]]["SMA210"]
+            SMA211 = Indicators[sec[i]]["SMA211"]
+            SMA212 = Indicators[sec[i]]["SMA212"]
+            SMA500 = Indicators[sec[i]]["SMA500"]
+            IT["Open"][sec[i]] = datetime.now()
+            IT["Status"][sec[i]] = ""
+            if c[0] < SMA100 and c[1] < SMA101 and c[2] > SMA102 and c[1] < SMA211 and c[2] < SMA212 and SMA500 - SMA100 > 0.0010:
+                SaveToLog(main_log, "IT: Sell " + sec[i])
+                IT["TP"][sec[i]] = round(c[0] - 0.00151, 5)
+                IT["SL"][sec[i]] = round(SMA210 + 0.00021, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                IT["Open"][sec[i]] = dt
+                IT["Status"][sec[i]] = "Entry"
+            elif c[0] > SMA100 and c[1] > SMA101 and c[2] < SMA102 and c[1] > SMA211 and c[2] > SMA212 and SMA100 - SMA500 > 0.0010:
+                SaveToLog(main_log, "IT: Buy " + sec[i])
+                IT["TP"][sec[i]] = round(c[0] + 0.00151, 5)
+                IT["SL"][sec[i]] = round(SMA210 - 0.00021, 5)
+                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                IT["Open"][sec[i]] = dt
+                IT["Status"][sec[i]] = "Entry"
         elif Open_Units != 0:
-            SaveToLog(main_log, "ITM: Managing trade for " + sec[i])
-            if ITM["Status"][sec[i]] == "":
-                ITM["Status"][sec[i]] = "Entry"
-                ITM["Open"][sec[i]] = dt
+            SaveToLog(main_log, "IT: Managing trade for " + sec[i])
+            if IT["Status"][sec[i]] == "":
+                IT["Status"][sec[i]] = "Entry"
+                IT["Open"][sec[i]] = dt
             Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
             for positions in Open_Trades["trades"]:
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
-                if dt - timedelta(minutes=120) < ITM["Open"][sec[i]]:
+                if dt - timedelta(minutes=90) < IT["Open"][sec[i]]:
                     if trd_side == "buy":
-                        if c[0] > 0.75*(ITM["TP"][sec[i]] - trd_entry) + trd_entry and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry"):
-                            SaveToLog(main_log, "ITM: 75% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.75*vol, "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["SL"][sec[i]] = round(0.25*(ITM["TP"][sec[i]] - trd_entry) + trd_entry + 0.00001, 5)
-                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["Status"][sec[i]] = "75%"
-                        elif dt - timedelta(minutes=45) > ITM["Open"][sec[i]] and c[0] > (ITM["TP"][sec[i]] - trd_entry)/3 + trd_entry and ITM["Status"][sec[i]] == "Entry":
-                            SaveToLog(main_log, "ITM: BE " + sec[i])
-                            ITM["SL"][sec[i]] = round(trd_entry + min(0.00025, abs(c[0] - trd_entry)/2) + 0.00001,5)
-                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN) 
-                            ITM["Status"][sec[i]] = "BE"
+                        if c[0] > 0.75*(IT["TP"][sec[i]] - trd_entry) + trd_entry and (IT["Status"][sec[i]] == "BE" or IT["Status"][sec[i]] == "Entry"):
+                            SaveToLog(main_log, "IT: 75% " + sec[i])
+                            OpenMarketOrder(account_id, sec[i], int(round(0.75*vol,0)), "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                            IT["SL"][sec[i]] = round(0.25*(IT["TP"][sec[i]] - trd_entry) + trd_entry + 0.00001, 5)
+                            UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            IT["Status"][sec[i]] = "75%"
+                        elif dt - timedelta(minutes=30) > IT["Open"][sec[i]] and c[0] > (IT["TP"][sec[i]] - trd_entry)/3 + trd_entry and IT["Status"][sec[i]] == "Entry":
+                            SaveToLog(main_log, "IT: BE " + sec[i])
+                            IT["SL"][sec[i]] = round(trd_entry + min(0.00025, abs(c[0] - trd_entry)/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN) 
+                            IT["Status"][sec[i]] = "BE"
                     elif trd_side == "sell":
-                        if c[0] < trd_entry - 0.75*(trd_entry - ITM["TP"][sec[i]]) and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry"):
-                            SaveToLog(main_log, "ITM: 75% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.75*vol, "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN) 
-                            ITM["SL"][sec[i]] = round(trd_entry - 0.25*(trd_entry - ITM["TP"][sec[i]])  + 0.00001, 5)
-                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["Status"][sec[i]] = "75%"
-                        elif dt - timedelta(minutes=45) > ITM["Open"][sec[i]] and c[0] < trd_entry - (trd_entry - ITM["TP"][sec[i]])/3 and ITM["Status"][sec[i]] == "Entry":
-                            SaveToLog(main_log, "ITM: BE " + sec[i])
-                            ITM["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
-                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["Status"][sec[i]] = "BE"
+                        if c[0] < trd_entry - 0.75*(trd_entry - IT["TP"][sec[i]]) and (IT["Status"][sec[i]] == "BE" or IT["Status"][sec[i]] == "Entry"):
+                            SaveToLog(main_log, "IT: 75% " + sec[i])
+                            OpenMarketOrder(account_id, sec[i], int(round(0.75*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN) 
+                            IT["SL"][sec[i]] = round(trd_entry - 0.25*(trd_entry - IT["TP"][sec[i]])  + 0.00001, 5)
+                            UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            IT["Status"][sec[i]] = "75%"
+                        elif dt - timedelta(minutes=30) > IT["Open"][sec[i]] and c[0] < trd_entry - (trd_entry - IT["TP"][sec[i]])/3 and IT["Status"][sec[i]] == "Entry":
+                            SaveToLog(main_log, "IT: BE " + sec[i])
+                            IT["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            IT["Status"][sec[i]] = "BE"
                 else:
-                    if ITM["Status"][sec[i]] == "Entry":
-                        SaveToLog(main_log, "ITM: Flat at Entry" + sec[i])
+                    if IT["Status"][sec[i]] == "Entry":
+                        SaveToLog(main_log, "IT: Flat at Entry" + sec[i])
                         bounded = True
-                        bound = max(abs(ITM["SL"][sec[i]] - trd_entry), abs(ITM["TP"][sec[i]] - trd_entry))
+                        bound = max(abs(IT["SL"][sec[i]] - trd_entry), abs(IT["TP"][sec[i]] - trd_entry))
                         ubound = trd_entry + 0.1*bound
                         lbound = trd_entry + 0.1*bound
-                        for t in range(14):
+                        for t in range(6):
                             if c[t] > lbound and c[t] < ubound and bounded == True:
                                 bounded = True
                             else:
@@ -277,110 +250,106 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                         if bounded == True:
                             ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
                         else: 
-                            ITM["Status"][sec[i]] = "Entry-Long"
+                            IT["Status"][sec[i]] = "Entry-Long"
                     if trd_side == "buy":
-                        if c[0] > 0.5*(ITM["TP"][sec[i]] - trd_entry) + trd_entry:
-                            SaveToLog(main_log, "ITM: close " + sec[i])
+                        if c[0] > 0.5*(IT["TP"][sec[i]] - trd_entry) + trd_entry:
+                            SaveToLog(main_log, "IT: close " + sec[i])
                             ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
-                        elif c[0] > (ITM["TP"][sec[i]] - trd_entry)/3 + trd_entry and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry-Long"):
-                            SaveToLog(main_log, "ITM: 50% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.5*vol, "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["SL"][sec[i]] = round(trd_entry + min(0.00025, abs(c[0] - trd_entry)/2) + 0.00001,5)
-                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["Status"][sec[i]] = "50%"
+                        elif c[0] > (IT["TP"][sec[i]] - trd_entry)/3 + trd_entry and (IT["Status"][sec[i]] == "BE" or IT["Status"][sec[i]] == "Entry-Long"):
+                            SaveToLog(main_log, "IT: 50% " + sec[i])
+                            OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                            IT["SL"][sec[i]] = round(trd_entry + min(0.00025, abs(c[0] - trd_entry)/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            IT["Status"][sec[i]] = "50%"
                     elif trd_side == "sell":
-                        if c[0] < trd_entry - 0.5*(trd_entry - ITM["TP"][sec[i]]):
-                            SaveToLog(main_log, "ITM: close " + sec[i])
+                        if c[0] < trd_entry - 0.5*(trd_entry - IT["TP"][sec[i]]): 
+                            SaveToLog(main_log, "IT: close " + sec[i])
                             ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN) 
-                        elif c[0] < trd_entry - (trd_entry - ITM["TP"][sec[i]])/3 and (ITM["Status"][sec[i]] == "BE" or ITM["Status"][sec[i]] == "Entry-Long"):
-                            SaveToLog(main_log, "ITM: 50% " + sec[i])
-                            OpenMarketOrder(account_id, sec[i], 0.5*vol, "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
-                            UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            ITM["Status"][sec[i]] = "50%"
+                        elif c[0] < trd_entry - (trd_entry - IT["TP"][sec[i]])/3 and (IT["Status"][sec[i]] == "BE" or IT["Status"][sec[i]] == "Entry-Long"):
+                            SaveToLog(main_log, "IT: 50% " + sec[i])
+                            OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                            IT["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
+                            UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            IT["Status"][sec[i]] = "50%"
 
-##########################################################################################################
-#                                                                                                        #
-#                                              Indicators                                                #
-#                                                                                                        #
-##########################################################################################################
+# def Name Pending(account_id, sec, vol, tf, file_nm):
+#     for i in range(len(sec)):
+#         SaveToLog(main_log, "Collecting IT data for " + sec[i])
+#         o, h, l, c = Get_Price(sec[i],tf,101,"ohlc", "midpoint")
+#         cb, ca = Get_Price(sec[i], tf, 101, "c", "bidask")
+#         SMA10 = []
+#         SMA21 = []
+#         SMA50 = []
+#         MACD = []
+#         upmarubozu = [0] * 50
+#         dwnmarubozu = [0] * 50
+#         hammer = [0]*50
+#         shootingstar = [0]*50
+#         for k in range(50):
+#             SMA10.append(SMA(c,10, k))
+#             SMA21.append(SMA(c,21, k))
+#             SMA50.append(SMA(c,50, k))
+#         for k in range(50):
+#             MACD.append(SMA10[k]-SMA21[k])
 
-def Get_Pivot_Points(sec, tf, curr_price): # Update every 24hrs
-    h, l, c = Get_Price(sec, tf, 2, "hlc")
-    PP["PP"][sec] = round((h[1] + l[1] + c[1])/3+0.00001,5)
-    PP["S1"][sec] = round(2*PP["PP"][sec] - h[1]+0.00001,5)
-    PP["S2"][sec] = round(PP["PP"][sec] - h[1] + l[1]+0.00001,5)
-    PP["R1"][sec] = round(2*PP["PP"][sec] - l[1]+0.00001,5)
-    PP["R2"][sec] = round(PP["PP"][sec] + h[1] - l[1]+0.00001,5)
-    if curr_price >= PP["R2"][sec]: # Locate current price in Pivot Points
-        PP["Position"][sec] = "R2"
-    elif curr_price >= PP["R1"][sec] and curr_price < PP["R2"][sec]:
-        PP["Position"][sec] = "R1-R2"
-    elif curr_price >= PP["PP"][sec] and curr_price < PP["R1"][sec]:
-        PP["Position"][sec] = "PP-R1"
-    elif curr_price >= PP["S1"][sec] and curr_price < PP["PP"][sec]:
-        PP["Position"][sec] = "S1-PP"
-    elif curr_price >= PP["S2"][sec] and curr_price < PP["S1"][sec]:
-        PP["Position"][sec] = "S2-S1"
-    elif curr_price < PP["S2"][sec]:
-        PP["Position"][sec] = "S2"
-    pos = PP["Position"][sec]
-    if pos == "R2":
-        s, r = PP[pos][sec], 2*curr_price
-    elif pos == "S2":
-        s, r = 0, PP[pos][sec]
-    elif pos != "":
-        s, r = PP[pos[:2]][sec], PP[pos[-2:]][sec]
-    return s, r # Return support and resistance
+#         for k in range(50):
+#             if h[k] - max(o[k], c[k]) <= 0.0002 and min(o[k], c[k]) - l[k] <= 0.0002 and o[k] - c[k] > 0.0005:
+#                 dwnmarubozu[k] = 1
+#             if h[k] - max(o[k], c[k]) <= 0.0002 and min(o[k], c[k]) - l[k] <= 0.0002 and c[k] - o[k] > 0.0005:
+#                 upmarubozu[k] = 1
+#             if h[k] - max(o[k], c[k]) <= 0.0002 and min(o[k], c[k]) - l[k] > 1.5*(abs(c[k] - o[k])):
+#                 hammer[k] = 1
+#             if hmin(o[k], c[k]) - l[k] <= 0.0002 and h[k] - max(o[k], c[k]) > 1.5*(abs(c[k] - o[k])):
+#                 shootingstar[k] = 1
+        
+#         for k in range(20):
+#             angsma50.append(SMA50[k]/SMA50[0] - 1)
 
-def TR(h,l,yc):
-    x = h-l
-    y = abs(h-yc)
-    z = abs(l-yc)
-    if y <= x >= z:
-        TR = x
-    elif x <= y >= z:
-        TR = y
-    elif x <= z >= y:
-        TR = z
-    return TR
+#         if angsma50[0] > 0.01:
 
-def Get_ATR(h, l, c, sec):
-    if PPB["ATR"][sec] == 0:
-        return ATR(h,l,c)
-    else:
-        PPB["ATR"][sec] = (PPB["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
-        return PPB["ATR"][sec]
 
-def ATR(h, l, c):
-    p = 98
-    TrueRanges = 0.0
-    ATR_val = 0
-    while p > 84:
-        TrueRanges = TrueRanges + TR(h[p], l[p], c[p+1])
-        p -= 1
-    ATR_val = TrueRanges/14
-    while p >= 0:
-        ATR_val = (ATR_val*13 + TR(h[p], l[p], c[p+1]))/14
-        p -= 1
-    return ATR_val
-
-def SMA(c, n, offset):
-    sma_val = 0.0
-    for i in range(n):
-        sma_val += c[i + offset]
-    return sma_val/n
-
-def STDEV(c, n, offset):
-    ma = SMA(c, n, offset)
-    sd_val = 0.0
-    for i in range(n):
-        sd_val += (ma - c[i + offset])**2 
-    return (sd_val/(n-1))**(0.5)
-
-def CORREL(c1, c2):
-    ma1 = SMA(c1,len(c1))
-    ma2 = SMA(c2,len(c2))
-    for i in range(len(c1)):
-        exy += (c1[i] - ma1)*(c2[i]-ma2)
-    exy = exy/len(c1)
+#         Open_Units = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+#         dt = datetime.now()
+#         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 8):
+#             ITM["Open"][sec[i]] = datetime.now()
+#             ITM["Status"][sec[i]] = ""
+#             if c[0] > SMA10 and c[0] < SMA21 and c[0] < SMA50:
+#                 SaveToLog(main_log, "ITM: Sell " + sec[i])
+#                 ITM["TP"][sec[i]] = round(c[0] - 0.8*abs(c[0] - SMA50), 5)
+#                 ITM["SL"][sec[i]] = round(SMA50, 5)
+#                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#                 ITM["Open"][sec[i]] = dt
+#                 ITM["Status"][sec[i]] = "Entry"
+#             elif c[0] < SMA10 and c[0] > SMA21 and c[0] > SMA50:
+#                 SaveToLog(main_log, "ITM: Buy " + sec[i])
+#                 ITM["TP"][sec[i]] = round(c[0] + 0.8*abs(c[0] - SMA50), 5)
+#                 ITM["SL"][sec[i]] = round(SMA50, 5)
+#                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", ITM["TP"][sec[i]], ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#                 ITM["Open"][sec[i]] = dt
+#                 ITM["Status"][sec[i]] = "Entry"
+#         elif Open_Units != 0:
+#             SaveToLog(main_log, "ITM: Managing trade for " + sec[i])
+#             if ITM["Status"][sec[i]] == "":
+#                 ITM["Status"][sec[i]] = "Entry"
+#                 ITM["Open"][sec[i]] = dt
+#             Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
+#             for positions in Open_Trades["trades"]:
+#                 trd_ID = positions["id"]
+#                 trd_entry = float(positions["price"])
+#                 trd_side = positions["side"]
+#                 if dt - timedelta(minutes=30) < ITM["Open"][sec[i]]:
+#                     if trd_side == "buy":
+#                         if c[0] - trd_entry > 0.0006 and ITM["Status"][sec[i]] == "Entry":
+#                             SaveToLog(main_log, "ITM: BE " + sec[i])
+#                             ITM["SL"][sec[i]] = round(trd_entry + 0.00011,5)
+#                             UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN) 
+#                             ITM["Status"][sec[i]] = "BE"
+#                     elif trd_side == "sell":
+#                         if trd_entry - c[0] > 0.0006 and ITM["Status"][sec[i]] == "Entry":
+#                             SaveToLog(main_log, "ITM: BE " + sec[i])
+#                             ITM["SL"][sec[i]] = round(trd_entry - 0.00011,5)
+#                             UpdateStopLoss(account_id, trd_ID, ITM["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#                             ITM["Status"][sec[i]] = "BE"
+#                 else:
+#                     SaveToLog(main_log, "ITM: Flat at Entry" + sec[i])
+#                     ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)

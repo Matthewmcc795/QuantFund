@@ -5,7 +5,7 @@ from array import *
 from Settings import CSTokens, LIVE_ACCESS_TOKEN
 from QF_Strategy import *
 from QF_Functions import *
-# from QF_Optimizer import *
+from QF_Optimizer import *
 import httplib
 import urllib
 from datetime import datetime, timedelta
@@ -25,44 +25,62 @@ fl_strat2 = "MAC_Log.txt"
 fl_strat3 = "IT_Log.txt"
 
 dt_Main_Report = Get_dt("MainReport")
-dt_Intraday_PPB = Get_dt("dt_Intraday_PPB")
-dt_Intraday_IntraTrend = Get_dt("dt_Intraday_IntraTrend")
-dt_Swing_MAC = Get_dt("dt_Swing_MAC")
+dt_PPB = Get_dt("dt_PPB")
+dt_PPB_Optimizer = dt_PPB - timedelta(minutes=1)
+dt_IT = Get_dt("dt_IT")
+dt_IT_Optimizer = dt_IT - timedelta(minutes=1)
+dt_MAC = Get_dt("dt_MAC")
+dt_PivPts = Get_dt("dt_PivPts")
 Intraday_PPB_tf = ["M5", "M15", "D"]
-
+UpdatePivotPoints(QFSec)
+LoadIndicators(QFSec,"M5")
+LoadIndicators(QFSec,"M15")
+# PA = PriceAction(QFSec)
+# MM = MoneyManagement(QFSec)
 while True:
     d = datetime.now()
     ###############################################################################
     #                                QF - Day Trade                               #
     ###############################################################################
-    if datetime.now() > dt_Intraday_PPB:
-        SaveToLog(main_log, "Running Intraday_PPB")
+    if datetime.now() > dt_PPB:
+        SaveToLog(main_log, "Running PPB")
         PivotPointBreakout(QFPort[0], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
         SaveToLog(main_log, "Intraday_PPB complete")
-        dt_Intraday_PPB += timedelta(minutes=5)
-        dt_Intraday_PPB = dt_Intraday_PPB.replace(second=1, microsecond=1)
-    elif datetime.now() > dt_Intraday_IntraTrend:
-        SaveToLog(main_log, "Running Intraday_IntraTrend")
+        dt_PPB += timedelta(minutes=5)
+        dt_PPB = dt_PPB.replace(second=1, microsecond=1)
+        dt_PPB_Optimizer -= timedelta(minutes=1)
+    if datetime.now() > dt_IT:
+        SaveToLog(main_log, "Running IntraTrend")
         IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
-        SaveToLog(main_log, "Intraday_IntraTrend complete")
-        dt_Intraday_IntraTrend += timedelta(minutes=15)
-        dt_Intraday_IntraTrend = dt_Intraday_IntraTrend.replace(second=1, microsecond=1)
+        SaveToLog(main_log, "IntraTrend complete")
+        dt_IT += timedelta(minutes=15)
+        dt_IT = dt_IT.replace(second=1, microsecond=1)
+        dt_IT_Optimizer -= timedelta(minutes=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
-    if datetime.now() > dt_Swing_MAC:
-        SaveToLog(main_log, "Running Swing_MAC")
+    if datetime.now() > dt_MAC:
+        SaveToLog(main_log, "Running MAC")
         MovingAverageContrarian(QFPort[2], QFSec, QFVol, "H4", fl_strat2)
-        SaveToLog(main_log, "Swing_MAC complete")
-        dt_Swing_MAC += timedelta(hours=4)
-        dt_Swing_MAC = dt_Swing_MAC.replace(minute=0, second=1, microsecond=1)
+        SaveToLog(main_log, "MAC complete")
+        dt_MAC += timedelta(hours=4)
+        dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
     ###############################################################################
     #                                 Optimizer                                   #
     ###############################################################################
-    if d.weekday() == 4 and d.hour == 8 and d.minute > 50:
-        for i in range(len(sec)):
-            ClosePositions(QFPort[0], sec[i], fl_strat1, LIVE_ACCESS_TOKEN)
-            ClosePositions(QFPort[1], sec[i], fl_strat3, LIVE_ACCESS_TOKEN)
+    if datetime.now() > dt_PPB_Optimizer:
+        UpdateOpenUnits(QFSec, QFPort[0], "PPB")
+        LoadIndicators(QFSec,"M5")
+    if datetime.now() > dt_IT_Optimizer:
+        UpdateOpenUnits(QFSec, QFPort[1], "IT")
+        LoadIndicators(QFSec,"M5")
+        LoadIndicators(QFSec,"M15")
+    if datetime.now() > dt_PivPts:
+        UpdatePivotPoints(QFSec)
+    if d.weekday() == 4 and d.hour == 20 and d.minute > 50:
+        for i in range(len(QFSec)):
+            ClosePositions(QFPort[0], QFSec[i], fl_strat1, LIVE_ACCESS_TOKEN)
+            ClosePositions(QFPort[1], QFSec[i], fl_strat3, LIVE_ACCESS_TOKEN)
         time.sleep(3600)
     ###############################################################################
     #                                 Reporting                                   #
