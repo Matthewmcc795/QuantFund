@@ -11,62 +11,137 @@ import requests
 import json
 from array import *
 
-start = "2016-10-05T01%3A00%3A00Z"
-end = "2016-10-06T15%3A00%3A00Z"
+c = pClose("EUR_USD", "M15", "2016-09-05", "2016-10-07")
+sma10 = pMa(c, 10)
+sma21 = pMa(c, 21)
+sma50 = pMa(c, 50)
 
-sym = "EUR_USD"
-tf = "M15"
-
-h = {'Authorization' : DEMO_ACCESS_TOKEN}
-url = "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(sym) + "&start=" + str(start) + "&end=" + str(end) + "&candleFormat=midpoint&granularity=" + str(tf)
-r = requests.get(url, headers=h)     
-data = json.loads(r.text)
-iterable = (x[STRT] for x in data["candles"])
-t = np.fromiter(iterable, np.dtype('a27'), count=-1)
-iterable = (x[STRO] for x in data["candles"])
-o = np.fromiter(iterable, np.float, count=-1)
-iterable = (x[STRH] for x in data["candles"])
-h = np.fromiter(iterable, np.float, count=-1)
-iterable = (x[STRC] for x in data["candles"])
-c = np.fromiter(iterable, np.float, count=-1)
-iterable = (x[STRL] for x in data["candles"])
-l = np.fromiter(iterable, np.float, count=-1)
-
-
-def TR(h,l,yc):
-    x = h-l
-    y = abs(h-yc)
-    z = abs(l-yc)
-    if y <= x >= z:
-        TR = x
-    elif x <= y >= z:
-        TR = y
-    elif x <= z >= y:
-        TR = z
-    return TR
-
-# def TrueRanges(h, l, c):
-
-tr = []
-d = []
-tr.append(0)
-le = len(c)-1
-for i in range(0, le):
-	tr.append(TR(h[le-i], l[le-i], c[le-i-1]))
-
-
-# def ROC(c):
-#     roc = []
-#     for i in range(len(c)):
-#         roc.append(c[i]/c[0] - 1)
-#     return roc
-plt.plot(tr)
-plt.show()
-# plt.plot(o)
-# plt.plot(h)
-# plt.plot(l)
 plt.plot(c)
+plt.plot(sma10)
+plt.plot(sma21)
+plt.plot(sma50)
 plt.show()
+spacer = 0
+cnt = 0
+print len(c)
+
+for i in range(len(c)-21):
+    lwr = True
+    prices = []
+    ss10 = []
+    ss21 = []
+    ss50 = []
+    for k in range(5):
+        if c[i-k-1] > sma10[i-k-1] and lwr == True:
+            lwr = False
+    if lwr == True and c[i] < sma10[i] and c[i-1] < sma10[i-1] and c[i-2] < sma10[i-2] and sma10[i-1] - c[i-1] < 0.0002 and sma10[i-2] - c[i-2] < 0.0002 and c[i] < min (c[i-1], c[i-2]) and sma10[i] < sma21[i] and sma21[i] < sma50[i] and i > spacer + 10:
+        print i
+        spacer = i
+        cnt += 1 
+        for j in range(20):
+            prices.append(c[i+j-5])
+            ss10.append(sma10[i+j-5])
+            ss21.append(sma21[i+j-5])
+            ss50.append(sma50[i+j-5])
+        plt.plot(prices)
+        plt.plot(ss10)
+        plt.plot(ss21)
+        plt.plot(ss50)
+        plt.show()
+print cnt
+# trd_entry = 1.1234
+# atr = 0.0010
+# m5c = 1.2342
+
+# print round(trd_entry + min(0.00025, atr/4, abs(m5c - trd_entry)/2) + 0.00001, 5)
+
+# PPB["Status"][sec[i]] == "Entry"
+# trd_side == "buy"
+# if PPB["Status"][sec[i]] == "Entry":
+#     SaveToLog(main_log, "PPB: Flat at Entry " + sec[i])
+#     bounded = True
+#     bound = max(abs(PPB["SL"][sec[i]] - trd_entry), abs(PPB["TP"][sec[i]] - trd_entry))
+#     ubound = trd_entry + 0.1*bound
+#     lbound = trd_entry + 0.1*bound
+#     for t in range(6):
+#         if m5c[t] > lbound and m5c[t] < ubound and bounded == True:
+#             bounded = True
+#         else:
+#             bounded = False
+#     if bounded == True:
+#         print "close"
+#     else:
+#         PPB["Status"][sec[i]] = "Entry-Long"
+# if trd_side == "buy":
+#     if m5c[0] > 0.5*(TP - trd_entry) + trd_entry:
+#         PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
+#         UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#         PPB["Status"][sec[i]] = "50%"
+# elif trd_side == "sell":
+#     if m5c[0] < trd_entry - 0.5*(trd_entry - PPB["TP"][sec[i]]):
+#         SaveToLog(main_log, "PPB: Close " + sec[i])
+#         print "close" 
+#     elif m5c[0] < trd_entry - (trd_entry - PPB["TP"][sec[i]])/3 and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry-Long"):
+#         SaveToLog(main_log, "PPB: 50% " + sec[i])
+#         OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+#         PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
+#         UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+# start = "2016-10-05T01%3A00%3A00Z"
+# end = "2016-10-06T15%3A00%3A00Z"
+
+# sym = "EUR_USD"
+# tf = "M15"
+
+# h = {'Authorization' : DEMO_ACCESS_TOKEN}
+# url = "https://api-fxpractice.oanda.com/v1/candles?instrument=" + str(sym) + "&start=" + str(start) + "&end=" + str(end) + "&candleFormat=midpoint&granularity=" + str(tf)
+# r = requests.get(url, headers=h)     
+# data = json.loads(r.text)
+# iterable = (x[STRT] for x in data["candles"])
+# t = np.fromiter(iterable, np.dtype('a27'), count=-1)
+# iterable = (x[STRO] for x in data["candles"])
+# o = np.fromiter(iterable, np.float, count=-1)
+# iterable = (x[STRH] for x in data["candles"])
+# h = np.fromiter(iterable, np.float, count=-1)
+# iterable = (x[STRC] for x in data["candles"])
+# c = np.fromiter(iterable, np.float, count=-1)
+# iterable = (x[STRL] for x in data["candles"])
+# l = np.fromiter(iterable, np.float, count=-1)
+
+
+# def TR(h,l,yc):
+#     x = h-l
+#     y = abs(h-yc)
+#     z = abs(l-yc)
+#     if y <= x >= z:
+#         TR = x
+#     elif x <= y >= z:
+#         TR = y
+#     elif x <= z >= y:
+#         TR = z
+#     return TR
+
+# # def TrueRanges(h, l, c):
+
+# tr = []
+# d = []
+# tr.append(0)
+# le = len(c)-1
+# for i in range(0, le):
+# 	tr.append(TR(h[le-i], l[le-i], c[le-i-1]))
+
+
+# # def ROC(c):
+# #     roc = []
+# #     for i in range(len(c)):
+# #         roc.append(c[i]/c[0] - 1)
+# #     return roc
+# plt.plot(tr)
+# plt.show()
+# # plt.plot(o)
+# # plt.plot(h)
+# # plt.plot(l)
+# plt.plot(c)
+# plt.show()
 # h = {'Authorization' : LIVE_ACCESS_TOKEN}
 # url = "https://api-fxtrade.oanda.com/v1/accounts/406207/trades?count=100"
 # r = requests.get(url, headers=h)

@@ -32,9 +32,11 @@ dt_IT_Optimizer = dt_IT - timedelta(minutes=1)
 dt_MAC = Get_dt("dt_MAC")
 dt_PivPts = Get_dt("dt_PivPts")
 Intraday_PPB_tf = ["M5", "M15", "D"]
+
 UpdatePivotPoints(QFSec)
 LoadIndicators(QFSec,"M5")
 LoadIndicators(QFSec,"M15")
+
 # PA = PriceAction(QFSec)
 # MM = MoneyManagement(QFSec)
 while True:
@@ -68,13 +70,18 @@ while True:
     ###############################################################################
     #                                 Optimizer                                   #
     ###############################################################################
-    if datetime.now() > dt_PPB_Optimizer:
-        UpdateOpenUnits(QFSec, QFPort[0], "PPB")
-        LoadIndicators(QFSec,"M5")
     if datetime.now() > dt_IT_Optimizer:
+        t = datetime.now()
+        UpdateOpenUnits(QFSec, QFPort[0], "PPB")
         UpdateOpenUnits(QFSec, QFPort[1], "IT")
         LoadIndicators(QFSec,"M5")
-        LoadIndicators(QFSec,"M15")
+        LoadIndicators(QFSec,"M15")        
+        SaveToLog(main_log, "IT Optimizer runtime: " + str(datetime() - t))
+    elif datetime.now() > dt_PPB_Optimizer:
+        t = datetime.now()
+        UpdateOpenUnits(QFSec, QFPort[0], "PPB")
+        LoadIndicators(QFSec,"M5")
+        SaveToLog(main_log, "PPB Optimizer runtime: " + str(datetime.now() - t))
     if datetime.now() > dt_PivPts:
         UpdatePivotPoints(QFSec)
     if d.weekday() == 4 and d.hour == 20 and d.minute > 50:

@@ -335,33 +335,6 @@ PP = {
     "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""}
 }
 
-ITD = {
-    "SMA50": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "TP": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "SL": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "BEP": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "BEV": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "counter": {
-    "EUR_USD": -1, "GBP_USD": -1, "USD_CAD": -1, "AUD_USD": -1, "NZD_USD": -1, "USD_CHF": -1, "GBP_CHF": -1, 
-    "EUR_GBP": -1, "GBP_CAD": -1, "NZD_CAD": -1, "AUD_CHF": -1, "EUR_CAD": -1, "GBP_AUD": -1, "NZD_CHF": -1, 
-    "AUD_NZD": -1, "CAD_CHF": -1, "EUR_AUD": -1, "GBP_NZD": -1, "EUR_CHF": -1, "EUR_NZD": -1, "AUD_CAD": -1}
-}
-
 Optimizer = {
     "EUR_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
@@ -386,6 +359,30 @@ Optimizer = {
 }
 
 Indicators = {
+    "EUR_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "GBP_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "USD_CAD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AUD_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "NZD_USD": {
+    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
+    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}
+}
+
+
+PriceAction = {
     "EUR_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
