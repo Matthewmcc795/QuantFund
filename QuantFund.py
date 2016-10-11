@@ -26,13 +26,13 @@ fl_strat3 = "IT_Log.txt"
 
 dt_Main_Report = Get_dt("MainReport")
 dt_PPB = Get_dt("dt_PPB")
-dt_PPB_Optimizer = dt_PPB - timedelta(minutes=1)
 dt_IT = Get_dt("dt_IT")
-dt_IT_Optimizer = dt_IT - timedelta(minutes=1)
 dt_MAC = Get_dt("dt_MAC")
 dt_PivPts = Get_dt("dt_PivPts")
-Intraday_PPB_tf = ["M5", "M15", "D"]
+dt_PPB_Optimizer = dt_PPB - timedelta(minutes=1)
+dt_IT_Optimizer = dt_IT - timedelta(minutes=1)
 
+Intraday_PPB_tf = ["M5", "M15", "D"]
 UpdatePivotPoints(QFSec)
 LoadIndicators(QFSec,"M5")
 LoadIndicators(QFSec,"M15")
@@ -50,16 +50,12 @@ while True:
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=1, microsecond=1)
-        dt_PPB_Optimizer = dt_PPB
-        dt_PPB_Optimizer -= timedelta(minutes=1)
     if datetime.now() > dt_IT:
         SaveToLog(main_log, "Running IntraTrend")
         IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
         SaveToLog(main_log, "IntraTrend complete")
         dt_IT += timedelta(minutes=15)
         dt_IT = dt_IT.replace(second=1, microsecond=1)
-        dt_IT_Optimizer = dt_IT
-        dt_IT_Optimizer -= timedelta(minutes=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
@@ -77,12 +73,16 @@ while True:
         UpdateOpenUnits(QFSec, QFPort[0], "PPB")
         UpdateOpenUnits(QFSec, QFPort[1], "IT")
         LoadIndicators(QFSec,"M5")
-        LoadIndicators(QFSec,"M15")        
-        SaveToLog(main_log, "IT Optimizer runtime: " + str(datetime() - t))
+        LoadIndicators(QFSec,"M15")
+        dt_IT_Optimizer += timedelta(minutes=15)
+        dt_IT_Optimizer = dt_IT_Optimizer.replace(second=1, microsecond=1)
+        SaveToLog(main_log, "IT Optimizer runtime: " + str(datetime.now() - t))
     elif datetime.now() > dt_PPB_Optimizer:
         t = datetime.now()
         UpdateOpenUnits(QFSec, QFPort[0], "PPB")
         LoadIndicators(QFSec,"M5")
+        dt_PPB_Optimizer += timedelta(minutes=5)
+        dt_PPB_Optimizer = dt_PPB_Optimizer.replace(second=1, microsecond=1)
         SaveToLog(main_log, "PPB Optimizer runtime: " + str(datetime.now() - t))
     if datetime.now() > dt_PivPts:
         UpdatePivotPoints(QFSec)

@@ -272,23 +272,24 @@ def UpdateOpenUnits(sec, account_id, strat):
 #     for j in range(len(Open_IDs)):
 #         UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm, LIVE_ACCESS_TOKEN)
 
-# class PMAC:
-#     def __init__(self,name):
-#         self.data = json.loads(R)
-#     def eat(self,food):
-#         if food == "Apple": 
-#             self.Health -= 100
-#         elif food == "Ham":
-#             self.Health += 20
-
-# class PriceAction:
-#     def __init__(self,name):
-#         self.data = json.loads(R)
-#     def eat(self,food):
-#         if food == "Apple": 
-#             self.Health -= 100
-#         elif food == "Ham":
-#             self.Health += 20
+# def AnalyzePricePatterns(sec):
+#     for i in range(len(sec)):
+#         DH, DL, DC = Get_Price(sec[i], "D", 2, "hlc", "midpoint")
+#         M15C = Get_Price(sec[i], "M15", 10, "c", "midpoint")
+#         M5C = Get_Price(sec[i], "M5", 1, "c", "midpoint")
+#         lwr = True
+#         SMA100 = Indicators[sec[i]]["SMA100"]
+#         SMA101 = Indicators[sec[i]]["SMA101"]
+#         SMA102 = Indicators[sec[i]]["SMA102"]
+#         SMA103 = Indicators[sec[i]]["SMA103"]
+#         SMA210 = Indicators[sec[i]]["SMA210"]
+#         SMA211 = Indicators[sec[i]]["SMA211"]
+#         SMA212 = Indicators[sec[i]]["SMA212"]
+#         SMA213 = Indicators[sec[i]]["SMA213"]
+#         SMA500 = Indicators[sec[i]]["SMA500"]
+#         if min (SMA101 - M15C[1], SMA102 - M15C[2], SMA103 - M15C[3]) > 0:
+#         if lwr == True and M15C[0] < SMA100 and M15C[1] < SMA101 and M15C[2] < SMA102 and SMA101 - M15C[1] < 0.0002 and SMA102 - M15C[2] < 0.0002 and M15C[0] < min (M15C[1], M15C[2]) and SMA100 < SMA210 and SMA210 < SMA500:
+#             PriceAction[sec[i]]["SMA10Bounce"] = 1
 
 ##########################################################################################################
 #                                                                                                        #
