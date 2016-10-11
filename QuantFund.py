@@ -50,6 +50,7 @@ while True:
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=1, microsecond=1)
+        dt_PPB_Optimizer = dt_PPB
         dt_PPB_Optimizer -= timedelta(minutes=1)
     if datetime.now() > dt_IT:
         SaveToLog(main_log, "Running IntraTrend")
@@ -57,6 +58,7 @@ while True:
         SaveToLog(main_log, "IntraTrend complete")
         dt_IT += timedelta(minutes=15)
         dt_IT = dt_IT.replace(second=1, microsecond=1)
+        dt_IT_Optimizer = dt_IT
         dt_IT_Optimizer -= timedelta(minutes=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
