@@ -67,9 +67,13 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                             PPB["Status"][sec[i]] = "75%"
                         elif dt - timedelta(minutes=15) > PPB["Open"][sec[i]] and m5c[0] > (PPB["TP"][sec[i]] - trd_entry)/3 + trd_entry and PPB["Status"][sec[i]] == "Entry":
                             SaveToLog(main_log, "PPB: BE " + sec[i])
-                            PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
-                            UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN) 
-                            PPB["Status"][sec[i]] = "BE"                 
+                            try:
+                                PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
+                                UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                                PPB["Status"][sec[i]] = "BE"
+                            except:
+                                e = sys.exc_info()[0]
+                                SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))
                     elif trd_side == "sell":
                         if m5c[0] < trd_entry - 0.75*(trd_entry - PPB["TP"][sec[i]]) and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry"):
                             SaveToLog(main_log, "PPB: 75% " + sec[i])
@@ -79,9 +83,13 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                             PPB["Status"][sec[i]] = "75%"
                         elif dt - timedelta(minutes=15) > PPB["Open"][sec[i]] and m5c[0] < trd_entry - (trd_entry - PPB["TP"][sec[i]])/3 and PPB["Status"][sec[i]] == "Entry":
                             SaveToLog(main_log, "PPB: BE " + sec[i])
-                            PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
-                            UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            PPB["Status"][sec[i]] = "BE"
+                            try:
+                                PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
+                                UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                                PPB["Status"][sec[i]] = "BE"
+                            except:
+                                e = sys.exc_info()[0]
+                                SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))                                
                 else:
                     if PPB["Status"][sec[i]] == "Entry":
                         SaveToLog(main_log, "PPB: Flat at Entry " + sec[i])
@@ -94,10 +102,10 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                                 bounded = True
                             else:
                                 bounded = False
-                        if bounded == True:
-                            ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
-                        else:
-                            PPB["Status"][sec[i]] = "Entry-Long"
+                            if bounded == True:
+                                ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
+                            else:
+                                PPB["Status"][sec[i]] = "Entry-Long"
                     if trd_side == "buy":
                         if m5c[0] > 0.5*(PPB["TP"][sec[i]] - trd_entry) + trd_entry:
                             SaveToLog(main_log, "PPB: Close " + sec[i])
@@ -105,9 +113,13 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                         elif m5c[0] > (PPB["TP"][sec[i]] - trd_entry)/3 + trd_entry and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry-Long"):
                             SaveToLog(main_log, "PPB: 50% " + sec[i])
                             OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
-                            UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            PPB["Status"][sec[i]] = "50%"
+                            try:
+                                PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
+                                UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                                PPB["Status"][sec[i]] = "50%"
+                            except:
+                                e = sys.exc_info()[0]
+                                SaveToLog(main_log, "PPB: Buy 50% " + sec[i] + " " + str(e))
                     elif trd_side == "sell":
                         if m5c[0] < trd_entry - 0.5*(trd_entry - PPB["TP"][sec[i]]):
                             SaveToLog(main_log, "PPB: Close " + sec[i])
@@ -115,9 +127,13 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                         elif m5c[0] < trd_entry - (trd_entry - PPB["TP"][sec[i]])/3 and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry-Long"):
                             SaveToLog(main_log, "PPB: 50% " + sec[i])
                             OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
-                            PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
-                            UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                            PPB["Status"][sec[i]] = "50%"
+                            try:
+                                PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
+                                UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                                PPB["Status"][sec[i]] = "50%"
+                            except:
+                                e = sys.exc_info()[0]
+                                SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))
 
 def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):

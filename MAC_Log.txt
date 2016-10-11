@@ -239,3 +239,19 @@ Sending order...
 	"tradesClosed" : [],
 	"tradeReduced" : {}
 }
+Sending order... 
+{
+	"instrument" : "GBP_USD",
+	"time" : "2016-10-11T22:42:00.000000Z",
+	"price" : 1.21842,
+	"tradeOpened" : {
+		"id" : 10468881292,
+		"units" : 100,
+		"side" : "buy",
+		"takeProfit" : 1.2308,
+		"stopLoss" : 1.2056,
+		"trailingStop" : 0
+	},
+	"tradesClosed" : [],
+	"tradeReduced" : {}
+}
