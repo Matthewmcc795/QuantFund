@@ -26,11 +26,11 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
         m5c = Get_Price(sec[i], tf[0], 7, "c", "midpoint")
         Open_Units = PPB["Units"][sec[i]]
         dt = datetime.now()
+        ma = Indicators[sec[i]]["SMA210"]
+        atr = Indicators[sec[i]]["ATR"]
+        s = Indicators[sec[i]]["s"]
+        r = Indicators[sec[i]]["r"]
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
-            ma = Indicators[sec[i]]["SMA210"]
-            atr = Indicators[sec[i]]["ATR"]
-            s = Indicators[sec[i]]["s"]
-            r = Indicators[sec[i]]["r"]
             PPB["Open"][sec[i]] = datetime.now()
             PPB["Status"][sec[i]] = ""
             if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
@@ -67,13 +67,9 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                             PPB["Status"][sec[i]] = "75%"
                         elif dt - timedelta(minutes=15) > PPB["Open"][sec[i]] and m5c[0] > (PPB["TP"][sec[i]] - trd_entry)/3 + trd_entry and PPB["Status"][sec[i]] == "Entry":
                             SaveToLog(main_log, "PPB: BE " + sec[i])
-                            try:
-                                PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
-                                UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                                PPB["Status"][sec[i]] = "BE"
-                            except:
-                                e = sys.exc_info()[0]
-                                SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))
+                            PPB["SL"][sec[i]] = round(trd_entry + min(0.00025, atr/4, abs(m5c[0] - trd_entry)/2) + 0.00001, 5)
+                            UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            PPB["Status"][sec[i]] = "BE"
                     elif trd_side == "sell":
                         if m5c[0] < trd_entry - 0.75*(trd_entry - PPB["TP"][sec[i]]) and (PPB["Status"][sec[i]] == "BE" or PPB["Status"][sec[i]] == "Entry"):
                             SaveToLog(main_log, "PPB: 75% " + sec[i])
@@ -83,13 +79,9 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                             PPB["Status"][sec[i]] = "75%"
                         elif dt - timedelta(minutes=15) > PPB["Open"][sec[i]] and m5c[0] < trd_entry - (trd_entry - PPB["TP"][sec[i]])/3 and PPB["Status"][sec[i]] == "Entry":
                             SaveToLog(main_log, "PPB: BE " + sec[i])
-                            try:
-                                PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
-                                UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                                PPB["Status"][sec[i]] = "BE"
-                            except:
-                                e = sys.exc_info()[0]
-                                SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))                                
+                            PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
+                            UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                            PPB["Status"][sec[i]] = "BE"                            
                 else:
                     if PPB["Status"][sec[i]] == "Entry":
                         SaveToLog(main_log, "PPB: Flat at Entry " + sec[i])
@@ -164,14 +156,14 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
         c = Get_Price(sec[i], tf, 7, "c", "midpoint")
         Open_Units = IT["Units"][sec[i]]
         dt = datetime.now()
+        SMA100 = Indicators[sec[i]]["SMA100"]
+        SMA101 = Indicators[sec[i]]["SMA101"]
+        SMA102 = Indicators[sec[i]]["SMA102"]
+        SMA210 = Indicators[sec[i]]["SMA210"]
+        SMA211 = Indicators[sec[i]]["SMA211"]
+        SMA212 = Indicators[sec[i]]["SMA212"]
+        SMA500 = Indicators[sec[i]]["SMA500"]
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
-            SMA100 = Indicators[sec[i]]["SMA100"]
-            SMA101 = Indicators[sec[i]]["SMA101"]
-            SMA102 = Indicators[sec[i]]["SMA102"]
-            SMA210 = Indicators[sec[i]]["SMA210"]
-            SMA211 = Indicators[sec[i]]["SMA211"]
-            SMA212 = Indicators[sec[i]]["SMA212"]
-            SMA500 = Indicators[sec[i]]["SMA500"]
             IT["Open"][sec[i]] = datetime.now()
             IT["Status"][sec[i]] = ""
             if c[0] < SMA100 and SMA100 < SMA210 and c[1] < SMA101 and c[2] > SMA102 and c[1] < SMA211 and c[2] < SMA212 and SMA500 - SMA100 > 0.0010:
@@ -365,3 +357,10 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
 #                 SaveToLog(main_log, "Bus Ride: Buy " + sec[i])
 #                 SL = round(c[2] + 0.00001,5)
 #                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", buy_tp, SL, file_nm, LIVE_ACCESS_TOKEN)
+# try:
+#     PPB["SL"][sec[i]] = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
+#     UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#     PPB["Status"][sec[i]] = "BE"
+# except:
+#     e = sys.exc_info()[0]
+#     SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))
