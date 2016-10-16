@@ -11,152 +11,33 @@ import time
 import sys
 main_log = "QF.txt"
 
-# Fundamental equation to optimize is Z = p(Re) + (1-p)(Ri)
-# What factors can we correlate to the probability of success, reward or risk
-# At the point of decision, calculate Z and compare to your target Z
-# Or, compare the factors, p, Re and Ri to your target p*, Re* and Ri*
-
-# For version 2.0, allow your targets to be dynamic to the market. 
-
-# This file will operate as a "researcher" going over historical trades and price data
-# Goal is to find adjustments within reasonable limits to improve profitability or reduce risk
-# Output will be some sort of array of data points or an designated text file that is wiped and rebuilt on every run
-# The Strategy objects will then request that file or array to make the adjustments
-# Output might be doubles ex: 2.35 which would be a multiplier for the volume, so do 2.35x the base line
-# Output might be upper/lower bounds for parameters ex: 10 < SL < 15. 
-# #### "In this environment keep the stops tight".
-# Output might be pairwise ex: if situation 1 then vol = 2.5, if situation 2 then vol = 0.5 
-# #### "situation 1 is favourable so go heavy, situation 2 is unfavourable so trade lighter"
-
-# TBD:
-# Should the Optimizer decide on the current state or should the Strategy? I think Optimizer for now
-# Should the Optimizer return anything within the code or should it just update all the backend stuff?
-# Maybe use dictionaries to handle the output for each strategy
-# #### Ex: PPB["State 1"]["Volume"][sec[i]]
-# #### Handling different states for a given strategy easier to handle
-# #### Variability of different parameters for each strategy easier to handle
-# #### Easier to search for data points than looping through a file or using setting up panda dataframes
-# Should there be a different script to manage the overall fund? I think yes, for now
-# #### Ex. Historically we lose at most 3 times in a day. We just lost 4 times, what should we do?
-# #### Ex2. Money management
-# #### Ex3. Trade management
-
-# To figure out:
-# What is the best way to extract past trades and trade results from Oanda?
-
-# from QF_Functions import *
-# from QF_Strategy import *
-
-# 14/7/2016
-# Explore the idea of having multiple methodologies that meet periodically to make decisions
-# Idea came about as a result of thinking of HR planning for the rest of the fund
-#     You could design jobs and then design scripts to accomplish the tasks/asmuchaspossible
-#     Think of a fund with various roles than have morning meetings, sector and PM meetings
-# My theory is that by looking through different lenses we can establish competing points of view
-#     Then when we compile our findings we can gain better perspective
-#     Example, 
-#         Have a macro analyst have periodic M --> W --> D analysis of macro patterns
-#         Have a day trader who can give daily feedback of how the market is responding
-#         By comparing the findings we can better estimate probabilities, R:R
-# This could create the structure that motivates various Optimizer functions
-#     Similar to how QF_Strategy has the strategies that motivate the indicator order functions
-# The ideas of an Eric and a compliance officer or a risk manager would be functions w/ names
-#     This script is sort of our "Optimizer Department" 
-#     In addition to our "Strategy Department" which handles all signals
-#     We could then create a "Trader Department" that optimizes entries
-#     As well as a "Manager Department" that gives oversight to risk, compliance, reporting etc. 
-# Some departments could be consolidators.
-#     Traders and Managers would sync up to the analysis of the Optimizer
-
 ##########################################################################################################
-#                                                                                                        #
-#                                              Optimizer                                                 #
-#                                                                                                        #
+#                                            Money Manager                                               #
 ##########################################################################################################
 
-# class PriceAction:
-#     def __init__(self, sec):
-#         self.sec = sec 
-#     def UpdatePrices(self, symbol):
-#         self.DO, self.DH, self.DL, self.DC = Get_Price(symbol, "D", 2, "ohlc", "midpoint")
-#         self.M15O, self.M15H, self.M15L, self.M15C = Get_Price(symbol, "M15", 101, "ohlc", "midpoint")
-#     def RunAnalysis(self):
-#         for i in range(len(self.sec)):
-#             self.UpdatePrices(self.sec[i])
-#             self.PivotPointAnalysis()
-#             self.ZScoreAnalysis()
-#             self.LoadIndicators()
-#     def UpdatePivotPoints(self):
-#         for i in range(len(self.sec)):
-#             self.UpdatePrices(self.sec[i])
-#             self.PP = [0,0,0,0,0]
-#             self.PP[2] = round((self.DH[1] + self.DL[1] + self.DC[1])/3 +0.00001,5)
-#             self.PP[0] = round(self.PP[2] - self.DH[1] + self.DL[1],5)
-#             self.PP[1] = round(2*self.PP[2] - self.DH[1],5)
-#             self.PP[3] = round(2*self.PP[2] - self.DL[1],5)
-#             self.PP[4] = round(self.PP[2] + self.DH[1] - self.DL[1],5)
-#             PP["R2"][self.symbol] = self.PP[4]
-#             PP["R1"][self.symbol] = self.PP[3]
-#             PP["PP"][self.symbol] = self.PP[2]
-#             PP["S1"][self.symbol] = self.PP[1]
-#             PP["S2"][self.symbol] = self.PP[0]
-#     def PivotPointAnalysis(self):
-#         for j in range(len(self.sec)):
-#             self.PP[4] = PP["R2"][self.sec[j]]
-#             self.PP[3] = PP["R1"][self.sec[j]]
-#             self.PP[2] = PP["PP"][self.sec[j]]
-#             self.PP[1] = PP["S1"][self.sec[j]]
-#             self.PP[0] = PP["S2"][self.sec[j]]
-#             self.Pos = [0]*100
-#             for i in range(100): 
-#                 if self.M15C[i] >= self.PP[4]:
-#                     self.Pos[i] = 5
-#                 elif self.M15C[i] >= self.PP[3] and self.M15C[i] < self.PP[4]:
-#                     self.Pos[i] = 4
-#                 elif self.M15C[i] >= self.PP[2] and self.M15C[i] < self.PP[3]
-#                     self.Pos[i] = 3
-#                 elif self.M15C[i] >= self.PP[1] and self.M15C[i] < self.PP[2]:
-#                     self.Pos[i] = 2
-#                 elif self.M15C[i] >= self.PP[0] and self.M15C[i] < self.PP[1]:
-#                     self.Pos[i] = 1
-#                 elif self.M15C[i] < self.PP[0]:
-#                     self.Pos[i] = 0
-#                 if self.Pos[offset] == 5:
-#                     Indicators[self.sec[j]]["s"] =  PP["R2"][self.sec[j]]
-#                     Indicators[self.sec[j]]["r"] = 2*self.M15C[0]
-#                 elif self.Pos[offset] == 0:
-#                     Indicators[self.sec[j]]["s"] =  0
-#                     Indicators[self.sec[j]]["r"] = PP["S2"][self.sec[j]]
-#                 else:
-#                     Indicators[self.sec[j]]["s"] = self.PP[self.Pos[offset-1]]
-#                     Indicators[self.sec[j]]["r"] = self.PP[self.Pos[offset]]
-#     def ZScoreAnalysis(self):
-#         self.SMA50 = [0]*100
-#         self.SMA21 = [0]*100
-#         self.SMA10 = [0]*100
-#         self.SD50 = [0]*100
-#         self.SD21 = [0]*100
-#         self.SD10 = [0]*100
-#         for i in range(100-50):
-#             SMA50[100-50 - i] = SMA(self.M15C, 50, i)
-#             SD50[100-50-i] = STDEV(self.M15C, 50, i)
-#         for i in range(100-21):
-#             SMA21[100-21 - i] = SMA(self.M15C, 21, i)
-#             SD21[100-21-i] = STDEV(self.M15C, 21, i)
-#         for i in range(100-10):
-#             SMA10[100 -10 - i] = SMA(self.M15C, 10, i)
-#             SD10[100-10-i] = STDEV(self.M15C, 10, i)
-#         self.Z50 = [0]*100
-#         self.Z21 = [0]*100
-#         self.Z10 = [0]*100
-#         for i in range(100-50):
-#             Z50[100-50 - i] = (self.M15C[i] - self.SMA50[i])/self.SD50[i]
-#         for i in range(100-21):
-#             Z21[100-21-i] = (self.M15C[i] - self.SMA21[i])/self.SD21[i]
-#         for i in range(100-10):
-#             Z10[100-10-i] = (self.M15C[i] - self.SMA10[i])/self.SD10[i]   
-#     def LoadIndicators(self):
-#         Indicators[self.sec[i]]["ATR"] = Get_ATR(self.M15H, self.M15L, self.M15C, self.sec[i])
+def UpdateAccountBalances(account_id, strategy):
+    Strat[strategy]["InitialBalance"] = GetAccountBalance(account_id, LIVE_ACCESS_TOKEN)
+    Strat[strategy]["DailyPl"] = "Middle"
+
+def ManageMoney(account_id, strategy, target, limit):
+    Current_Balance = GetAccountBalance(account_id, LIVE_ACCESS_TOKEN)
+    if Current_Balance - Strat[strategy]["InitialBalance"] > target:
+        Strat[strategy]["DailyPl"] = "AboveTarget"
+    elif Current_Balance - Strat[strategy]["InitialBalance"] < -limit:
+        Strat[strategy]["DailyPl"] = "BelowLimit"
+    else:
+        Strat[strategy]["DailyPl"] = "Middle"
+
+def UpdateOpenUnits(sec, account_id, strat):
+    if strat == "PPB":
+        for i in range(len(sec)):
+            PPB["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+    elif strat == "IT":
+        for i in range(len(sec)):
+            IT["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+    elif strat == "MAC":
+        for i in range(len(sec)):
+            MAC["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
 
 def UpdatePivotPoints(sec):
     for i in range(len(sec)):
@@ -216,6 +97,117 @@ def LoadIndicators(sec, tf):
             Indicators[sec[i]]["SMA500"] = round(SMA(M15C, 50, 0),5)
             Indicators[sec[i]]["ATR"] = round(Get_ATR(M15H, M15L, M15C, sec[i]),6)
 
+##########################################################################################################
+#                                                 Trader                                                 #
+##########################################################################################################
+
+def OptimizeTrade(sec, trd, params):
+
+    if trd == "PPB Sell":
+        patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
+    elif trd == "PPB Buy":
+        patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
+    elif trd == "IT Sell":
+        patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
+    elif trd == "IT Buy":
+        patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
+    for pat in patterns:
+        if PriceAction[sec][pat] == 1:
+            params = [True, vol*2, TP, SL]
+    return params
+
+def AnalyzePricePatterns(sec):
+    for i in range(len(sec)):
+        DH, DL, DC = Get_Price(sec[i], "D", 2, "hlc", "midpoint")
+        M15C = Get_Price(sec[i], "M15", 10, "c", "midpoint")
+        M5C = Get_Price(sec[i], "M5", 1, "c", "midpoint")
+        lwr = True
+        SMA100 = Indicators[sec[i]]["SMA100"]
+        SMA101 = Indicators[sec[i]]["SMA101"]
+        SMA102 = Indicators[sec[i]]["SMA102"]
+        SMA103 = Indicators[sec[i]]["SMA103"]
+        SMA210 = Indicators[sec[i]]["SMA210"]
+        SMA211 = Indicators[sec[i]]["SMA211"]
+        SMA212 = Indicators[sec[i]]["SMA212"]
+        SMA213 = Indicators[sec[i]]["SMA213"]
+        SMA500 = Indicators[sec[i]]["SMA500"]
+        if min (SMA101 - M15C[1], SMA102 - M15C[2], SMA103 - M15C[3]) > 0:
+            PriceAction[sec[i]]["Num Candles Below MA"] = 1
+        if abs(M150[1] - M15C[1]) < 0.0005:
+            PriceAction[sec[i]]["Doji"] = 1
+        if lwr == True and M15C[0] < SMA100 and M15C[1] < SMA101 and M15C[2] < SMA102 and SMA101 - M15C[1] < 0.0002 and SMA102 - M15C[2] < 0.0002 and M15C[0] < min (M15C[1], M15C[2]) and SMA100 < SMA210 and SMA210 < SMA500:
+            PriceAction[sec[i]]["SMA10Bounce"] = 1
+        if M15C[0] > M15H[1] and M15O[1] - M15C[1] > sd_data[i]/64:
+            PriceAction[sec[i]]["BullEngulfing"] = 1
+        if M15C[0] < M15L[1] and M15C[1]-M15O[1] > sd_data[i]/64:
+            PriceAction[sec[i]]["BearEngulfing"] = 1
+        if M15H[0] < M15H[1] and M15L[0] > M15L[1] and M15C[0] > M15H[1]:
+            PriceAction[sec[i]]["InsidebarBreakUp"] = 1
+        if M15H[0] < M15H[1] and M15L[0] > M15L[1] and M15C[0] < M15L[1]:
+            PriceAction[sec[i]]["InsidebarBreakDown"] = 1
+        if M15O[0] > M15C[0] and M15O[1] < M15C[1] and M15L[0] < M15L[1] and M15H[0] > M15H[1]:
+            PriceAction[sec[i]]["BullKeyReversal"] = 1
+        if M15O[0] < M15C[0] and M15O[1] > M15C[1] and M15H[0] < M15H[1] and M15C[0] < M15L[1]:
+            PriceAction[sec[i]]["BearKeyReversal"] = 1
+        if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] > M15H[1] and M15C[0] - M15O[0] > 0.0005:
+            PriceAction[sec[i]]["UpDoji"] = 1
+        if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] < M15L[1] and M15O[0] - M15C[0] > 0.0005:
+            PriceAction[sec[i]]["DownDoji"] = 1
+
+        # if M15H[0] - max(M15O[0], M15C[0]) and min(M15O[0], M15C[0]) - M15L[0]:
+        #     PriceAction[sec[i]]["Hammer"] = 1
+        # if M15H[0] - max(M15O[0], M15C[0]) and min(M15O[0], M15C[0]) - M15L[0]:
+        #     PriceAction[sec[i]]["ShootingStar"] = 1
+
+    #     if c[i] > o[i] and abs(c[i]-o[i]) > sd_data[i] and h[i] - max(o[i],c[i]) < 0.1*(c[i] - o[i]):
+    #         PriceAction[sec[i]]["BullMarubozu"] = 1
+
+    #     if c[i] < o[i] and abs(c[i]-o[i]) > sd_data[i] and 0.1*(c[i] - o[i]) > min(o[i],c[i]) - l[i]:
+    #         PriceAction[sec[i]]["BearMarubozu"] = 1
+
+    #     if abs(o[i] - c[i]) < 0.001 and h[i]-max(o[i],c[i]) > 0.004 and min(o[i],c[i]) - l[i] > 0.004 :
+    #         PriceAction[sec[i]]["LongLeggedDoji"] = 1
+
+    #     s = ShootingStar(o,h,l,c)
+    #     d = Doji(o,h,l,c)
+    #         if s[i] == 1 and d[i] == 1:
+    #             PriceAction[sec[i]]["Gravestone"] = 1
+
+    #     h = Hammer(o,h,l,c)
+    #     d = Doji(o,h,l,c)
+    #         if h[i] == 1 and d[i] == 1:
+    #             PriceAction[sec[i]]["Dragonfly"] = 1
+
+    #     be = BearishMarubozu(o,h,l,c)
+    #     bu = BullishMarubozu(o,h,l,c)
+    #     h = Hammer(o,h,l,c)
+    #     dr = Dragonfly(o,h,l,c)
+    #     do = Doji(o,h,l,c)
+    #     rev = h + dr + do
+    #         if rev[i] > 0 and be[i-1] == 1 and bu[i+1] == 1:
+    # # Revise Morning & Evening star
+    # # 3rd > 50% of 1st and engulfs 2nd
+    # # 2nd usually continues the trend
+    #             PriceAction[sec[i]]["MorningStar"] = 1
+
+    #     be = BearishMarubozu(o,h,l,c)
+    #     bu = BullishMarubozu(o,h,l,c)
+    #     s = ShootingStar(o,h,l,c)
+    #     g = Gravestone(o,h,l,c)
+    #     d = Doji(o,h,l,c)
+    #         if (s[i] == 0 or g[i] == 0 or d[i] == 0) and bu[i-1] == 1 and be[i+1] == 1:
+    #             PriceAction[sec[i]]["EveningStar"] = 1
+
+# Routines to try and optimize best entry prices over a certain time window
+# Next 4hr prices could break out of a pattern and fall another 0.5% to let's buy half now and half then
+
+
+##########################################################################################################
+#                                                                                                        #
+#                                              Optimizer                                                 #
+#                                                                                                        #
+##########################################################################################################
+
 # class MoneyManagement():
 #     def __init__(self, sec):
 #         self.sec = sec
@@ -230,16 +222,33 @@ def LoadIndicators(sec, tf):
 #             for i in range(len(self.sec))
 #                 MAC["Units"][self.sec[i]] = GetOpenUnits(account_id, self.sec[i], self.sec, LIVE_ACCESS_TOKEN)
 
-def UpdateOpenUnits(sec, account_id, strat):
-    if strat == "PPB":
-        for i in range(len(sec)):
-            PPB["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
-    elif strat == "IT":
-        for i in range(len(sec)):
-            IT["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
-    elif strat == "MAC":
-        for i in range(len(sec)):
-            MAC["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+#     def ZScoreAnalysis(self):
+#         self.SMA50 = [0]*100
+#         self.SMA21 = [0]*100
+#         self.SMA10 = [0]*100
+#         self.SD50 = [0]*100
+#         self.SD21 = [0]*100
+#         self.SD10 = [0]*100
+#         for i in range(100-50):
+#             SMA50[100-50 - i] = SMA(self.M15C, 50, i)
+#             SD50[100-50-i] = STDEV(self.M15C, 50, i)
+#         for i in range(100-21):
+#             SMA21[100-21 - i] = SMA(self.M15C, 21, i)
+#             SD21[100-21-i] = STDEV(self.M15C, 21, i)
+#         for i in range(100-10):
+#             SMA10[100 -10 - i] = SMA(self.M15C, 10, i)
+#             SD10[100-10-i] = STDEV(self.M15C, 10, i)
+#         self.Z50 = [0]*100
+#         self.Z21 = [0]*100
+#         self.Z10 = [0]*100
+#         for i in range(100-50):
+#             Z50[100-50 - i] = (self.M15C[i] - self.SMA50[i])/self.SD50[i]
+#         for i in range(100-21):
+#             Z21[100-21-i] = (self.M15C[i] - self.SMA21[i])/self.SD21[i]
+#         for i in range(100-10):
+#             Z10[100-10-i] = (self.M15C[i] - self.SMA10[i])/self.SD10[i]   
+#     def LoadIndicators(self):
+#         Indicators[self.sec[i]]["ATR"] = Get_ATR(self.M15H, self.M15L, self.M15C, self.sec[i])
 
 # def GetTradeSecurities(strat, sec):
 #     sec_temp = []
@@ -256,10 +265,8 @@ def UpdateOpenUnits(sec, account_id, strat):
 #         # if open units > 0
 #         # prices closer to SMAs get loaded earlier
 #     elif start == "MAC":
-
 # Good example of a script that solves on optimizer type problem
 # Similar to how indicator routines are ran seperate from the strategy
-
 # def IT_BreakEven(account_num, sec, trd_entry, curr_price, vol, vol_adj, file_nm, LIVE_ACCESS_TOKEN):
 #     if IT["BEV"][sec] == 0:
 #         IT["BEV"][sec] += vol + vol_adj
@@ -271,47 +278,3 @@ def UpdateOpenUnits(sec, account_id, strat):
 #     Open_IDs = GetOpenTradeIDs(account_num, sec)
 #     for j in range(len(Open_IDs)):
 #         UpdateStopLoss(account_num, Open_IDs[j], IT["SL"][sec], file_nm, LIVE_ACCESS_TOKEN)
-
-# def AnalyzePricePatterns(sec):
-#     for i in range(len(sec)):
-#         DH, DL, DC = Get_Price(sec[i], "D", 2, "hlc", "midpoint")
-#         M15C = Get_Price(sec[i], "M15", 10, "c", "midpoint")
-#         M5C = Get_Price(sec[i], "M5", 1, "c", "midpoint")
-#         lwr = True
-#         SMA100 = Indicators[sec[i]]["SMA100"]
-#         SMA101 = Indicators[sec[i]]["SMA101"]
-#         SMA102 = Indicators[sec[i]]["SMA102"]
-#         SMA103 = Indicators[sec[i]]["SMA103"]
-#         SMA210 = Indicators[sec[i]]["SMA210"]
-#         SMA211 = Indicators[sec[i]]["SMA211"]
-#         SMA212 = Indicators[sec[i]]["SMA212"]
-#         SMA213 = Indicators[sec[i]]["SMA213"]
-#         SMA500 = Indicators[sec[i]]["SMA500"]
-#         if min (SMA101 - M15C[1], SMA102 - M15C[2], SMA103 - M15C[3]) > 0:
-#         if lwr == True and M15C[0] < SMA100 and M15C[1] < SMA101 and M15C[2] < SMA102 and SMA101 - M15C[1] < 0.0002 and SMA102 - M15C[2] < 0.0002 and M15C[0] < min (M15C[1], M15C[2]) and SMA100 < SMA210 and SMA210 < SMA500:
-#             PriceAction[sec[i]]["SMA10Bounce"] = 1
-
-##########################################################################################################
-#                                                                                                        #
-#                                                Manager                                                 #
-#                                                                                                        #
-##########################################################################################################
-
-# def RiskvsReward():
-    # If things are going well go hard and seek out more opportunities
-    # If things are going badly do less and lower the volume
-# def Compliance():
-    # Job is to ensure that trade performance is compliant with investors expectations and backtests
-# def Reporting():
-    # Sending the weekly and the reminder to send the monthly reports
-# def HeadTrader():
-    # Consolidate the positions requested from Signals and it had been adjusted by optimizer and managers
-
-##########################################################################################################
-#                                                                                                        #
-#                                                 Trader                                                 #
-#                                                                                                        #
-##########################################################################################################
-
-# Routines to try and optimize best entry prices over a certain time window
-# Next 4hr prices could break out of a pattern and fall another 0.5% to let's buy half now and half then

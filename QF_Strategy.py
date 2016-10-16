@@ -14,12 +14,6 @@ main_log = "QF.txt"
 
 hr = [2,6,10,14,18,22]
 
-##########################################################################################################
-#                                                                                                        #
-#                                              Strategies                                                #
-#                                                                                                        #
-##########################################################################################################
-
 def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting PPB data for " + sec[i])
@@ -36,14 +30,14 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
             if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
                 SaveToLog(main_log, "PPB: Sell " + sec[i])
                 PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
-                PPB["TP"][sec[i]] = round(max(s, m5c[0] - 2*atr) - 0.00001,5)
+                PPB["TP"][sec[i]] = round(max(s, m5c[0] - atr) - 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 PPB["Open"][sec[i]] = dt
                 PPB["Status"][sec[i]] = "Entry"
             elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
                 SaveToLog(main_log, "PPB: Buy " + sec[i])
                 PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
-                PPB["TP"][sec[i]] = round(min(r, m5c[0] + 2*atr) + 0.00001,5)
+                PPB["TP"][sec[i]] = round(min(r, m5c[0] + atr) + 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 PPB["Open"][sec[i]] = dt
                 PPB["Status"][sec[i]] = "Entry"
@@ -127,6 +121,47 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
                                 e = sys.exc_info()[0]
                                 SaveToLog(main_log, "PPB: Sell 50% " + sec[i] + " " + str(e))
 
+# if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
+#     SaveToLog(main_log, "PPB: Sell " + sec[i])
+#     if PPB["Op"][sec[i]] == 1:
+#         PPB["TP"][sec[i]] = round(max(s, m5c[0] - 2*atr) - 0.00001,5)
+#         PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
+#         Trade_Params = [True, vol, PPB["TP"][sec[i]], PPB["SL"][sec[i]]]
+#         Tag = "PPB Sell " + PP["Position"][sec[i]]
+#         OpResult = OptimizeTrade(sec[i], Tag, Trade_Params)
+#         if OpResult[0]:
+#             OpenMarketOrder(account_id, sec[i], OpResult[1], "market", "sell", OpResult[2], OpResult[3], file_nm, LIVE_ACCESS_TOKEN)
+#             PPB["Open"][sec[i]] = dt
+#             PPB["Status"][sec[i]] = "Entry"
+#             PPB["TP"][sec[i]] = OpResult[2]
+#             PPB["SL"][sec[i]] = OpResult[3]
+#     else:
+#         PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
+#         PPB["TP"][sec[i]] = round(max(s, m5c[0] - 2*atr) - 0.00001,5)
+#         OpenMarketOrder(account_id, sec[i], vol, "market", "sell", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#         PPB["Open"][sec[i]] = dt
+#         PPB["Status"][sec[i]] = "Entry"
+# elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
+#     SaveToLog(main_log, "PPB: Buy " + sec[i])
+#     if PPB["Op"][sec[i]] == 1:
+#         PPB["TP"][sec[i]] = round(min(r, m5c[0] + 2*atr) + 0.00001,5)
+#         PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
+#         Trade_Params = [True, vol, PPB["TP"][sec[i]], PPB["SL"][sec[i]]]
+#         Tag = "PPB Buy " + PP["Position"][sec[i]]
+#         OpResult = OptimizeTrade(sec[i], Tag, Trade_Params)
+#         if OpResult[0]:
+#             OpenMarketOrder(account_id, sec[i], OpResult[1], "market", "buy", OpResult[2], OpResult[3], file_nm, LIVE_ACCESS_TOKEN)
+#             PPB["Open"][sec[i]] = dt
+#             PPB["Status"][sec[i]] = "Entry"
+#             PPB["TP"][sec[i]] = OpResult[2]
+#             PPB["SL"][sec[i]] = OpResult[3]
+#     else:
+#         PPB["TP"][sec[i]] = round(min(r, m5c[0] + 2*atr) + 0.00001,5)
+#         PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
+#         OpenMarketOrder(account_id, sec[i], vol, "market", "buy", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#         PPB["Open"][sec[i]] = dt
+#         PPB["Status"][sec[i]] = "Entry"
+
 def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting MAC data for " + sec[i])
@@ -163,19 +198,20 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
         SMA211 = Indicators[sec[i]]["SMA211"]
         SMA212 = Indicators[sec[i]]["SMA212"]
         SMA500 = Indicators[sec[i]]["SMA500"]
+        atr = Indicators[sec[i]]["ATR"]
         if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
             IT["Open"][sec[i]] = datetime.now()
             IT["Status"][sec[i]] = ""
             if c[0] < SMA100 and SMA100 < SMA210 and c[1] < SMA101 and c[2] > SMA102 and c[1] < SMA211 and c[2] < SMA212 and SMA500 - SMA100 > 0.0010:
                 SaveToLog(main_log, "IT: Sell " + sec[i])
-                IT["TP"][sec[i]] = round(c[0] - 0.00151, 5)
+                IT["TP"][sec[i]] = round(c[0] - min(0.00151, 1.5*atr), 5)
                 IT["SL"][sec[i]] = round(min(c[0] + 0.00101, SMA210 + 0.00021), 5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 IT["Open"][sec[i]] = dt
                 IT["Status"][sec[i]] = "Entry"
             elif c[0] > SMA100 and SMA100 > SMA210 and c[1] > SMA101 and c[2] < SMA102 and c[1] > SMA211 and c[2] > SMA212 and SMA100 - SMA500 > 0.0010:
                 SaveToLog(main_log, "IT: Buy " + sec[i])
-                IT["TP"][sec[i]] = round(c[0] + 0.00151, 5)
+                IT["TP"][sec[i]] = round(c[0] + min(0.00151, 1.5*atr), 5)
                 IT["SL"][sec[i]] = round(min(c[0] - 0.00101, SMA210 - 0.00021), 5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 IT["Open"][sec[i]] = dt
@@ -217,7 +253,6 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                             IT["Status"][sec[i]] = "BE"
                 else:
                     if IT["Status"][sec[i]] == "Entry":
-                        SaveToLog(main_log, "IT: Flat at Entry" + sec[i])
                         bounded = True
                         bound = max(abs(IT["SL"][sec[i]] - trd_entry), abs(IT["TP"][sec[i]] - trd_entry))
                         ubound = trd_entry + 0.1*bound
@@ -228,6 +263,7 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                             else:
                                 bounded = False
                         if bounded == True:
+                            SaveToLog(main_log, "IT: Flat at Entry" + sec[i])
                             ClosePositions(account_id, sec[i], file_nm, LIVE_ACCESS_TOKEN)
                         else: 
                             IT["Status"][sec[i]] = "Entry-Long"
@@ -251,6 +287,47 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
                             IT["SL"][sec[i]] = round(trd_entry - min(0.00025, abs(trd_entry - c[0])/2) + 0.00001,5)
                             UpdateStopLoss(account_id, trd_ID, IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                             IT["Status"][sec[i]] = "50%"
+
+# if c[0] < SMA100 and SMA100 < SMA210 and c[1] < SMA101 and c[2] > SMA102 and c[1] < SMA211 and c[2] < SMA212 and SMA500 - SMA100 > 0.0010:
+#     SaveToLog(main_log, "IT: Sell " + sec[i])
+#     if IT["Op"][sec[i]] == 1:
+#         IT["TP"][sec[i]] = round(c[0] - 0.00151, 5)
+#         IT["SL"][sec[i]] = round(min(c[0] + 0.00101, SMA210 + 0.00021), 5)
+#         Trade_Params = [True, vol, IT["TP"][sec[i]], IT["SL"][sec[i]]]
+#         Tag = "IT Sell"
+#         OpResult = OptimizeTrade(sec[i], Tag, Trade_Params)
+#         if OpResult[0]:
+#             OpenMarketOrder(account_id, sec[i], OpResult[1], "market", "sell", OpResult[2], OpResult[3], file_nm, LIVE_ACCESS_TOKEN)
+#             IT["Open"][sec[i]] = dt
+#             IT["Status"][sec[i]] = "Entry"
+#             IT["TP"][sec[i]] = OpResult[2]
+#             IT["SL"][sec[i]] = OpResult[3]
+#     else:
+#         IT["TP"][sec[i]] = round(c[0] - 0.00151, 5)
+#         IT["SL"][sec[i]] = round(min(c[0] + 0.00101, SMA210 + 0.00021), 5)
+#         OpenMarketOrder(account_id, sec[i], vol, "market", "sell", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#         IT["Open"][sec[i]] = dt
+#         IT["Status"][sec[i]] = "Entry"
+# elif c[0] > SMA100 and SMA100 > SMA210 and c[1] > SMA101 and c[2] < SMA102 and c[1] > SMA211 and c[2] > SMA212 and SMA100 - SMA500 > 0.0010:
+#     SaveToLog(main_log, "IT: Buy " + sec[i])
+#     if IT["Op"][sec[i]] == 1:
+#         IT["TP"][sec[i]] = round(c[0] + 0.00151, 5)
+#         IT["SL"][sec[i]] = round(min(c[0] - 0.00101, SMA210 - 0.00021), 5)
+#         Trade_Params = [True, vol, IT["TP"][sec[i]], IT["SL"][sec[i]]]
+#         Tag = "PPB Buy"
+#         OpResult = OptimizeTrade(sec[i], Tag, Trade_Params)
+#         if OpResult[0]:
+#             OpenMarketOrder(account_id, sec[i], OpResult[1], "market", "buy", OpResult[2], OpResult[3], file_nm, LIVE_ACCESS_TOKEN)
+#             IT["Open"][sec[i]] = dt
+#             IT["Status"][sec[i]] = "Entry"
+#             IT["TP"][sec[i]] = OpResult[2]
+#             IT["SL"][sec[i]] = OpResult[3]
+#     else:
+#         IT["TP"][sec[i]] = round(c[0] + 0.00151, 5)
+#         IT["SL"][sec[i]] = round(min(c[0] - 0.00101, SMA210 - 0.00021), 5)
+#         OpenMarketOrder(account_id, sec[i], vol, "market", "buy", IT["TP"][sec[i]], IT["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+#         IT["Open"][sec[i]] = dt
+#         IT["Status"][sec[i]] = "Entry"
 
 # def Name Pending(account_id, sec, vol, tf, file_nm):
 #     for i in range(len(sec)):

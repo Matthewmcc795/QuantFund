@@ -16,9 +16,7 @@ import smtplib
 hr = [2,6,10,14,18,22]
 
 ##########################################################################################################
-#                                                                                                        #
 #                                                Prices                                                  #
-#                                                                                                        #
 ##########################################################################################################
 
 def Get_Price(curr_pair, tf, bars, ohlc, rep):
@@ -59,9 +57,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
             return CB, CA
 
 ##########################################################################################################
-#                                                                                                        #
 #                                           Email & Reports                                              #
-#                                                                                                        #
 ##########################################################################################################
 
 def Report(report_temp, account_id, access_token):
@@ -246,31 +242,20 @@ def pDay(dt):
     return int(dt[len(dt) -2:])
 
 ##########################################################################################################
-#                                                                                                        #
 #                                             Dictionaries                                               #
-#                                                                                                        #
 ##########################################################################################################
 
-Positions = {
+Analysis = {
+    "Analysis_Type": {"Param1": 0, "Param2": 0, "Param3": 0, "Param4": 0, "Param5": 0}
+}
+
+Strat = {
     "PPB": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "MAC": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
-    "BusRide": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
+    "InitialBalance": 0, "DailyPl": "", "Vol": 0
+    },
     "IT": {
-    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
-    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
-    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
-    "CS": {
-    "EUR_USD": 0, "GBP_USD": 0, "GBP_CHF": 0, "GBP_CAD": 0, "EUR_CAD": 0, 
-    "GBP_AUD": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0}
+    "InitialBalance": 0, "DailyPl": "", "Vol": 0
+    }
 }
 
 PPB = {
@@ -297,7 +282,11 @@ PPB = {
     "Status": {
     "EUR_USD": "", "GBP_USD": "", "USD_CAD": "", "AUD_USD": "", "NZD_USD": "", "USD_CHF": "", "GBP_CHF": "", 
     "EUR_GBP": "", "GBP_CAD": "", "NZD_CAD": "", "AUD_CHF": "", "EUR_CAD": "", "GBP_AUD": "", "NZD_CHF": "", 
-    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""}
+    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""},
+    "Op": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}
 }
 
 MAC = {
@@ -432,56 +421,56 @@ IT = {
     "Status": {
     "EUR_USD": "", "GBP_USD": "", "USD_CAD": "", "AUD_USD": "", "NZD_USD": "", "USD_CHF": "", "GBP_CHF": "", 
     "EUR_GBP": "", "GBP_CAD": "", "NZD_CAD": "", "AUD_CHF": "", "EUR_CAD": "", "GBP_AUD": "", "NZD_CHF": "", 
-    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""}
+    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""},
+    "Op": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}
 }
 
 ##########################################################################################################
-#                                                                                                        #
 #                                              Date/Time                                                 #
-#                                                                                                        #
 ##########################################################################################################
 def Get_dt(strat):
     if strat == "dt_PPB":
         dt_PPB =  datetime.now()
-        dt_PPB = dt_PPB.replace(minute=2, second=0,microsecond=1)
+        dt_PPB = dt_PPB.replace(minute=0, second=0,microsecond=1)
         while dt_PPB < datetime.now():
             dt_PPB += timedelta(minutes=5)
         return dt_PPB
     elif strat == "dt_IT":
         dt_IT =  datetime.now()
-        dt_IT = dt_IT.replace(minute=2, second=0,microsecond=1)
+        dt_IT = dt_IT.replace(minute=0, second=0,microsecond=1)
         while dt_IT < datetime.now():
             dt_IT += timedelta(minutes=15)
         return dt_IT
     elif strat == "dt_MAC":
         dt_MAC =  datetime.now()
-        dt_MAC = dt_MAC.replace(minute=3, second=0,microsecond=1)
+        dt_MAC = dt_MAC.replace(minute=0, second=0,microsecond=1)
         while not dt_MAC.hour in hr:
             dt_MAC += timedelta(hours=1)
         return dt_MAC
     elif strat == "MainReport":
         dt_report =  datetime.now()
-        dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
+        dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
         while dt_report.hour not in [9,21]:
             dt_report  += timedelta(hours=1)
         return dt_report
     elif strat == "WeeklyReport":
         dt_report =  datetime.now()
-        dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
+        dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
         while dt_report.hour != 21 and dt_report.weekday != 4:
             dt_report  += timedelta(hours=1)
         return dt_report
     elif strat == "dt_PivPts":
         dt_report =  datetime.now()
-        dt_report = dt_report.replace(minute=2, second=0,microsecond=1)
+        dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
         while dt_report.hour != 21:
             dt_report  += timedelta(hours=1)
         return dt_report
 
 ##########################################################################################################
-#                                                                                                        #
 #                                               Orders                                                   #
-#                                                                                                        #
 ##########################################################################################################
 
 # def OpenLimitOrder(Account_Num, instrument, units, order_type, price, order_side, Take_Profit, Stop_Loss):
@@ -510,7 +499,7 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss, file_str, access_token):
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": access_token}
     params = urllib.urlencode({"stopLoss": Stop_Loss})
     file = open(file_str,'a')
-    file.write("Updating Stop Loss ... " + "\n")
+    file.write("Updating Stop Loss ... " + str(datetime.now()) + "\n")
     file.close()
     conn.request("PATCH", "/v1/accounts/" + str(Account_Num) + "/trades/" + str(trade_ID), params, headers)
     response = conn.getresponse().read()
@@ -521,7 +510,7 @@ def UpdateStopLoss(Account_Num, trade_ID, Stop_Loss, file_str, access_token):
 
 def ClosePositions(Account_Num, sec, file_str, access_token):
     file = open(file_str,'a')
-    file.write("Closing positions... " + "\n")
+    file.write("Closing positions... " + str(datetime.now()) + "\n")
     file.close()
     h = {'Authorization' : access_token}
     url =   "https://api-fxtrade.oanda.com/v1/accounts/" + str(Account_Num) + "/positions/" + sec
@@ -539,7 +528,7 @@ def OpenMarketOrder(Account_Num, instrument, units, order_type, order_side, Take
     conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
     headers = {"Content-Type": "application/x-www-form-urlencoded","Authorization": access_token}
     file = open(file_str,'a')
-    file.write("Sending order... " + "\n")
+    file.write("Sending order... " + str(datetime.now()) + "\n")
     file.close()
     if Take_Profit == 0.0 and Stop_Loss == 0.0: 
         params = urllib.urlencode({
@@ -585,6 +574,13 @@ def GetOpenUnits(account_id, sec, sec_list, access_token):
                     Units += positions["units"]               
     time.sleep(1)
     return Units
+
+def GetAccountBalance(account_id, access_token):
+    h = {'Authorization' : LIVE_ACCESS_TOKEN}
+    url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id)
+    r = requests.get(url, headers=h)     
+    data = json.loads(r.text)
+    return data["balance"]
 
 def GetOpenTradeIDs(Account_Num, sec, access_token):
     trd_ids = []

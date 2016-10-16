@@ -12,14 +12,8 @@ import json
 from array import *
 import sys
 
-sec = "EUR_USD"
-try:
-    SL = round(trd_entry - min(0.00025, atr/4, abs(trd_entry - m5c[0])/2) + 0.00001, 5)
-    print "CHANGE SL"
-    Status = "50%"
-except:
-    e = sys.exc_info()[0]
-    print "PPB: Sell 50% " + sec + " " + str(e)
+# User changes params of this script based on the above dictionary
+
 
 c = pClose("EUR_USD", "M15", "2016-09-05", "2016-10-07")
 trd_entry = c[2]
