@@ -9,7 +9,7 @@ import time
 import sys
 
 dt = datetime.now()
-print "Now" dt
+print "Now", dt
 
 dt_PPB =  datetime.now()
 dt_PPB = dt_PPB.replace(minute=2, second=0,microsecond=1)
