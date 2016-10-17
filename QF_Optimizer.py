@@ -143,9 +143,32 @@ def LoadIndicators(sec, tf):
             Indicators[sec[i]]["SMA500"] = round(SMA(M15C, 50, 0),5)
             Indicators[sec[i]]["ATR"] = round(Get_ATR(M15H, M15L, M15C, sec[i]),6)
 
-# def TradingSessionPrep():
-
-
+# def TradingSessionPrep(session):
+#     if session = "NA":
+#         PriceAction[sec[i]]["AtWkLow"] = 0
+#         PriceAction[sec[i]]["AtWkHigh"] = 0
+#         for i in range(len(sec)):
+#             m5h, m5l, m5c = Get_Price(sec[i], "M5", 145, "hlc", "midpoint")
+#             l = 5*m5c[0]
+#             h = 0
+#             for j in range(60):
+#                 l = min(l, m5l[j])
+#                 h = max(h, m5h[j])
+#             Indicators[sec[i]]["EuLow"] = l
+#             Indicators[sec[i]]["EuHigh"] = h
+#             l = 5*m5c[0]
+#             h = 0
+#             for j in range(61, 144):
+#                 l = min(l, m5l[j])
+#                 h = max(h, m5h[j])
+#             Indicators[sec[i]]["AsLow"] = l
+#             Indicators[sec[i]]["AsHigh"] = h
+#             Wkh, Wkl, Wkc = Get_Price(sec[i], "W", 2, "hlc", "midpoint")
+#             Dh, Dl, Dc = Get_Price(sec[i], "D", 2, "hlc", "midpoint")
+#             l = min(Wkl[1], Dl[1])
+#             h = max(Wkh[1], Dh[1])
+#             Indicators[sec[i]]["WkLow"] = l
+#             Indicators[sec[i]]["WkHigh"] = h
 
 # def AnalyzePricePatterns(sec):
 #     for i in range(len(sec)):
@@ -184,6 +207,14 @@ def LoadIndicators(sec, tf):
 #             PriceAction[sec[i]]["UpDoji"] = 1
 #         if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] < M15L[1] and M15O[0] - M15C[0] > 0.0005:
 #             PriceAction[sec[i]]["DownDoji"] = 1
+#         if Indicators[sec[i]]["WkLow"] + 0.0020 >= M5C[0]:
+#             PriceAction[sec[i]]["AtWkLow"] = 1
+#         if Indicators[sec[i]]["WkHigh"] - 0.0020 <= M5C[0]:
+#             PriceAction[sec[i]]["AtWkHigh"] = 1
+#         if Indicators[sec[i]]["SesLow"] + 0.0020 >= M5C[0]:
+#             PriceAction[sec[i]]["AtSesLow"] = 1
+#         if Indicators[sec[i]]["SesHigh"] - 0.0020 <= M5C[0]:
+#             PriceAction[sec[i]]["AtSesigh"] = 1
 
         # if M15H[0] - max(M15O[0], M15C[0]) and min(M15O[0], M15C[0]) - M15L[0]:
         #     PriceAction[sec[i]]["Hammer"] = 1

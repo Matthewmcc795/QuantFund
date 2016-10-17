@@ -199,7 +199,7 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
         SMA212 = Indicators[sec[i]]["SMA212"]
         SMA500 = Indicators[sec[i]]["SMA500"]
         atr = Indicators[sec[i]]["ATR"]
-        if Open_Units == 0 and (dt.hour <= 12 and dt.hour >= 5) and Strat["PPB"]["Stop"] == 0:
+        if Open_Units == 0 and (dt.hour <= 12 and dt.hour >= 5) and Strat["IT"]["Stop"] == 0:
             IT["Open"][sec[i]] = datetime.now()
             IT["Status"][sec[i]] = ""
             if c[0] < SMA100 and SMA100 < SMA210 and c[1] < SMA101 and c[2] > SMA102 and c[1] < SMA211 and c[2] < SMA212 and SMA500 - SMA100 > 0.0010:

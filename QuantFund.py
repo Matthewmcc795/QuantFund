@@ -44,8 +44,8 @@ LoadIndicators(QFSec,"M15")
 UpdateAccountBalance(QFPort[0], "PPB")
 UpdateAccountBalance(QFPort[1], "IT")
 
-print Strat["PPB"]["InitialBalance"]
-print Strat["IT"]["InitialBalance"]
+# print Strat["PPB"]["InitialBalance"]
+# print Strat["IT"]["InitialBalance"]
 # PA = PriceAction(QFSec)
 # MM = MoneyManagement(QFSec)
 while True:
@@ -102,10 +102,10 @@ while True:
         UpdateAccountBalance(QFPort[1], "IT")
         dt_Daily += timedelta(hours=24)
         dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
-    # if datetime.now() > dt_SessionPrep:
-    #     TradingSessionPrep()
-    #     dt_SessionPrep += timedelta(hours=24)
-    #     dt_SessionPrep = dt_SessionPrep.replace(minute=0, second=0, microsecond = 1)
+    if datetime.now() > dt_SessionPrep:
+        TradingSessionPrep("NA")
+        dt_SessionPrep += timedelta(hours=24)
+        dt_SessionPrep = dt_SessionPrep.replace(minute=0, second=0, microsecond = 1)
     if d.weekday() == 4 and d.hour == 16 and d.minute > 50:
         for i in range(len(QFSec)):
             ClosePositions(QFPort[0], QFSec[i], fl_strat1, LIVE_ACCESS_TOKEN)

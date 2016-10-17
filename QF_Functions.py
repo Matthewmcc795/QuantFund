@@ -351,46 +351,43 @@ Indicators = {
     "EUR_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}, 
     "GBP_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}, 
     "USD_CAD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0},
     "AUD_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}, 
     "NZD_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}
 }
 
 PriceAction = {
     "EUR_USD": {
-    "SMA10Bounce": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
-    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AtWkLow": 0, "AtWkHigh": 0, "AtSesLow": 0, "AtSesHigh": 0, "Doji": 0, "SMA10Bounce": 0, "SMA21Bounce": 0, "BullEngulfing": 0,
+    "BearEngulfing": 0, "InsidebarBreakUp": 0, "InsidebarBreakDown": 0, "BullKeyReversal": 0, "BearKeyReversal": 0,
+    "UpDoji": 0, "DownDoji": 0},
     "GBP_USD": {
-    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
-    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AtWkLow": 0, "AtWkHigh": 0, "": 0, "ATR": 0, "s": 0, "r": 0},
     "USD_CAD": {
-    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
-    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AtWkLow": 0, "AtWkHigh": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0},
     "AUD_USD": {
-    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
-    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}, 
+    "AtWkLow": 0, "AtWkHigh": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0},
     "NZD_USD": {
-    "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
-    "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}
+    "AtWkLow": 0, "AtWkHigh": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0}
 }
 
 IT = {
@@ -474,7 +471,6 @@ def Get_dt(strat):
         while dt_report.hour != 5:
             dt_report  += timedelta(hours=1)
         return dt_report
-
 
 ##########################################################################################################
 #                                               Orders                                                   #
