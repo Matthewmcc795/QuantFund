@@ -20,6 +20,8 @@ QFPort = [229783, 406207, 836663]
 QFTraget = [0.5, 0.5, 0.5]
 QFLimit = [0.5, 0.5, 0.5]
 QFVol = 100
+# Strat["PPB"]["Vol"] = 100
+# Strat["IT"]["Vol"] = 100
 
 main_log = "QF.txt"
 fl_strat1 = "PPB_Log.txt" 
@@ -31,6 +33,7 @@ dt_PPB = Get_dt("dt_PPB")
 dt_IT = Get_dt("dt_IT")
 dt_MAC = Get_dt("dt_MAC")
 dt_Daily = Get_dt("dt_Daily")
+dt_SessionPrep = Get_dt("dt_SessionPrep")
 dt_PPB_Optimizer = dt_PPB - timedelta(minutes=1)
 dt_IT_Optimizer = dt_IT - timedelta(minutes=1)
 
@@ -38,7 +41,11 @@ Intraday_PPB_tf = ["M5", "M15", "D"]
 UpdatePivotPoints(QFSec)
 LoadIndicators(QFSec,"M5")
 LoadIndicators(QFSec,"M15")
+UpdateAccountBalance(QFPort[0], "PPB")
+UpdateAccountBalance(QFPort[1], "IT")
 
+print Strat["PPB"]["InitialBalance"]
+print Strat["IT"]["InitialBalance"]
 # PA = PriceAction(QFSec)
 # MM = MoneyManagement(QFSec)
 while True:
@@ -51,13 +58,13 @@ while True:
         PivotPointBreakout(QFPort[0], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
-        dt_PPB = dt_PPB.replace(second=1, microsecond=1)
+        dt_PPB = dt_PPB.replace(second=0, microsecond=1)
     if datetime.now() > dt_IT:
         SaveToLog(main_log, "Running IntraTrend")
         IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
         SaveToLog(main_log, "IntraTrend complete")
         dt_IT += timedelta(minutes=15)
-        dt_IT = dt_IT.replace(second=1, microsecond=1)
+        dt_IT = dt_IT.replace(second=0, microsecond=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
@@ -95,7 +102,11 @@ while True:
         UpdateAccountBalance(QFPort[1], "IT")
         dt_Daily += timedelta(hours=24)
         dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
-    if d.weekday() == 4 and d.hour == 20 and d.minute > 50:
+    # if datetime.now() > dt_SessionPrep:
+    #     TradingSessionPrep()
+    #     dt_SessionPrep += timedelta(hours=24)
+    #     dt_SessionPrep = dt_SessionPrep.replace(minute=0, second=0, microsecond = 1)
+    if d.weekday() == 4 and d.hour == 16 and d.minute > 50:
         for i in range(len(QFSec)):
             ClosePositions(QFPort[0], QFSec[i], fl_strat1, LIVE_ACCESS_TOKEN)
             ClosePositions(QFPort[1], QFSec[i], fl_strat3, LIVE_ACCESS_TOKEN)

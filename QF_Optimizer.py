@@ -15,9 +15,10 @@ main_log = "QF.txt"
 #                                            Money Manager                                               #
 ##########################################################################################################
 
-def UpdateAccountBalances(account_id, strategy):
+def UpdateAccountBalance(account_id, strategy):
     Strat[strategy]["InitialBalance"] = GetAccountBalance(account_id, LIVE_ACCESS_TOKEN)
     Strat[strategy]["DailyPl"] = "Middle"
+    Strat[strategy]["Stop"] = 0
 
 def ManageMoney(account_id, strategy, target, limit):
     Current_Balance = GetAccountBalance(account_id, LIVE_ACCESS_TOKEN)
@@ -25,6 +26,7 @@ def ManageMoney(account_id, strategy, target, limit):
         Strat[strategy]["DailyPl"] = "AboveTarget"
     elif Current_Balance - Strat[strategy]["InitialBalance"] < -limit:
         Strat[strategy]["DailyPl"] = "BelowLimit"
+        Strat[strategy]["Stop"] = 1
     else:
         Strat[strategy]["DailyPl"] = "Middle"
 
@@ -38,6 +40,50 @@ def UpdateOpenUnits(sec, account_id, strat):
     elif strat == "MAC":
         for i in range(len(sec)):
             MAC["Units"][sec[i]] = GetOpenUnits(account_id, sec[i], sec, LIVE_ACCESS_TOKEN)
+
+##########################################################################################################
+#                                                 Trader                                                 #
+##########################################################################################################
+
+# def OptimizeTrade(sec, trd, strategy, params):
+#     if strategy == "PPB":
+#         MM = MoneyManager()
+#         if MM == "":
+#             if trd == "Buy":
+#                 patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
+#             elif trd == "Sell":
+#                 patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
+#         elif MM == "":
+#             if trd == "Buy":
+#                 patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
+#             elif trd == "Sell":
+#                 patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
+#     elif strategy == "IT":
+#         MM = MoneyManager()
+#         if MM == "":
+#             if trd == "Buy":
+#                 patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
+
+#             elif trd == "Sell":
+#                 patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
+
+#         elif MM == "":
+#             if trd == "Buy":
+#                 patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
+
+#             elif trd == "Sell":
+#                 patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
+
+#     if Strat["PPB"]["DailyPl"] == "AboveTarget":
+
+
+#     elif Strat["PPB"]["DailyPl"] == "BelowLimit":
+
+
+#     for pat in patterns:
+#         if PriceAction[sec][pat] == 1:
+#             params = [True, vol*2, TP, SL]
+#     return params
 
 def UpdatePivotPoints(sec):
     for i in range(len(sec)):
@@ -97,62 +143,47 @@ def LoadIndicators(sec, tf):
             Indicators[sec[i]]["SMA500"] = round(SMA(M15C, 50, 0),5)
             Indicators[sec[i]]["ATR"] = round(Get_ATR(M15H, M15L, M15C, sec[i]),6)
 
-##########################################################################################################
-#                                                 Trader                                                 #
-##########################################################################################################
+# def TradingSessionPrep():
 
-def OptimizeTrade(sec, trd, params):
 
-    if trd == "PPB Sell":
-        patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
-    elif trd == "PPB Buy":
-        patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
-    elif trd == "IT Sell":
-        patterns = ["BearishEngulfing", "InsiderbarBreakDown", "BearKeyReversal", "DownDoji"]
-    elif trd == "IT Buy":
-        patterns = ["BullishEngulfing", "InsiderbarBreakUp", "BullKeyReversal", "UpDoji"]
-    for pat in patterns:
-        if PriceAction[sec][pat] == 1:
-            params = [True, vol*2, TP, SL]
-    return params
 
-def AnalyzePricePatterns(sec):
-    for i in range(len(sec)):
-        DH, DL, DC = Get_Price(sec[i], "D", 2, "hlc", "midpoint")
-        M15C = Get_Price(sec[i], "M15", 10, "c", "midpoint")
-        M5C = Get_Price(sec[i], "M5", 1, "c", "midpoint")
-        lwr = True
-        SMA100 = Indicators[sec[i]]["SMA100"]
-        SMA101 = Indicators[sec[i]]["SMA101"]
-        SMA102 = Indicators[sec[i]]["SMA102"]
-        SMA103 = Indicators[sec[i]]["SMA103"]
-        SMA210 = Indicators[sec[i]]["SMA210"]
-        SMA211 = Indicators[sec[i]]["SMA211"]
-        SMA212 = Indicators[sec[i]]["SMA212"]
-        SMA213 = Indicators[sec[i]]["SMA213"]
-        SMA500 = Indicators[sec[i]]["SMA500"]
-        if min (SMA101 - M15C[1], SMA102 - M15C[2], SMA103 - M15C[3]) > 0:
-            PriceAction[sec[i]]["Num Candles Below MA"] = 1
-        if abs(M150[1] - M15C[1]) < 0.0005:
-            PriceAction[sec[i]]["Doji"] = 1
-        if lwr == True and M15C[0] < SMA100 and M15C[1] < SMA101 and M15C[2] < SMA102 and SMA101 - M15C[1] < 0.0002 and SMA102 - M15C[2] < 0.0002 and M15C[0] < min (M15C[1], M15C[2]) and SMA100 < SMA210 and SMA210 < SMA500:
-            PriceAction[sec[i]]["SMA10Bounce"] = 1
-        if M15C[0] > M15H[1] and M15O[1] - M15C[1] > sd_data[i]/64:
-            PriceAction[sec[i]]["BullEngulfing"] = 1
-        if M15C[0] < M15L[1] and M15C[1]-M15O[1] > sd_data[i]/64:
-            PriceAction[sec[i]]["BearEngulfing"] = 1
-        if M15H[0] < M15H[1] and M15L[0] > M15L[1] and M15C[0] > M15H[1]:
-            PriceAction[sec[i]]["InsidebarBreakUp"] = 1
-        if M15H[0] < M15H[1] and M15L[0] > M15L[1] and M15C[0] < M15L[1]:
-            PriceAction[sec[i]]["InsidebarBreakDown"] = 1
-        if M15O[0] > M15C[0] and M15O[1] < M15C[1] and M15L[0] < M15L[1] and M15H[0] > M15H[1]:
-            PriceAction[sec[i]]["BullKeyReversal"] = 1
-        if M15O[0] < M15C[0] and M15O[1] > M15C[1] and M15H[0] < M15H[1] and M15C[0] < M15L[1]:
-            PriceAction[sec[i]]["BearKeyReversal"] = 1
-        if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] > M15H[1] and M15C[0] - M15O[0] > 0.0005:
-            PriceAction[sec[i]]["UpDoji"] = 1
-        if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] < M15L[1] and M15O[0] - M15C[0] > 0.0005:
-            PriceAction[sec[i]]["DownDoji"] = 1
+# def AnalyzePricePatterns(sec):
+#     for i in range(len(sec)):
+#         DH, DL, DC = Get_Price(sec[i], "D", 2, "hlc", "midpoint")
+#         M15C = Get_Price(sec[i], "M15", 10, "c", "midpoint")
+#         M5C = Get_Price(sec[i], "M5", 1, "c", "midpoint")
+#         lwr = True
+#         SMA100 = Indicators[sec[i]]["SMA100"]
+#         SMA101 = Indicators[sec[i]]["SMA101"]
+#         SMA102 = Indicators[sec[i]]["SMA102"]
+#         SMA103 = Indicators[sec[i]]["SMA103"]
+#         SMA210 = Indicators[sec[i]]["SMA210"]
+#         SMA211 = Indicators[sec[i]]["SMA211"]
+#         SMA212 = Indicators[sec[i]]["SMA212"]
+#         SMA213 = Indicators[sec[i]]["SMA213"]
+#         SMA500 = Indicators[sec[i]]["SMA500"]
+#         if min (SMA101 - M15C[1], SMA102 - M15C[2], SMA103 - M15C[3]) > 0:
+#             PriceAction[sec[i]]["Num Candles Below MA"] = 1
+#         if abs(M150[1] - M15C[1]) < 0.0005:
+#             PriceAction[sec[i]]["Doji"] = 1
+#         if lwr == True and M15C[0] < SMA100 and M15C[1] < SMA101 and M15C[2] < SMA102 and SMA101 - M15C[1] < 0.0002 and SMA102 - M15C[2] < 0.0002 and M15C[0] < min (M15C[1], M15C[2]) and SMA100 < SMA210 and SMA210 < SMA500:
+#             PriceAction[sec[i]]["SMA10Bounce"] = 1
+#         if M15C[0] > M15H[1] and M15O[1] - M15C[1] > sd_data[i]/64:
+#             PriceAction[sec[i]]["BullEngulfing"] = 1
+#         if M15C[0] < M15L[1] and M15C[1]-M15O[1] > sd_data[i]/64:
+#             PriceAction[sec[i]]["BearEngulfing"] = 1
+#         if M15H[0] < M15H[1] and M15L[0] > M15L[1] and M15C[0] > M15H[1]:
+#             PriceAction[sec[i]]["InsidebarBreakUp"] = 1
+#         if M15H[0] < M15H[1] and M15L[0] > M15L[1] and M15C[0] < M15L[1]:
+#             PriceAction[sec[i]]["InsidebarBreakDown"] = 1
+#         if M15O[0] > M15C[0] and M15O[1] < M15C[1] and M15L[0] < M15L[1] and M15H[0] > M15H[1]:
+#             PriceAction[sec[i]]["BullKeyReversal"] = 1
+#         if M15O[0] < M15C[0] and M15O[1] > M15C[1] and M15H[0] < M15H[1] and M15C[0] < M15L[1]:
+#             PriceAction[sec[i]]["BearKeyReversal"] = 1
+#         if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] > M15H[1] and M15C[0] - M15O[0] > 0.0005:
+#             PriceAction[sec[i]]["UpDoji"] = 1
+#         if abs(M15O[1] - M15C[1]) < 0.0002 and M15C[0] < M15L[1] and M15O[0] - M15C[0] > 0.0005:
+#             PriceAction[sec[i]]["DownDoji"] = 1
 
         # if M15H[0] - max(M15O[0], M15C[0]) and min(M15O[0], M15C[0]) - M15L[0]:
         #     PriceAction[sec[i]]["Hammer"] = 1

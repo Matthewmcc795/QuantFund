@@ -13,7 +13,7 @@ import time
 import sys
 import smtplib
 
-hr = [2,6,10,14,18,22]
+hr = [0,4,8,12,16,20]
 
 ##########################################################################################################
 #                                                Prices                                                  #
@@ -251,10 +251,10 @@ Analysis = {
 
 Strat = {
     "PPB": {
-    "InitialBalance": 0, "DailyPl": "", "Vol": 0
+    "InitialBalance": 0, "DailyPl": "", "Vol": 0, "Stop": 0
     },
     "IT": {
-    "InitialBalance": 0, "DailyPl": "", "Vol": 0
+    "InitialBalance": 0, "DailyPl": "", "Vol": 0, "Stop": 0
     }
 }
 
@@ -453,21 +453,28 @@ def Get_dt(strat):
     elif strat == "MainReport":
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
-        while dt_report.hour not in [9,21]:
+        while dt_report.hour not in [5,17]:
             dt_report  += timedelta(hours=1)
         return dt_report
     elif strat == "WeeklyReport":
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
-        while dt_report.hour != 21 and dt_report.weekday != 4:
+        while dt_report.hour != 17 and dt_report.weekday != 4:
             dt_report  += timedelta(hours=1)
         return dt_report
-    elif strat == "dt_PivPts":
+    elif strat == "dt_Daily":
         dt_report =  datetime.now()
         dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
-        while dt_report.hour != 21:
+        while dt_report.hour != 17:
             dt_report  += timedelta(hours=1)
         return dt_report
+    elif strat == "dt_SessionPrep":
+        dt_report =  datetime.now()
+        dt_report = dt_report.replace(minute=0, second=0,microsecond=1)
+        while dt_report.hour != 5:
+            dt_report  += timedelta(hours=1)
+        return dt_report
+
 
 ##########################################################################################################
 #                                               Orders                                                   #

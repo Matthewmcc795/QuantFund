@@ -12,7 +12,7 @@ import time
 import sys
 main_log = "QF.txt"
 
-hr = [2,6,10,14,18,22]
+hr = [0,4,8,12,16,20]
 
 def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
@@ -24,20 +24,20 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
         atr = Indicators[sec[i]]["ATR"]
         s = Indicators[sec[i]]["s"]
         r = Indicators[sec[i]]["r"]
-        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
+        if Open_Units == 0 and (dt.hour <= 12 and dt.hour >= 5) and Strat["PPB"]["Stop"] == 0:
             PPB["Open"][sec[i]] = datetime.now()
             PPB["Status"][sec[i]] = ""
             if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
                 SaveToLog(main_log, "PPB: Sell " + sec[i])
                 PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
-                PPB["TP"][sec[i]] = round(max(s, m5c[0] - atr) - 0.00001,5)
+                PPB["TP"][sec[i]] = round(m5c[0] - min(0.00151, 1.5*atr) - 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 PPB["Open"][sec[i]] = dt
                 PPB["Status"][sec[i]] = "Entry"
             elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
                 SaveToLog(main_log, "PPB: Buy " + sec[i])
                 PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
-                PPB["TP"][sec[i]] = round(min(r, m5c[0] + atr) + 0.00001,5)
+                PPB["TP"][sec[i]] = round(m5c[0] + min(0.00151, 1.5*atr) + 0.00001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
                 PPB["Open"][sec[i]] = dt
                 PPB["Status"][sec[i]] = "Entry"
@@ -199,7 +199,7 @@ def IntraTrend(account_id, sec, vol, tf, file_nm):
         SMA212 = Indicators[sec[i]]["SMA212"]
         SMA500 = Indicators[sec[i]]["SMA500"]
         atr = Indicators[sec[i]]["ATR"]
-        if Open_Units == 0 and (dt.hour <= 18 and dt.hour >= 10):
+        if Open_Units == 0 and (dt.hour <= 12 and dt.hour >= 5) and Strat["PPB"]["Stop"] == 0:
             IT["Open"][sec[i]] = datetime.now()
             IT["Status"][sec[i]] = ""
             if c[0] < SMA100 and SMA100 < SMA210 and c[1] < SMA101 and c[2] > SMA102 and c[1] < SMA211 and c[2] < SMA212 and SMA500 - SMA100 > 0.0010:
