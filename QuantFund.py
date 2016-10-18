@@ -78,6 +78,7 @@ while True:
     #                                 Optimizer                                   #
     ###############################################################################
     if datetime.now() > dt_IT_Optimizer:
+        SaveToLog(main_log, "Running IT Optimizer")
         t = datetime.now()
         UpdateOpenUnits(QFSec, QFPort[0], "PPB")
         UpdateOpenUnits(QFSec, QFPort[1], "IT")
@@ -89,6 +90,7 @@ while True:
         dt_IT_Optimizer = dt_IT_Optimizer.replace(second=1, microsecond=1)
         SaveToLog(main_log, "IT Optimizer runtime: " + str(datetime.now() - t))
     elif datetime.now() > dt_PPB_Optimizer:
+        SaveToLog(main_log, "Running PPB Optimizer")
         t = datetime.now()
         UpdateOpenUnits(QFSec, QFPort[0], "PPB")
         ManageMoney(QFPort[0], "PPB", QFTraget[0], QFLimit[0])
@@ -97,11 +99,14 @@ while True:
         dt_PPB_Optimizer = dt_PPB_Optimizer.replace(second=1, microsecond=1)
         SaveToLog(main_log, "PPB Optimizer runtime: " + str(datetime.now() - t))
     if datetime.now() > dt_Daily:
+        SaveToLog(main_log, "Running Daily Updates")
+        t = datetime.now()
         UpdatePivotPoints(QFSec)
         UpdateAccountBalance(QFPort[0], "PPB")
         UpdateAccountBalance(QFPort[1], "IT")
         dt_Daily += timedelta(hours=24)
         dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
+        SaveToLog(main_log, "Daily Updates runtime: " + str(datetime.now() - t))
     # if datetime.now() > dt_SessionPrep:
     #     TradingSessionPrep("NA")
     #     dt_SessionPrep += timedelta(hours=24)
