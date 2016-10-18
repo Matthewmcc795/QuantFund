@@ -216,6 +216,21 @@ def LoadIndicators(sec, tf):
 #         if Indicators[sec[i]]["SesHigh"] - 0.0020 <= M5C[0]:
 #             PriceAction[sec[i]]["AtSesigh"] = 1
 
+
+#         # Congested
+#         M5C = Get_Price(sec[i], "M5", 10, "c", "midpoint")
+#         prices = [0]*10
+#         for j in range(5):
+#             if abs(M5C[j]- M5C[j+1]) <= 0.0003 and abs(M5C[0]-M5C[j]) <= 0.0005:
+#                 prices[j] = 1
+# # 
+
+        # Proximity to PP or SMA prior to being in play
+
+
+
+
+
         # if M15H[0] - max(M15O[0], M15C[0]) and min(M15O[0], M15C[0]) - M15L[0]:
         #     PriceAction[sec[i]]["Hammer"] = 1
         # if M15H[0] - max(M15O[0], M15C[0]) and min(M15O[0], M15C[0]) - M15L[0]:

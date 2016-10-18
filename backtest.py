@@ -11,30 +11,30 @@ import requests
 import json
 from array import *
 import sys
-
 # User changes params of this script based on the above dictionary
+import plotly.plotly as py
+from plotly.tools import FigureFactory as FF
+from datetime import datetime
+from matplotlib.finance import candlestick_ohlc
 
+st = "2016-10-10"
+en = "2016-10-11"
+tf = "H1"
+sym = "EUR_USD"
+o = pOpen(sym, tf, st, en)
+h = pHigh(sym, tf, st, en)
+l = pLow(sym, tf, st, en)
+c = pClose(sym, tf, st, en)
+d = pDate(sym, tf, st, en)
 
-c = pClose("EUR_USD", "M15", "2016-09-05", "2016-10-07")
-trd_entry = c[2]
-atr = 0.0008
-print abs(trd_entry - c[0])/2
+dat = datetime.strptime(d[0][:19], '%Y-%m-%dT%H:%M:%S')
+dt = []
+dtt = []
+dt.append(dat)
+for i in range(len(d)-1):
+    dat += timedelta(minutes=15)
+    dt.append(dat)
 
-print round(trd_entry - min(0.00025, atr/4, abs(trd_entry - c[0])/2) + 0.00001, 5)
-
-c = pClose("EUR_USD", "M15", "2016-09-05", "2016-10-07")
-sma10 = pMa(c, 10)
-sma21 = pMa(c, 21)
-sma50 = pMa(c, 50)
-
-plt.plot(c)
-plt.plot(sma10)
-plt.plot(sma21)
-plt.plot(sma50)
-plt.show()
-spacer = 0
-cnt = 0
-print len(c)
 
 for i in range(len(c)-21):
     lwr = True
@@ -59,10 +59,50 @@ for i in range(len(c)-21):
         plt.plot(ss21)
         plt.plot(ss50)
         plt.show()
-print cnt
-# trd_entry = 1.1234
-# atr = 0.0010
-# m5c = 1.2342
+
+
+    for k in range(len(d)):
+        dtt.append(k)
+
+    fig = plt.figure()
+
+    ax = fig.add_axes([0.1, 0.2, 0.85, 0.7])
+
+    ax.spines['right'].set_color('none')
+    ax.spines['top'].set_color('none')
+    ax.xaxis.set_ticks_position('bottom')
+    ax.yaxis.set_ticks_position('left')
+    ax.tick_params(axis='both', direction='out', width=2, length=8, labelsize=12, pad=8)
+    ax.spines['left'].set_linewidth(2)
+    ax.spines['bottom'].set_linewidth(2)
+    ax.set_xlim(-1,len(d))
+
+    x = 0
+    y = len(d)
+    ohlc = []
+
+    while x < y:
+        append_me = dtt[x], o[x], h[x], l[x], c[x]
+        ohlc.append(append_me)
+        x+=1
+
+    candlestick_ohlc(ax, ohlc, width=0.4, colorup='#77d879', colordown='#db3f3f')
+
+    sma10 = pMa(c, 10)
+    sma21 = pMa(c, 21)
+    sma50 = pMa(c, 50)
+
+    plt.plot(sma10)
+    plt.plot(sma21)
+    plt.plot(sma50)
+    plt.xlabel('Date')
+    plt.ylabel('Price')
+    plt.legend()
+    plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
+    plt.show()
+trd_entry = 1.1234
+atr = 0.0010
+m5c = 1.2342
 
 # print round(trd_entry + min(0.00025, atr/4, abs(m5c - trd_entry)/2) + 0.00001, 5)
 
