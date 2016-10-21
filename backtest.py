@@ -17,92 +17,87 @@ from plotly.tools import FigureFactory as FF
 from datetime import datetime
 from matplotlib.finance import candlestick_ohlc
 
-st = "2016-10-10"
-en = "2016-10-11"
-tf = "H1"
+# st = "2016-08-10"
+# en = "2016-10-11"
+
+st = "2016-09-25"
+en = "2016-10-15"
+
+tf = "M15"
 sym = "EUR_USD"
-o = pOpen(sym, tf, st, en)
-h = pHigh(sym, tf, st, en)
-l = pLow(sym, tf, st, en)
-c = pClose(sym, tf, st, en)
-d = pDate(sym, tf, st, en)
+# o = pOpen(sym, tf, st, en)
+# h = pHigh(sym, tf, st, en)
+# l = pLow(sym, tf, st, en)
+# c = pClose(sym, tf, st, en)
+# d = pDate(sym, tf, st, en)
 
-dat = datetime.strptime(d[0][:19], '%Y-%m-%dT%H:%M:%S')
-dt = []
-dtt = []
-dt.append(dat)
-for i in range(len(d)-1):
-    dat += timedelta(minutes=15)
-    dt.append(dat)
+# print len(c)
+# dat = datetime.strptime(d[0][:19], '%Y-%m-%dT%H:%M:%S')
+# dt = []
+# dtt = []
+# dt.append(dat)
+# for i in range(len(d)):
+#     dat += timedelta(minutes=15)
+#     dt.append(dat)
 
+# for k in range(len(d)):
+#     dtt.append(k)
 
-for i in range(len(c)-21):
+# sma10 = pMa(c, 10)
+# sma21 = pMa(c, 21)
+# sma50 = pMa(c, 50)
+
+spacer = 0
+cnt = 0
+# if dt[i].hour >= 10 and dt[i].hour <= 18 and c[i] < sma10[i] and c[i-1] < sma10[i-1] and c[i-2] < sma10[i-2] and sma10[i-1] - c[i-1] < 0.0002 and sma10[i-2] - c[i-2] < 0.0002 and c[i] < min (c[i-1], c[i-2]) and sma10[i] < sma21[i] and sma21[i] < sma50[i] and i > spacer + 10:
+
+IT = IntraTrend("EUR_USD", "M15", st, en)
+# print IT.BuySignals
+# print IT.SellSignals
+
+for i in range(len(IT.c)):
     lwr = True
     prices = []
     ss10 = []
     ss21 = []
     ss50 = []
-    for k in range(5):
-        if c[i-k-1] > sma10[i-k-1] and lwr == True:
-            lwr = False
-    if lwr == True and c[i] < sma10[i] and c[i-1] < sma10[i-1] and c[i-2] < sma10[i-2] and sma10[i-1] - c[i-1] < 0.0002 and sma10[i-2] - c[i-2] < 0.0002 and c[i] < min (c[i-1], c[i-2]) and sma10[i] < sma21[i] and sma21[i] < sma50[i] and i > spacer + 10:
-        print i
+    append_me = []
+    ohlc = []
+    # for k in range(5):
+    #     if c[i-k-1] > sma10[i-k-1] and lwr == True:
+    #         lwr = False
+    if IT.Date[i].hour >= 10 and IT.Date[i].hour <= 18 and IT.SellSignals[i] == 1:
         spacer = i
         cnt += 1 
+        ohlc = []
+        fig = plt.figure()
+        ax = fig.add_axes([0.1, 0.2, 0.85, 0.7])
+        ax.spines['right'].set_color('none')
+        ax.spines['top'].set_color('none')
+        ax.xaxis.set_ticks_position('bottom')
+        ax.yaxis.set_ticks_position('left')
+        ax.tick_params(axis='both', direction='out', width=2, length=8, labelsize=12, pad=8)
+        ax.spines['left'].set_linewidth(2)
+        ax.spines['bottom'].set_linewidth(2)
+        ax.set_xlim(-1,20)
         for j in range(20):
-            prices.append(c[i+j-5])
-            ss10.append(sma10[i+j-5])
-            ss21.append(sma21[i+j-5])
-            ss50.append(sma50[i+j-5])
-        plt.plot(prices)
+            append_me = j, IT.o[i+j-5], IT.h[i+j-5], IT.l[i+j-5], IT.c[i+j-5]
+            ohlc.append(append_me)
+            ss10.append(IT.sma10[i+j-5])
+            ss21.append(IT.sma21[i+j-5])
+            ss50.append(IT.sma50[i+j-5])
+        candlestick_ohlc(ax, ohlc, width=0.4, colorup='#77d879', colordown='#db3f3f')
         plt.plot(ss10)
         plt.plot(ss21)
         plt.plot(ss50)
+        plt.xlabel('Date')
+        plt.ylabel('Price')
+        plt.legend()
+        plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
         plt.show()
-
-
-    for k in range(len(d)):
-        dtt.append(k)
-
-    fig = plt.figure()
-
-    ax = fig.add_axes([0.1, 0.2, 0.85, 0.7])
-
-    ax.spines['right'].set_color('none')
-    ax.spines['top'].set_color('none')
-    ax.xaxis.set_ticks_position('bottom')
-    ax.yaxis.set_ticks_position('left')
-    ax.tick_params(axis='both', direction='out', width=2, length=8, labelsize=12, pad=8)
-    ax.spines['left'].set_linewidth(2)
-    ax.spines['bottom'].set_linewidth(2)
-    ax.set_xlim(-1,len(d))
-
-    x = 0
-    y = len(d)
-    ohlc = []
-
-    while x < y:
-        append_me = dtt[x], o[x], h[x], l[x], c[x]
-        ohlc.append(append_me)
-        x+=1
-
-    candlestick_ohlc(ax, ohlc, width=0.4, colorup='#77d879', colordown='#db3f3f')
-
-    sma10 = pMa(c, 10)
-    sma21 = pMa(c, 21)
-    sma50 = pMa(c, 50)
-
-    plt.plot(sma10)
-    plt.plot(sma21)
-    plt.plot(sma50)
-    plt.xlabel('Date')
-    plt.ylabel('Price')
-    plt.legend()
-    plt.subplots_adjust(left=0.09, bottom=0.20, right=0.94, top=0.90, wspace=0.2, hspace=0)
-    plt.show()
-trd_entry = 1.1234
-atr = 0.0010
-m5c = 1.2342
+# trd_entry = 1.1234
+# atr = 0.0010
+# m5c = 1.2342
 
 # print round(trd_entry + min(0.00025, atr/4, abs(m5c - trd_entry)/2) + 0.00001, 5)
 

@@ -17,8 +17,8 @@ QFSec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
 #         "EUR_GBP", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", 
 #         "AUD_CAD", "NZD_CAD", "AUD_NZD", "EUR_CHF", "GBP_CHF", "CAD_CHF", "AUD_CHF"]
 QFPort = [229783, 406207, 836663]
-QFTraget = [0.5, 0.5, 0.5]
-QFLimit = [0.5, 0.5, 0.5]
+QFTraget = [1.0, 1.0, 1.0]
+QFLimit = [1.0, 1.0, 1.0]
 QFVol = 100
 # Strat["PPB"]["Vol"] = 100
 # Strat["IT"]["Vol"] = 100

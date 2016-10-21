@@ -122,6 +122,59 @@ def InsideBarBreakDown(h,l,c,num):
 
 # --------------- Backtest Functions -------------------- #
 
+class IntraTrend:
+    def __init__(self, symbol, tf, st, en):
+        self.symbol = symbol
+        self.tf = tf
+        self.st = st
+        self.en = en
+        self.o = pOpen(self.symbol, self.tf, self.st, self.en)
+        self.h = pHigh(self.symbol, self.tf, self.st, self.en)
+        self.l = pLow(self.symbol, self.tf, self.st, self.en)
+        self.c = pClose(self.symbol, self.tf, self.st, self.en)
+        self.d = pDate(self.symbol, self.tf, self.st, self.en)
+        self.sma10 = pMa(self.c, 10)
+        self.sma21 = pMa(self.c, 21)
+        self.sma50 = pMa(self.c, 50)
+        self.BuySignals = np.zeros(len(self.c))
+        self.SellSignals = np.zeros(len(self.c))
+        self.Date = []
+        for i in range(len(self.d)):
+            self.Date.append(datetime.strptime(str(self.d[i][:19]), '%Y-%m-%dT%H:%M:%S'))
+        for i in range(len(self.c)):
+            if self.c[i] < self.sma10[i] and self.c[i-1] > self.sma10[i-1] and self.sma10[i] < self.sma21[i] and self.sma21[i] < self.sma50[i] and self.sma50[i] - self.sma10[i] > 0.0010: # and self.sma21[i] - self.sma10[i] > 0.0005:
+                self.BuySignals[i] = 1
+            if self.c[i] > self.sma10[i] and self.c[i-1] < self.sma10[i-1] and self.sma10[i] > self.sma21[i] and self.sma21[i] > self.sma50[i] and self.sma10[i] - self.sma50[i] > 0.0010: # and self.sma10[i] - self.sma21[i] > 0.0005:
+                self.SellSignals[i] = 1
+
+# class PPB:
+#     def __init__(self, symbol, tf, st, en):
+#         self.symbol = symbol
+#         self.tf = tf
+#         self.st = st
+#         self.en = en
+#         self.o = pOpen(self.symbol, self.tf, self.st, self.en)
+#         self.h = pHigh(self.symbol, self.tf, self.st, self.en)
+#         self.l = pLow(self.symbol, self.tf, self.st, self.en)
+#         self.c = pClose(self.symbol, self.tf, self.st, self.en)
+#         self.d = pDate(self.symbol, self.tf, self.st, self.en)
+#         self.sma10 = pMa(self.c, 10)
+#         self.sma21 = pMa(self.c, 21)
+#         self.sma50 = pMa(self.c, 50)
+#         self.BuySignals = np.zeros(len(self.c))
+#         self.SellSignals = np.zeros(len(self.c))
+#         self.Date = []
+#         for i in range(len(self.d)):
+#             self.Date.append(datetime.strptime(str(self.d[i][:19]), '%Y-%m-%dT%H:%M:%S'))
+#         for i in range(len(self.c)):
+#             if self.c[i] < self.sma10[i] and self.c[i-1] > self.sma10[i-1] and self.sma10[i] < self.sma21[i] and self.sma21[i] < self.sma50[i] and self.sma50[i] - self.sma10[i] > 0.0010: # and self.sma21[i] - self.sma10[i] > 0.0005:
+#                 self.BuySignals[i] = 1
+#             if self.c[i] > self.sma10[i] and self.c[i-1] < self.sma10[i-1] and self.sma10[i] > self.sma21[i] and self.sma21[i] > self.sma50[i] and self.sma10[i] - self.sma50[i] > 0.0010: # and self.sma10[i] - self.sma21[i] > 0.0005:
+#                 self.SellSignals[i] = 1
+
+# c[0] > SMA100 and SMA100 > SMA210 and c[1] > SMA101 and c[2] < SMA102 and c[1] > SMA211 and c[2] > SMA212 and SMA100 - SMA500 > 0.0010
+
+
 class PriceAction:
     def __init__(self, symbol, o, h, l, c):
         self.symbol = symbol
