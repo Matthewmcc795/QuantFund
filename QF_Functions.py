@@ -56,6 +56,69 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
         if ohlc == "c":
             return CB, CA
 
+# New Version
+# def GetPrices(sym, tf, bars, ohlc):
+#     h = {'Authorization' : LIVE_ACCESS_TOKEN}
+#     main_url = "https://api-fxpractice.oanda.com/v1/candles?"
+#     sym_url = "instrument=" + str(sym)
+#     if isinstance(bars, (int, float)):
+#         num_url = "&count=" + str(bars)
+#     else:
+#         num_url = "&start=" + str(bars[0]) + "&end=" + str(bars[1]) 
+#     if 'a' in ohlc or 'b' in ohlc:
+#         form_url = "&candleFormat=bidask"
+#         p = [[] for i in range(9)]
+#     else:
+#         form_url = "&candleFormat=midpoint"
+#         p = [[] for i in range(5)]
+#     tf_url = "&granularity=" + str(tf)
+#     url = main_url + sym_url + num_url + form_url + tf_url
+#     r = requests.get(url, headers=h)     
+#     data = json.loads(r.text)
+#     time.sleep(1)
+#     if 'a' in ohlc or 'b' in ohlc:
+#         for i in range(len(data["candles"])):
+#             p[0].append(data["candles"][bars - i - 1][STRT])
+#             p[1].append(data["candles"][bars - i - 1][STROB])
+#             p[2].append(data["candles"][bars - i - 1][STROA])
+#             p[3].append(data["candles"][bars - i - 1][STRHB])
+#             p[4].append(data["candles"][bars - i - 1][STRHA])
+#             p[5].append(data["candles"][bars - i - 1][STRLB])
+#             p[6].append(data["candles"][bars - i - 1][STRLA])
+#             p[7].append(data["candles"][bars - i - 1][STRCB])
+#             p[8].append(data["candles"][bars - i - 1][STRCA])
+#         if ohlc == "ohlcba":
+#             return p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8]
+#         elif ohlc == "hlcba":
+#             return p[3], p[4], p[5], p[6], p[7], p[8]
+#         elif ohlc == "cba":
+#             return p[7], p[8]
+#         elif ohlc == "dohlcba":
+#             return p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8]
+#         elif ohlc == "dhlcba":
+#             return p[0], p[3], p[4], p[5], p[6], p[7], p[8]
+#         elif ohlc == "dcba":
+#             return p[0], p[7], p[8]
+#     else:
+#         for i in range(len(data["candles"])):
+#             p[0].append(data["candles"][bars - i - 1][STRT])
+#             p[1].append(data["candles"][bars - i - 1][STRO])
+#             p[2].append(data["candles"][bars - i - 1][STRH])
+#             p[3].append(data["candles"][bars - i - 1][STRL])
+#             p[4].append(data["candles"][bars - i - 1][STRC])
+#         if ohlc == "ohlc":
+#             return p[1], p[2], p[3], p[4], 
+#         elif ohlc == "hlc":
+#             return p[2], p[3], p[4]
+#         elif ohlc == "c":
+#             return p[4]
+#         elif ohlc == "dohlc":
+#             return p[0], p[1], p[2], p[3], p[4] 
+#         elif ohlc == "dhlc":
+#             return p[0], p[2], p[3], p[4] 
+#         elif ohlc == "dc":
+#             return p[0], p[4]
+
 ##########################################################################################################
 #                                           Email & Reports                                              #
 ##########################################################################################################
