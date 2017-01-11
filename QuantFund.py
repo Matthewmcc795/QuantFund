@@ -13,6 +13,8 @@ import time
 import sys
 
 QFSec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD"]
+
+QFMACSec = ["GBP_USD", "EUR_CAD", "GBP_AUD", "GBP_NZD", "GBP_CAD", "EUR_GBP", "AUD_CAD"]
 # QFSec = ["EUR_USD", "GBP_USD", "USD_CAD", "AUD_USD", "NZD_USD", "USD_CHF", "NZD_CHF",
 #         "EUR_GBP", "EUR_CAD", "EUR_AUD", "EUR_NZD", "GBP_CAD", "GBP_AUD", "GBP_NZD", 
 #         "AUD_CAD", "NZD_CAD", "AUD_NZD", "EUR_CHF", "GBP_CHF", "CAD_CHF", "AUD_CHF"]
@@ -34,15 +36,15 @@ dt_IT = Get_dt("dt_IT")
 dt_MAC = Get_dt("dt_MAC")
 dt_Daily = Get_dt("dt_Daily")
 dt_SessionPrep = Get_dt("dt_SessionPrep")
-dt_PPB_Optimizer = dt_PPB - timedelta(minutes=1)
-dt_IT_Optimizer = dt_IT - timedelta(minutes=1)
+dt_M5_Optimizer = dt_PPB - timedelta(minutes=1)
+dt_M15_Optimizer = dt_IT - timedelta(minutes=1)
 
 Intraday_PPB_tf = ["M5", "M15", "D"]
 UpdatePivotPoints(QFSec)
 LoadIndicators(QFSec,"M5")
 LoadIndicators(QFSec,"M15")
 UpdateAccountBalance(QFPort[0], "PPB")
-UpdateAccountBalance(QFPort[1], "IT")
+# UpdateAccountBalance(QFPort[1], "IT")
 
 # print Strat["PPB"]["InitialBalance"]
 # print Strat["IT"]["InitialBalance"]
@@ -59,37 +61,37 @@ while True:
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=0, microsecond=1)
-    if datetime.now() > dt_IT:
-        SaveToLog(main_log, "Running IntraTrend")
-        IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
-        SaveToLog(main_log, "IntraTrend complete")
-        dt_IT += timedelta(minutes=15)
-        dt_IT = dt_IT.replace(second=0, microsecond=1)
+    # if datetime.now() > dt_IT:
+    #     SaveToLog(main_log, "Running IntraTrend")
+    #     IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
+    #     SaveToLog(main_log, "IntraTrend complete")
+    #     dt_IT += timedelta(minutes=15)
+    #     dt_IT = dt_IT.replace(second=0, microsecond=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
     if datetime.now() > dt_MAC:
         SaveToLog(main_log, "Running MAC")
-        MovingAverageContrarian(QFPort[2], QFSec, QFVol, "H4", fl_strat2)
+        MovingAverageContrarian(QFPort[2], QFMACSec, 5*QFVol, "H4", fl_strat2)
         SaveToLog(main_log, "MAC complete")
         dt_MAC += timedelta(hours=4)
         dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
     ###############################################################################
     #                                 Optimizer                                   #
     ###############################################################################
-    if datetime.now() > dt_IT_Optimizer:
-        SaveToLog(main_log, "Running IT Optimizer")
+    if datetime.now() > dt_M15_Optimizer:
+        SaveToLog(main_log, "Running M15 Optimizer")
         t = datetime.now()
         UpdateOpenUnits(QFSec, QFPort[0], "PPB")
-        UpdateOpenUnits(QFSec, QFPort[1], "IT")
+        # UpdateOpenUnits(QFSec, QFPort[1], "IT")
         LoadIndicators(QFSec,"M5")
         LoadIndicators(QFSec,"M15")
         ManageMoney(QFPort[0], "PPB", QFTraget[0], QFLimit[0])
-        ManageMoney(QFPort[1], "IT", QFTraget[1], QFLimit[1])
-        dt_IT_Optimizer += timedelta(minutes=15)
-        dt_IT_Optimizer = dt_IT_Optimizer.replace(second=1, microsecond=1)
-        SaveToLog(main_log, "IT Optimizer runtime: " + str(datetime.now() - t))
-    elif datetime.now() > dt_PPB_Optimizer:
+        # ManageMoney(QFPort[1], "IT", QFTraget[1], QFLimit[1])
+        # dt_IT_Optimizer += timedelta(minutes=15)
+        # dt_IT_Optimizer = dt_IT_Optimizer.replace(second=1, microsecond=1)
+        # SaveToLog(main_log, "IT Optimizer runtime: " + str(datetime.now() - t))
+    elif datetime.now() > dt_M5_Optimizer:
         SaveToLog(main_log, "Running PPB Optimizer")
         t = datetime.now()
         UpdateOpenUnits(QFSec, QFPort[0], "PPB")
@@ -103,7 +105,7 @@ while True:
         t = datetime.now()
         UpdatePivotPoints(QFSec)
         UpdateAccountBalance(QFPort[0], "PPB")
-        UpdateAccountBalance(QFPort[1], "IT")
+        # UpdateAccountBalance(QFPort[1], "IT")
         dt_Daily += timedelta(hours=24)
         dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
         SaveToLog(main_log, "Daily Updates runtime: " + str(datetime.now() - t))
