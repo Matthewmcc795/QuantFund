@@ -88,8 +88,8 @@ while True:
         LoadIndicators(QFSec,"M15")
         ManageMoney(QFPort[0], "PPB", QFTraget[0], QFLimit[0])
         # ManageMoney(QFPort[1], "IT", QFTraget[1], QFLimit[1])
-        dt_15_Optimizer += timedelta(minutes=15)
-        dt_15_Optimizer = dt_M15_Optimizer.replace(second=1, microsecond=1)
+        dt_M15_Optimizer += timedelta(minutes=15)
+        dt_M15_Optimizer = dt_M15_Optimizer.replace(second=1, microsecond=1)
         SaveToLog(main_log, "M15 Optimizer runtime: " + str(datetime.now() - t))
     elif datetime.now() > dt_M5_Optimizer:
         SaveToLog(main_log, "Running PPB Optimizer")
