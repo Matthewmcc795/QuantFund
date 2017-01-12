@@ -176,13 +176,13 @@ def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
         if Open_Units == 0:
             if Z1 > 2.5 and Z0 < 2.5:
                 SaveToLog(main_log, "MAC: Sell " + sec[i])
-                SL = round(c[0] + 100.00001,5)
-                TP = round(c[0] - 100.00001,5)
+                SL = round(c[0] + 0.010000001,5)
+                TP = round(c[0] - 0.010000001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
             elif Z1 < -2.5 and Z0 > -2.5:
                 SaveToLog(main_log, "MAC: Buy " + sec[i])
-                SL = round(c[0] - 100.00001,5)
-                TP = round(c[0] + 100.00001,5)
+                SL = round(c[0] - 0.010000001,5)
+                TP = round(c[0] + 0.010000001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
 
 # def IntraTrend(account_id, sec, vol, tf, file_nm):
