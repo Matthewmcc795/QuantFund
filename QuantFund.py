@@ -57,7 +57,7 @@ while True:
     ###############################################################################
     if datetime.now() > dt_PPB:
         SaveToLog(main_log, "Running PPB")
-        PivotPointBreakout(QFPort[0], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
+        PivotPointBreakout(QFPort[1], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=0, microsecond=1)
@@ -72,7 +72,7 @@ while True:
     ###############################################################################
     if datetime.now() > dt_MAC:
         SaveToLog(main_log, "Running MAC")
-        MovingAverageContrarian(QFPort[2], QFMACSec, 5*QFVol, "H4", fl_strat2)
+        MovingAverageContrarian(QFPort[0], QFMACSec, 5*QFVol, "H4", fl_strat2)
         SaveToLog(main_log, "MAC complete")
         dt_MAC += timedelta(hours=4)
         dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
@@ -82,11 +82,11 @@ while True:
     if datetime.now() > dt_M15_Optimizer:
         SaveToLog(main_log, "Running M15 Optimizer")
         t = datetime.now()
-        UpdateOpenUnits(QFSec, QFPort[0], "PPB")
+        UpdateOpenUnits(QFSec, QFPort[1], "PPB")
         # UpdateOpenUnits(QFSec, QFPort[1], "IT")
         LoadIndicators(QFSec,"M5")
         LoadIndicators(QFSec,"M15")
-        ManageMoney(QFPort[0], "PPB", QFTraget[0], QFLimit[0])
+        ManageMoney(QFPort[1], "PPB", QFTraget[0], QFLimit[0])
         # ManageMoney(QFPort[1], "IT", QFTraget[1], QFLimit[1])
         dt_M15_Optimizer += timedelta(minutes=15)
         dt_M15_Optimizer = dt_M15_Optimizer.replace(second=1, microsecond=1)
@@ -94,8 +94,8 @@ while True:
     elif datetime.now() > dt_M5_Optimizer:
         SaveToLog(main_log, "Running PPB Optimizer")
         t = datetime.now()
-        UpdateOpenUnits(QFSec, QFPort[0], "PPB")
-        ManageMoney(QFPort[0], "PPB", QFTraget[0], QFLimit[0])
+        UpdateOpenUnits(QFSec, QFPort[1], "PPB")
+        ManageMoney(QFPort[1], "PPB", QFTraget[0], QFLimit[0])
         LoadIndicators(QFSec,"M5")
         dt_M5_Optimizer += timedelta(minutes=5)
         dt_M5_Optimizer = dt_M5_Optimizer.replace(second=1, microsecond=1)
@@ -104,7 +104,7 @@ while True:
         SaveToLog(main_log, "Running Daily Updates")
         t = datetime.now()
         UpdatePivotPoints(QFSec)
-        UpdateAccountBalance(QFPort[0], "PPB")
+        UpdateAccountBalance(QFPort[1], "PPB")
         # UpdateAccountBalance(QFPort[1], "IT")
         dt_Daily += timedelta(hours=24)
         dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
