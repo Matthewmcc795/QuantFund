@@ -24,23 +24,30 @@ def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
         atr = Indicators[sec[i]]["ATR"]
         s = Indicators[sec[i]]["s"]
         r = Indicators[sec[i]]["r"]
+        z = Indicators[sec[i]]["Z"]
+        mx4 = Indicators[sec[i]]["Max 4"]
+        mx16 = Indicators[sec[i]]["Max 16"]
+        mn4 = Indicators[sec[i]]["Min 4"]
+        mn16 = Indicators[sec[i]]["Min 16"]
         if Open_Units == 0 and (dt.hour <= 12 and dt.hour >= 5) and Strat["PPB"]["Stop"] == 0:
             PPB["Open"][sec[i]] = datetime.now()
             PPB["Status"][sec[i]] = ""
             if m5c[0] < r and m5c[1] < r and m5c[2] > r and ma > r:
-                SaveToLog(main_log, "PPB: Sell " + sec[i])
-                PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5)
-                PPB["TP"][sec[i]] = round(m5c[0] - min(0.00151, 1.5*atr) - 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "sell", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                PPB["Open"][sec[i]] = dt
-                PPB["Status"][sec[i]] = "Entry"
+                if m5c[0] < mn4 or m5c[0] < mn16 or z < 0:
+                    SaveToLog(main_log, "PPB: Sell " + sec[i])
+                    PPB["SL"][sec[i]] = round(m5c[0] + atr + 0.00001,5) # atr*1.5
+                    PPB["TP"][sec[i]] = round(m5c[0] - min(0.00151, 1.5*atr) - 0.00001,5) # atr or 0.0012
+                    OpenMarketOrder(account_id, sec[i], vol, "market", "sell", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                    PPB["Open"][sec[i]] = dt
+                    PPB["Status"][sec[i]] = "Entry"
             elif m5c[0] > s and m5c[1] > s and m5c[2] < s and ma < s:
-                SaveToLog(main_log, "PPB: Buy " + sec[i])
-                PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5)
-                PPB["TP"][sec[i]] = round(m5c[0] + min(0.00151, 1.5*atr) + 0.00001,5)
-                OpenMarketOrder(account_id, sec[i], vol, "market", "buy", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
-                PPB["Open"][sec[i]] = dt
-                PPB["Status"][sec[i]] = "Entry"
+                if m5c[0] > mx4 or m5c[0] > mx16 or z > 0:
+                    SaveToLog(main_log, "PPB: Buy " + sec[i])
+                    PPB["SL"][sec[i]] = round(m5c[0] - atr - 0.00001,5) # atr*1.5
+                    PPB["TP"][sec[i]] = round(m5c[0] + min(0.00151, 1.5*atr) + 0.00001,5) # atr or 0.0012
+                    OpenMarketOrder(account_id, sec[i], vol, "market", "buy", PPB["TP"][sec[i]], PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                    PPB["Open"][sec[i]] = dt
+                    PPB["Status"][sec[i]] = "Entry"
         elif Open_Units != 0:
             SaveToLog(main_log, "PPB: Managing trade for " + sec[i])
             if PPB["Status"][sec[i]] == "":
@@ -177,13 +184,36 @@ def MovingAverageContrarian(account_id, sec, vol, tf, file_nm):
             if Z1 > 2.5 and Z0 < 2.5:
                 SaveToLog(main_log, "MAC: Sell " + sec[i])
                 SL = round(c[0] + 0.010000001,5)
-                TP = round(c[0] - 0.010000001,5)
+                TP = round(c[0] - 0.008000001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "sell", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
             elif Z1 < -2.5 and Z0 > -2.5:
                 SaveToLog(main_log, "MAC: Buy " + sec[i])
                 SL = round(c[0] - 0.010000001,5)
-                TP = round(c[0] + 0.010000001,5)
+                TP = round(c[0] + 0.008000001,5)
                 OpenMarketOrder(account_id, sec[i], vol, "market", "buy", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
+        elif Open_Units != 0:
+            SaveToLog(main_log, "PPB: Managing trade for " + sec[i])
+            if PPB["Status"][sec[i]] == "":
+                PPB["Status"][sec[i]] = "Entry"
+                PPB["Open"][sec[i]] = dt
+            Open_Trades = GetOpenTrades(account_id, sec[i], LIVE_ACCESS_TOKEN)
+            for positions in Open_Trades["trades"]:
+                trd_ID = positions["id"]
+                trd_entry = float(positions["price"])
+                trd_side = positions["side"]
+                if PPB["Status"][sec[i]] == "Entry":
+                    if trd_side == "buy" and m5c[0] - trd_entry > 0.004:
+                        SaveToLog(main_log, "PPB: BE " + sec[i])
+                        OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "sell", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                        PPB["SL"][sec[i]] = round(trd_entry + 0.00201, 5)
+                        UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                        PPB["Status"][sec[i]] = "BE"
+                    elif trd_side == "sell" and trd_entry - m5c[0] > 0.004:
+                        SaveToLog(main_log, "PPB: BE " + sec[i])
+                        OpenMarketOrder(account_id, sec[i], int(round(0.5*vol,0)), "market", "buy", 0, 0, file_nm, LIVE_ACCESS_TOKEN)
+                        PPB["SL"][sec[i]] = round(trd_entry - 0.00201, 5)
+                        UpdateStopLoss(account_id, trd_ID, PPB["SL"][sec[i]], file_nm, LIVE_ACCESS_TOKEN)
+                        PPB["Status"][sec[i]] = "BE"                            
 
 # def IntraTrend(account_id, sec, vol, tf, file_nm):
 #     for i in range(len(sec)):

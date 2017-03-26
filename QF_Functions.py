@@ -414,27 +414,27 @@ Indicators = {
     "EUR_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0, "Z": 0, "Max 4": 0, "Min 4": 0, "Max 16": 0, "Min 16": 0,
     "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}, 
     "GBP_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0, "Z": 0, "Max 4": 0, "Min 4": 0, "Max 16": 0, "Min 16": 0,
     "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}, 
     "USD_CAD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0, "Z": 0, "Max 4": 0, "Min 4": 0, "Max 16": 0, "Min 16": 0,
     "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0},
     "AUD_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0, "Z": 0, "Max 4": 0, "Min 4": 0, "Max 16": 0, "Min 16": 0,
     "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}, 
     "NZD_USD": {
     "Z100": 0, "Z101": 0, "Z102": 0, "Z210": 0, "Z211": 0, "Z212": 0, "Z500": 0, "Z501": 0, "Z502": 0, 
     "SMA100": 0, "SMA101": 0, "SMA102": 0, "SMA103": 0, "SMA500": 0, "SMA501": 0, "SMA502": 0, "SMA503": 0, 
-    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0,
+    "SMA210": 0, "SMA211": 0, "SMA212": 0, "SMA213": 0, "ATR": 0, "s": 0, "r": 0, "Z": 0, "Max 4": 0, "Min 4": 0, "Max 16": 0, "Min 16": 0,
     "Eulow": 0, "Euhigh": 0, "Aslow": 0, "Ashigh": 0, "Seslow": 0, "Seshigh": 0, "Wklow": 0, "Wkhigh": 0}
 }
 
@@ -721,6 +721,11 @@ def Get_ATR(h, l, c, sec):
     else:
         PPB["ATR"][sec] = (PPB["ATR"][sec]*13 + TR(h[0], l[0], c[1]))/14
         return PPB["ATR"][sec]
+
+def Get_Z(c, p):
+    ma = SMA(c, p, 0)
+    sd = STDEV(c, p, 0)
+    return (c[0] - ma)/sd
 
 def ATR(h, l, c):
     p = 98

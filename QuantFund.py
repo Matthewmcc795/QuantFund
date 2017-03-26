@@ -22,6 +22,7 @@ QFPort = [229783, 406207, 836663]
 QFTraget = [1.0, 1.0, 1.0]
 QFLimit = [1.0, 1.0, 1.0]
 QFVol = 100
+QFMACVol = 1000
 # Strat["PPB"]["Vol"] = 100
 # Strat["IT"]["Vol"] = 100
 
@@ -61,18 +62,18 @@ while True:
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=0, microsecond=1)
-    # if datetime.now() > dt_IT:
-    #     SaveToLog(main_log, "Running IntraTrend")
-    #     IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
-    #     SaveToLog(main_log, "IntraTrend complete")
-    #     dt_IT += timedelta(minutes=15)
-    #     dt_IT = dt_IT.replace(second=0, microsecond=1)
+    if datetime.now() > dt_IT:
+        SaveToLog(main_log, "Running IntraTrend")
+        IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
+        SaveToLog(main_log, "IntraTrend complete")
+        dt_IT += timedelta(minutes=15)
+        dt_IT = dt_IT.replace(second=0, microsecond=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
     if datetime.now() > dt_MAC:
         SaveToLog(main_log, "Running MAC")
-        MovingAverageContrarian(QFPort[0], QFMACSec, 5*QFVol, "H4", fl_strat2)
+        MovingAverageContrarian(QFPort[0], QFMACSec, QFMACVol, "H4", fl_strat2)
         SaveToLog(main_log, "MAC complete")
         dt_MAC += timedelta(hours=4)
         dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)

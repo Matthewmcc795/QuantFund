@@ -132,6 +132,12 @@ def LoadIndicators(sec, tf):
             else:
                 Indicators[sec[i]]["s"] = Piv[Pos-1]
                 Indicators[sec[i]]["r"] = Piv[Pos]
+            M5H, M5L, M5C = Get_Price(sec[i], "M15", 16, "hlc", "midpoint")
+            Indicators[sec[i]]["Z"] = Get_Z(M5C, 4)
+            Indicators[sec[i]]["Max 4"] = max(M5H[0:3])
+            Indicators[sec[i]]["Min 4"] = min(M5L[0:3])
+            Indicators[sec[i]]["Max 16"] = max(M5H[0:15])
+            Indicators[sec[i]]["Min 16"] = min(M5L[0:15])
         elif tf == "M15":
             M15H, M15L, M15C = Get_Price(sec[i], "M15", 101, "hlc", "midpoint")
             Indicators[sec[i]]["SMA100"] = round(SMA(M15C, 10, 0),5)
