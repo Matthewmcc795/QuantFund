@@ -62,12 +62,12 @@ while True:
         SaveToLog(main_log, "Intraday_PPB complete")
         dt_PPB += timedelta(minutes=5)
         dt_PPB = dt_PPB.replace(second=0, microsecond=1)
-    if datetime.now() > dt_IT:
-        SaveToLog(main_log, "Running IntraTrend")
-        IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
-        SaveToLog(main_log, "IntraTrend complete")
-        dt_IT += timedelta(minutes=15)
-        dt_IT = dt_IT.replace(second=0, microsecond=1)
+    # if datetime.now() > dt_IT:
+    #     SaveToLog(main_log, "Running IntraTrend")
+    #     IntraTrend(QFPort[1], QFSec, QFVol, "M15", fl_strat3)
+    #     SaveToLog(main_log, "IntraTrend complete")
+    #     dt_IT += timedelta(minutes=15)
+    #     dt_IT = dt_IT.replace(second=0, microsecond=1)
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
