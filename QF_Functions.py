@@ -1,5 +1,3 @@
-# This file handles all dictionaries, datetime calculations and order functions
-# May also handle data functions used for Optimizer
 import requests
 import json
 from array import *
@@ -7,7 +5,6 @@ from Settings import LIVE_ACCESS_TOKEN, STRT, STRO, STRH, STRL, STRC, STRV, STRC
 import httplib
 import urllib
 from QF_Strategy import *
-# from QF_Optimizer import *
 from datetime import datetime, timedelta
 import time
 import sys
@@ -120,191 +117,6 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
 #             return p[0], p[4]
 
 ##########################################################################################################
-#                                           Email & Reports                                              #
-##########################################################################################################
-
-def Report(report_temp, account_id, access_token):
-    sec = ["EUR_USD", "GBP_USD", "USD_JPY", "USD_CAD", "AUD_USD", "NZD_USD"]
-    if report_temp == "DailyReport":
-        dt_now = str(datetime.now())
-        dat = "Daily Report on " + str(account_id) + " as of " + str(dt_now[:10]) + "\n"
-        p = []
-        j = 0
-        vals = ["units", "instrument", "side", "avgPrice"]
-        h = {'Authorization' : access_token}
-        url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/positions"
-        r = requests.get(url, headers=h)
-        data2 = json.loads(r.text)
-        chk = str(data2)
-        if chk.find("positions") != -1:
-            for positions in data2["positions"]:
-                p.append([])
-                for i in range(len(vals)):
-                    p[j].append(positions[vals[i]])
-                j += 1
-        dat = dat + "\n# -----      Open Positions     ----- #  \n"
-        for news in p:
-            if news[1] not in sec:
-                sec.append(news[1])
-            o, h, l, c = Get_Price(news[1], "D", 3, "ohlc")
-            if news[2] == "sell":
-                pl = str(round(100*(float(news[3])/c[0] - 1), 2)) + "%"
-            elif news[2] == "buy":
-                pl = str(round(100*(c[0]/float(news[3]) - 1), 2)) + "%"
-            for items in news:
-                dat = dat + " " + str(items)
-            dat = dat + " " + pl
-            dat = dat + str("\n")
-            sec[i], c[0]/o[1] - 1 
-
-        p = []
-        j = 0
-        vals = ["title", "impact", "currency"]
-        h = {'Authorization' : access_token}
-        url = "https://api-fxtrade.oanda.com/labs/v1/calendar?period=86400"
-        r = requests.get(url, headers=h)     
-        data2 = json.loads(r.text)
-        chk = str(data2)
-        if chk.find("title") != -1:
-            for positions in data2:
-                p.append([])
-                for i in range(len(vals)):
-                    p[j].append(positions[vals[i]])
-            j += 1
-
-        dat = dat + "\n# -----        Market News      ----- #  \n"
-        for news in p:
-            for items in news:
-                dat = dat + " " + str(items)
-            dat = dat + str("\n")
-        dat = dat + str("\n")
-
-        p = []
-        j = 0
-        vals = ["accountName", "balance", "unrealizedPl", "marginUsed", "marginAvail", "openTrades", "openOrders", "accountCurrency"]
-        h = {'Authorization' : access_token}
-        url = "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id)
-        r = requests.get(url, headers=h)     
-        data2 = json.loads(r.text)
-        chk = str(data2)
-        for i in range(len(vals)):
-            p.append(data2[vals[i]])
-
-        dat = dat + "\n# -----       Account Info      ----- #  \n"
-        for items in p:
-            dat = dat + " " + str(items)
-        dat = dat + str("\n")
-
-        dat = dat + "\n# -----       Market Moves      ----- #  \n"
-
-        for i in range(len(sec)):
-			o = []
-			c = []
-			h = {'Authorization' : LIVE_ACCESS_TOKEN}
-			url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(sec[i]) + "&count=3&candleFormat=midpoint&granularity=D"
-			r = requests.get(url, headers=h)     
-			data = json.loads(r.text)
-			for i in range(len(data["candles"])):
-				o.append(data["candles"][3 - i - 1][STRO])
-				c.append(data["candles"][3 - i - 1][STRC])
-			time.sleep(1)
-			dat = dat + " " + str(sec[i]) + " " + str(round(c[0]-o[1],5)) + "\n"
-        return dat
-
-def SendEmail(from_addr, pwd, to_addr, subject, message):
-    server = smtplib.SMTP('smtp.gmail.com:587')
-    server.starttls()
-    server.login(from_addr, pwd)
-    problems = server.sendmail(from_addr, to_addr, message)
-    server.quit()
-
-def AccountInfo(account_id, access_token):
-    dat = []
-    rang = ["accountId", "accountName", "balance", "unrealizedPl", 
-    "realizedPl", "marginUsed", "marginAvail", "openTrades", 
-    "openOrders", "marginRate", "accountCurrency"]
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    url =   "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id)
-    r = requests.get(url, headers=h)     
-    data = json.loads(r.text)
-    for i in range(len(rang)):
-        dat.append(data[rang[i]])
-    print dat
-    time.sleep(1)
-
-def GetTransactions(account_id, maxid):
-    dat = []
-    dat.append([])
-    j = 0
-    rang_Mkt_Ord = ["stopLossPrice", "takeProfitPrice", "accountBalance", "price", "side", "instrument", "tradeOpened", "interest", "time", "units", "id", "pl"]
-    rang_Trans_Funds = ["reason", "accountBalance", "amount", "time", "id"]
-    rang_Stop_Filled = ["tradeId", "accountBalance", "price", "side", "instrument", "interest", "time", "units", "id", "pl"]
-    rang_Take_Profit_Filled = ["tradeId", "accountBalance", "price", "side", "instrument", "interest", "time", "units", "id", "pl"]
-    rang_Trade_Close = ["tradeId", "accountBalance", "price", "side", "instrument", "interest", "time", "units", "id", "pl"]
-    rang_Trade_Update = ["stopLossPrice", "takeProfitPrice", "tradeId", "instrument", "time", "units", "id"]
-    rang_Daily_Int = ["accountBalance", "instrument", "interest", "time", "id"]
-    h = {'Authorization' : LIVE_ACCESS_TOKEN}
-    if maxid == "":
-        url =   "https://api-fxtrade.oanda.com/v1/accounts/" + str(account_id) + "/transactions?count=500"
-        r = requests.get(url, headers=h)     
-        data = json.loads(r.text)
-        for trans in data["transactions"]:
-            if str(trans["type"]) == "MARKET_ORDER_CREATE":
-                dat.append([])
-                for i in range(len(rang_Mkt_Ord)):
-                    dat[j].append(str(trans[rang_Mkt_Ord[i]]))
-                j += 1
-            elif str(trans["type"]) == "TRANSFER_FUNDS":
-                dat.append([])
-                for i in range(len(rang_Trans_Funds)):
-                    dat[j].append(str(trans[rang_Trans_Funds[i]]))
-                j += 1
-            elif str(trans["type"]) == "STOP_LOSS_FILLED":
-                dat.append([])
-                for i in range(len(rang_Stop_Filled)):
-                    dat[j].append(str(trans[rang_Stop_Filled[i]]))
-                j += 1
-            elif str(trans["type"]) == "TAKE_PROFIT_FILLED":
-                dat.append([])
-                for i in range(len(rang_Take_Profit_Filled)):
-                    dat[j].append(str(trans[rang_Take_Profit_Filled[i]]))
-                j += 1
-            elif str(trans["type"]) == "TRADE_CLOSE":
-                dat.append([])
-                for i in range(len(rang_Trade_Close)):
-                    dat[j].append(str(trans[rang_Trade_Close[i]]))
-                j += 1
-            # elif str(trans["type"]) == "TRADE_UPDATE":
-            #   for i in range(len(rang_Trade_Update)):
-            #       dat[0].append(str(trans[rang_Trade_Update[i]]))
-            # elif str(trans["type"]) == "DAILY_INTEREST":
-            #   for i in range(len(rang_Daily_Int)):
-            #       dat[0].append(str(trans[rang_Daily_Int[i]]))            
-        time.sleep(60)
-    return dat
-
-def TransactionHistory(account_id, end_dt):
-    dt, minid = GetTransactions(account_id, "")
-    dt = datetime.strptime(dt, '%Y-%m-%d')
-    end_dt = datetime.strptime(end_dt, '%Y-%m-%d')
-    print 1
-    while dt > end_dt:
-        time.sleep(60)
-        dt, minid = GetTransactions(account_id, minid)
-        dt = datetime.strptime(dt, '%Y-%m-%d')
-    print "Complete"
-
-def pYear(dt):
-    return int(dt[:4])
-
-def pMonth(dt):
-    mnth = dt[:7]
-    return int(mnth[len(mnth)-2:])
-
-def pDay(dt):
-    return int(dt[len(dt) -2:])
-
-##########################################################################################################
 #                                             Dictionaries                                               #
 ##########################################################################################################
 
@@ -353,6 +165,87 @@ PPB = {
 }
 
 MAC = {
+    "SL": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
+    "TP": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Units": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Open": {
+    "EUR_USD": datetime.now(), "GBP_USD": datetime.now(), "USD_CAD": datetime.now(), "AUD_USD": datetime.now(), "NZD_USD": datetime.now(), "USD_CHF": datetime.now(), "GBP_CHF": datetime.now(), 
+    "EUR_GBP": datetime.now(), "GBP_CAD": datetime.now(), "NZD_CAD": datetime.now(), "AUD_CHF": datetime.now(), "EUR_CAD": datetime.now(), "GBP_AUD": datetime.now(), "NZD_CHF": datetime.now(), 
+    "AUD_NZD": datetime.now(), "CAD_CHF": datetime.now(), "EUR_AUD": datetime.now(), "GBP_NZD": datetime.now(), "EUR_CHF": datetime.now(), "EUR_NZD": datetime.now(), "AUD_CAD": datetime.now()},
+    "Status": {
+    "EUR_USD": "", "GBP_USD": "", "USD_CAD": "", "AUD_USD": "", "NZD_USD": "", "USD_CHF": "", "GBP_CHF": "", 
+    "EUR_GBP": "", "GBP_CAD": "", "NZD_CAD": "", "AUD_CHF": "", "EUR_CAD": "", "GBP_AUD": "", "NZD_CHF": "", 
+    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""},
+    "Op": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}
+}
+
+BBB1 = {
+    "SL": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
+    "TP": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Units": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Open": {
+    "EUR_USD": datetime.now(), "GBP_USD": datetime.now(), "USD_CAD": datetime.now(), "AUD_USD": datetime.now(), "NZD_USD": datetime.now(), "USD_CHF": datetime.now(), "GBP_CHF": datetime.now(), 
+    "EUR_GBP": datetime.now(), "GBP_CAD": datetime.now(), "NZD_CAD": datetime.now(), "AUD_CHF": datetime.now(), "EUR_CAD": datetime.now(), "GBP_AUD": datetime.now(), "NZD_CHF": datetime.now(), 
+    "AUD_NZD": datetime.now(), "CAD_CHF": datetime.now(), "EUR_AUD": datetime.now(), "GBP_NZD": datetime.now(), "EUR_CHF": datetime.now(), "EUR_NZD": datetime.now(), "AUD_CAD": datetime.now()},
+    "Status": {
+    "EUR_USD": "", "GBP_USD": "", "USD_CAD": "", "AUD_USD": "", "NZD_USD": "", "USD_CHF": "", "GBP_CHF": "", 
+    "EUR_GBP": "", "GBP_CAD": "", "NZD_CAD": "", "AUD_CHF": "", "EUR_CAD": "", "GBP_AUD": "", "NZD_CHF": "", 
+    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""},
+    "Op": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}
+}
+
+BBB2 = {
+    "SL": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}, 
+    "TP": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Units": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0},
+    "Open": {
+    "EUR_USD": datetime.now(), "GBP_USD": datetime.now(), "USD_CAD": datetime.now(), "AUD_USD": datetime.now(), "NZD_USD": datetime.now(), "USD_CHF": datetime.now(), "GBP_CHF": datetime.now(), 
+    "EUR_GBP": datetime.now(), "GBP_CAD": datetime.now(), "NZD_CAD": datetime.now(), "AUD_CHF": datetime.now(), "EUR_CAD": datetime.now(), "GBP_AUD": datetime.now(), "NZD_CHF": datetime.now(), 
+    "AUD_NZD": datetime.now(), "CAD_CHF": datetime.now(), "EUR_AUD": datetime.now(), "GBP_NZD": datetime.now(), "EUR_CHF": datetime.now(), "EUR_NZD": datetime.now(), "AUD_CAD": datetime.now()},
+    "Status": {
+    "EUR_USD": "", "GBP_USD": "", "USD_CAD": "", "AUD_USD": "", "NZD_USD": "", "USD_CHF": "", "GBP_CHF": "", 
+    "EUR_GBP": "", "GBP_CAD": "", "NZD_CAD": "", "AUD_CHF": "", "EUR_CAD": "", "GBP_AUD": "", "NZD_CHF": "", 
+    "AUD_NZD": "", "CAD_CHF": "", "EUR_AUD": "", "GBP_NZD": "", "EUR_CHF": "", "EUR_NZD": "", "AUD_CAD": ""},
+    "Op": {
+    "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
+    "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
+    "AUD_NZD": 0, "CAD_CHF": 0, "EUR_AUD": 0, "GBP_NZD": 0, "EUR_CHF": 0, "EUR_NZD": 0, "AUD_CAD": 0}
+}
+
+BBB3 = {
     "SL": {
     "EUR_USD": 0, "GBP_USD": 0, "USD_CAD": 0, "AUD_USD": 0, "NZD_USD": 0, "USD_CHF": 0, "GBP_CHF": 0, 
     "EUR_GBP": 0, "GBP_CAD": 0, "NZD_CAD": 0, "AUD_CHF": 0, "EUR_CAD": 0, "GBP_AUD": 0, "NZD_CHF": 0, 
