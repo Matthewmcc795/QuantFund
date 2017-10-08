@@ -13,6 +13,58 @@ main_log = "QF.txt"
 
 hr = [0,4,8,12,16,20]
 
+TOD_Params = {}
+TOD_Params['AUD_NZD'] = {'Buy': [5], 'Sell': [13]}
+TOD_Params['GBP_AUD'] = {'Buy': [7], 'Sell': [6, 12, 18]}
+TOD_Params['AUD_CAD'] = {'Buy': [4, 23], 'Sell': [13, 20]}
+TOD_Params['EUR_CAD'] = {'Buy': [13, 23], 'Sell': [10]}
+TOD_Params['EUR_NZD'] = {'Buy': [3], 'Sell': [5, 15]}
+TOD_Params['EUR_GBP'] = {'Buy': [2, 5, 18, 22], 'Sell': []}
+TOD_Params['GBP_USD'] = {'Buy': [2, 15], 'Sell': [6, 10]}
+TOD_Params['AUD_USD'] = {'Buy': [1, 4, 17], 'Sell': [14, 20]}
+TOD_Params['EUR_USD'] = {'Buy': [1, 15], 'Sell': [10]}
+TOD_Params['USD_CAD'] = {'Buy': [], 'Sell': [2, 17]}
+TOD_Params['GBP_NZD'] = {'Buy': [], 'Sell': [4, 10, 23]}
+TOD_Params['NZD_USD'] = {'Buy': [4, 14, 19], 'Sell': [10]}
+TOD_Params['GBP_CAD'] = {'Buy': [8], 'Sell': [6, 11, 18, 21]}
+TOD_Params['EUR_AUD'] = {'Buy': [13, 20], 'Sell': [1, 10]}
+TOD_Params['NZD_CAD'] = {'Buy': [4, 8, 23], 'Sell': []}
+
+
+def TOD(account_id, sec, vol, tf, file_nm):
+    for s in sec:
+        SaveToLog(main_log, "Collecting MAC data for " + s)
+        c = Get_Price(s, tf, 5, "c", "midpoint")
+        dt = datetime.now()
+        Open_Units = GetOpenUnits(account_id, s, sec, LIVE_ACCESS_TOKEN)
+        if Open_Units == 0:
+            if (dt.hr in TOD_Params[s]['Sell']):
+                SaveToLog(main_log, "MAC: Sell " + s)
+                SL = round(c[0] + 0.010000001,5)
+                TP = round(c[0] - 0.01000001,5)
+                OpenMarketOrder(account_id, s, vol, "market", "sell", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
+                TOD["Open"][s] = dt
+                TOD["Status"][s] = "Entry"
+            elif (dt.hr in TOD_Params[s]['Buy']):
+                SaveToLog(main_log, "MAC: Buy " + s)
+                SL = round(c[0] - 0.010000001,5)
+                TP = round(c[0] + 0.01000001,5)
+                OpenMarketOrder(account_id, s, vol, "market", "buy", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
+                TOD["Open"][s] = dt
+                TOD["Status"][s] = "Entry"
+        elif Open_Units != 0:
+            SaveToLog(main_log, "MAC: Managing trade for " + s)
+            if TOD["Status"][s] == "":
+                TOD["Status"][s] = "Entry"
+                TOD["Open"][s] = dt
+            Open_Trades = GetOpenTrades(account_id, s, LIVE_ACCESS_TOKEN)
+            for positions in Open_Trades["trades"]:
+                trd_ID = positions["id"]
+                trd_entry = float(positions["price"])
+                trd_side = positions["side"]
+                if dt - timedelta(minutes=180) > TOD["Open"][sec[i]]:
+                    ClosePositions(account_id, s, file_nm, LIVE_ACCESS_TOKEN)
+
 def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
     for i in range(len(sec)):
         SaveToLog(main_log, "Collecting PPB data for " + sec[i])

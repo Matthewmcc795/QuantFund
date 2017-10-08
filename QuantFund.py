@@ -26,18 +26,47 @@ QFMACVol = 1000
 # Strat["PPB"]["Vol"] = 100
 # Strat["IT"]["Vol"] = 100
 
-main_log = "QF.txt"
-fl_strat1 = "PPB_Log.txt" 
-fl_strat2 = "MAC_Log.txt"
-fl_strat3 = "IT_Log.txt"
 
-dt_Main_Report = Get_dt("MainReport")
+TOD_Params = {}
+TOD_Params['AUD_NZD'] = {'Buy': [5], 'Sell': [13]}
+TOD_Params['GBP_AUD'] = {'Buy': [7], 'Sell': [6, 12, 18]}
+TOD_Params['AUD_CAD'] = {'Buy': [4, 23], 'Sell': [13, 20]}
+TOD_Params['EUR_CAD'] = {'Buy': [13, 23], 'Sell': [10]}
+TOD_Params['EUR_NZD'] = {'Buy': [3], 'Sell': [5, 15]}
+TOD_Params['EUR_GBP'] = {'Buy': [2, 5, 18, 22], 'Sell': []}
+TOD_Params['GBP_USD'] = {'Buy': [2, 15], 'Sell': [6, 10]}
+TOD_Params['AUD_USD'] = {'Buy': [1, 4, 17], 'Sell': [14, 20]}
+TOD_Params['EUR_USD'] = {'Buy': [1, 15], 'Sell': [10]}
+TOD_Params['USD_CAD'] = {'Buy': [], 'Sell': [2, 17]}
+TOD_Params['GBP_NZD'] = {'Buy': [], 'Sell': [4, 10, 23]}
+TOD_Params['NZD_USD'] = {'Buy': [4, 14, 19], 'Sell': [10]}
+TOD_Params['GBP_CAD'] = {'Buy': [8], 'Sell': [6, 11, 18, 21]}
+TOD_Params['EUR_AUD'] = {'Buy': [13, 20], 'Sell': [1, 10]}
+TOD_Params['NZD_CAD'] = {'Buy': [4, 8, 23], 'Sell': []}
+TOD_Sec = TOD_Params.keys()
+
+main_log = "QF.txt"
+# fl_strat1 = "PPB_Log.txt" 
+# fl_strat2 = "MAC_Log.txt"
+# fl_strat3 = "IT_Log.txt"
+fl_strat4 = "TOD_Log.txt"
+
+# dt_Main_Report = Get_dt("MainReport")
 dt_PPB = Get_dt("dt_PPB")
 dt_IT = Get_dt("dt_IT")
-dt_BBB1 = Get_dt("dt_MAC")
-dt_BBB2 = Get_dt("dt_MAC")
-dt_BBB3 = Get_dt("dt_MAC")
-dt_MAC = Get_dt("dt_MAC")
+# dt_BBB1 = Get_dt("dt_MAC")
+# dt_BBB2 = Get_dt("dt_MAC")
+# dt_BBB3 = Get_dt("dt_MAC")
+# dt_MAC = Get_dt("dt_MAC")
+d = datetime.now()
+dt_TOD = Get_dt("dt_TOD")
+
+df_TOD = datetime.now()
+
+dt_TOD = df_TOD.replace(minute=0, second=0,microsecond=1) + timedelta(hours=1)
+        # dt_TOD += timedelta(hours=1)
+        # dt_TOD = dt_TOD.replace(minute=0, second=1, microsecond=1)
+
 dt_Daily = Get_dt("dt_Daily")
 dt_SessionPrep = Get_dt("dt_SessionPrep")
 dt_M5_Optimizer = dt_PPB - timedelta(minutes=1)
@@ -59,12 +88,12 @@ while True:
     ###############################################################################
     #                                QF - Day Trade                               #
     ###############################################################################
-    if datetime.now() > dt_PPB:
-        SaveToLog(main_log, "Running PPB")
-        PivotPointBreakout(QFPort[1], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
-        SaveToLog(main_log, "Intraday_PPB complete")
-        dt_PPB += timedelta(minutes=5)
-        dt_PPB = dt_PPB.replace(second=0, microsecond=1)
+    # if datetime.now() > dt_PPB:
+    #     SaveToLog(main_log, "Running PPB")
+    #     PivotPointBreakout(QFPort[1], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
+    #     SaveToLog(main_log, "Intraday_PPB complete")
+    #     dt_PPB += timedelta(minutes=5)
+    #     dt_PPB = dt_PPB.replace(second=0, microsecond=1)
     # if datetime.now() > dt_IT:
     #     SaveToLog(main_log, "Running IntraTrend")
     #     IntraTrend(QFPort[2], QFSec, QFVol, "M15", fl_strat3)
@@ -74,30 +103,36 @@ while True:
     ###############################################################################
     #                               QF - Swing Trade                              #
     ###############################################################################
-    if datetime.now() > dt_MAC:
-        SaveToLog(main_log, "Running MAC")
-        MovingAverageContrarian(QFPort[0], QFMACSec, QFMACVol, "H4", fl_strat2)
-        SaveToLog(main_log, "MAC complete")
-        dt_MAC += timedelta(hours=4)
-        dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
-    if datetime.now() > dt_BBB1:
-        SaveToLog(main_log, "Running BBB 10")
-        BollingerBandBreakout1(QFPort[2], QFSec, QFBBBVol, "H4", fl_strat3)
-        SaveToLog(main_log, "Running BBB 10 complete")
-        dt_BBB1 += timedelta(hours=4)
-        dt_BBB1 = dt_BBB1.replace(minute=0, second=1, microsecond=1)
-    if datetime.now() > dt_BBB2:
-        SaveToLog(main_log, "Running BBB 50")
-        BollingerBandBreakout2(QFPort[3], QFSec, QFBBBVol, "H4", fl_strat3)
-        SaveToLog(main_log, "Running BBB 50 complete")
-        dt_BBB2 += timedelta(hours=4)
-        dt_BBB2 = dt_BBB2.replace(minute=0, second=1, microsecond=1)
-    if datetime.now() > dt_BBB3:
-        SaveToLog(main_log, "Running BBB 200")
-        BollingerBandBreakout3(QFPort[4], QFSec, QFBBBVol, "H4", fl_strat3)
+    # if datetime.now() > dt_MAC:
+    #     SaveToLog(main_log, "Running MAC")
+    #     MovingAverageContrarian(QFPort[0], QFMACSec, QFMACVol, "H4", fl_strat2)
+    #     SaveToLog(main_log, "MAC complete")
+    #     dt_MAC += timedelta(hours=4)
+    #     dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
+    # if datetime.now() > dt_BBB1:
+    #     SaveToLog(main_log, "Running BBB 10")
+    #     BollingerBandBreakout1(QFPort[2], QFSec, QFBBBVol, "H4", fl_strat3)
+    #     SaveToLog(main_log, "Running BBB 10 complete")
+    #     dt_BBB1 += timedelta(hours=4)
+    #     dt_BBB1 = dt_BBB1.replace(minute=0, second=1, microsecond=1)
+    # if datetime.now() > dt_BBB2:
+    #     SaveToLog(main_log, "Running BBB 50")
+    #     BollingerBandBreakout2(QFPort[3], QFSec, QFBBBVol, "H4", fl_strat3)
+    #     SaveToLog(main_log, "Running BBB 50 complete")
+    #     dt_BBB2 += timedelta(hours=4)
+    #     dt_BBB2 = dt_BBB2.replace(minute=0, second=1, microsecond=1)
+    # if datetime.now() > dt_BBB3:
+    #     SaveToLog(main_log, "Running BBB 200")
+    #     BollingerBandBreakout3(QFPort[4], QFSec, QFBBBVol, "H4", fl_strat3)
+    #     SaveToLog(main_log, "Running BBB 200 complete")
+    #     dt_BBB3 += timedelta(hours=4)
+    #     dt_BBB3 = dt_BBB3.replace(minute=0, second=1, microsecond=1)
+    if datetime.now() > dt_TOD:
+        SaveToLog(main_log, "Running TOD")
+        TOD(QFPort[4], TOD_Sec, 100, "H1", fl_strat4)
         SaveToLog(main_log, "Running BBB 200 complete")
-        dt_BBB3 += timedelta(hours=4)
-        dt_BBB3 = dt_BBB3.replace(minute=0, second=1, microsecond=1)
+        dt_TOD += timedelta(hours=1)
+        dt_TOD = dt_TOD.replace(minute=0, second=1, microsecond=1)
     ###############################################################################
     #                                 Optimizer                                   #
     ###############################################################################
