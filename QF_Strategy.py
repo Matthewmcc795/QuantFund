@@ -30,30 +30,29 @@ TOD_Params['GBP_CAD'] = {'Buy': [8], 'Sell': [6, 11, 18, 21]}
 TOD_Params['EUR_AUD'] = {'Buy': [13, 20], 'Sell': [1, 10]}
 TOD_Params['NZD_CAD'] = {'Buy': [4, 8, 23], 'Sell': []}
 
-
 def TimeofDay(account_id, sec, vol, tf, file_nm):
     for s in sec:
-        SaveToLog(main_log, "Collecting MAC data for " + s)
+        SaveToLog(main_log, "Collecting TOD data for " + s)
         c = Get_Price(s, tf, 5, "c", "midpoint")
         dt = datetime.now()
         Open_Units = GetOpenUnits(account_id, s, sec, LIVE_ACCESS_TOKEN)
         if Open_Units == 0:
             if (dt.hour in TOD_Params[s]['Sell']):
-                SaveToLog(main_log, "MAC: Sell " + s)
+                SaveToLog(main_log, "TOD: Sell " + s)
                 SL = round(c[0] + 0.010000001,5)
                 TP = round(c[0] - 0.01000001,5)
                 OpenMarketOrder(account_id, s, vol, "market", "sell", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
                 TOD["Open"][s] = dt
                 TOD["Status"][s] = "Entry"
             elif (dt.hour in TOD_Params[s]['Buy']):
-                SaveToLog(main_log, "MAC: Buy " + s)
+                SaveToLog(main_log, "TOD: Buy " + s)
                 SL = round(c[0] - 0.010000001,5)
                 TP = round(c[0] + 0.01000001,5)
                 OpenMarketOrder(account_id, s, vol, "market", "buy", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
                 TOD["Open"][s] = dt
                 TOD["Status"][s] = "Entry"
         elif Open_Units != 0:
-            SaveToLog(main_log, "MAC: Managing trade for " + s)
+            SaveToLog(main_log, "TOD: Managing trade for " + s)
             if TOD["Status"][s] == "":
                 TOD["Status"][s] = "Entry"
                 TOD["Open"][s] = dt
@@ -62,7 +61,7 @@ def TimeofDay(account_id, sec, vol, tf, file_nm):
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
-                if dt - timedelta(minutes=180) > TOD["Open"][sec[i]]:
+                if dt - timedelta(minutes=180) > TOD["Open"][s]:
                     ClosePositions(account_id, s, file_nm, LIVE_ACCESS_TOKEN)
 
 def PivotPointBreakout(account_id, sec, vol, tf, file_nm):

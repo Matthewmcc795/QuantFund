@@ -79,6 +79,12 @@ LoadIndicators(QFSec,"M15")
 UpdateAccountBalance(QFPort[1], "PPB")
 UpdateAccountBalance(QFPort[2], "IT")
 
+
+c = Get_Price("EUR_USD", 60, 5, "c", "midpoint")
+print c[0]
+print c[len(c)-1]
+print d.hour
+
 # print Strat["PPB"]["InitialBalance"]
 # print Strat["IT"]["InitialBalance"]
 # PA = PriceAction(QFSec)
