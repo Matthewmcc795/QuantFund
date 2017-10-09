@@ -37,14 +37,14 @@ def TimeofDay(account_id, sec, vol, tf, file_nm):
         dt = datetime.now()
         Open_Units = GetOpenUnits(account_id, s, sec, LIVE_ACCESS_TOKEN)
         if Open_Units == 0:
-            if (dt.hour - 4 in TOD_Params[s]['Sell']):
+            if (dt.hour in TOD_Params[s]['Sell']):
                 SaveToLog(main_log, "TOD: Sell " + s)
                 SL = round(c[0] + 0.010000001,5)
                 TP = round(c[0] - 0.01000001,5)
                 OpenMarketOrder(account_id, s, vol, "market", "sell", TP, SL, file_nm, LIVE_ACCESS_TOKEN)
                 TOD["Open"][s] = dt
                 TOD["Status"][s] = "Entry"
-            elif (dt.hour - 4 in TOD_Params[s]['Buy']):
+            elif (dt.hour in TOD_Params[s]['Buy']):
                 SaveToLog(main_log, "TOD: Buy " + s)
                 SL = round(c[0] - 0.010000001,5)
                 TP = round(c[0] + 0.01000001,5)
