@@ -129,7 +129,7 @@ while True:
     #     dt_BBB3 = dt_BBB3.replace(minute=0, second=1, microsecond=1)
     if datetime.now() > dt_TOD:
         SaveToLog(main_log, "Running TOD")
-        TOD(QFPort[4], TOD_Sec, 100, "H1", fl_strat4)
+        TimeofDay(QFPort[4], TOD_Sec, 100, "H1", fl_strat4)
         SaveToLog(main_log, "Running BBB 200 complete")
         dt_TOD += timedelta(hours=1)
         dt_TOD = dt_TOD.replace(minute=0, second=1, microsecond=1)

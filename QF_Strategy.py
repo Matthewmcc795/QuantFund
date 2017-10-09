@@ -31,7 +31,7 @@ TOD_Params['EUR_AUD'] = {'Buy': [13, 20], 'Sell': [1, 10]}
 TOD_Params['NZD_CAD'] = {'Buy': [4, 8, 23], 'Sell': []}
 
 
-def TOD(account_id, sec, vol, tf, file_nm):
+def TimeofDay(account_id, sec, vol, tf, file_nm):
     for s in sec:
         SaveToLog(main_log, "Collecting MAC data for " + s)
         c = Get_Price(s, tf, 5, "c", "midpoint")
