@@ -29,6 +29,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
     HA = []
     LA = []
     CA = []
+    D = []
     h = {'Authorization' : LIVE_ACCESS_TOKEN}
     url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(curr_pair) + "&count=" + str(bars) + "&candleFormat=" + str(rep) +"&granularity=" + str(tf)
     r = requests.get(url, headers=h)     
@@ -36,6 +37,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
     time.sleep(1)
     if rep == "midpoint":
         for i in range(len(data["candles"])):
+            D.append(data["candles"][bars - i - 1][STRT])
             O.append(data["candles"][bars - i - 1][STRO])
             H.append(data["candles"][bars - i - 1][STRH])
             L.append(data["candles"][bars - i - 1][STRL])
@@ -45,7 +47,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
         elif ohlc == "hlc":
             return H, L, C
         elif ohlc == "c":
-            return C
+            return D, C
     else:
         for i in range(len(data["candles"])):
             CB.append(data["candles"][bars - i - 1][STRCB])

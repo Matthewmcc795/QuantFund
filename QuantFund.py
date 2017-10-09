@@ -73,109 +73,109 @@ dt_M5_Optimizer = dt_PPB - timedelta(minutes=1)
 dt_M15_Optimizer = dt_IT - timedelta(minutes=1)
 
 Intraday_PPB_tf = ["M5", "M15", "D"]
-UpdatePivotPoints(QFSec)
-LoadIndicators(QFSec,"M5")
-LoadIndicators(QFSec,"M15")
-UpdateAccountBalance(QFPort[1], "PPB")
-UpdateAccountBalance(QFPort[2], "IT")
+# UpdatePivotPoints(QFSec)
+# LoadIndicators(QFSec,"M5")
+# LoadIndicators(QFSec,"M15")
+# UpdateAccountBalance(QFPort[1], "PPB")
+# UpdateAccountBalance(QFPort[2], "IT")
 
 
-c = Get_Price("EUR_USD", 60, 5, "c", "midpoint")
-print c[0]
-print c[len(c)-1]
+D, c = Get_Price("EUR_USD", "H1", 5, "c", "midpoint")
+print D[0], c[0]
+print D[len(D)-1], c[len(c)-1]
 print d.hour
 
 # print Strat["PPB"]["InitialBalance"]
 # print Strat["IT"]["InitialBalance"]
 # PA = PriceAction(QFSec)
 # MM = MoneyManagement(QFSec)
-while True:
-    d = datetime.now()
-    ###############################################################################
-    #                                QF - Day Trade                               #
-    ###############################################################################
-    # if datetime.now() > dt_PPB:
-    #     SaveToLog(main_log, "Running PPB")
-    #     PivotPointBreakout(QFPort[1], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
-    #     SaveToLog(main_log, "Intraday_PPB complete")
-    #     dt_PPB += timedelta(minutes=5)
-    #     dt_PPB = dt_PPB.replace(second=0, microsecond=1)
-    # if datetime.now() > dt_IT:
-    #     SaveToLog(main_log, "Running IntraTrend")
-    #     IntraTrend(QFPort[2], QFSec, QFVol, "M15", fl_strat3)
-    #     SaveToLog(main_log, "IntraTrend complete")
-    #     dt_IT += timedelta(minutes=15)
-    #     dt_IT = dt_IT.replace(second=0, microsecond=1)
-    ###############################################################################
-    #                               QF - Swing Trade                              #
-    ###############################################################################
-    # if datetime.now() > dt_MAC:
-    #     SaveToLog(main_log, "Running MAC")
-    #     MovingAverageContrarian(QFPort[0], QFMACSec, QFMACVol, "H4", fl_strat2)
-    #     SaveToLog(main_log, "MAC complete")
-    #     dt_MAC += timedelta(hours=4)
-    #     dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
-    # if datetime.now() > dt_BBB1:
-    #     SaveToLog(main_log, "Running BBB 10")
-    #     BollingerBandBreakout1(QFPort[2], QFSec, QFBBBVol, "H4", fl_strat3)
-    #     SaveToLog(main_log, "Running BBB 10 complete")
-    #     dt_BBB1 += timedelta(hours=4)
-    #     dt_BBB1 = dt_BBB1.replace(minute=0, second=1, microsecond=1)
-    # if datetime.now() > dt_BBB2:
-    #     SaveToLog(main_log, "Running BBB 50")
-    #     BollingerBandBreakout2(QFPort[3], QFSec, QFBBBVol, "H4", fl_strat3)
-    #     SaveToLog(main_log, "Running BBB 50 complete")
-    #     dt_BBB2 += timedelta(hours=4)
-    #     dt_BBB2 = dt_BBB2.replace(minute=0, second=1, microsecond=1)
-    # if datetime.now() > dt_BBB3:
-    #     SaveToLog(main_log, "Running BBB 200")
-    #     BollingerBandBreakout3(QFPort[4], QFSec, QFBBBVol, "H4", fl_strat3)
-    #     SaveToLog(main_log, "Running BBB 200 complete")
-    #     dt_BBB3 += timedelta(hours=4)
-    #     dt_BBB3 = dt_BBB3.replace(minute=0, second=1, microsecond=1)
-    if datetime.now() > dt_TOD:
-        SaveToLog(main_log, "Running TOD")
-        TimeofDay(QFPort[4], TOD_Sec, 100, "H1", fl_strat4)
-        SaveToLog(main_log, "Running BBB 200 complete")
-        dt_TOD += timedelta(hours=1)
-        dt_TOD = dt_TOD.replace(minute=0, second=1, microsecond=1)
-    ###############################################################################
-    #                                 Optimizer                                   #
-    ###############################################################################
-    if datetime.now() > dt_M15_Optimizer:
-        SaveToLog(main_log, "Running M15 Optimizer")
-        t = datetime.now()
-        UpdateOpenUnits(QFSec, QFPort[1], "PPB")
-        UpdateOpenUnits(QFSec, QFPort[2], "IT")
-        LoadIndicators(QFSec,"M5")
-        LoadIndicators(QFSec,"M15")
-        ManageMoney(QFPort[1], "PPB", QFTraget[0], QFLimit[0])
-        ManageMoney(QFPort[2], "IT", QFTraget[1], QFLimit[1])
-        dt_M15_Optimizer += timedelta(minutes=15)
-        dt_M15_Optimizer = dt_M15_Optimizer.replace(second=1, microsecond=1)
-        SaveToLog(main_log, "M15 Optimizer runtime: " + str(datetime.now() - t))
-    elif datetime.now() > dt_M5_Optimizer:
-        SaveToLog(main_log, "Running PPB Optimizer")
-        t = datetime.now()
-        UpdateOpenUnits(QFSec, QFPort[1], "PPB")
-        ManageMoney(QFPort[1], "PPB", QFTraget[0], QFLimit[0])
-        LoadIndicators(QFSec,"M5")
-        dt_M5_Optimizer += timedelta(minutes=5)
-        dt_M5_Optimizer = dt_M5_Optimizer.replace(second=1, microsecond=1)
-        SaveToLog(main_log, "M5 Optimizer runtime: " + str(datetime.now() - t))
-    if datetime.now() > dt_Daily:
-        SaveToLog(main_log, "Running Daily Updates")
-        t = datetime.now()
-        UpdatePivotPoints(QFSec)
-        UpdateAccountBalance(QFPort[1], "PPB")
-        UpdateAccountBalance(QFPort[2], "IT")
-        dt_Daily += timedelta(hours=24)
-        dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
-        SaveToLog(main_log, "Daily Updates runtime: " + str(datetime.now() - t))
-    if d.weekday() == 4 and d.hour == 16 and d.minute > 50:
-        for i in range(len(QFSec)):
-            ClosePositions(QFPort[0], QFSec[i], fl_strat1, LIVE_ACCESS_TOKEN)
-            ClosePositions(QFPort[1], QFSec[i], fl_strat2, LIVE_ACCESS_TOKEN)
-            ClosePositions(QFPort[2], QFSec[i], fl_strat3, LIVE_ACCESS_TOKEN)
-        time.sleep(3600)
-    time.sleep(1)
+# while True:
+#     d = datetime.now()
+#     ###############################################################################
+#     #                                QF - Day Trade                               #
+#     ###############################################################################
+#     # if datetime.now() > dt_PPB:
+#     #     SaveToLog(main_log, "Running PPB")
+#     #     PivotPointBreakout(QFPort[1], QFSec, QFVol, Intraday_PPB_tf, fl_strat1)
+#     #     SaveToLog(main_log, "Intraday_PPB complete")
+#     #     dt_PPB += timedelta(minutes=5)
+#     #     dt_PPB = dt_PPB.replace(second=0, microsecond=1)
+#     # if datetime.now() > dt_IT:
+#     #     SaveToLog(main_log, "Running IntraTrend")
+#     #     IntraTrend(QFPort[2], QFSec, QFVol, "M15", fl_strat3)
+#     #     SaveToLog(main_log, "IntraTrend complete")
+#     #     dt_IT += timedelta(minutes=15)
+#     #     dt_IT = dt_IT.replace(second=0, microsecond=1)
+#     ###############################################################################
+#     #                               QF - Swing Trade                              #
+#     ###############################################################################
+#     # if datetime.now() > dt_MAC:
+#     #     SaveToLog(main_log, "Running MAC")
+#     #     MovingAverageContrarian(QFPort[0], QFMACSec, QFMACVol, "H4", fl_strat2)
+#     #     SaveToLog(main_log, "MAC complete")
+#     #     dt_MAC += timedelta(hours=4)
+#     #     dt_MAC = dt_MAC.replace(minute=0, second=1, microsecond=1)
+#     # if datetime.now() > dt_BBB1:
+#     #     SaveToLog(main_log, "Running BBB 10")
+#     #     BollingerBandBreakout1(QFPort[2], QFSec, QFBBBVol, "H4", fl_strat3)
+#     #     SaveToLog(main_log, "Running BBB 10 complete")
+#     #     dt_BBB1 += timedelta(hours=4)
+#     #     dt_BBB1 = dt_BBB1.replace(minute=0, second=1, microsecond=1)
+#     # if datetime.now() > dt_BBB2:
+#     #     SaveToLog(main_log, "Running BBB 50")
+#     #     BollingerBandBreakout2(QFPort[3], QFSec, QFBBBVol, "H4", fl_strat3)
+#     #     SaveToLog(main_log, "Running BBB 50 complete")
+#     #     dt_BBB2 += timedelta(hours=4)
+#     #     dt_BBB2 = dt_BBB2.replace(minute=0, second=1, microsecond=1)
+#     # if datetime.now() > dt_BBB3:
+#     #     SaveToLog(main_log, "Running BBB 200")
+#     #     BollingerBandBreakout3(QFPort[4], QFSec, QFBBBVol, "H4", fl_strat3)
+#     #     SaveToLog(main_log, "Running BBB 200 complete")
+#     #     dt_BBB3 += timedelta(hours=4)
+#     #     dt_BBB3 = dt_BBB3.replace(minute=0, second=1, microsecond=1)
+#     if datetime.now() > dt_TOD:
+#         SaveToLog(main_log, "Running TOD")
+#         TimeofDay(QFPort[4], TOD_Sec, 100, "H1", fl_strat4)
+#         SaveToLog(main_log, "Running BBB 200 complete")
+#         dt_TOD += timedelta(hours=1)
+#         dt_TOD = dt_TOD.replace(minute=0, second=1, microsecond=1)
+#     ###############################################################################
+#     #                                 Optimizer                                   #
+#     ###############################################################################
+#     if datetime.now() > dt_M15_Optimizer:
+#         SaveToLog(main_log, "Running M15 Optimizer")
+#         t = datetime.now()
+#         UpdateOpenUnits(QFSec, QFPort[1], "PPB")
+#         UpdateOpenUnits(QFSec, QFPort[2], "IT")
+#         LoadIndicators(QFSec,"M5")
+#         LoadIndicators(QFSec,"M15")
+#         ManageMoney(QFPort[1], "PPB", QFTraget[0], QFLimit[0])
+#         ManageMoney(QFPort[2], "IT", QFTraget[1], QFLimit[1])
+#         dt_M15_Optimizer += timedelta(minutes=15)
+#         dt_M15_Optimizer = dt_M15_Optimizer.replace(second=1, microsecond=1)
+#         SaveToLog(main_log, "M15 Optimizer runtime: " + str(datetime.now() - t))
+#     elif datetime.now() > dt_M5_Optimizer:
+#         SaveToLog(main_log, "Running PPB Optimizer")
+#         t = datetime.now()
+#         UpdateOpenUnits(QFSec, QFPort[1], "PPB")
+#         ManageMoney(QFPort[1], "PPB", QFTraget[0], QFLimit[0])
+#         LoadIndicators(QFSec,"M5")
+#         dt_M5_Optimizer += timedelta(minutes=5)
+#         dt_M5_Optimizer = dt_M5_Optimizer.replace(second=1, microsecond=1)
+#         SaveToLog(main_log, "M5 Optimizer runtime: " + str(datetime.now() - t))
+#     if datetime.now() > dt_Daily:
+#         SaveToLog(main_log, "Running Daily Updates")
+#         t = datetime.now()
+#         UpdatePivotPoints(QFSec)
+#         UpdateAccountBalance(QFPort[1], "PPB")
+#         UpdateAccountBalance(QFPort[2], "IT")
+#         dt_Daily += timedelta(hours=24)
+#         dt_Daily = dt_Daily.replace(minute=0, second=0, microsecond = 1)
+#         SaveToLog(main_log, "Daily Updates runtime: " + str(datetime.now() - t))
+#     if d.weekday() == 4 and d.hour == 16 and d.minute > 50:
+#         for i in range(len(QFSec)):
+#             ClosePositions(QFPort[0], QFSec[i], fl_strat1, LIVE_ACCESS_TOKEN)
+#             ClosePositions(QFPort[1], QFSec[i], fl_strat2, LIVE_ACCESS_TOKEN)
+#             ClosePositions(QFPort[2], QFSec[i], fl_strat3, LIVE_ACCESS_TOKEN)
+#         time.sleep(3600)
+#     time.sleep(1)
