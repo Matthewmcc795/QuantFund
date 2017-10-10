@@ -29,7 +29,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
     HA = []
     LA = []
     CA = []
-    D = []
+    # D = []
     h = {'Authorization' : LIVE_ACCESS_TOKEN}
     url =   "https://api-fxtrade.oanda.com/v1/candles?instrument=" + str(curr_pair) + "&count=" + str(bars) + "&candleFormat=" + str(rep) +"&granularity=" + str(tf)
     r = requests.get(url, headers=h)     
@@ -47,7 +47,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
         elif ohlc == "hlc":
             return H, L, C
         elif ohlc == "c":
-            return D, C
+            return C
     else:
         for i in range(len(data["candles"])):
             CB.append(data["candles"][bars - i - 1][STRCB])
