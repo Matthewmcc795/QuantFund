@@ -37,7 +37,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
     time.sleep(1)
     if rep == "midpoint":
         for i in range(len(data["candles"])):
-            D.append(data["candles"][bars - i - 1][STRT])
+            # D.append(data["candles"][bars - i - 1][STRT])
             O.append(data["candles"][bars - i - 1][STRO])
             H.append(data["candles"][bars - i - 1][STRH])
             L.append(data["candles"][bars - i - 1][STRL])
@@ -47,6 +47,7 @@ def Get_Price(curr_pair, tf, bars, ohlc, rep):
         elif ohlc == "hlc":
             return H, L, C
         elif ohlc == "c":
+            # return D, C
             return C
     else:
         for i in range(len(data["candles"])):
