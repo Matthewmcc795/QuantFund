@@ -61,7 +61,7 @@ def TimeofDay(account_id, sec, vol, tf, file_nm):
                 trd_ID = positions["id"]
                 trd_entry = float(positions["price"])
                 trd_side = positions["side"]
-                if dt - timedelta(minutes=180) > TOD["Open"][s]:
+                if dt - timedelta(minutes=175) > TOD["Open"][s]:
                     ClosePositions(account_id, s, file_nm, LIVE_ACCESS_TOKEN)
 
 def PivotPointBreakout(account_id, sec, vol, tf, file_nm):
